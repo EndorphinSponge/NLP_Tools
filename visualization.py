@@ -3,6 +3,7 @@
 from collections import Counter
 from math import log
 import re
+import difflib
 
 # Data science
 import pandas as pd
@@ -11,30 +12,96 @@ from pyvis.network import Network
 import networkx as nx
 import matplotlib.pyplot as plt
 
+# NLP
+import spacy 
+from spacy import displacy
+from scispacy.abbreviation import AbbreviationDetector
+from scispacy.linking import EntityLinker
+
+#%% Constants
+NLP = spacy.load("en_core_sci_scibert") # Requires GPU
+NLP.add_pipe("abbreviation_detector")
+
+#%% Functions
+
+def compareStrings(str1, str2):
+    return difflib.SequenceMatcher(a=str1.lower(), b=str2.lower()).ratio()
+
+def extractAbrvs(string) -> list:
+    """
+    Takes a string and returns a set of all the abbreviations
+    """
+    doc = NLP(string)
+    abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
+    return abrvs
+
+def nlpString(string) -> list:
+    """
+    Takes a string and returns a tuple of a set of entities with abbreviation mapping
+    """
+    doc = NLP(string)
+    ents = {ent.text.lower().strip() for ent in list(doc.ents)} # Need to convert to str first, otherwise causes problems with subsequent functions which only take strings
+    abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
+    for abrv, full in abrvs:
+        for ent in ents.copy(): # Iterate over a copy of the set while changing the original
+            if compareStrings(full, ent) > 0.9: # Find ent matching with full form of abbreviation
+                ents.remove(ent) # Remove full form
+                ents.add(abrv) # Add abbreviated form                
+    return ents
+
+def mapAbrv(string, abrv_container, threshold = 0.9):
+    """
+    Checks if there is an abbreviation in a string given an abbreviation
+    container and maps it to the abbreviation if present
+    Returns original string if no matches
+    """
+    print(abrv_container)
+    for abrv, full in abrv_container:
+        if compareStrings(full, string) > threshold:
+            return abrv
+    return string
+
+
 #%% Build graph from items
 df_origin = pd.read_excel("gpt3_output_formatted.xlsx")
-df_text = pd.DataFrame()
+abrv_container = set()
+
+for index, row in df_origin.iterrows():
+    print(index)
+    text = row["Extracted_Text"]
+    items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
+    for item in items: # Collect abbreviations 
+        abrv_container.update(extractAbrvs(item))
+#%%
 factor_counter = Counter()
 outcome_counter = Counter()
 edge_counter = Counter()
+
 for index, row in df_origin.iterrows():
     # Use sets for containers so multiple mentions within same paper are not recounted 
+    print(index)
     factors = set()
     outcomes = set()
     relationships = set()
     text = row["Extracted_Text"]
     items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
-    for item in items:
+    for item in items: # Counting items
         factor, outcome, size = list(filter(None, item.split("|"))) # Filter with none to get rid of empty strings
         # Can add additional resolution parsing within the if statements
-        if re.search(r"\w", factor) != None:
-            factors.add(factor.strip().lower())
+        if re.search(r"\w", factor) != None: # Given that this cell is not empty
+            factor_ents = nlpString(factor)
+            factor_ents = {mapAbrv(ent, abrv_container) for ent in factor_ents} # Map any abbreviable strings to their abbreviations
+            factors.update(factor_ents)
         if re.search(r"\w", outcome) != None:
-            outcomes.add(outcome.strip().lower())
+            outcome_ents = nlpString(outcome)
+            outcome_ents = {mapAbrv(ent, abrv_container) for ent in outcome_ents} # Map any abbreviable strings to their abbreviations
+            outcomes.update(outcome_ents)
         if re.search(r"\w", factor) != None and re.search(r"\w", outcome) != None:
-            relationships.add((factor.strip().lower(), outcome.strip().lower()))
-            relationships.add((outcome.strip().lower(), factor.strip().lower())) # Add bidirectional relationship
-            # Remember to enumerate here to avoid repeating connections
+            for factor_ent in factor_ents: # Add connection between a factor and all outcomes
+                for outcome_ent in outcome_ents:
+                    relationships.add((factor_ent, outcome_ent))
+                    relationships.add((outcome_ent, factor_ent)) # Add bidirectional relationship
+                    # Remember to enumerate here to avoid repeating connections
     for factor in factors:
         factor_counter[factor] += 1
     for outcome in outcomes:

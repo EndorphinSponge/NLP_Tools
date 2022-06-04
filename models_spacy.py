@@ -8,6 +8,7 @@ from collections import Counter
 import csv
 import math
 import re
+import difflib
 
 # NLP
 import spacy 
@@ -27,33 +28,63 @@ from pyvis.network import Network
 # NLPV = spacy.load("en_core_sci_lg") # Doesn't require GPU, but has vectors
 NLP = spacy.load("en_core_sci_scibert") # Requires GPU
 NLP.add_pipe("abbreviation_detector")
-
-#%%
 TEXT = """Older patients had a higher mortality, with the highest mortality (37.5%) among those over 50 years old (p = 0.009)"""
 TEXT = """Traumatic Brain Injury (TBI) is a major cause of death and disability; the leading cause of mortality and morbidity in previously healthy people aged under 40 in the United Kingdom (UK). There are currently little official Irish statistics regarding TBI or outcome measures following TBI, although it is estimated that over 2000 people per year sustain TBI in Ireland. We performed a retrospective cohort study of TBI patients who were managed in the intensive care unit (ICU) at CUH between July 2012 and December 2015. Demographic data were compiled by patients' charts reviews. Using the validated Glasgow outcome scale extended (GOS-E) outcome measure tool, we interviewed patients and/or their carers to measure functional outcomes. Descriptive statistical analyses were performed. Spearman's correlation analysis was used to assess association between different variables using IBM's Statistical Package for the Social Sciences (SPSS) 20. In the 42-month period, 102 patients were identified, mainly males (81%). 49% had severe TBI and 56% were referred from other hospitals. The mean age was 44.7 and a most of the patients were previously healthy, with 65% of patients having ASA I or II. Falls accounted for the majority of the TBI, especially amongst those aged over 50. The 30-day mortality was 25.5% and the mean length of hospital stay (LOS-H) was 33 days. 9.8% of the study population had a good recovery (GOS-E 8), while 7.8% had a GOS-E score of 3 (lower sever disability). Patients with Extra-Dural haemorrhage had better outcomes compared with those with SDH or multi-compartmental haemorrhages (p = 0.007). Older patients had a higher mortality, with the highest mortality (37.5%) among those over 50 years old (p = 0.009). TBI is associated with significant morbidity and mortality. Despite the young mean age and low ASA the mortality, morbidity and average LOS-H were significant, highlighting the health and socioeconomic burden of TBI."""
 TEXT = """BACKGROUND: Evidence from the last 25 years indicates a modest reduction of mortality after severe traumatic head injury (sTBI). This study evaluates the variation over time of the whole Glasgow Outcome Scale (GOS) throughout those years., METHODS: The study is an observational cohort study of adults (>= 15 years old) with closed sTBI (GCS <= 8) who were admitted within 48 h after injury. The final outcome was the 1-year GOS, which was divided as follows: (1) dead/vegetative, (2) severely disabled (dependent patients), and (3) good/moderate recovery (independent patients). Patients were treated uniformly according to international protocols in a dedicated ICU. We considered patient characteristics that were previously identified as important predictors and could be determined easily and reliably. The admission years were divided into three intervals (1987-1995, 1996-2004, and 2005-2012), and the following individual CT characteristics were noted: the presence of traumatic subarachnoid or intraventricular hemorrhage (tSAH, IVH), midline shift, cisternal status, and the volume of mass lesions (A x B x C/2). Ordinal logistic regression was performed to estimate associations between predictors and outcomes. The patients' estimated propensity scores were included as an independent variable in the ordinal logistic regression model (TWANG R package)., FINDINGS: The variables associated with the outcome were age, pupils, motor score, deterioration, shock, hypoxia, cistern status, IVH, tSAH, and epidural volume. When adjusting for those variables and the propensity score, we found a reduction in mortality from 55% (1987-1995) to 38% (2005-2012), but we discovered an increase in dependent patients from 10 to 21% and just a modest increase in independent patients of 6%., CONCLUSIONS: This study covers 25 years of management of sTBI in a single neurosurgical center. The prognostic factors are similar to those in the literature. The improvement in mortality does not translate to better quality of life."""
 TEXT = """An unfavorable GOS score (1-3) at 1 year was predicted by higher Day 7 GFAP levels (above 9.50 ng/ml; AUC 0.82, sensitivity 78.6%, and specificity 82.4%)."""
 TEXT = """Presence of coagulopathy, anticoagulant drug use, GCS of 13-14 and increased age predicted further deterioration."""
+
+TEXT = "Functioning and HRQoL postinjury in older people"
+TEXT = "Care pathway and treatment variables, and 6-month measures of functional outcome, health-related quality of life (HRQoL), post-concussion symptoms (PCS), and mental health symptoms"
+TEXT = "90-day mortality"
+TEXT = "TBI outcome"
+TEXT = "The severity of traumatic brain injury (TBI)"
+TEXT = "Hospital mortality"
+TEXT = "CSF and serum Lac, NSE, and BBB index"
+TEXT = "Condition and prognosis after a severe TBI"
+TEXT = "PCS at 30 days"
+TEXT = "Being under the influence of drugs or alcohol at the time of injury"
+TEXT = "6-month Glasgow-Outcome-Scale score"
+#%% Functions
+
+def compareStrings(str1, str2):
+    return difflib.SequenceMatcher(a=str1.lower(), b=str2.lower()).ratio()
+
+def nlpString(string) -> list:
+    """
+    Takes a string and returns a tuple of a set of entities and a list of abbreviations
+    """
+    doc = NLP(string)
+    ents = {ent.text.lower().strip() for ent in list(doc.ents)} # Need to convert to str first, otherwise causes problems with subsequent functions which only take strings
+    abrvs = [(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations]
+    for abrv, full in abrvs:
+        for ent in ents.copy(): # Iterate over a copy of the set while changing the original
+            if compareStrings(full, ent) > 0.9: # Find ent matching with full form of abbreviation
+                ents.remove(ent) # Remove full form
+                ents.add(abrv) # Add abbreviated form                
+    return (ents, abrvs)
+
+print(nlpString("Care pathway and treatment variables, and 6-month measures of functional outcome, health-related quality of life (HRQoL), post-concussion symptoms (PCS), and mental health symptoms"))
+
+
+#%% Display abbreviations, entities, DEP
+
+TEXT = "Mortality"
+
 doc = NLP(TEXT)
 
-
-#%% Display entities 
 sent_no = 0
+for abrv in doc._.abbreviations:
+	print(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")
 for sentence in doc.sents:
     print(sent_no)
     displacy_image = displacy.render(sentence, jupyter = True, style = "ent")
     sent_no += 1
-
-#%% Abbreviations 
-for abrv in doc._.abbreviations:
-	print(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")
-
-
-TEXT = """
-Four variables were found to be significant in the model: age (years), Glasgow Coma Scale (3-15), Marshall Scale (MS, stratified into 2,3 or 4,5,6; according to the best group positive predictive value) and anysochoria (yes/no).
-"""
-doc = NLP(TEXT.strip())
+print(list(doc.noun_chunks))
 dep_figure = displacy.render(doc,style="dep", options={"compact":True, "distance":100})
+
+
+
 #%% DEP rendering + save
 num = 1 
 text_cont = []
@@ -64,7 +95,7 @@ TEXT = """
 doc = NLP(TEXT.strip())
 dep_figure = displacy.render(doc,style="dep", jupyter=True, options={"compact":True, "distance":100})
 
-# Below code for saving
+## Below code for saving
 # dep_figure = displacy.render(doc,style="dep", jupyter=False, options={"compact":True, "distance":100})
 # output_path = Path(f"plot{str(num)}.html") # you can keep there only "dependency_plot.svg" if you want to save it in the same folder where you run the script 
 # output_path.open("w", encoding="utf-8").write(dep_figure)

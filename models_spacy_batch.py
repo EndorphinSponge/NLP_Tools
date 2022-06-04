@@ -1,5 +1,5 @@
 """
-For process that handle more than one doc at a time
+For process that handles more than one doc at a time
 """
 #%% Imports
 # General 
