@@ -69,10 +69,13 @@ print(nlpString("Care pathway and treatment variables, and 6-month measures of f
 
 #%% Display abbreviations, entities, DEP
 
-TEXT = "Mortality"
+TEXT = "Glasgow coma score, outcomes, and outcome"
 
 doc = NLP(TEXT)
 
+print("Length: " + str(len(doc)))
+for ent in doc.ents:
+    print(ent.lemma_)
 sent_no = 0
 for abrv in doc._.abbreviations:
 	print(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")

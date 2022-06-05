@@ -31,7 +31,7 @@ def extractAbrvs(string) -> list:
     """
     Takes a string and returns a set of all the abbreviations
     """
-    doc = NLP(string)
+    doc = NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
     abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
     return abrvs
 
@@ -39,15 +39,18 @@ def nlpString(string) -> list:
     """
     Takes a string and returns a tuple of a set of entities with abbreviation mapping
     """
-    doc = NLP(string)
-    ents = {ent.text.lower().strip() for ent in list(doc.ents)} # Need to convert to str first, otherwise causes problems with subsequent functions which only take strings
-    abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
-    for abrv, full in abrvs:
-        for ent in ents.copy(): # Iterate over a copy of the set while changing the original
-            if compareStrings(full, ent) > 0.9: # Find ent matching with full form of abbreviation
-                ents.remove(ent) # Remove full form
-                ents.add(abrv) # Add abbreviated form                
-    return ents
+    doc = NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
+    if len(doc) > 1: # Only process if there is more than one token
+        ents = {ent.lemma_.lower().strip() for ent in list(doc.ents)} # Need to convert to str first, otherwise causes problems with subsequent functions which only take strings
+        abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
+        for abrv, full in abrvs:
+            for ent in ents.copy(): # Iterate over a copy of the set while changing the original
+                if compareStrings(full, ent) > 0.9: # Find ent matching with full form of abbreviation
+                    ents.remove(ent) # Remove full form
+                    ents.add(abrv) # Add abbreviated form                
+        return ents
+    else:
+        return {doc[0].lemma_.strip().lower(),} # Otherwise there will be only one token, return its lemma 
 
 def mapAbrv(string, abrv_container, threshold = 0.9):
     """
@@ -55,15 +58,19 @@ def mapAbrv(string, abrv_container, threshold = 0.9):
     container and maps it to the abbreviation if present
     Returns original string if no matches
     """
-    print(abrv_container)
     for abrv, full in abrv_container:
         if compareStrings(full, string) > threshold:
             return abrv
     return string
 
-
+def transEnts(string, trans_dict):
+    if string in trans_dict.keys(): # If the string matches a translation key
+        return trans_dict[string]
+    else:
+        return string
+        
 #%% Build graph from items
-df_origin = pd.read_excel("gpt3_output_formatted.xlsx")
+df_origin = pd.read_excel("gpt3_output_formatted.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
 abrv_container = set()
 
 for index, row in df_origin.iterrows():
@@ -76,6 +83,18 @@ for index, row in df_origin.iterrows():
 factor_counter = Counter()
 outcome_counter = Counter()
 edge_counter = Counter()
+common_ignore = ["patients", "rate", "associated", "days", "level"] # Words common to both factors and outcomes
+common_tbi_ignore = ["csf", "serum", "blood", "plasma", "mild", "moderate", "severe"] # Specific to TBI 
+factors_ignore = [] + common_ignore + common_tbi_ignore
+outcomes_ignore = ["age", "tbi", "improved", "reduced",] + common_ignore + common_tbi_ignore
+factors_trans = {
+    "gcs": "gcs (factor)",
+
+}
+outcomes_trans = {
+    "gcs": "gcs (outcome)",
+
+}
 
 for index, row in df_origin.iterrows():
     # Use sets for containers so multiple mentions within same paper are not recounted 
@@ -91,24 +110,28 @@ for index, row in df_origin.iterrows():
         if re.search(r"\w", factor) != None: # Given that this cell is not empty
             factor_ents = nlpString(factor)
             factor_ents = {mapAbrv(ent, abrv_container) for ent in factor_ents} # Map any abbreviable strings to their abbreviations
+            factor_ents = {ent for ent in factor_ents if ent not in factors_ignore}
+            factor_ents = {transEnts(ent, factors_trans) for ent in factor_ents}
             factors.update(factor_ents)
         if re.search(r"\w", outcome) != None:
             outcome_ents = nlpString(outcome)
             outcome_ents = {mapAbrv(ent, abrv_container) for ent in outcome_ents} # Map any abbreviable strings to their abbreviations
+            outcome_ents = {ent for ent in outcome_ents if ent not in outcomes_ignore}
+            outcome_ents = {transEnts(ent, outcomes_trans) for ent in outcome_ents}
             outcomes.update(outcome_ents)
         if re.search(r"\w", factor) != None and re.search(r"\w", outcome) != None:
             for factor_ent in factor_ents: # Add connection between a factor and all outcomes
                 for outcome_ent in outcome_ents:
-                    relationships.add((factor_ent, outcome_ent))
-                    relationships.add((outcome_ent, factor_ent)) # Add bidirectional relationship
-                    # Remember to enumerate here to avoid repeating connections
+                    if factor_ent != outcome_ent: # So that you don't get self connections
+                        relationships.add((factor_ent, outcome_ent))
+                        relationships.add((outcome_ent, factor_ent)) # Add bidirectional relationship
+                        # Remember to enumerate here to avoid repeating connections
     for factor in factors:
         factor_counter[factor] += 1
     for outcome in outcomes:
         outcome_counter[outcome] += 1
     for edge in relationships:
         edge_counter[edge] += 1
-del factor_counter["mortality"]
 # print(factor_counter)
 # print(outcome_counter)
 # print(edge_counter)
@@ -139,7 +162,7 @@ node_colors = [color for (node, color) in graph.nodes(data="color")]
 edge_width_true = [width for (node1, node2, width) in graph.edges(data="weight")]
 edge_widths = [log(width, 2) for width in edge_width_true]
 edge_widths = np.clip(edge_widths, 0.2, None) # Set lower bound of width to 1
-edge_transparency = [(0.7*(width/max(edge_width_true)))**(1/3) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root to reduce right skewness 
+edge_transparency = [0.6*(width/max(edge_width_true))**(1/3) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root to reduce right skewness 
 edge_transparency = np.clip(edge_transparency, 0.05, None) # Use np to set lower bound for edges
 label_sizes = node_sizes
 
