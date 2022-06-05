@@ -22,7 +22,7 @@ from scispacy.linking import EntityLinker
 NLP = spacy.load("en_core_sci_scibert") # Requires GPU
 NLP.add_pipe("abbreviation_detector")
 
-#%% Functions
+#%% Functions & classes 
 
 def compareStrings(str1, str2):
     return difflib.SequenceMatcher(a=str1.lower(), b=str2.lower()).ratio()
@@ -68,201 +68,252 @@ def transEnts(string, trans_dict):
         return trans_dict[string]
     else:
         return string
+
+def extractAbrvCont(df, col_input = "Extracted_Text"):
+    abrv_container = set()
+    for index, row in df.iterrows():
+        print(index)
+        text = row[col_input]
+        items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
+        for item in items: # Collect abbreviations 
+            abrv_container.update(extractAbrvs(item))
+    return abrv_container
         
-#%% Build graph from items
-topic_num = 0
-df_origin = pd.read_excel("gpt3_output_formatted_annotated.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
-df_origin = df_origin[df_origin["Topic"]==topic_num]
-abrv_container = set()
-print(df_origin)
+class GraphBuilder:
+    """
+    Contains 
+    """
+    def __init__(self, abrv_cont, ):
+        self.abrvs = abrv_cont    
+        self.graph = nx.Graph()
+        self.factor_counter = Counter()
+        self.outcome_counter = Counter()
+        self.edge_counter = Counter()
+        common_ignore = ["patient", "patient\'", "patients", "rate", "associated", "hour", "day", "month", "year", "level", 
+            "favorable", "favourable", "good", "prevalence", "presence", "result", "ratio", "in-hospital",
+            "decrease", "bad", "poor", "unfavorable", "unfavourable", "reduced", "use of", "development",
+            "clinical trial", "significance", "finding", "score", "analysis",
+            "early", "adult",
+            ] # Words common to both factors and outcomes
+        common_tbi_ignore = ["tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "mild",
+            "moderate", "severe", "concentration", "risk", "traumatic", "finding", "post-injury",
+            ] # Specific to TBI 
+        self.factors_ignore = [] + common_ignore + common_tbi_ignore
+        self.outcomes_ignore = ["age", "improved", "reduced", "trauma", "s100b"] + common_ignore + common_tbi_ignore
+        self.factors_trans = {
+            "gcs": "gcs (factor)",
+
+        }
+        self.outcomes_trans = {
+            "gcs": "gcs (outcome)",
+            "hospital mortality": "in-hospital mortality",
+            "clinical outcome": "outcome",
+            "death": "mortality",
+            "morality rate": "mortality",
+            "survival": "mortality"
+
+        }
+    def resetCounters(self):
+        self.factor_counter = Counter()
+        self.outcome_counter = Counter()
+        self.edge_counter = Counter()
+        return None
+
+    def populateCounters(self, df, col_input = "Extracted_Text"):
+        """
+        Populates the graph's counters using df and abbreviation container originally passed 
+        into the class 
+        """
+        # Reset counters
+        self.resetCounters()
+        for index, row in df.iterrows():
+            # Use sets for containers so multiple mentions within same paper are not recounted 
+            print(index)
+            factors = set()
+            outcomes = set()
+            relationships = set()
+            text = row[col_input]
+            items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
+            for item in items: # Counting items
+                factor, outcome, size = list(filter(None, item.split("|"))) # Filter with none to get rid of empty strings
+                # Can add additional resolution parsing within the if statements
+                if re.search(r"\w", factor) != None: # Given that this cell is not empty
+                    factor_ents = nlpString(factor)
+                    factor_ents = {mapAbrv(ent, self.abrvs) for ent in factor_ents} # Map any abbreviable strings to their abbreviations
+                    factor_ents = {ent for ent in factor_ents if ent not in self.factors_ignore}
+                    factor_ents = {transEnts(ent, self.factors_trans) for ent in factor_ents}
+                    factors.update(factor_ents)
+                if re.search(r"\w", outcome) != None:
+                    outcome_ents = nlpString(outcome)
+                    outcome_ents = {mapAbrv(ent, self.abrvs) for ent in outcome_ents} # Map any abbreviable strings to their abbreviations
+                    outcome_ents = {ent for ent in outcome_ents if ent not in self.outcomes_ignore}
+                    outcome_ents = {transEnts(ent, self.outcomes_trans) for ent in outcome_ents}
+                    outcomes.update(outcome_ents)
+                if re.search(r"\w", factor) != None and re.search(r"\w", outcome) != None:
+                    for factor_ent in factor_ents: # Add connection between a factor and all outcomes
+                        for outcome_ent in outcome_ents:
+                            if factor_ent != outcome_ent: # So that you don't get self connections
+                                relationships.add((factor_ent, outcome_ent))
+                                relationships.add((outcome_ent, factor_ent)) # Add bidirectional relationship
+                                # Remember to enumerate here to avoid repeating connections
+            for factor in factors:
+                self.factor_counter[factor] += 1
+            for outcome in outcomes:
+                self.outcome_counter[outcome] += 1
+            for edge in relationships:
+                self.edge_counter[edge] += 1
+        return None
+    
+    def buildGraph(self, thresh = 1, ):
+        """
+        Builds Networkx graph with the populated counters and a threshold for node count
+        ---
+        thresh: lower threshold for number of counts needed for each node (exclusive)
+        """
+        # Reminder that nx nodes can have abitrary attributes that don't contribute to rendering, need to manually adjust visual parameters with drawing methods
+        # nx.Graph is just a way to store data, data can be stored in node attributes         
+        self.graph = nx.Graph() # Reset graph
+        for entity in self.factor_counter:
+            count = self.factor_counter[entity]
+            if count > thresh: # Only add if there is more than 1 mention
+                self.graph.add_node(entity, color = "#1E6091FF", size = count) # Color is in #RRGGBBAA format (A is transparency)
+        for entity in self.outcome_counter:
+            count = self.outcome_counter[entity]
+            if count > thresh:
+                self.graph.add_node(entity, color = "#76C893FF", size = count) # Color is in #RRGGBBAA format (A is transparency)
+        for (node1, node2) in self.edge_counter:
+            count = self.edge_counter[(node1, node2)]
+            if (self.factor_counter[node1] > thresh or self.outcome_counter[node1] > thresh) and\
+                (self.factor_counter[node2] > thresh or self.outcome_counter[node2] > thresh): # Need to each node in all sets of counters
+                self.graph.add_edge(node1, node2, width = count) # "width" attribute affects pyvis rendering, pyvis doesn't support edge opacity
+                print(node1, node2)
+        return None
+
+    def exportGraph(self, path):
+        """
+        Exports currently stored graph to an XML file with the specified path 
+        """
+        # Export graph , https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml
+        # Graphml documentation: https://networkx.org/documentation/stable/reference/readwrite/graphml.html
+        nx.write_graphml(self.graph, path)
+        return None
+
+    def importGraph(self, path):
+        """
+        Imports an NX graph from an XML file into the object
+        """
+        # Import graph https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.read_graphml.html#networkx.readwrite.graphml.read_graphml
+        self.graph = nx.read_graphml(path)
+        return None
+
+    def resetGraph(self,):
+        self.graph = nx.Graph()
+
+    def renderGraphNX(self, 
+        width_log = 2, width_min = 0.2, 
+        alpha_max = 0.8, alpha_min = 0.01, alpha_root = 1, 
+        save_prefix = False, cmap= True, 
+        ):
+        """
+        Renders the graph contained within the object using NX
+        ----
+        save_prefix: prefix for saving figures
+        cmap: use color mapping for edge colors
+        """
+        node_sizes = [size for (node, size) in self.graph.nodes(data="size")]
+        node_colors = [color for (node, color) in self.graph.nodes(data="color")]
+        edge_width_true = [width for (node1, node2, width) in self.graph.edges(data="width")]
+        edge_widths = [log(width, width_log) for width in edge_width_true]
+        edge_widths = np.clip(edge_widths, width_min, None) # Set lower bound of width to 1
+        edge_transparency = [alpha_max*(width/max(edge_width_true))**(1/alpha_root) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root if you want to reduce right skewness 
+        edge_transparency = np.clip(edge_transparency, alpha_min, None) # Use np to set lower bound for edges
+        label_sizes = node_sizes
+
+        #%% Networkx visualization (multiple elements)
+        # nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
+        plt.figure(1, figsize = (12, 12), dpi = 600)
+        plt.clf() # Clear figure, has to be done AFTER setting figure size/DPI, otherwise this information is no assigned properly
+        layout = nx.kamada_kawai_layout(self.graph) # Different position solvers available: https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_kamada_kawai.html
+        nx.draw_networkx_nodes(self.graph, 
+            pos = layout,
+            alpha = 0.8,
+            node_size = node_sizes,
+            node_color = node_colors,
+            )
+        ## Manually draw labels with different sizes: https://stackoverflow.com/questions/62649745/is-it-possible-to-change-font-sizes-according-to-node-sizes
+        for node, (x, y) in layout.items():
+            label_size = log(self.graph.nodes[node]["size"], 2) # Retrieve size information via node identity in graph
+            plt.text(x, y, node, fontsize = label_size, ha = "center", va = "center") # Manually draw text
+        if cmap: # Will map values (in proportion to min/max) to a color spectrum
+            nx.draw_networkx_edges(self.graph,
+                pos = layout,
+                alpha = edge_transparency,
+                edge_color = edge_transparency,
+                width = edge_widths,
+                edge_cmap = plt.cm.summer, 
+                )
+            # Available colormaps: https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html
+            # Tested colormaps: GnBu is too similar to node color scheme, [YlOrRd, PuRd, Wistia] makes small edges too light, 
+        else:
+            nx.draw_networkx_edges(self.graph,
+                pos = layout,
+                alpha = edge_transparency,
+                width = edge_widths,
+                )
+
+        if save_prefix:
+            plt.savefig(f"net_{save_prefix}_(width[log{str(width_log)}_min{str(width_min)}]alpha[max{str(alpha_max)}min{str(alpha_min)}root{str(alpha_root)}]).png")
+        else:
+            plt.show()
+        return None
+
+    def renderGraphPyvis(self, path = "pyvis_network.html", solver = "repulsion"):
+        """
+        Builds graph from counters and renders it using Pyvis
+        """
+        graphpy = Network()
+        graphpy.from_nx(self.graph)
+
+        graphpy.toggle_physics(True)
+        if solver == "repulsion":
+            graphpy.repulsion()
+        elif solver == "atlas":
+            graphpy.force_atlas_2based(damping = 1, gravity = -20, central_gravity = 0.05, spring_length = 65) # For smaller graphs 
+            # graphpy.force_atlas_2based(damping = 1, gravity = -12, central_gravity = 0.01, spring_length = 100) # For larger graphs 
+        else:
+            graphpy.barnes_hut()
+        graphpy.inherit_edge_colors(False)
+        graphpy.show_buttons(filter_=['physics'])
+        graphpy.show(path)
+
+
+
+
+#%% Execution 
+if __name__ == "__main__":
+    df_origin = pd.read_excel("gpt3_output_formatted_annotated.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
+    abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
+    builder = GraphBuilder(abrvs)
+    for topic_num in range(0, 11):
+        df_subset = df_origin[df_origin["Topic"]==topic_num]
+        builder.populateCounters(df_subset, col_input = "Extracted_Text")
+        builder.buildGraph(thresh = 1)
+        builder.renderGraphNX(save_prefix = f"tbi_topic{topic_num}_t1")
+        # builder.renderGraphNX()
 
 #%%
-for index, row in df_origin.iterrows():
-    print(index)
-    text = row["Extracted_Text"]
-    items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
-    for item in items: # Collect abbreviations 
-        abrv_container.update(extractAbrvs(item))
+df_origin = pd.read_excel("gpt3_output_formatted_annotated25.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
+abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
 #%%
-factor_counter = Counter()
-outcome_counter = Counter()
-edge_counter = Counter()
-common_ignore = ["patient", "patient\'", "patients", "rate", "associated", "hour", "day", "month", "year", "level", 
-    "favorable", "favourable", "good", "prevalence", "presence", "result", "ratio", "in-hospital",
-    "decrease", "bad", "poor", "unfavorable", "unfavourable", "reduced", "use of", "development",
-    "clinical trial", "significance", "finding", "score", "analysis",
-    "early", "adult",
-    ] # Words common to both factors and outcomes
-common_tbi_ignore = ["tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "mild",
-    "moderate", "severe", "concentration", "risk", "traumatic", "finding", "post-injury",
-    ] # Specific to TBI 
-factors_ignore = [] + common_ignore + common_tbi_ignore
-outcomes_ignore = ["age", "improved", "reduced", "trauma"] + common_ignore + common_tbi_ignore
-factors_trans = {
-    "gcs": "gcs (factor)",
-
-}
-outcomes_trans = {
-    "gcs": "gcs (outcome)",
-    "hospital mortality": "in-hospital mortality",
-    "clinical outcome": "outcome",
-    "death": "mortality",
-    "morality rate": "mortality",
-    "survival": "mortality"
-
-}
-
-for index, row in df_origin.iterrows():
-    # Use sets for containers so multiple mentions within same paper are not recounted 
-    print(index)
-    factors = set()
-    outcomes = set()
-    relationships = set()
-    text = row["Extracted_Text"]
-    items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
-    for item in items: # Counting items
-        factor, outcome, size = list(filter(None, item.split("|"))) # Filter with none to get rid of empty strings
-        # Can add additional resolution parsing within the if statements
-        if re.search(r"\w", factor) != None: # Given that this cell is not empty
-            factor_ents = nlpString(factor)
-            factor_ents = {mapAbrv(ent, abrv_container) for ent in factor_ents} # Map any abbreviable strings to their abbreviations
-            factor_ents = {ent for ent in factor_ents if ent not in factors_ignore}
-            factor_ents = {transEnts(ent, factors_trans) for ent in factor_ents}
-            factors.update(factor_ents)
-        if re.search(r"\w", outcome) != None:
-            outcome_ents = nlpString(outcome)
-            outcome_ents = {mapAbrv(ent, abrv_container) for ent in outcome_ents} # Map any abbreviable strings to their abbreviations
-            outcome_ents = {ent for ent in outcome_ents if ent not in outcomes_ignore}
-            outcome_ents = {transEnts(ent, outcomes_trans) for ent in outcome_ents}
-            outcomes.update(outcome_ents)
-        if re.search(r"\w", factor) != None and re.search(r"\w", outcome) != None:
-            for factor_ent in factor_ents: # Add connection between a factor and all outcomes
-                for outcome_ent in outcome_ents:
-                    if factor_ent != outcome_ent: # So that you don't get self connections
-                        relationships.add((factor_ent, outcome_ent))
-                        relationships.add((outcome_ent, factor_ent)) # Add bidirectional relationship
-                        # Remember to enumerate here to avoid repeating connections
-    for factor in factors:
-        factor_counter[factor] += 1
-    for outcome in outcomes:
-        outcome_counter[outcome] += 1
-    for edge in relationships:
-        edge_counter[edge] += 1
-# print(factor_counter)
-# print(outcome_counter)
-# print(edge_counter)
-
-#%% Build Networkx graph
-# Reminder that nx nodes can have abitrary attributes that don't contribute to rendering, need to manually adjust visual parameters with drawing methods
-# nx.Graph is just a way to store data
-# Data can 
-graph = nx.Graph()
-T = 1
-for entity in factor_counter:
-    count = factor_counter[entity]
-    if count > T: # Only add if there is more than 1 mention
-        graph.add_node(entity, color = "#1E6091", size = count)
-for entity in outcome_counter:
-    count = outcome_counter[entity]
-    if count > T:
-        graph.add_node(entity, color = "#76C893", size = count)
-for (node1, node2) in edge_counter:
-    count = edge_counter[(node1, node2)]
-    if (factor_counter[node1] > T or outcome_counter[node1] > T) and\
-        (factor_counter[node2] > T or outcome_counter[node2] > T): # Need to each node in all sets of counters
-        graph.add_edge(node1, node2, weight = count) # "weight" argument is built-in but does not affect width rendering
-        print(node1, node2)
-
-# Export graph , https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml
-nx.write_graphml(graph, "graph.xml")
-
-node_sizes = [size for (node, size) in graph.nodes(data="size")]
-node_colors = [color for (node, color) in graph.nodes(data="color")]
-edge_width_true = [width for (node1, node2, width) in graph.edges(data="weight")]
-edge_widths = [log(width, 2) for width in edge_width_true]
-edge_widths = np.clip(edge_widths, 0.2, None) # Set lower bound of width to 1
-edge_transparency = [0.8*(width/max(edge_width_true))**(3/3) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root if you want to reduce right skewness 
-edge_transparency = np.clip(edge_transparency, 0.01, None) # Use np to set lower bound for edges
-label_sizes = node_sizes
-
-
-
-# Graphml documentation: https://networkx.org/documentation/stable/reference/readwrite/graphml.html
-
-#%% 
-# Import graph https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.read_graphml.html#networkx.readwrite.graphml.read_graphml
-graph = nx.read_graphml("data/graph.xml")
-
-# Can extract information from imported graph
-node_sizes = [size for (node, size) in graph.nodes(data="size")]
-node_colors = [color for (node, color) in graph.nodes(data="color")]
-edge_width_true = [width for (node1, node2, width) in graph.edges(data="weight")]
-edge_widths = [log(width, 2) for width in edge_width_true]
-edge_widths = np.clip(edge_widths, 0.2, None) # Set lower bound of width to 1
-edge_transparency = [0.8*(width/max(edge_width_true))**(3/3) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root to reduce right skewness 
-edge_transparency = np.clip(edge_transparency, 0.01, None) # Use np to set lower bound for edges
-label_sizes = node_sizes
-
-#%% Networkx visualization (multiple elements)
-# nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
-plt.figure(1, figsize = (12, 12), dpi = 600)
-layout = nx.kamada_kawai_layout(graph) # Different position solvers available: https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_kamada_kawai.html
-nx.draw_networkx_nodes(graph, 
-    pos = layout,
-    alpha = 0.8,
-    node_size = node_sizes,
-    node_color = node_colors,
-    )
-nx.draw_networkx_edges(graph,
-    pos = layout,
-    alpha = edge_transparency,
-    width = edge_widths,
-    )
-## Manually draw labels with different sizes: https://stackoverflow.com/questions/62649745/is-it-possible-to-change-font-sizes-according-to-node-sizes
-for node, (x, y) in layout.items():
-    label_size = log(graph.nodes[node]["size"], 2) # Retrieve size information via node identity in graph
-    plt.text(x, y, node, fontsize = label_size, ha = "center", va = "center") # Manually draw text
-
-#%% Pyvis visualization 
-net = Network()
-
-T = 1
-for entity in factor_counter:
-    count = factor_counter[entity]
-    if count > T: # Only add if there is more than 1 mention
-        net.add_node(entity, color = "cyan", size = count, mass = count)
-for entity in outcome_counter:
-    count = outcome_counter[entity]
-    if count > T:
-        net.add_node(entity, color = "blue", size = count, mass = count)
-for (node1, node2) in edge_counter:
-    count = edge_counter[(node1, node2)]
-    if (factor_counter[node1] > T or outcome_counter[node1] > T) and\
-        (factor_counter[node2] > T or outcome_counter[node2] > T): # Need to each node in all sets of counters
-        net.add_edge(node1, node2, width = count)
-        print(node1, node2)
-
-# Log relationships
-# for entity in factor_counter:
-#     if factor_counter[entity] > 1: # Only add if there is more than 1 mention
-#         net.add_node(entity, color = "red", size = math.log(factor_counter[entity]), mass = math.log(factor_counter[entity]))
-# for entity in outcome_counter:
-#     if outcome_counter[entity] > 1:
-#         net.add_node(entity, color = "blue", size = math.log(outcome_counter[entity]), mass = math.log(outcome_counter[entity]))
-# for (node1, node2) in edge_counter:
-#     if factor_counter[entity] > 1 and outcome_counter[entity] > 1: # Should make sure that nodes exist as per previous statements
-#         net.add_edge(node1, node2, width = math.log(edge_counter[(node1, node2)]))
-
-net.toggle_physics(True)
-# net.force_atlas_2based(damping = 1, gravity = -20, central_gravity = 0.05, spring_length = 65) # For smaller graphs 
-# net.force_atlas_2based(damping = 1, gravity = -12, central_gravity = 0.01, spring_length = 100) # For larger graphs 
-net.repulsion()
-net.inherit_edge_colors(False)
-net.show_buttons(filter_=['physics'])
-net.show("Network.html")
+builder = GraphBuilder(abrvs)
+#%%
+builder.populateCounters(df_origin)
+builder.buildGraph(thresh = 1)
+builder.renderGraphNX(cmap = True)
+#%%
 
 #%% Preview distributions contained within an array
-data = edge_widths
+data = [] # Container for data
 bins = np.arange(min(data), max(data), 1) # fixed bin size
 plt.xlim([min(data), max(data)])
 
