@@ -98,14 +98,17 @@ class GraphBuilder:
         common_tbi_ignore = ["tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "mild",
             "moderate", "severe", "concentration", "risk", "traumatic", "finding", "post-injury",
             ] # Specific to TBI 
-        self.factors_ignore = [] + common_ignore + common_tbi_ignore
+        self.factors_ignore = ["problem",] + common_ignore + common_tbi_ignore
         self.outcomes_ignore = ["age", "improved", "reduced", "trauma", "s100b"] + common_ignore + common_tbi_ignore
         self.factors_trans = {
             "gcs": "gcs (factor)",
+            "injury": "injury (factor)",
+            "depression": ""
 
         }
         self.outcomes_trans = {
             "gcs": "gcs (outcome)",
+            "injury": "injury (outcome)",
             "hospital mortality": "in-hospital mortality",
             "clinical outcome": "outcome",
             "death": "mortality",
@@ -133,8 +136,8 @@ class GraphBuilder:
             outcomes = set()
             relationships = set()
             text = row[col_input]
-            items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
-            for item in items: # Counting items
+            statement = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
+            for item in statement: # Counting items
                 factor, outcome, size = list(filter(None, item.split("|"))) # Filter with none to get rid of empty strings
                 # Can add additional resolution parsing within the if statements
                 if re.search(r"\w", factor) != None: # Given that this cell is not empty
@@ -176,11 +179,11 @@ class GraphBuilder:
         for entity in self.factor_counter:
             count = self.factor_counter[entity]
             if count > thresh: # Only add if there is more than 1 mention
-                self.graph.add_node(entity, color = "#1E6091FF", size = count) # Color is in #RRGGBBAA format (A is transparency)
+                self.graph.add_node(entity, color = "#8338ec", size = count) # Color is in #RRGGBBAA format (A is transparency)
         for entity in self.outcome_counter:
             count = self.outcome_counter[entity]
             if count > thresh:
-                self.graph.add_node(entity, color = "#76C893FF", size = count) # Color is in #RRGGBBAA format (A is transparency)
+                self.graph.add_node(entity, color = "#f72585", size = count) # Color is in #RRGGBBAA format (A is transparency)
         for (node1, node2) in self.edge_counter:
             count = self.edge_counter[(node1, node2)]
             if (self.factor_counter[node1] > thresh or self.outcome_counter[node1] > thresh) and\
@@ -218,7 +221,7 @@ class GraphBuilder:
         Renders the graph contained within the object using NX
         ----
         save_prefix: prefix for saving figures
-        cmap: use color mapping for edge colors
+        cmap: use color mapping in the stead of transparency 
         """
         node_sizes = [size for (node, size) in self.graph.nodes(data="size")]
         node_colors = [color for (node, color) in self.graph.nodes(data="color")]
@@ -247,7 +250,7 @@ class GraphBuilder:
         if cmap: # Will map values (in proportion to min/max) to a color spectrum
             nx.draw_networkx_edges(self.graph,
                 pos = layout,
-                alpha = edge_transparency,
+                # alpha = edge_transparency, # Can add transparency on top to accentuate
                 edge_color = edge_transparency,
                 width = edge_widths,
                 edge_cmap = plt.cm.summer, 
@@ -294,11 +297,11 @@ if __name__ == "__main__":
     df_origin = pd.read_excel("gpt3_output_formatted_annotated.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
     abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
     builder = GraphBuilder(abrvs)
-    for topic_num in range(0, 11):
+    for topic_num in range(0, 11): # May want to automate topic detection 
         df_subset = df_origin[df_origin["Topic"]==topic_num]
         builder.populateCounters(df_subset, col_input = "Extracted_Text")
         builder.buildGraph(thresh = 1)
-        builder.renderGraphNX(save_prefix = f"tbi_topic{topic_num}_t1")
+        builder.renderGraphNX(save_prefix = f"tbi_topic{topic_num}_t1", cmap = True)
         # builder.renderGraphNX()
 
 #%%
