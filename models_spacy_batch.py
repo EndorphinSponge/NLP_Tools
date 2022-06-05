@@ -292,7 +292,7 @@ for doc in doc_bin:
         })
     df = pd.concat([df, entry])
 
-df.to_excel("output.xlsx")
+df.to_excel("manualdep_output.xlsx")
 
 #%% Dataframe generation for word lemmas 
 df = pd.DataFrame(columns = ["Title", "Abstract", "Included sentences", "Word"])

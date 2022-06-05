@@ -1,5 +1,4 @@
 #%% Imports 
-
 # General
 import os
 import pandas as pd
@@ -19,7 +18,6 @@ import pyLDAvis.gensim_models
 from global_functions import importData, lemmatizeText
 
 #%% Constants
-
 DIR = os.path.dirname(__file__)
 DATA = importData(os.path.join(DIR, "data/screening.xlsx"), filt = "maybe", filt_col = "Tags")["Abstract"] # Imports series of abstracts
 
