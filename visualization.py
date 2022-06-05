@@ -70,9 +70,13 @@ def transEnts(string, trans_dict):
         return string
         
 #%% Build graph from items
-df_origin = pd.read_excel("gpt3_output_formatted.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
+topic_num = 0
+df_origin = pd.read_excel("gpt3_output_formatted_annotated.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
+df_origin = df_origin[df_origin["Topic"]==topic_num]
 abrv_container = set()
+print(df_origin)
 
+#%%
 for index, row in df_origin.iterrows():
     print(index)
     text = row["Extracted_Text"]
@@ -83,16 +87,28 @@ for index, row in df_origin.iterrows():
 factor_counter = Counter()
 outcome_counter = Counter()
 edge_counter = Counter()
-common_ignore = ["patients", "rate", "associated", "days", "level"] # Words common to both factors and outcomes
-common_tbi_ignore = ["csf", "serum", "blood", "plasma", "mild", "moderate", "severe"] # Specific to TBI 
+common_ignore = ["patient", "patient\'", "patients", "rate", "associated", "hour", "day", "month", "year", "level", 
+    "favorable", "favourable", "good", "prevalence", "presence", "result", "ratio", "in-hospital",
+    "decrease", "bad", "poor", "unfavorable", "unfavourable", "reduced", "use of", "development",
+    "clinical trial", "significance", "finding", "score", "analysis",
+    "early", "adult",
+    ] # Words common to both factors and outcomes
+common_tbi_ignore = ["tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "mild",
+    "moderate", "severe", "concentration", "risk", "traumatic", "finding", "post-injury",
+    ] # Specific to TBI 
 factors_ignore = [] + common_ignore + common_tbi_ignore
-outcomes_ignore = ["age", "tbi", "improved", "reduced",] + common_ignore + common_tbi_ignore
+outcomes_ignore = ["age", "improved", "reduced", "trauma"] + common_ignore + common_tbi_ignore
 factors_trans = {
     "gcs": "gcs (factor)",
 
 }
 outcomes_trans = {
     "gcs": "gcs (outcome)",
+    "hospital mortality": "in-hospital mortality",
+    "clinical outcome": "outcome",
+    "death": "mortality",
+    "morality rate": "mortality",
+    "survival": "mortality"
 
 }
 
@@ -157,26 +173,35 @@ for (node1, node2) in edge_counter:
         graph.add_edge(node1, node2, weight = count) # "weight" argument is built-in but does not affect width rendering
         print(node1, node2)
 
+# Export graph , https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml
+nx.write_graphml(graph, "graph.xml")
+
 node_sizes = [size for (node, size) in graph.nodes(data="size")]
 node_colors = [color for (node, color) in graph.nodes(data="color")]
 edge_width_true = [width for (node1, node2, width) in graph.edges(data="weight")]
 edge_widths = [log(width, 2) for width in edge_width_true]
 edge_widths = np.clip(edge_widths, 0.2, None) # Set lower bound of width to 1
-edge_transparency = [0.6*(width/max(edge_width_true))**(1/3) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root to reduce right skewness 
-edge_transparency = np.clip(edge_transparency, 0.05, None) # Use np to set lower bound for edges
+edge_transparency = [0.8*(width/max(edge_width_true))**(3/3) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root if you want to reduce right skewness 
+edge_transparency = np.clip(edge_transparency, 0.01, None) # Use np to set lower bound for edges
 label_sizes = node_sizes
 
-# Preview distributions
-data = edge_widths
-bins = np.arange(min(data), max(data), 1) # fixed bin size
-plt.xlim([min(data), max(data)])
 
-plt.hist(data, bins=bins, alpha=0.5)
-plt.title('Test')
-plt.xlabel('variable X')
-plt.ylabel('count')
 
-plt.show()
+# Graphml documentation: https://networkx.org/documentation/stable/reference/readwrite/graphml.html
+
+#%% 
+# Import graph https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.read_graphml.html#networkx.readwrite.graphml.read_graphml
+graph = nx.read_graphml("data/graph.xml")
+
+# Can extract information from imported graph
+node_sizes = [size for (node, size) in graph.nodes(data="size")]
+node_colors = [color for (node, color) in graph.nodes(data="color")]
+edge_width_true = [width for (node1, node2, width) in graph.edges(data="weight")]
+edge_widths = [log(width, 2) for width in edge_width_true]
+edge_widths = np.clip(edge_widths, 0.2, None) # Set lower bound of width to 1
+edge_transparency = [0.8*(width/max(edge_width_true))**(3/3) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root to reduce right skewness 
+edge_transparency = np.clip(edge_transparency, 0.01, None) # Use np to set lower bound for edges
+label_sizes = node_sizes
 
 #%% Networkx visualization (multiple elements)
 # nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
@@ -198,17 +223,6 @@ for node, (x, y) in layout.items():
     label_size = log(graph.nodes[node]["size"], 2) # Retrieve size information via node identity in graph
     plt.text(x, y, node, fontsize = label_size, ha = "center", va = "center") # Manually draw text
 
-#%% Networkx visualization (single command)
-# nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
-plt.figure(1, figsize = (12, 12), dpi = 600)
-nx.draw_networkx(graph, 
-    pos = nx.kamada_kawai_layout(graph), # Different position solvers available: https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_kamada_kawai.html
-    alpha = 0.5,
-    node_size = node_sizes,
-    node_color = node_colors,
-    width = edge_widths,
-    font_size = 2,
-    )
 #%% Pyvis visualization 
 net = Network()
 
@@ -247,5 +261,14 @@ net.inherit_edge_colors(False)
 net.show_buttons(filter_=['physics'])
 net.show("Network.html")
 
+#%% Preview distributions contained within an array
+data = edge_widths
+bins = np.arange(min(data), max(data), 1) # fixed bin size
+plt.xlim([min(data), max(data)])
 
-# %%
+plt.hist(data, bins=bins, alpha=0.5)
+plt.title('Test')
+plt.xlabel('variable X')
+plt.ylabel('count')
+
+plt.show()

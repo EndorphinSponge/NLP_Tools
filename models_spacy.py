@@ -69,7 +69,7 @@ print(nlpString("Care pathway and treatment variables, and 6-month measures of f
 
 #%% Display abbreviations, entities, DEP
 
-TEXT = "Glasgow coma score, outcomes, and outcome"
+TEXT = "patients"
 
 doc = NLP(TEXT)
 
