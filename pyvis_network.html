@@ -1,0 +1,132 @@
+<html>
+<head>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vis-network@latest/styles/vis-network.css" type="text/css" />
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/vis-network@latest/dist/vis-network.min.js"> </script>
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+
+<style type="text/css">
+
+        #mynetwork {
+            width: 500px;
+            height: 500px;
+            background-color: #ffffff;
+            border: 1px solid lightgray;
+            position: relative;
+            float: left;
+        }
+
+        
+
+        
+        #config {
+            float: left;
+            width: 400px;
+            height: 600px;
+        }
+        
+
+        
+</style>
+
+</head>
+
+<body>
+<div id = "mynetwork"></div>
+
+
+<div id = "config"></div>
+
+<script type="text/javascript">
+
+    // initialize global variables.
+    var edges;
+    var nodes;
+    var network; 
+    var container;
+    var options, data;
+
+    
+    // This method is responsible for drawing the graph, returns the drawn network
+    function drawGraph() {
+        var container = document.getElementById('mynetwork');
+        
+        
+
+        // parsing and collecting nodes and edges from the python
+        nodes = new vis.DataSet([{"color": "#1E6091FF", "id": "glasgow coma scale score", "label": "glasgow coma scale score", "shape": "dot", "size": 2}, {"color": "#76C893FF", "id": "outcome", "label": "outcome", "shape": "dot", "size": 7}, {"color": "#1E6091FF", "id": "injury", "label": "injury", "shape": "dot", "size": 6}, {"color": "#76C893FF", "id": "mortality", "label": "mortality", "shape": "dot", "size": 10}, {"color": "#76C893FF", "id": "mortality rate", "label": "mortality rate", "shape": "dot", "size": 2}, {"color": "#1E6091FF", "id": "iss", "label": "iss", "shape": "dot", "size": 2}, {"color": "#76C893FF", "id": "poor outcome", "label": "poor outcome", "shape": "dot", "size": 4}, {"color": "#1E6091FF", "id": "gc", "label": "gc", "shape": "dot", "size": 5}, {"color": "#76C893FF", "id": "in-hospital mortality", "label": "in-hospital mortality", "shape": "dot", "size": 3}, {"color": "#1E6091FF", "id": "mechanism", "label": "mechanism", "shape": "dot", "size": 2}, {"color": "#1E6091FF", "id": "age", "label": "age", "shape": "dot", "size": 10}, {"color": "#1E6091FF", "id": "ais", "label": "ais", "shape": "dot", "size": 2}, {"color": "#1E6091FF", "id": "head", "label": "head", "shape": "dot", "size": 2}, {"color": "#1E6091FF", "id": "sex", "label": "sex", "shape": "dot", "size": 2}, {"color": "#1E6091FF", "id": "gender", "label": "gender", "shape": "dot", "size": 2}, {"color": "#1E6091FF", "id": "severity", "label": "severity", "shape": "dot", "size": 3}, {"color": "#1E6091FF", "id": "neurosurgical intervention", "label": "neurosurgical intervention", "shape": "dot", "size": 2}, {"color": "#1E6091FF", "id": "gcs (factor)", "label": "gcs (factor)", "shape": "dot", "size": 4}, {"color": "#1E6091FF", "id": "motor score", "label": "motor score", "shape": "dot", "size": 2}]);
+        edges = new vis.DataSet([{"color": "FFFFFF88", "from": "glasgow coma scale score", "label": 1, "to": "outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "injury", "label": 1, "to": "mortality", "weight": 1, "width": 3}, {"color": "FFFFFF88", "from": "injury", "label": 1, "to": "outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "injury", "label": 1, "to": "mortality rate", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "iss", "label": 1, "to": "poor outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "gc", "label": 1, "to": "poor outcome", "weight": 1, "width": 2}, {"color": "FFFFFF88", "from": "gc", "label": 1, "to": "mortality", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "gc", "label": 1, "to": "outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "gc", "label": 1, "to": "in-hospital mortality", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "mechanism", "label": 1, "to": "mortality", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "age", "label": 1, "to": "outcome", "weight": 1, "width": 3}, {"color": "FFFFFF88", "from": "age", "label": 1, "to": "mortality", "weight": 1, "width": 4}, {"color": "FFFFFF88", "from": "age", "label": 1, "to": "poor outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "age", "label": 1, "to": "in-hospital mortality", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "ais", "label": 1, "to": "poor outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "head", "label": 1, "to": "poor outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "sex", "label": 1, "to": "outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "sex", "label": 1, "to": "poor outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "gender", "label": 1, "to": "mortality", "weight": 1, "width": 2}, {"color": "FFFFFF88", "from": "severity", "label": 1, "to": "poor outcome", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "severity", "label": 1, "to": "mortality", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "neurosurgical intervention", "label": 1, "to": "mortality", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "gcs (factor)", "label": 1, "to": "outcome", "weight": 1, "width": 2}, {"color": "FFFFFF88", "from": "gcs (factor)", "label": 1, "to": "mortality rate", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "gcs (factor)", "label": 1, "to": "mortality", "weight": 1, "width": 1}, {"color": "FFFFFF88", "from": "motor score", "label": 1, "to": "in-hospital mortality", "weight": 1, "width": 1}]);
+
+        // adding nodes and edges to the graph
+        data = {nodes: nodes, edges: edges};
+
+        var options = {
+    "configure": {
+        "enabled": true,
+        "filter": [
+            "physics"
+        ]
+    },
+    "edges": {
+        "color": {
+            "inherit": false
+        },
+        "smooth": {
+            "enabled": true,
+            "type": "dynamic"
+        }
+    },
+    "interaction": {
+        "dragNodes": true,
+        "hideEdgesOnDrag": false,
+        "hideNodesOnDrag": false
+    },
+    "physics": {
+        "enabled": true,
+        "forceAtlas2Based": {
+            "avoidOverlap": 0,
+            "centralGravity": 0.05,
+            "damping": 1,
+            "gravitationalConstant": -20,
+            "springConstant": 0.08,
+            "springLength": 65
+        },
+        "solver": "forceAtlas2Based",
+        "stabilization": {
+            "enabled": true,
+            "fit": true,
+            "iterations": 1000,
+            "onlyDynamicEdges": false,
+            "updateInterval": 50
+        }
+    }
+};
+        
+        
+
+        
+        // if this network requires displaying the configure window,
+        // put it in its div
+        options.configure["container"] = document.getElementById("config");
+        
+
+        network = new vis.Network(container, data, options);
+	 
+        
+
+
+        
+
+        return network;
+
+    }
+
+    drawGraph();
+
+</script>
+</body>
+</html>
