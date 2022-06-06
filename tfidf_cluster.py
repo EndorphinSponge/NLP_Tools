@@ -19,11 +19,10 @@ from global_functions import importData, lemmatizeText
 
 #%% Constants
 DIR = os.path.dirname(__file__)
-DATA = importData(os.path.join(DIR, "data/screening.xlsx"), filt = "maybe", filt_col = "Tags")["Abstract"] # Imports series of abstracts
+# DATA = importData(os.path.join(DIR, "data/screening.xlsx"), filt = "maybe", filt_col = "Tags")["Abstract"] # Imports series of abstracts
+DATA = importData(os.path.join(DIR, "data/tbi_ymcombined.csv"), col = "Abstract")["Abstract"] # Imports series of abstracts
 
 #%% Local Functions
-
-
 
 def getTokens(texts) -> list:
     final = []
@@ -81,7 +80,7 @@ if __name__ == "__main__":
 
 
     # LDA + display 
-    for i in range(3, 11): # Iterate between 3-10 topics and store all of them 
+    for i in range(10, 13): # Iterate between range of number of topics and store all of them 
         lda_model = gensim.models.ldamodel.LdaModel(corpus=corpus,
                                                 id2word=id2word,
                                                 num_topics=i,
@@ -93,3 +92,4 @@ if __name__ == "__main__":
 
         vis = pyLDAvis.gensim_models.prepare(lda_model, corpus, id2word, mds="mmds", R=30)
         pyLDAvis.save_html(vis, f"LDA{i}.html")
+# %%

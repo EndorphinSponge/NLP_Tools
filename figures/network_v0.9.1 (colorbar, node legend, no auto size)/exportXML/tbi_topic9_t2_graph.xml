@@ -1,0 +1,127 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d2" for="edge" attr.name="width" attr.type="long" />
+  <key id="d1" for="node" attr.name="size" attr.type="long" />
+  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="coagulopathy (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">11</data>
+    </node>
+    <node id="severity (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="aptt">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="age">
+      <data key="d0">#8338ec</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="gc">
+      <data key="d0">#8338ec</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="fib">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="d-dimer">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="plt">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="pt (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">13</data>
+    </node>
+    <node id="outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="coagulopathy (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">7</data>
+    </node>
+    <node id="increase (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="poor outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <edge source="coagulopathy (factor)" target="mortality">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="coagulopathy (factor)" target="poor outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="coagulopathy (factor)" target="increase (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="coagulopathy (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="severity (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="severity (factor)" target="coagulopathy (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="aptt" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="aptt" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="age" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="gc" target="coagulopathy (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc" target="poor outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="fib" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="fib" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="d-dimer" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="d-dimer" target="coagulopathy (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="plt" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="plt" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="pt (factor)" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="pt (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+  </graph>
+</graphml>

@@ -58,3 +58,10 @@ df_merged = df_origin.join(df_annot, lsuffix='_left', rsuffix='_right')
 df_merged.to_excel("gpt3_output_formatted_annotated.xlsx")
 
 # %%
+os.chdir(os.path.dirname(__file__))
+print("Running")
+corpus = DATA.tolist()
+model2 = Top2Vec(corpus)
+# %%
+model2.get_topic_sizes()
+# %%

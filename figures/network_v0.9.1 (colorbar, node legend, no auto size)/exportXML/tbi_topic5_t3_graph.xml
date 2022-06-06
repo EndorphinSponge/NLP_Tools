@@ -1,0 +1,231 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d2" for="edge" attr.name="width" attr.type="long" />
+  <key id="d1" for="node" attr.name="size" attr.type="long" />
+  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="sbp">
+      <data key="d0">#8338ec</data>
+      <data key="d1">8</data>
+    </node>
+    <node id="map (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="icp (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">40</data>
+    </node>
+    <node id="age">
+      <data key="d0">#8338ec</data>
+      <data key="d1">12</data>
+    </node>
+    <node id="monitoring">
+      <data key="d0">#8338ec</data>
+      <data key="d1">7</data>
+    </node>
+    <node id="gcs (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">12</data>
+    </node>
+    <node id="prx">
+      <data key="d0">#8338ec</data>
+      <data key="d1">14</data>
+    </node>
+    <node id="cpp (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">17</data>
+    </node>
+    <node id="hypotension">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="gc (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">8</data>
+    </node>
+    <node id="brain">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="pbto2 (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="temperature (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">39</data>
+    </node>
+    <node id="outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">27</data>
+    </node>
+    <node id="gos (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="fo">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="gcs (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="icp (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="ich (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="in-hospital mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="functional">
+      <data key="d0">#f72585</data>
+      <data key="d1">7</data>
+    </node>
+    <edge source="sbp" target="mortality">
+      <data key="d2">5</data>
+    </edge>
+    <edge source="sbp" target="in-hospital mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="sbp" target="icp (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="map (factor)" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="icp (factor)" target="outcome">
+      <data key="d2">9</data>
+    </edge>
+    <edge source="icp (factor)" target="mortality">
+      <data key="d2">12</data>
+    </edge>
+    <edge source="icp (factor)" target="in-hospital mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="icp (factor)" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="icp (factor)" target="functional">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="icp (factor)" target="fo">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="icp (factor)" target="ich (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="age" target="mortality">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="age" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="fo">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="monitoring" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="monitoring" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="monitoring" target="icp (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="monitoring" target="ich (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="functional">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="prx" target="mortality">
+      <data key="d2">6</data>
+    </edge>
+    <edge source="prx" target="outcome">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="prx" target="fo">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cpp (factor)" target="mortality">
+      <data key="d2">7</data>
+    </edge>
+    <edge source="cpp (factor)" target="outcome">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="cpp (factor)" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cpp (factor)" target="functional">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hypotension" target="mortality">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="hypotension" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc (factor)" target="mortality">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="gc (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc (factor)" target="fo">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc (factor)" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="brain" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="brain" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="pbto2 (factor)" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="pbto2 (factor)" target="outcome">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="pbto2 (factor)" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="temperature (factor)" target="outcome">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="temperature (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+  </graph>
+</graphml>
