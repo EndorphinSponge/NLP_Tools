@@ -4,6 +4,7 @@ from collections import Counter
 from math import log
 import re
 import difflib
+import os
 
 # Data science
 import pandas as pd
@@ -66,11 +67,13 @@ def mapAbrv(string, abrv_container, threshold = 0.9):
     """
     for abrv, full in abrv_container:
         if compareStrings(full, string) > threshold:
+            print("Mapped " + full + " to " + abrv)
             return abrv
     return string
 
 def transEnts(string, trans_dict):
     if string in trans_dict.keys(): # If the string matches a translation key
+        print("Translated " + string + " to " + trans_dict[string])
         return trans_dict[string]
     else:
         return string
@@ -103,8 +106,8 @@ class GraphBuilder:
     """
     Contains 
     """
-    def __init__(self, abrv_cont, ):
-        self.abrvs = abrv_cont    
+    def __init__(self, abrv_cont = None, ):
+        self.abrvs = abrv_cont # Is only needed for NLP processing, not needed beyond populating counters
         self.graph = nx.Graph()
         self.factor_counter = Counter()
         self.outcome_counter = Counter()
@@ -114,9 +117,11 @@ class GraphBuilder:
             "decrease", "bad", "poor", "unfavorable", "unfavourable", "reduced", "use of", "development",
             "clinical trial", "significance", "finding", "score", "analysis", "isolate"
             "early", "adult", "study", "background", "conclusion", "compare", "time"
+            "gc",
             ] # Words common to both factors and outcomes
         common_tbi_ignore = ["tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "mild",
             "moderate", "severe", "concentration", "risk", "traumatic", "finding", "post-injury",
+            "injury",
             ] # Specific to TBI 
         self.factors_ignore = ["problem",] + common_ignore + common_tbi_ignore
         self.outcomes_ignore = ["age", "improved", "reduced", "trauma", "s100b"] + common_ignore + common_tbi_ignore
@@ -134,6 +139,8 @@ class GraphBuilder:
             "death": "mortality",
             "morality rate": "mortality",
             "survival": "mortality",
+            "functional": "fo",
+
 
         }
     def resetCounters(self):
@@ -286,7 +293,7 @@ class GraphBuilder:
 
     def renderGraphNX(self, 
         width_log = 2, width_min = 0.2, 
-        alpha_max = 0.8, alpha_min = 0.01, alpha_root = 1, 
+        alpha_max = 0.95, alpha_min = 0.01, alpha_root = 1.5, 
         save_prefix = False, cmap= True, fig_size = 10,
         ):
         """
@@ -402,44 +409,34 @@ class GraphBuilder:
         graphpy.show_buttons(filter_=['physics'])
         graphpy.show(path)
 
-#%%
+#%% Rendering from exported XMLs
 DIR = r"figures\network_v0.9.1 (colorbar, node legend, no auto size)\exportXML"
-builder = GraphBuilder(abrvs)
-builder.importGraph("tbi_topic0_graph.xml")
-builder.renderGraphNX(cmap = True)
-#%%
-builder = GraphBuilder(abrvs)
-builder.importGraph("tbi_topic10_t1_graph.xml")
-builder.renderGraphNX(cmap = True)
+builder = GraphBuilder()
+for i in range(0, 5): # Rendering with threshold = 1
+    builder.importGraph(os.path.join(DIR, f"tbi_topic{i}_t3_graph.xml"))
+    builder.renderGraphNX(save_prefix = f"tbi_topic{i}_t3_graph.xml", cmap = True)
+for i in range(5, 6): # Rendering with threshold = 2
+    builder.importGraph(os.path.join(DIR, f"tbi_topic{i}_t2_graph.xml"))
+    builder.renderGraphNX(save_prefix = f"tbi_topic{i}_t2_graph.xml", cmap = True)
+for i in range(6, 11): # Rendering with threshold = 3
+    builder.importGraph(os.path.join(DIR, f"tbi_topic{i}_t1_graph.xml"))
+    builder.renderGraphNX(save_prefix = f"tbi_topic{i}_t1_graph.xml", cmap = True)
 
-#%%
-builder = GraphBuilder(abrvs)
-builder.importGraph("tbi_ymcombined_t5_graph.xml")
-builder.renderGraphNX(cmap = True)
-#%%
-df_origin = pd.read_excel("gpt3_output_formatted_annotated25.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
-abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
-#%%
-builder = GraphBuilder(abrvs)
-builder.populateCounters(df_origin)
-builder.buildGraph(thresh = 1)
-builder.exportGraph("tempgraph.xml")
-builder.renderGraphNX(cmap = True)
 #%% Execution 
 if __name__ == "__main__":
     df_origin = pd.read_excel("gpt3_output_formatted_annotated.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
     abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
     builder = GraphBuilder(abrvs)
     builder.populateCounters(df_origin, col_input = "Extracted_Text")
-    builder.buildGraph(thresh = 1)
-    builder.exportGraph(f"tbi_ymcombined_t1_graph.xml")
-    builder.renderGraphNX(save_prefix = f"tbi_ymcombined_t1", alpha_root = 3, cmap = True)
-    builder.buildGraph(thresh = 3)
-    builder.exportGraph(f"tbi_ymcombined_t3_graph.xml")
-    builder.renderGraphNX(save_prefix = f"tbi_ymcombined_t3", alpha_root = 3, cmap = True)
-    builder.buildGraph(thresh = 5)
-    builder.exportGraph(f"tbi_ymcombined_t5_graph.xml")
-    builder.renderGraphNX(save_prefix = f"tbi_ymcombined_t5", alpha_root = 3, cmap = True)
+    builder.buildGraph(thresh = 10)
+    builder.exportGraph(f"tbi_ymcombined_t10_graph.xml")
+    builder.renderGraphNX(save_prefix = f"tbi_ymcombined_t10", alpha_root = 3, cmap = True)
+    builder.buildGraph(thresh = 15)
+    builder.exportGraph(f"tbi_ymcombined_t15_graph.xml")
+    builder.renderGraphNX(save_prefix = f"tbi_ymcombined_t15", alpha_root = 3, cmap = True)
+    builder.buildGraph(thresh = 20)
+    builder.exportGraph(f"tbi_ymcombined_t20_graph.xml")
+    builder.renderGraphNX(save_prefix = f"tbi_ymcombined_t20", alpha_root = 3, cmap = True)
     for topic_num in range(0, 11): # May want to automate topic detection 
         df_subset = df_origin[df_origin["Topic"]==topic_num]
         builder.populateCounters(df_subset, col_input = "Extracted_Text")
@@ -454,9 +451,33 @@ if __name__ == "__main__":
         builder.renderGraphNX(save_prefix = f"tbi_topic{topic_num}_t3", alpha_root = 3, cmap = True)
 
 #%%
-g1 = nx.read_graphml("tbi_ymcombined_graph.xml")
-g2 = nx.read_graphml("tbi_topic0_graph.xml")
-g3 = nx.read_graphml("tbi_topic10_t1_graph.xml")
+builder = GraphBuilder()
+builder.importGraph("tbi_topic0_graph.xml")
+builder.renderGraphNX(cmap = True)
+#%%
+builder = GraphBuilder()
+builder.importGraph("tbi_topic10_t1_graph.xml")
+builder.renderGraphNX(cmap = True)
+
+#%%
+builder = GraphBuilder()
+builder.importGraph("tbi_ymcombined_t5_graph.xml")
+builder.renderGraphNX(cmap = True)
+#%% Build abbreviations
+df_origin = pd.read_excel("gpt3_output_formatted_annotated25.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
+abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
+#%% Build graph 
+builder = GraphBuilder(abrvs)
+builder.populateCounters(df_origin)
+builder.buildGraph(thresh = 1)
+builder.exportGraph("tempgraph.xml")
+builder.renderGraphNX(cmap = True)
+
+#%%
+g1 = nx.read_graphml("tbi_ymcombined_t15_graph.xml")
+print(g1.nodes(data = "size"))
+sorted_sizes = sorted(list(g1.nodes(data = "size")), key = lambda x: x[1])
+sorted_edges = sorted(list(g1.edges(data = "width")), key = lambda x: x[2])
 
 #%% Preview distributions contained within an array
 data = [] # Container for data
