@@ -1,0 +1,1368 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d2" for="edge" attr.name="width" attr.type="long" />
+  <key id="d1" for="node" attr.name="size" attr.type="long" />
+  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="mif">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="abeta42">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="soluble">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="bdnf">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="il-6">
+      <data key="d0">#8338ec</data>
+      <data key="d1">17</data>
+    </node>
+    <node id="gfap (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">28</data>
+    </node>
+    <node id="pct">
+      <data key="d0">#8338ec</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="ykl-40 (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="s100beta">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="crp">
+      <data key="d0">#8338ec</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="vegf">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="ubiquitin">
+      <data key="d0">#8338ec</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="s100b">
+      <data key="d0">#8338ec</data>
+      <data key="d1">29</data>
+    </node>
+    <node id="uch-l1 (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">11</data>
+    </node>
+    <node id="nse (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">16</data>
+    </node>
+    <node id="nf-l">
+      <data key="d0">#8338ec</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="tau">
+      <data key="d0">#8338ec</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="s100">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="hydrolase-l1">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="protein">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="circulate (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="tac">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="biomarker (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="inflammatory (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="gcs (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">15</data>
+    </node>
+    <node id="gos (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="t">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="tnf-alpha">
+      <data key="d0">#8338ec</data>
+      <data key="d1">9</data>
+    </node>
+    <node id="e2 (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="progesterone">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="cortisol (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="epcs (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="lh">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="tsh (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="admission (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="motor deficit">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="expression (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="initial">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="il-10">
+      <data key="d0">#8338ec</data>
+      <data key="d1">11</data>
+    </node>
+    <node id="il-8">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="sbdp150">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="mmp-9">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="tenascin-c">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="cytokine">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="c-terminal">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="apoptotic (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="cyto-c">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="age">
+      <data key="d0">#8338ec</data>
+      <data key="d1">8</data>
+    </node>
+    <node id="sfas">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="ct (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="conut">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="il1ra">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="brain antigen">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="autoantibody">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="estradiol">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="tnfalpha">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="nfl">
+      <data key="d0">#8338ec</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="uchl1">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="hscrp (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="pni">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="caspase-1">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="il-1beta">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="testosterone (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="hs-crp">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="copeptin">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="alpha-synuclein">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="il-1">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="mirna">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="asc">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="gender">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="severity (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="nox">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="tbi (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="gelsolin">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="sbdp145">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="map-2">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="s-100b">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="amnesia">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="radiological (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="hours (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="tnfa">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="clinical">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="pnf-h">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="imaes">
+      <data key="d0">#f72585</data>
+      <data key="d1">7</data>
+    </node>
+    <node id="outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">58</data>
+    </node>
+    <node id="long-term">
+      <data key="d0">#f72585</data>
+      <data key="d1">7</data>
+    </node>
+    <node id="severity (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">35</data>
+    </node>
+    <node id="inflammation">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">84</data>
+    </node>
+    <node id="1-week">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="icu">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="gos (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="in-hospital mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">9</data>
+    </node>
+    <node id="recovery">
+      <data key="d0">#f72585</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="neurological outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">8</data>
+    </node>
+    <node id="prognosis">
+      <data key="d0">#f72585</data>
+      <data key="d1">15</data>
+    </node>
+    <node id="condition">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="severity of injury">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="ufo">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="epcs (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="brain injury (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="disability">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="hormone">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="poor outcome (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">14</data>
+    </node>
+    <node id="gcs (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">9</data>
+    </node>
+    <node id="icp (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="functional outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="gos-e (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="ct (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="dmn">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="overall">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="good outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="short-term">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="neurological prognosis">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="biomarker (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="specificity">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="sensitivity">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="reduce">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="diagnosis">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="damage">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="poor prognosis">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="tbi (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="pathology">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="acute">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="drs">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="dysfunction">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="unconsciousness">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="inflammatory response">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="1-year">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="gose">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="global outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="increase">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="brain damage">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="baseline">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="brain death">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="stroke">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <edge source="mif" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="mif" target="severity (outcome)">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="mif" target="inflammation">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="mif" target="long-term">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="mif" target="imaes">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="abeta42" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="soluble" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="soluble" target="condition">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="bdnf" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="bdnf" target="icu">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="bdnf" target="neurological outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-6" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-6" target="mortality">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="il-6" target="outcome">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="il-6" target="prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-6" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-6" target="inflammatory response">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="severity (outcome)">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="gfap (factor)" target="neurological outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="recovery">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="gfap (factor)" target="diagnosis">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="gfap (factor)" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="gfap (factor)" target="functional outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="gfap (factor)" target="disability">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="mortality">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="gfap (factor)" target="1-year">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="brain damage">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="pathology">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gfap (factor)" target="baseline">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="pct" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="pct" target="poor prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ykl-40 (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ykl-40 (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ykl-40 (factor)" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ykl-40 (factor)" target="tbi (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100beta" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="crp" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="crp" target="prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="vegf" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="vegf" target="epcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ubiquitin" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ubiquitin" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ubiquitin" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="severity (outcome)">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="s100b" target="mortality">
+      <data key="d2">9</data>
+    </edge>
+    <edge source="s100b" target="neurological outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="outcome">
+      <data key="d2">7</data>
+    </edge>
+    <edge source="s100b" target="disability">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="short-term">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="long-term">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="s100b" target="functional outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="s100b" target="acute">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="drs">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="s100b" target="gos (outcome)">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="s100b" target="1-year">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="tbi (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="brain damage">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="prognosis">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="s100b" target="brain death">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100b" target="brain injury (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="severity (outcome)">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="recovery">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="diagnosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="severity (outcome)">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="nse (factor)" target="long-term">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="nse (factor)" target="short-term">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="mortality">
+      <data key="d2">5</data>
+    </edge>
+    <edge source="nse (factor)" target="neurological prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="condition">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="prognosis">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="nse (factor)" target="functional outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="1-year">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="tbi (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nse (factor)" target="brain injury (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nf-l" target="severity (outcome)">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="nf-l" target="damage">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nf-l" target="drs">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nf-l" target="gose">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nf-l" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nf-l" target="pathology">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nf-l" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tau" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tau" target="recovery">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="tau" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tau" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tau" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tau" target="pathology">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tau" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="s100" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hydrolase-l1" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hydrolase-l1" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hydrolase-l1" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="protein" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="protein" target="short-term">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="protein" target="long-term">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="protein" target="brain injury (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="circulate (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="circulate (factor)" target="epcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="circulate (factor)" target="tbi (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="circulate (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tac" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tac" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="biomarker (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="biomarker (factor)" target="neurological outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="ct (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="functional outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="specificity">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="biomarker (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="sensitivity">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="inflammatory (factor)" target="neurological outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="mortality">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="gcs (factor)" target="1-week">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="outcome">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="gcs (factor)" target="prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="short-term">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="unconsciousness">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs (factor)" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gos (factor)" target="prognosis">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="gos (factor)" target="global outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="t" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="tnf-alpha" target="mortality">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="tnf-alpha" target="brain injury (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tnf-alpha" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tnf-alpha" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tnf-alpha" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="e2 (factor)" target="mortality">
+      <data key="d2">5</data>
+    </edge>
+    <edge source="e2 (factor)" target="baseline">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="progesterone" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="progesterone" target="unconsciousness">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="progesterone" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="progesterone" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="progesterone" target="prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cortisol (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cortisol (factor)" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cortisol (factor)" target="inflammation">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="epcs (factor)" target="epcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="epcs (factor)" target="tbi (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="epcs (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="lh" target="icp (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="lh" target="hormone">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="lh" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="lh" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tsh (factor)" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tsh (factor)" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="admission (factor)" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="admission (factor)" target="outcome">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="admission (factor)" target="gos (outcome)">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="motor deficit" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="motor deficit" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="expression (factor)" target="prognosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="initial" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-10" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="il-10" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-10" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-10" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-10" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-10" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-8" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-8" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-8" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-8" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="sbdp150" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="mmp-9" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="mmp-9" target="neurological outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="mmp-9" target="epcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tenascin-c" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="tenascin-c" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tenascin-c" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cytokine" target="gcs (outcome)">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="cytokine" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cytokine" target="icp (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cytokine" target="dysfunction">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cytokine" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="c-terminal" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="c-terminal" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="apoptotic (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="apoptotic (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="cyto-c" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="age" target="short-term">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="brain damage">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="sfas" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="ct (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ct (factor)" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="conut" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="conut" target="outcome">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="il1ra" target="reduce">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="brain antigen" target="poor outcome (outcome)">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="autoantibody" target="poor outcome (outcome)">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="estradiol" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="estradiol" target="unconsciousness">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="estradiol" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tnfalpha" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="tnfalpha" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nfl" target="diagnosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nfl" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nfl" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nfl" target="gose">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nfl" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nfl" target="functional outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uchl1" target="diagnosis">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uchl1" target="recovery">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="uchl1" target="gos-e (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="uchl1" target="pathology">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hscrp (factor)" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="pni" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="caspase-1" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="caspase-1" target="icp (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="caspase-1" target="pathology">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="caspase-1" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-1beta" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="testosterone (factor)" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="testosterone (factor)" target="unconsciousness">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="testosterone (factor)" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hs-crp" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hs-crp" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="copeptin" target="tbi (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="copeptin" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="copeptin" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="copeptin" target="long-term">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="alpha-synuclein" target="dmn">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="alpha-synuclein" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-1" target="neurological outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-1" target="gcs (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="il-1" target="icp (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="mirna" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="mirna" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="mirna" target="biomarker (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="asc" target="pathology">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="asc" target="severity (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="asc" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gender" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="severity (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="severity (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nox" target="ct (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="nox" target="icp (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tbi (factor)" target="severity of injury">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gelsolin" target="functional outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gelsolin" target="1-year">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gelsolin" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="sbdp145" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="map-2" target="gose">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="map-2" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="map-2" target="poor outcome (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="amnesia" target="brain injury (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="radiological (factor)" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hours (factor)" target="gos (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hours (factor)" target="baseline">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="hours (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="tnfa" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="clinical" target="gose">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="clinical" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="pnf-h" target="drs">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="pnf-h" target="gose">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="pnf-h" target="tbi (outcome)">
+      <data key="d2">1</data>
+    </edge>
+  </graph>
+</graphml>

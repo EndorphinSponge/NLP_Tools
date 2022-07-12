@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d2" for="edge" attr.name="width" attr.type="long" />
+  <key id="d1" for="node" attr.name="size" attr.type="long" />
+  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="gcs">
+      <data key="d0">#8338ec</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="burden">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="eeg">
+      <data key="d0">#8338ec</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="sleep (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="recovery">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="functional outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <edge source="gcs" target="functional outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs" target="recovery">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="eeg" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="eeg" target="recovery">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="sleep (factor)" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+  </graph>
+</graphml>

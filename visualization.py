@@ -48,16 +48,25 @@ def nlpString(string):
     """
     doc = NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
     if len(doc) > 1: # Only process if there is more than one token
-        ents = {ent.lemma_.lower().strip() for ent in list(doc.ents)} # Need to convert to str first, otherwise causes problems with subsequent functions which only take strings
+        ents = set()
+        for ent in list(doc.ents):
+            if len(ent.text.lower().strip()) <= 5:
+                ents.add(ent.text.lower().strip())
+            else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
+                ents.add(ent.lemma_.lower().strip())
         abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
         for abrv, full in abrvs:
             for ent in ents.copy(): # Iterate over a copy of the set while changing the original
                 if compareStrings(full, ent) > 0.9: # Find ent matching with full form of abbreviation
                     ents.remove(ent) # Remove full form
-                    ents.add(abrv) # Add abbreviated form                
+                    ents.add(abrv) # Add abbreviated form
         return ents
-    else:
-        return {doc[0].lemma_.strip().lower(),} # Otherwise there will be only one token, return its lemma 
+    else: # Otherwise there will be only one token, return its lemma 
+        if len(doc[0].text.lower().strip()) <= 5:
+            return {doc[0].text.lower().strip(),}
+        else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
+            return {doc[0].lemma_.strip().lower(),} 
+
 
 def mapAbrv(string, abrv_container, threshold = 0.9):
     """
@@ -117,13 +126,13 @@ class GraphBuilder:
             "decrease", "bad", "poor", "unfavorable", "unfavourable", "reduced", "use of", "development",
             "clinical trial", "significance", "finding", "score", "analysis", "isolate"
             "early", "adult", "study", "background", "conclusion", "compare", "time"
-            "gc",
+            "hours", "days", "months", "years", "rates",
             ] # Words common to both factors and outcomes
         common_tbi_ignore = ["tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "mild",
             "moderate", "severe", "concentration", "risk", "traumatic", "finding", "post-injury",
-            "injury",
+            "injury", "injuries",
             ] # Specific to TBI 
-        self.factors_ignore = ["problem",] + common_ignore + common_tbi_ignore
+        self.factors_ignore = ["problem","mortality rate"] + common_ignore + common_tbi_ignore
         self.outcomes_ignore = ["age", "improved", "reduced", "trauma", "s100b"] + common_ignore + common_tbi_ignore
         self.factors_trans = {
             "snps": "snp",
@@ -137,9 +146,9 @@ class GraphBuilder:
             "hospital mortality": "in-hospital mortality",
             "clinical outcome": "outcome",
             "death": "mortality",
-            "morality rate": "mortality",
+            "mortality rate": "mortality",
             "survival": "mortality",
-            "functional": "fo",
+            "functional": "functional outcome",
 
 
         }
@@ -154,15 +163,16 @@ class GraphBuilder:
         entity_type: type of entities contained by the set (e.g., factor vs outcome), specifies
         which containers will be used for processing 
         """
+        # Order matters: ignore, translate, then map
         if entity_type == "factor":
-            set_entities = {mapAbrv(ent, self.abrvs) for ent in set_entities} # Map any abbreviable strings to their abbreviations
             set_entities = {ent for ent in set_entities if ent not in self.factors_ignore}
             set_entities = {transEnts(ent, self.factors_trans) for ent in set_entities}
+            set_entities = {mapAbrv(ent, self.abrvs) for ent in set_entities} # Map any abbreviable strings to their abbreviations
             return set_entities
         elif entity_type == "outcome":
-            set_entities = {mapAbrv(ent, self.abrvs) for ent in set_entities} # Map any abbreviable strings to their abbreviations
             set_entities = {ent for ent in set_entities if ent not in self.outcomes_ignore}
             set_entities = {transEnts(ent, self.outcomes_trans) for ent in set_entities}
+            set_entities = {mapAbrv(ent, self.abrvs) for ent in set_entities} # Map any abbreviable strings to their abbreviations
             return set_entities
         # Can add other entity pipelines here
 
@@ -293,7 +303,7 @@ class GraphBuilder:
 
     def renderGraphNX(self, 
         width_log = 2, width_min = 0.2, 
-        alpha_max = 0.95, alpha_min = 0.01, alpha_root = 1.5, 
+        alpha_max = 0.95, alpha_min = 0.01, alpha_root = 1, 
         save_prefix = False, cmap= True, fig_size = 10,
         ):
         """
@@ -478,6 +488,8 @@ g1 = nx.read_graphml("tbi_ymcombined_t15_graph.xml")
 print(g1.nodes(data = "size"))
 sorted_sizes = sorted(list(g1.nodes(data = "size")), key = lambda x: x[1])
 sorted_edges = sorted(list(g1.edges(data = "width")), key = lambda x: x[2])
+print(sorted_sizes)
+print(sorted_edges)
 
 #%% Preview distributions contained within an array
 data = [] # Container for data

@@ -1,0 +1,162 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d2" for="edge" attr.name="width" attr.type="long" />
+  <key id="d1" for="node" attr.name="size" attr.type="long" />
+  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <graph edgedefault="undirected">
+    <node id="glasgow coma scale score">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="age">
+      <data key="d0">#8338ec</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="mechanism">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="gc">
+      <data key="d0">#8338ec</data>
+      <data key="d1">5</data>
+    </node>
+    <node id="iss">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="ais">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="injury">
+      <data key="d0">#8338ec</data>
+      <data key="d1">6</data>
+    </node>
+    <node id="head">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="sex">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="gender">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="severity (factor)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="gcs">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="neurosurgical intervention">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="motor score">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="mortality rate (outcome)">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">7</data>
+    </node>
+    <node id="mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="poor outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="in-hospital mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <edge source="glasgow coma scale score" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="outcome">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="age" target="mortality">
+      <data key="d2">4</data>
+    </edge>
+    <edge source="age" target="poor outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="age" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="mechanism" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc" target="poor outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="gc" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gc" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="iss" target="poor outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="ais" target="poor outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="injury" target="mortality">
+      <data key="d2">3</data>
+    </edge>
+    <edge source="injury" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="injury" target="mortality rate (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="head" target="poor outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="sex" target="outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="sex" target="poor outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gender" target="mortality">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="severity (factor)" target="poor outcome">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="severity (factor)" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs" target="outcome">
+      <data key="d2">2</data>
+    </edge>
+    <edge source="gcs" target="mortality rate (outcome)">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="gcs" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="neurosurgical intervention" target="mortality">
+      <data key="d2">1</data>
+    </edge>
+    <edge source="motor score" target="in-hospital mortality">
+      <data key="d2">1</data>
+    </edge>
+  </graph>
+</graphml>
