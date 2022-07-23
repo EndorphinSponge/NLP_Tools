@@ -168,15 +168,16 @@ def roundNum(num, base):
         return int(base/5)
 
 #%% Rendering from exported XMLs
-DIR = r"figures\network_v0.9.1 (colorbar, node legend, no auto size)\exportXML"
-visualizer = GraphVisualizer()
-for i in range(0, 5): # Rendering with threshold = 1
-    visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t3_graph.xml"))
-    visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t3_graph.xml", cmap = True)
-for i in range(5, 6): # Rendering with threshold = 2
-    visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t2_graph.xml"))
-    visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t2_graph.xml", cmap = True)
-for i in range(6, 11): # Rendering with threshold = 3
-    visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t1_graph.xml"))
-    visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t1_graph.xml", cmap = True)
+if __name__ == "__main__":
+    DIR = r"figures\network_v0.9.1 (colorbar, node legend, no auto size)\exportXML"
+    visualizer = GraphVisualizer()
+    for i in range(0, 5): # Rendering with threshold = 1
+        visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t3_graph.xml"))
+        visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t3_graph.xml", cmap = True)
+    for i in range(5, 6): # Rendering with threshold = 2
+        visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t2_graph.xml"))
+        visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t2_graph.xml", cmap = True)
+    for i in range(6, 11): # Rendering with threshold = 3
+        visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t1_graph.xml"))
+        visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t1_graph.xml", cmap = True)
 

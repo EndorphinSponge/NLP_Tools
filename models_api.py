@@ -33,8 +33,8 @@ for index, row in df_slice.iterrows():
         frequency_penalty=0,
         presence_penalty=0
         )
-    entry = pd.DataFrame({"Extracted": [extracted]})
-    df_new = pd.concat([df_new, entry])
+    new_row = pd.DataFrame({"Extracted": [extracted]})
+    df_new = pd.concat([df_new, new_row])
 df_new = df_new.reset_index(drop = True) # Drop variable avoids adding old index as a column
 df_slice = pd.concat([df_slice, df_new], axis = 1) # Axis 1 to concat on columns
 print("-------")
@@ -48,15 +48,15 @@ container = json.loads(df["Extracted"][0]) # Pick first line
 text = container["choices"][0]["text"] # Constant expression to get text from extracted object
 #%% Extract text from gpt3 json output in excel file
 df_origin = pd.read_excel("gpt3_output.xlsx")
-df_text = pd.DataFrame()
+df_extracted = pd.DataFrame()
 for index, row in df_origin.iterrows():
     print(index)
     json_container = json.loads(row["Extracted"])
     text = json_container["choices"][0]["text"] # Constant expression to get text from extracted object
-    entry = pd.DataFrame({"Extracted_Text": [text]})
-    df_text = pd.concat([df_text, entry])
-df_text = df_text.reset_index(drop = True) # Drop variable avoids adding old index as a column
-df_merged = pd.concat([df_origin, df_text], axis = 1) # Concat on columns instead of rows
+    new_row = pd.DataFrame({"Extracted_Text": [text]}) # Create new row for appending 
+    df_extracted = pd.concat([df_extracted, new_row])
+df_extracted = df_extracted.reset_index(drop = True) # Drop variable avoids adding old index as a column
+df_merged = pd.concat([df_origin, df_extracted], axis = 1) # Concat on columns instead of rows
 df_merged.to_excel("gpt3_output_formatted.xlsx")
 
 
@@ -74,8 +74,8 @@ df_slice = DATA[3:6].reset_index(drop = True) # Start bound is included, end bou
 df_new = pd.DataFrame() # Don't need to initiate columns since it is done automatically when adding entries
 print(df_slice)
 for index, row in df_slice.iterrows():
-    entry = pd.DataFrame({"Extracted": [row["Title"].lower()]})
-    df_new = pd.concat([df_new, entry])
+    new_row = pd.DataFrame({"Extracted": [row["Title"].lower()]})
+    df_new = pd.concat([df_new, new_row])
 df_new = df_new.reset_index(drop = True) # Drop variable avoids adding old index as a column
 print(df_new)
 df_slice = pd.concat([df_slice, df_new], axis = 1) # Axis 1 to concat on columns

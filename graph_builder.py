@@ -78,15 +78,16 @@ class GraphBuilder:
         # Reset counters
         self.resetCounters()
         
-        set_mast_factors = set() # Set of all post-processed factors
-        set_mast_outcomes = set() # Set of all post-processed outcomes
-        list_articles = [] # Stores output of each row/article as lists of factors and outcomes for each statement
-        # Has shape of list(list(tuple(set(factor), set(outcome))))   
+        set_mast_factors = set() # Master set of factors, used for finding intersection
+        set_mast_outcomes = set() # Master set of outcomes, used for finding intersection 
         
-             
+        list_articles: list[list[tuple[set[str], set[str]]]] = [] # Stores output of each row/article as lists of factors and outcomes for each statement
+        # Has shape of list(list(tuple(set(factor), set(outcome)))), outer list for article, inner list for statements within articles
+        
+        
         for index, row in df.iterrows():
             print("NLP processing: " + str(index))
-            article_statements = [] # List of tuples (per statement) of set containing entities from each individual statement
+            article_statements: list[tuple[set[str], set[str]]] = [] # List of tuples (per statement) of set containing entities from each individual statement
             text = row[col_input]
             # Return a list of statements for each row/article
             statements = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
@@ -286,45 +287,46 @@ def extractAbrvCont(df, col_input = "Extracted_Text"):
             abrv_container.update(extractAbrvs(item))
     return abrv_container
 
-#%%
-builder = GraphBuilder()
-builder.importGraph("tbi_topic0_graph.xml")
-builder.renderGraphNX(cmap = True)
-#%%
-builder = GraphBuilder()
-builder.importGraph("tbi_topic10_t1_graph.xml")
-builder.renderGraphNX(cmap = True)
+if __name__ == "__main__":
+    #%%
+    builder = GraphBuilder()
+    builder.importGraph("tbi_topic0_graph.xml")
+    builder.renderGraphNX(cmap = True)
+    #%%
+    builder = GraphBuilder()
+    builder.importGraph("tbi_topic10_t1_graph.xml")
+    builder.renderGraphNX(cmap = True)
 
-#%%
-builder = GraphBuilder()
-builder.importGraph("tbi_ymcombined_t5_graph.xml")
-builder.renderGraphNX(cmap = True)
-#%% Build abbreviations
-df_origin = pd.read_excel("gpt3_output_formatted_annotated25.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
-abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
-#%% Build graph 
-builder = GraphBuilder(abrvs)
-builder.populateCounters(df_origin)
-builder.buildGraph(thresh = 1)
-builder.exportGraph("tempgraph.xml")
-builder.renderGraphNX(cmap = True)
+    #%%
+    builder = GraphBuilder()
+    builder.importGraph("tbi_ymcombined_t5_graph.xml")
+    builder.renderGraphNX(cmap = True)
+    #%% Build abbreviations
+    df_origin = pd.read_excel("gpt3_output_formatted_annotated25.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
+    abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
+    #%% Build graph 
+    builder = GraphBuilder(abrvs)
+    builder.populateCounters(df_origin)
+    builder.buildGraph(thresh = 1)
+    builder.exportGraph("tempgraph.xml")
+    builder.renderGraphNX(cmap = True)
 
-#%%
-g1 = nx.read_graphml("tbi_ymcombined_t15_graph.xml")
-print(g1.nodes(data = "size"))
-sorted_sizes = sorted(list(g1.nodes(data = "size")), key = lambda x: x[1])
-sorted_edges = sorted(list(g1.edges(data = "width")), key = lambda x: x[2])
-print(sorted_sizes)
-print(sorted_edges)
+    #%%
+    g1 = nx.read_graphml("tbi_ymcombined_t15_graph.xml")
+    print(g1.nodes(data = "size"))
+    sorted_sizes = sorted(list(g1.nodes(data = "size")), key = lambda x: x[1])
+    sorted_edges = sorted(list(g1.edges(data = "width")), key = lambda x: x[2])
+    print(sorted_sizes)
+    print(sorted_edges)
 
-#%% Preview distributions contained within an array
-data = [] # Container for data
-bins = np.arange(min(data), max(data), 1) # fixed bin size
-plt.xlim([min(data), max(data)])
+    #%% Preview distributions contained within an array
+    data = [] # Container for data
+    bins = np.arange(min(data), max(data), 1) # fixed bin size
+    plt.xlim([min(data), max(data)])
 
-plt.hist(data, bins=bins, alpha=0.5)
-plt.title('Test')
-plt.xlabel('variable X')
-plt.ylabel('count')
+    plt.hist(data, bins=bins, alpha=0.5)
+    plt.title('Test')
+    plt.xlabel('variable X')
+    plt.ylabel('count')
 
-plt.show()
+    plt.show()
