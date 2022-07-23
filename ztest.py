@@ -1,4 +1,6 @@
-
+#%%
+from global_functions import mergeDfSlices
+mergeDfSlices("gpt3raw", "test")
 
 #%% Converting text to JSON strings within each row
 import json
