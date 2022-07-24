@@ -15,7 +15,8 @@ import pyLDAvis
 import pyLDAvis.gensim_models
 
 # Local imports
-from global_functions import importData, lemmatizeText
+from global_functions import importData
+from models_spacy import lemmatizeText
 
 #%% Constants
 DIR = os.path.dirname(__file__)

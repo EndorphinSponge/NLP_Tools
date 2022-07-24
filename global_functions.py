@@ -2,19 +2,8 @@
 from typing import Union
 import os
 
-import spacy
 import pandas as pd
 from pandas import DataFrame
-from nltk.corpus import stopwords
-
-
-#%% Constants
-SPACY_MODEL = "en_core_web_trf" # Word model for SpaCy
-STOPWORDS = stopwords.words("english")
-STOPWORDS += ["patient", "outcome", "mortality", "year", "month", "day", "hour", "predict", "factor", "follow", \
-    "favorable", "adult", "difference", "tbi", "score", "auc", "risk", "head", "associate", \
-    "significantly", "group", "unfavorable", "outcome", "accuracy", "probability", "median", "mean", \
-    "average", "high", "analysis",] # List of other stop words to include 
 
 
 #%% Functions 
@@ -78,19 +67,3 @@ def importData(file_path: Union[str, bytes, os.PathLike],
         return DataFrame() # Return empty dataframe to maintain type consistency 
         
 
-def lemmatizeText(texts, pos_tags=["NOUN", "ADJ", "VERB", "ADV"]) -> list:
-    nlp = spacy.load(SPACY_MODEL, disable=["parser", "ner"])
-    texts_out = []
-    count = 1
-    for text in texts:
-        print(count)
-        if type(text) == str:
-            doc = nlp(text)
-            new_text = []
-            for token in doc:
-                if token.pos_ in pos_tags and token.lemma_ not in STOPWORDS and token.text not in STOPWORDS:
-                    new_text.append(token.lemma_)
-            final = " ".join(new_text)
-            texts_out.append(final)
-        count += 1
-    return (texts_out)
