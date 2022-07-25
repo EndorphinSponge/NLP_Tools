@@ -21,7 +21,7 @@ from models_spacy import lemmatizeText
 #%% Constants
 DIR = os.path.dirname(__file__)
 # DATA = importData(os.path.join(DIR, "data/screening.xlsx"), filt = "maybe", filt_col = "Tags")["Abstract"] # Imports series of abstracts
-DATA = importData(os.path.join(DIR, "data/tbi_ymcombined.csv"), col = "Abstract")["Abstract"] # Imports series of abstracts
+DATA = importData(os.path.join(DIR, "data/tbi_ymcombined.csv"), col_main = "Abstract")["Abstract"] # Imports series of abstracts
 
 #%% Local Functions
 

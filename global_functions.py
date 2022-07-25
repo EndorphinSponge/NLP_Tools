@@ -19,16 +19,17 @@ def mergeDfSlices(prefix: str, dir: str = os.getcwd()):
     df_merged = pd.DataFrame()
     for file_name in files:
         if file_name.startswith(prefix) and file_name.endswith((".xlsx", ".xls", ".csv")):
-            df = importData(os.path.join(dir, file_name), preprocess=False) # Has support for both XLS and CSV
+            df = importData(os.path.join(dir, file_name)) # Has support for both XLS and CSV
             df_merged = pd.concat([df_merged, df])
 
     df_merged.to_excel(os.path.join(dir, f"{prefix}_merged.xlsx"))
 
 def importData(file_path: Union[str, bytes, os.PathLike],
-               preprocess: bool = True,
-               col: str = "Abstract",
+               cols: list[str] = [],
+               screen_dupl: list[str] = [],
+               screen_text: list[str] = [],
+               filt_col: str = "",
                filt: str = "",
-               filt_col: str = "Abstract",
                skiprows: int = 0,
                ) -> DataFrame:
     """
@@ -36,7 +37,9 @@ def importData(file_path: Union[str, bytes, os.PathLike],
     If 
     
     file_path: Filepath to Excel file containing data
-    col: String of column that contains content
+    cols: Labels of columns to import, will import all if empty 
+    screen_dupl: list of columns to check for duplicates between rows, does not combine the list items like built-in behaviour but rather iterates through each
+    screen_text: list of columns to check for presence of text, does not combine the list items like built-in behaviour but rather iterates through each
     filt: String that will filter the abstracts
     filt_col: String of column to apply filter to
     skiprows: number of rows to skip when processing data
@@ -52,15 +55,20 @@ def importData(file_path: Union[str, bytes, os.PathLike],
         else:
             print("Invalid filetype, returning empty DataFrame")
             return DataFrame() # Return empty dataframe to maintain type consistency
-        if preprocess:
-            # df = df.drop_duplicates(subset="Title") # drop duplicates based on title 
-            df = df.dropna(subset = [col]) # Drop if this column is empty
-            df = df[df[col].str.contains(r"[A-Za-z]", regex = True) == True] # Only allow non-empty strings through
-            if filt:
-                df = df[df[filt_col].str.contains(r"[A-Za-z]", regex = True) == True] # Only allow non-empty strings through
-                df = df.loc[df[filt_col].str.contains(filt)] # Filters abstracts based on a str
-            df = df[["Title", col, "Tags"]] # Output columns
-            df: DataFrame = df.reset_index(drop = True) # to re-index dataframe so it becomes iterable again, drop variable to avoid old index being added as a column
+        if screen_dupl:
+            for col in screen_dupl: # Drop duplicates for every column mentioned, built-in behaviour is to look at combination of columns: https://stackoverflow.com/questions/23667369/drop-all-duplicate-rows-across-multiple-columns-in-python-pandas
+                df = df.drop_duplicates(subset=[col])
+        if screen_text:
+            for col in screen_text: # Go through every screen_text col and check that it has a non-empty string
+                df = df.dropna(subset=[col]) 
+                df = df[df[col].str.contains(r"[A-Za-z]", regex=True) == True] # Only allow non-empty strings through
+        if filt_col and filt: # If both fields are not empty
+            df = df[df[filt_col].str.contains(r"[A-Za-z]", regex=True) == True] # Only allow non-empty strings through
+            df = df.loc[df[filt_col].str.contains(filt)] # Filters abstracts based on a str
+        if screen_dupl or screen_text or (filt_col and filt): # Only reset index if one of these previous operations has been done
+            df: DataFrame = df.reset_index(drop=True) # to re-index dataframe so it becomes iterable again, drop variable to avoid old index being added as a column
+        if cols: # If cols is not empty, will filter df through cols, otherwise leave df unchanged
+            df = df[cols] 
         return df
     except:
         print("Error during import, returning empty DataFrame")

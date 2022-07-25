@@ -46,7 +46,7 @@ class CloudModel:
                  output_col: str = "Model_output") -> None:
         self.init_path = df_path
         self.df_file_name = os.path.splitext(df_path)[0] # Split root from file extension
-        self.df_raw: DataFrame = importData(df_path) # Empty string as df_path will return empty dataframe
+        self.df_raw: DataFrame = importData(df_path, screen_dupl=[input_col], screen_text=[input_col]) # Empty string as df_path will return empty dataframe
         self.input_col: str = input_col
         self.output_col: str = output_col
         self.df: DataFrame = DataFrame() # Placeholder for last DF worked on 
@@ -94,7 +94,7 @@ class CloudModel:
         Args:
             df_path (Union[str, bytes, os.PathLike]): Path to DF with model output
         """
-        self.df = importData(df_path, preprocess=False) # Only import using pandas without pre-processing
+        self.df = importData(df_path) # Only import using pandas without pre-processing
         self.df_file_name = os.path.splitext(df_path)[0] # Split root from file extension
     
         # Add final output here 
