@@ -2,9 +2,10 @@ from global_functions import importData
 import pandas as pd
 import os
 
+import spacy
+NLP = spacy.load("en_core_web_sm", disable=[])
 
-
-if True:
+if False:
     from models_spacy import SpacyModel
 
     nlpmodel = SpacyModel()

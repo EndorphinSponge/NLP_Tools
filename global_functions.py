@@ -1,6 +1,6 @@
 #%% Imports
 from typing import Union
-import os
+import os, csv
 
 import pandas as pd
 from pandas import DataFrame
@@ -8,6 +8,7 @@ from pandas import DataFrame
 # Probably should not have internal imports for global_functions to avoid circular imports 
 
 #%% Functions 
+
 def mergeDfSlices(prefix: str, dir: str = os.getcwd()):
     """
     Merges Excel and CSV of a certain root prefix in a given directory into one Excel file in the same directory
@@ -71,3 +72,9 @@ def importData(file_path: Union[str, bytes, os.PathLike],
     if cols: # If cols is not empty, will filter df through cols, otherwise leave df unchanged
         df = df[cols] 
     return df
+
+def exportJSON(obj, path):
+    return
+
+def importJSON(path):
+    return 

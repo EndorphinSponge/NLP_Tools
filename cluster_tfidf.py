@@ -8,7 +8,7 @@ import gensim
 import gensim.corpora as corpora
 from gensim.utils import simple_preprocess
 from gensim.models import CoherenceModel, TfidfModel
-
+from nltk.corpus import stopwords
 
 # Vis
 import pyLDAvis
@@ -16,12 +16,17 @@ import pyLDAvis.gensim_models
 
 # Local imports
 from global_functions import importData
-from models_spacy import lemmatizeText
+from models_spacy import SpacyModel
 
 #%% Constants
 DIR = os.path.dirname(__file__)
 # DATA = importData(os.path.join(DIR, "data/screening.xlsx"), filt = "maybe", filt_col = "Tags")["Abstract"] # Imports series of abstracts
-DATA = importData(os.path.join(DIR, "data/tbi_ymcombined.csv"), col_main = "Abstract")["Abstract"] # Imports series of abstracts
+PATH = "data/tbi_ymcombined.csv"
+POS_TAGS = ["NOUN", "ADJ", "VERB", "ADV"] # POS of interest
+STOPWORDS = stopwords.words("english") + ["patient", "outcome", "mortality", "year", "month", "day", "hour", "predict", "factor", "follow", \
+    "favorable", "adult", "difference", "tbi", "score", "auc", "risk", "head", "associate", \
+    "significantly", "group", "unfavorable", "outcome", "accuracy", "probability", "median", "mean", \
+    "average", "high", "analysis",] # List of other stop words to include 
 
 #%% Local Functions
 
@@ -44,7 +49,9 @@ def getTrigrams(texts):
 #%% Execution 
 if __name__ == "__main__":
     os.chdir(os.path.dirname(__file__)) # Change directory to that of python module
-    lemmatized_texts = lemmatizeText(DATA)
+    
+    nlpmodel = SpacyModel(disable=["parser", "ner"])
+    lemmatized_texts = nlpmodel.lemmatizeText(PATH, "Abstract", pos_tags=POS_TAGS, stopwords=STOPWORDS)
 
     # Bi/tri-grams
     data_words = getTokens(lemmatized_texts)
