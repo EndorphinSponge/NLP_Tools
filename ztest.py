@@ -1,3 +1,10 @@
+#%% Amount of overlap needed for converting between abbreviations 
+from difflib import SequenceMatcher
+a = "glasgow coma score"
+b = "glasgow coma scale"
+SequenceMatcher(a=a.lower(), b=b.lower()).ratio()
+
+
 #%% Check spacy pipeline components 
 import spacy
 from scispacy.abbreviation import AbbreviationDetector # Added via NLP.add_pipe("abbreviation_detector")

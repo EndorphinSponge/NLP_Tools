@@ -2,8 +2,13 @@ from global_functions import importData
 import pandas as pd
 import os
 
-
 if True:
+    from models_spacy import SpacyModelTBI
+    model = SpacyModelTBI()
+    model.extractAbrvCont("gpt3_output.xlsx")
+    
+
+if False:
     from models_spacy import SpacyModelTBI
 
     nlpmodel = SpacyModelTBI("en_core_sci_scibert")

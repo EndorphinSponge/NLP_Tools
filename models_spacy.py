@@ -20,7 +20,6 @@ from spacy.tokens import Span, Doc, DocBin
 import pandas as pd
 from pandas import DataFrame
 import numpy as np
-from pyvis.network import Network
 
 # Internals 
 from global_functions import importData
@@ -160,10 +159,11 @@ class SpacyModelTBI(SpacyModel):
     def __init__(self, model: str = "en_core_sci_scibert",
                  disable: list[str] = []): 
         super().__init__(model, disable)
+        self.NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
     
     def extractEntsTBI(self, 
                      df_path: Union[str, bytes, os.PathLike], 
-                     col: str, 
+                     col: str = "Model_output", 
                      col_out: str = "Ents",):
         """
         Takes DF containing formatted GPT3/JUR1 output in form of list[list[str]] for 
@@ -178,7 +178,6 @@ class SpacyModelTBI(SpacyModel):
         """
         root_name = os.path.splitext(df_path)[0]
         df = importData(df_path, screen_text=[col]) # Screen for presence of text for the column containing the text
-        self.NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
         df_out = DataFrame() # Placeholder for output of lemmatized/abbreviated entities
         for index, row in df.iterrows():
             print("NLP extracting ents for: " + str(index))
@@ -231,6 +230,38 @@ class SpacyModelTBI(SpacyModel):
             else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
                 return {doc[0].lemma_.strip().lower(),} 
 
+    def extractAbrvCont(self,
+                        df_path: Union[str, bytes, os.PathLike],
+                        col = "Abstract",
+                        ):
+        """
+        Separated from main counter process because some tasks may want to use
+        NLP to look ahead and pre-process all documents in a corpora for 
+        metadata (e.g., corpora-wide abbreviations) that can be used to help
+        process subsets of the corpora 
+        """
+        # Note that this function used to only look at Model_output
+        root_name = os.path.splitext(df_path)[0]
+        df = importData(df_path, screen_dupl=[col], screen_text=[col]) # Screen for duplicates and presence of text for the column of interest
+        abrv_cont = set()
+        for index, row in df.iterrows():
+            print("Extracting abbreviations for :", index)
+            text: str = row[col]
+            doc = self.NLP(text.strip())
+            abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
+            abrv_cont.update(abrvs)
+        with open(f"{root_name}_abrvs.json", "w") as file:
+            json.dump(list(abrv_cont), file) # Convert to list since sets can't be serialized in JSON 
+        return abrv_cont
+    
+    def _extractAbrvs(self, string: str) -> list:
+        """
+        Takes a string and returns a set of all the abbreviations
+        NOT NEEDED AFTER REFACTOR?
+        """
+        doc = NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
+        abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
+        return abrvs 
 
         
 class DocParse:
@@ -483,7 +514,46 @@ class ManualExtractor:
         df.to_excel("manualdep_output.xlsx")
 
 
+def checkAbrvs(json_path: Union[str, bytes, os.PathLike]):
+    with open(json_path, "r") as file:
+        abrv_json: list[list[str, str]] = json.load(file)
+    short_forms = [abrv[0] for abrv in abrv_json]
+    long_forms = [abrv[1] for abrv in abrv_json]
+    
+    short_conf = []
+    for short in short_forms:
+        if short_forms.count(short) > 1: # Check if entry occurs more than once
+            short_conf.append(short)
+            
+    long_conf = []
+    long_warn = []
+    for long in long_forms:
+        if long_forms.count(long) > 1: # Check if entry occurs more than once
+            long_conf.append(long)
+        else:
+            for term in long_forms: # Compare against each term in this list 
+                similarity = SequenceMatcher(a=long.lower(), b=term.lower()).ratio()
+                if similarity > 0.8:
+                    long_warn.append(long)
 
+    print("Short form conflicts:")
+    for conflict in short_conf:
+        conf_abrvs = [abrv for abrv in abrv_json if abrv[0] == conflict]
+        print(conf_abrvs)
+        
+    print("Long form conflicts:")
+    for conflict in long_conf:
+        conf_abrvs = [abrv for abrv in abrv_json if abrv[1] == conflict]
+        print(conf_abrvs)
+    
+    print("Long form warnings:")
+    # FIXME
+    for warn in long_warn:
+        conf_abrvs = [abrv for abrv in abrv_json if abrv[1] == warn]
+        print(conf_abrvs)
+    
+    
+checkAbrvs("test_fmt_abrvs.json")
 
 
 #%% Snippets
