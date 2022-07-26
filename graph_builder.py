@@ -14,7 +14,7 @@ import matplotlib.pyplot as plt
 
 # NLP
 import spacy 
-from scispacy.abbreviation import AbbreviationDetector # Needed for adding "abbreviation_detector"
+from scispacy.abbreviation import AbbreviationDetector # Added via NLP.add_pipe("abbreviation_detector")
 
 from spacy import displacy
 from scispacy.linking import EntityLinker
@@ -29,6 +29,9 @@ NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be impo
 class GraphBuilder:
     """
     Takes GPT-3 output triples and builds graph GPT-3 output 
+    
+    Takes structured statements and generates a NetworkX graph depending 
+    on the method 
     """
     def __init__(self, abrv_cont = None, ):
         self.abrvs = abrv_cont # Is only needed for NLP processing, not needed beyond populating counters
@@ -70,7 +73,7 @@ class GraphBuilder:
 
 
 
-    def populateCounters(self, df, col_input = "Extracted_Text"):
+    def populateCounters(self, df_path, col_input = "Extracted_Text"):
         """
         Populates the graph's counters using df and abbreviation container originally passed 
         into the class 
@@ -85,7 +88,7 @@ class GraphBuilder:
         # Has shape of list(list(tuple(set(factor), set(outcome)))), outer list for article, inner list for statements within articles
         
         
-        for index, row in df.iterrows():
+        for index, row in df_path.iterrows():
             print("NLP processing: " + str(index))
             article_statements: list[tuple[set[str], set[str]]] = [] # List of tuples (per statement) of set containing entities from each individual statement
             text = row[col_input]

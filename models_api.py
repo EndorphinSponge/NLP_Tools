@@ -51,7 +51,7 @@ class CloudModel:
         self.output_col: str = output_col
         self.df: DataFrame = DataFrame() # Placeholder for last DF worked on 
     
-    def extractRawGpt3(self, subset: tuple[int, int] = ()):
+    def mineTextGpt3(self, subset: tuple[int, int] = ()):
         """
         Will save a version of the intermediate raw output by modifying the original df name
 
@@ -82,8 +82,8 @@ class CloudModel:
             new_row.index = pd.RangeIndex(start=index, stop=index+1, step=1) # Reassign index of new row by using current index 
             df_out_raw = pd.concat([df_out_raw, new_row])
         # df_out_raw = df_out_raw.reset_index(drop = True) # Drop variable avoids adding old index as a column
-        df_merged = pd.concat([df, df_out_raw], axis = 1) # Axis 1 to concat on columns
-        df_merged.to_excel(f"{self.df_file_name}_gpt3raw.xlsx")
+        df_merged = pd.concat([df, df_out_raw], axis=1) # Axis 1 to concat on columns
+        df_merged.to_excel(f"{self.df_file_name}_gpt3raw.xlsx", index=False)
         self.df = df_merged # Set current DF to the df that was just exported
     
 
@@ -99,24 +99,34 @@ class CloudModel:
     
         # Add final output here 
     
-    def processRaw(self, raw_type: str):
+    def storeOutputFormatted(self, raw_type: str):
+        """Looks at current df for raw mined output of given format (GPT3 vs JUR1),
+        extracts the generated portion of output, formats them into a JSON string, 
+        appends them to the current DF
+
+        Args:
+            raw_type (str): type of mined output ("gpt3" or "jur1")
+        """
         df = self.df
         df_out = pd.DataFrame()
         if self.df_file_name.endswith("raw"): # Replace raw with fmt if it exists at end of filename
             self.df_file_name = re.sub(R"raw$", "fmt", self.df_file_name)
         else: # Otherwise append fmt to end
             self.df_file_name = self.df_file_name + "fmt"
+            
         if raw_type.lower() == "gpt3":
             for index, row in df.iterrows():
                 output_json = json.loads(row["Gpt3_raw"], strict=False) # non-strict mode to allow control characters (e.g., \n) in strings
                 raw_str: str = output_json["choices"][0]["text"] # Constant expression to get generated output from extracted object
-                article_statements = [item.strip() for item in raw_str.split("\n") if re.search(r"\w", item) != None] # Split by newline, only include lines that have word characters
-                stments_json_str = json.dumps(article_statements)
+                article_stmts_str = [item.strip() for item in raw_str.split("\n") if re.search(r"\w", item) != None] # Split by newline, only include lines that have word characters
+                article_stmts_items = [list(filter(None, statement.split("|"))) for statement in article_stmts_str] # Filter with none to get rid of empty strings, should only return 3 items corresponding to the 3 columns of output
+                stments_json_str = json.dumps(article_stmts_items) # Shape of list[list[str]] for each article, inner lists are statements, each str is an item
                 new_row = pd.DataFrame({self.output_col: [stments_json_str]}) # Create new row for appending 
                 new_row.index = pd.RangeIndex(start=index, stop=index+1, step=1) # Reassign index of new row by using current index 
                 df_out = pd.concat([df_out, new_row])
             df_merged = pd.concat([df, df_out], axis = 1) # Concat on columns instead of rows
-            df_merged.to_excel(f"{self.df_file_name}.xlsx")
+            df_merged.to_excel(f"{self.df_file_name}.xlsx", index=False)
+            
         elif raw_type == "jur1":
             pass
 

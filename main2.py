@@ -2,32 +2,21 @@ from global_functions import importData
 import pandas as pd
 import os
 
-import spacy
-NLP = spacy.load("en_core_web_sm", disable=[])
 
-if False:
-    from models_spacy import SpacyModel
+if True:
+    from models_spacy import SpacyModelTBI
 
-    nlpmodel = SpacyModel()
+    nlpmodel = SpacyModelTBI("en_core_sci_scibert")
     print(nlpmodel.model)
-    nlpmodel.importCorpora(R"test\test.xlsx", "Abstract", ["Title", "Tags", "Extracted"])
-    for doc in nlpmodel.doclist:
-        print(doc.user_data["Title"])
-    nlpmodel.exportDocs()
-
-    model2 = SpacyModel()
-    print(model2.model)
-    model2.importDocs(R"test\test(en_core_web_sm).spacy")
-    for doc in model2.doclist:
-        print(">", doc.user_data["Extracted"])
+    nlpmodel.extractEntsTBI(R"test\test_fmt.xlsx", "Model_output", "Ents")
 
 
 if False:
     import time
     from models_api import CloudModel
     fetcher = CloudModel("tbi_ymcombined_subset25.csv")
-    fetcher.extractRawGpt3((16, 19))
-    fetcher.processRaw("gpt3")
+    fetcher.mineTextGpt3((16, 19))
+    fetcher.storeOutputFormatted("gpt3")
 
     print("Pause")
     time.sleep(30)
@@ -35,4 +24,4 @@ if False:
 
     importer = CloudModel("")
     importer.importRaw("tbi_ymcombined_subset25(16, 19)_gpt3raw.xlsx")
-    importer.processRaw("gpt3")
+    importer.storeOutputFormatted("gpt3")

@@ -1,6 +1,15 @@
-#%%
-from global_functions import mergeDfSlices
-mergeDfSlices("gpt3raw", "test")
+#%% Check spacy pipeline components 
+import spacy
+from scispacy.abbreviation import AbbreviationDetector # Added via NLP.add_pipe("abbreviation_detector")
+
+NLP = spacy.load("en_core_sci_scibert")
+NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
+print(NLP.components) # Components in general will fetch all components, including disabled
+print(NLP.component_names)
+print(NLP.pipeline) # Pipeline components refer to active components
+print(NLP.pipe_names)
+print(NLP.pipe_factories)
+
 
 #%% Converting text to JSON strings within each row
 import json

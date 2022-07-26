@@ -3,14 +3,15 @@ For process that handles more than one doc at a time
 """
 #%% Imports
 # General 
-import os, re, math, csv, difflib
+import os, re, math, csv, difflib, json
 from collections import Counter
 from typing import Union
+from difflib import SequenceMatcher
 
 # NLP
 import spacy 
 from spacy import displacy
-from scispacy.abbreviation import AbbreviationDetector
+from scispacy.abbreviation import AbbreviationDetector # Added via NLP.add_pipe("abbreviation_detector")
 from scispacy.linking import EntityLinker
 from spacy.tokens import Span, Doc, DocBin
 
@@ -34,7 +35,13 @@ class SpacyModel:
         self.NLP = spacy.load(model, disable=disable)
         self.doclist: list[Doc] = [] # List of processed text, directly usable 
         self.lastimportsrc: str = "" # Tracker of source path (no extension) for last import to docbin for export naming 
-        
+    
+    def printAvailableModels():
+        print("en_core_sci_scibert", spacy.util.is_package("en_core_sci_scibert"))
+        print("en_core_sci_lg", spacy.util.is_package("en_core_sci_lg"))
+        print("en_core_web_trf", spacy.util.is_package("en_core_web_trf"))
+        print("en_core_web_sm", spacy.util.is_package("en_core_web_sm"))
+        print("en_core_web_lg", spacy.util.is_package("en_core_web_lg"))
     
     def importCorpora(self,
                       corpora_path: Union[str, bytes, os.PathLike],
@@ -99,14 +106,10 @@ class SpacyModel:
         
     def resetDocs(self):
         self.doclist = []
-        
     
-    def printAvailableModels():
-        print("en_core_sci_scibert", spacy.util.is_package("en_core_sci_scibert"))
-        print("en_core_sci_lg", spacy.util.is_package("en_core_sci_lg"))
-        print("en_core_web_trf", spacy.util.is_package("en_core_web_trf"))
-        print("en_core_web_sm", spacy.util.is_package("en_core_web_sm"))
-        print("en_core_web_lg", spacy.util.is_package("en_core_web_lg"))
+
+        
+        
     
     def lemmatizeText(self,
                       df_path: Union[str, bytes, os.PathLike],
@@ -139,6 +142,97 @@ class SpacyModel:
                 texts_lemmatized.append(row_lemmatized)
         return texts_lemmatized
     
+    def listSimilar(self, word: str, top_n: int = 10):
+        """Prints top n similar words based on word vectors in the loaded model
+
+        Args:
+            word (str): Word to look up
+            top_n (int, optional): How many similar words to print. Defaults to 10.
+        """
+        word_vector = np.asarray([self.NLP.vocab.vectors[self.NLP.vocab.strings[word]]])
+        similar_vectors = self.NLP.vocab.vectors.most_similar(word_vector, n=top_n)
+        similar_words = [self.NLP.vocab.strings[i] for i in similar_vectors[0][0]]
+        print(similar_words)
+    
+
+
+class SpacyModelTBI(SpacyModel):
+    def __init__(self, model: str = "en_core_sci_scibert",
+                 disable: list[str] = []): 
+        super().__init__(model, disable)
+    
+    def extractEntsTBI(self, 
+                     df_path: Union[str, bytes, os.PathLike], 
+                     col: str, 
+                     col_out: str = "Ents",):
+        """
+        Takes DF containing formatted GPT3/JUR1 output in form of list[list[str]] for 
+        each article in JSON string format. Each inner list represents a statement 
+        within the article, each string represents an element in the statement (e.g., 
+        factor, outcome, study size)
+        
+        Args: 
+            df_path: path for input DF
+            col: column in input DF that has formatted output 
+            col_out: column in new DF to export extracted ents to 
+        """
+        root_name = os.path.splitext(df_path)[0]
+        df = importData(df_path, screen_text=[col]) # Screen for presence of text for the column containing the text
+        self.NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
+        df_out = DataFrame() # Placeholder for output of lemmatized/abbreviated entities
+        for index, row in df.iterrows():
+            print("NLP extracting ents for: " + str(index))
+            statements: list[list[str]] = json.loads(row[col]) # list[str] of items for each statement 
+            statements_ents: list[tuple[list[str], list[str]]] = []
+            for items in statements:
+                factors = items[0]
+                if re.search(R"\w", factors):
+                    factor_ents = self._gatherAbrvEnts(factors)
+                else:
+                    factor_ents = set()
+                    
+                outcomes = items[1]
+                if re.search(R"\w", outcomes):
+                    outcome_ents = self._gatherAbrvEnts(outcomes)
+                else:
+                    outcome_ents = set()
+                """CAN UNPACK MORE FACTORS HERE"""
+                statements_ents.append([list(factor_ents), list(outcome_ents)]) # Need convertion to list since sets can't be serialized into JSON
+            stmts_ents_json = json.dumps(statements_ents)
+            new_row = DataFrame({col_out: [stmts_ents_json]})
+            new_row.index = pd.RangeIndex(start=index, stop=index+1, step=1) # Reassign index of new row by using current index 
+            df_out = pd.concat([df_out, new_row])
+        df_merged = pd.concat([df, df_out], axis=1)
+        df_merged.to_excel(f"{root_name}_ents.xlsx")
+                
+                
+    
+    def _gatherAbrvEnts(self, string: str):
+        # Extracts entities in lemmatized and abbreviated form (if they are available)
+        doc = self.NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
+        if len(doc) > 1: # Only process if there is more than one token
+            ents = set()
+            for ent in list(doc.ents):
+                if len(ent.text.lower().strip()) <= 5:
+                    ents.add(ent.text.lower().strip())
+                else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
+                    ents.add(ent.lemma_.lower().strip())
+            abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
+            for abrv, full in abrvs:
+                for ent in ents.copy(): # Iterate over a copy of the set while changing the original
+                    similarity = SequenceMatcher(a=full.lower(), b=ent.lower()).ratio() # Search for full form of abrv in ents 
+                    if similarity > 0.9: # Only replace abbreviated form if there's a high overlap
+                        ents.remove(ent) # Remove full form
+                        ents.add(abrv) # Add abbreviated form
+            return ents
+        else: # Otherwise there will be only one token, return its lemma 
+            if len(doc[0].text.lower().strip()) <= 5:
+                return {doc[0].text.lower().strip(),}
+            else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
+                return {doc[0].lemma_.strip().lower(),} 
+
+
+        
 class DocParse:
     """
     Container for functions that are performed on processed docs 
@@ -410,16 +504,6 @@ TEXT = "Condition and prognosis after a severe TBI"
 TEXT = "PCS at 30 days"
 TEXT = "Being under the influence of drugs or alcohol at the time of injury"
 TEXT = "6-month Glasgow-Outcome-Scale score"
-#%% Add to NLP processing
-
-
-def listSimilar():
-    # Top similar words based on vectors 
-    word = "associated"
-    word_vector = np.asarray([NLPV.vocab.vectors[NLPV.vocab.strings[word]]])
-    similar_vectors = NLPV.vocab.vectors.most_similar(word_vector, n=10)
-    similar_words = [NLPV.vocab.strings[i] for i in similar_vectors[0][0]]
-    print(similar_words)
 
 #%% Post-processing
 
