@@ -1,4 +1,4 @@
-from global_functions import importData
+from internal_globals import importData
 import pandas as pd
 import os
 

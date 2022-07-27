@@ -15,7 +15,7 @@ import pyLDAvis
 import pyLDAvis.gensim_models
 
 # Local imports
-from global_functions import importData
+from internal_globals import importData
 from models_spacy import SpacyModel
 
 #%% Constants

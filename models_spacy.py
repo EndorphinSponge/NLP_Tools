@@ -22,7 +22,7 @@ from pandas import DataFrame
 import numpy as np
 
 # Internals 
-from global_functions import importData
+from internal_globals import importData
 #%% Constants
 
 
@@ -526,35 +526,41 @@ def checkAbrvs(json_path: Union[str, bytes, os.PathLike]):
             short_conf.append(short)
             
     long_conf = []
-    long_warn = []
-    for long in long_forms:
-        if long_forms.count(long) > 1: # Check if entry occurs more than once
-            long_conf.append(long)
+    long_warn: list[tuple[str, list[str]]] = []
+    for full in long_forms:
+        if long_forms.count(full) > 1: # Check if entry occurs more than once
+            long_conf.append(full)
         else:
-            for term in long_forms: # Compare against each term in this list 
-                similarity = SequenceMatcher(a=long.lower(), b=term.lower()).ratio()
+            similar_terms = []
+            for term in [long for long in long_forms if long != full]: # Compare against each term excluding itself
+                similarity = SequenceMatcher(a=full.lower(), b=term.lower()).ratio()
                 if similarity > 0.8:
-                    long_warn.append(long)
+                    similar_terms.append(term)
+            if similar_terms:
+                long_warn.append((full, similar_terms))
 
-    print("Short form conflicts:")
+    print("Short form conflicts: ========================================")
     for conflict in short_conf:
         conf_abrvs = [abrv for abrv in abrv_json if abrv[0] == conflict]
         print(conf_abrvs)
         
-    print("Long form conflicts:")
+    print("Long form conflicts: ========================================")
     for conflict in long_conf:
         conf_abrvs = [abrv for abrv in abrv_json if abrv[1] == conflict]
         print(conf_abrvs)
     
-    print("Long form warnings:")
-    # FIXME
-    for warn in long_warn:
-        conf_abrvs = [abrv for abrv in abrv_json if abrv[1] == warn]
-        print(conf_abrvs)
-    
-    
-checkAbrvs("test_fmt_abrvs.json")
+    print("Long form warnings: ========================================")
+    # Starts to get buggy when there are conflicting long forms 
+    for term, similars in long_warn:
+        term_abrv = [abrv for abrv in abrv_json if abrv[1] == term] # Extract full abbreviation 
+        print(f">>>> Similar terms for {term_abrv} <<<<")
+        for similar in similars:
+            similarity = SequenceMatcher(a=term.lower(), b=similar.lower()).ratio()
+            conf_abrvs = [abrv for abrv in abrv_json if abrv[1] == similar] # Should only return one item if long forms are all unique
+            print(round(similarity, 3), conf_abrvs)
 
+if __name__ == "__main__":
+    checkAbrvs("test_fmt_abrvs.json")
 
 #%% Snippets
 TEXT = """Older patients had a higher mortality, with the highest mortality (37.5%) among those over 50 years old (p = 0.009)"""
@@ -600,7 +606,7 @@ def visAbrvs():
 
 
 
-if __name__ == "__main__":
+if False:
     #%% Visualize graph of entities by co-mentions in a sentence 
     keywords = ["augments", "increased", "decreased", "increases", "decreases", "more", "less", "higher", "lower", "greater", "lesser", "improved", "worsened", "improves", "worsens", "predict", "predicts", "predicted", "predictor", "predictors", "predictive", "factor", "factors", "variable", "variables", "marker", "markers", "biomarker", "biomarkers", "correlate", "correlates", "correlated ", "correlation", "correlations", "associates", "associated ", "association", "associations", "related", "relationship", "relationships ", "link", "linked", "linkage", "connected", "connection", "connections"]
     TEXT = """

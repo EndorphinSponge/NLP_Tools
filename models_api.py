@@ -13,7 +13,7 @@ from pandas import DataFrame, Series
 import openai
 from openai.openai_object import OpenAIObject # For type assumption check
 
-from global_functions import importData
+from internal_globals import importData
 #%% Constants
 openai.api_key = "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" # Personal
 # openai.api_key = "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" # Throwaway

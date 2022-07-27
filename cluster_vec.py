@@ -10,7 +10,7 @@ import pandas as pd
 from top2vec import Top2Vec
 
 # Local imports
-from global_functions import importData
+from internal_globals import importData
 
 #%% Constants 
 FILESOURCE = "tbi_ymcombined.csv"
