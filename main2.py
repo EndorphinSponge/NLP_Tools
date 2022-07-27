@@ -5,7 +5,11 @@ import os
 if True:
     from models_spacy import SpacyModelTBI
     model = SpacyModelTBI()
-    model.extractAbrvCont("gpt3_output.xlsx")
+    model.extractAbrvCont(R"test\test_fmt.xlsx")
+
+if False:
+    from models_spacy import checkAbrvs
+    checkAbrvs("test_fmt_abrvs.json")
     
 
 if False:

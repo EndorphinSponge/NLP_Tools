@@ -1,3 +1,15 @@
+#%% Behaviour of instances in sets 
+class A:
+    def __init__(self, data) -> None:
+        self.data = data
+        
+a = A("test")
+b = A("test")
+c = A("test")
+
+print(a == b)
+print(set([a,b,c]))
+
 #%% Amount of overlap needed for converting between abbreviations 
 from difflib import SequenceMatcher
 a = "glasgow coma score"
