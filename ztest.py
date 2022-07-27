@@ -1,3 +1,8 @@
+#%% Similarity scoring using sets
+
+print(set("snpsc").issubset(set("snp")))
+print(set("snp").issubset(set("snpsc")))
+
 #%% Behaviour of instances in sets 
 class A:
     def __init__(self, data) -> None:
@@ -12,8 +17,15 @@ print(set([a,b,c]))
 
 #%% Amount of overlap needed for converting between abbreviations 
 from difflib import SequenceMatcher
-a = "glasgow coma score"
-b = "glasgow coma scale"
+
+a = "gos"
+b = "gose"
+a = "glasgow outcome score extended"
+b = "glasgow outcome score"
+a = "gos"
+b = "gcs"
+a = "mtbi"
+b = "stbi"
 SequenceMatcher(a=a.lower(), b=b.lower()).ratio()
 
 

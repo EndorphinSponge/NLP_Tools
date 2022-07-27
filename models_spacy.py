@@ -519,7 +519,7 @@ class ManualExtractor:
         df.to_excel("manualdep_output.xlsx")
 
 #%% Independent functions
-def checkAbrvs(json_path: Union[str, bytes, os.PathLike], sim_thresh = 0.8):
+def checkAbrvs(json_path: Union[str, bytes, os.PathLike], diff_thresh = 0.9):
     with open(json_path, "r") as file:
         abrv_json: list[list[list[str, str], int]] = json.load(file) # List of tuples of the counted object (tuple[str, str]) and its count
         abrv_list = [Abrv(abrv) for abrv in abrv_json] # Convert to Abrv object for better readability 
@@ -540,7 +540,7 @@ def checkAbrvs(json_path: Union[str, bytes, os.PathLike], sim_thresh = 0.8):
             similar_terms = set()
             for term in [long for long in set(long_forms) if long != full]: # Compare against each term excluding itself
                 similarity = SequenceMatcher(a=full.lower(), b=term.lower()).ratio()
-                if similarity > sim_thresh:
+                if similarity > diff_thresh:
                     similar_terms.add(term)
             if similar_terms:
                 long_warn.append((full, similar_terms))
@@ -591,8 +591,8 @@ def tuneAbrvs(json_path: Union[str, bytes, os.PathLike],
         warnings: set[frozenset[tuple[str, str, int]]] = set()
         for abrv1 in conf_abrvs:
             for abrv2 in [abrv for abrv in conf_abrvs if abrv != abrv1]: #
-                similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio() # Compare long forms
-                if similarity < l_thresh:
+                l_similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio() # Compare long forms
+                if l_similarity < l_thresh: # If low similarity between long forms, make warning
                     abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
                     abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
                     warnings.add(frozenset([abrv1_data, abrv2_data])) # Add conflict as frozenset so that order doesn't matter, needs to be frozen to be hashable by outer set
@@ -603,22 +603,28 @@ def tuneAbrvs(json_path: Union[str, bytes, os.PathLike],
     print("Long form warnings: ========================================")
     
     long_conf: set[str]  = set()
-    long_warn: list[tuple[str, set[str]]] = []
+    long_similar: list[tuple[str, set[str]]] = []
     for abrv1 in abrv_list: # Use full Abrv objects for parsing long forms
         warnings: set[frozenset[tuple[str, str, int]]] = set()
         if long_forms.count(abrv1.long) > 1: # Check if long form occurs more than once
             long_conf.add(abrv1.long)
-        else:
+        else: # Otherwise check if the abbreviation has similarities with other long forms
             for abrv2 in [abrv2 for abrv2 in set(abrv_list) if abrv2.long != abrv1.long]: # Compare against each term excluding itself
-                similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio()
-                if similarity < l_thresh:
-                    abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
-                    abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
-                    warnings.add(frozenset([abrv1_data, abrv2_data])) # Add conflict as frozenset so that order doesn't matter, needs to be frozen to be hashable by outer set
-                else: # Assume similar and treat like normal long form conflict
-                    "Some function here"
+                l_similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio()
+                if l_similarity > l_thresh: # If long forms are similar
+                    if abrv1.short == abrv2.short:
+                        pass # Ignore, since we would want similar long forms to converge on the same short form
+                    elif set(abrv1.short).issubset(set(abrv2.short)) or \
+                        set(abrv2.short).issubset(set(abrv1.short)): # Use sets to check if one short form is a subset of another (rearrangements also qualify)
+                        print("Similar short and long forms")
+                        " same processing as long form conflict, but add both long forms as keys instead of merging"
+                    else: # Assume they are dissimilar and make a warning 
+                        abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
+                        abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
+                        warnings.add(frozenset([abrv1_data, abrv2_data])) # Add conflict as frozenset so that order doesn't matter, needs to be frozen to be hashable by outer set
         if warnings:
             print(warnings)
+
 
 
     def _resolveConf(abrvs: list[Abrv]):
