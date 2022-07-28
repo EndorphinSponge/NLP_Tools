@@ -604,35 +604,38 @@ def tuneAbrvs(json_path: Union[str, bytes, os.PathLike],
         if warnings:
             print(warnings)
     
-    print("Long form warnings: ========================================")
+    print("Long form major conflict conversions: ========================================")
     
     long_conf: set[str]  = set()
-    long_similar: list[tuple[str, set[str]]] = []
-    for abrv1 in abrv_set.copy(): # Use full Abrv objects for parsing long forms
-        warnings = set()
-        abrv_tracker = set()
-        if long_forms.count(abrv1.long) > 1: # Check if long form occurs more than once
-            long_conf.add(abrv1.long)
-        else: # Otherwise check if the abbreviation has similarities with other long forms
-            for abrv2 in [abrv2 for abrv2 in abrv_set if abrv2 != abrv1]: # Compare against each term excluding itself
-                l_similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio()
-                if l_similarity > l_thresh: # If long forms are similar
-                    if abrv1.short == abrv2.short:
-                        pass # Ignore, since we would want similar long forms to converge on the same short form
-                    elif set(abrv1.short).issubset(set(abrv2.short)) or \
-                        set(abrv2.short).issubset(set(abrv1.short)): # Use sets to check if one short form is a subset of another (rearrangements also qualify)
-                        _mergeConf([abrv1, abrv2], abrv_set)
-                    else: # Assume they are dissimilar and make a warning 
-                        abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
-                        abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
-                        warnings.add(frozenset([abrv1_data, abrv2_data])) # Add conflict as frozenset so that order doesn't matter, needs to be frozen to be hashable by outer set
-        if warnings:
-            print(warnings)
+    for abrv in abrv_set.copy(): # Use full Abrv objects for parsing long forms
+        if long_forms.count(abrv.long) > 1: # Check if long form occurs more than once
+            long_conf.add(abrv.long)
 
     for conflict in long_conf:
         conf_abrvs = [abrv for abrv in abrv_set if abrv.long == conflict]
-        _mergeConf(conf_abrvs, abrv_set)
-
+        _mergeConf(conf_abrvs, abrv_set) # Will not be left with any more conflicts after merge
+    
+    
+    print("Long form minor conflict conversions: ========================================")
+    # long_similar: list[tuple[str, set[str]]] = []
+    # for abrv1, abrv2 in combinations(abrv_set, 2): # Find all combinations of comparing abrvs: https://stackoverflow.com/questions/16603282/how-to-compare-each-item-in-a-list-with-the-rest-only-once
+    #     l_similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio()
+    #     warnings = set()
+    #     if l_similarity != 1 and l_similarity > l_thresh: # If long forms are similar (but not the same)
+    #         if abrv1.short == abrv2.short:
+    #             pass # Ignore, since we would want similar long forms to converge on the same short form
+    #         elif set(abrv1.short).issubset(set(abrv2.short)) or \
+    #             set(abrv2.short).issubset(set(abrv1.short)): # Use sets to check if one short form is a subset of another (rearrangements also qualify)
+    #             _mergeConf([abrv1, abrv2], abrv_set)
+    #         else: # Assume they are dissimilar and make a warning 
+    #             abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
+    #             abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
+    #             warnings.add(frozenset([abrv1_data, abrv2_data])) # Add conflict as frozenset so that order doesn't matter, needs to be frozen to be hashable by outer set
+    #     if warnings:
+    #         print(warnings)
+            
+    print("Long form major conflicts: ========================================")
+            
     return "merged abrv_json but directly save both abrv_json and alternative translations for short forms to be passed through abbreviation fuzzy matching rather than strict translation "    
 
 def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv]):
@@ -641,7 +644,6 @@ def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv]):
     shorts = [abrv.short for abrv in abrv_confs]
     shorts.sort(key=lambda x: len(x)) # Sort short forms by ascending length
     longs = [abrv.long for abrv in abrv_confs]
-    print([(abrv.count, abrv.short, abrv.long) for abrv in abrv_confs])
     if len(set(shorts)) > 1 and abrv_confs[0].count/abrv_confs[1].count >= 2: # If most common abrv is twice as common as 2nd most common
         short = abrv_confs[0].short # Take short form of the most common abrv
     else: # Assume abrvs are similarly common or there's only one unique short form
@@ -651,8 +653,9 @@ def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv]):
         if abrv_conf in abrv_set: # May already be removed by another similar pairing 
             abrv_set.remove(abrv_conf) # Remove conflicts from master abrv list
     for uniq_long in set(longs):
-        total_count = sum([abrv.count for abrv in abrv_confs if abrv.long == uniq_long]) # Get count of entries with same long form, currently not used
-        abrv_set.add(Abrv([[short, uniq_long], 0])) # Add new merged entry, Abrv.short and Abrv.long are used for comparison via hash
+        total_count = sum([abrv.count for abrv in abrv_confs if abrv.long == uniq_long]) # Get count of entries with same long form
+        abrv_set.add(Abrv([[short, uniq_long], total_count])) # Add new merged entry, Abrv.short and Abrv.long are used for comparison via hash
+        print(f"New entry {(short, uniq_long, total_count)} from {[(abrv.count, abrv.short, abrv.long) for abrv in abrv_confs]}")
         
 
 if __name__ == "__main__":
