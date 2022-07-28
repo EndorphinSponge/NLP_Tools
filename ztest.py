@@ -1,3 +1,73 @@
+#%% Hashing Abrv class
+class Abrv: 
+    """
+    Class for making abbreviation parsing more readable after being unpacked from JSON
+    Corresponds with output of extractAbrvCont method 
+    """
+    def __init__(self, abrv: list[list[str, str], int]) -> None:
+        self.original = abrv # Store original container for easy back and forth conversion
+        self.short: str = abrv[0][0]
+        self.long: str = abrv[0][1]
+        self.count: int = abrv[1]
+    def __hash__(self) -> int: # Required for being put in a set, seems like it is overwritten when __eq__ is changed
+        return hash((self.short, self.long)) # Use the tuple of short and long for hash, ignore count
+    def __eq__(self, __o: object) -> bool: # Used for set comparison
+        return self.__hash__() == __o.__hash__() 
+    def __ne__(self, __o: object) -> bool: # Add reverse just in case
+        return self.__hash__() != __o.__hash__() 
+
+a = Abrv([["test", "long"], 99])
+b = Abrv([["test2", "long"], 1])
+c = Abrv([["test3", "long"], 1])
+d = Abrv([["test", "long"], 11])
+
+obj_list = set([a, b, c, d])
+print(obj_list)
+print([(obj.short, obj.long, obj.count) for obj in obj_list])
+print(a == d)
+#%% Modifying class hash to enable set operations 
+class A:
+    def __init__(self, data) -> None:
+        self.data = data
+    def __hash__(self) -> int: # Required for being put in a set, seems like it is overwritten when __eq__ is changed
+        return hash(self.data)
+    # def __eq__(self, __o: object) -> bool: # Use for actual set comparison
+    #     return self.__hash__() == __o.__hash__()
+    # def __ne__(self, __o: object) -> bool:
+    #     return self.__hash__() != __o.__hash__() # Add reverse just in case
+
+
+a = A("aaaa")
+b = A("lmao")
+c = A("aaaa")
+d = A("lmao")
+
+obj_list = set([a, b, c, d])
+print(obj_list)
+print([obj.data for obj in obj_list])
+
+#%% Removing class instances
+
+class A:
+    def __init__(self, data) -> None:
+        self.data = data
+    
+
+def remObj(obj, obj_list: list):
+    obj_list.remove(obj)
+    return obj_list
+
+a = A("aaaa")
+b = A("asdfasdfasdf")
+c = A("aaaa")
+d = A("lmao")
+
+obj_list = [a, b, c, d]
+
+print([obj.data for obj in obj_list])
+remObj(a, obj_list)
+print([obj.data for obj in obj_list])
+
 #%% Similarity scoring using sets
 
 print(set("snpsc").issubset(set("snp")))
@@ -8,12 +78,14 @@ class A:
     def __init__(self, data) -> None:
         self.data = data
         
-a = A("test")
-b = A("test")
-c = A("test")
-
+a = A("aaaa")
+b = A("asdfasdfasdf")
+c = A("sdoi2ng")
 print(a == b)
 print(set([a,b,c]))
+obj_list = [a, b, c]
+obj_list.sort(key=lambda x: len(x.data), reverse=False)
+print([obj.data for obj in obj_list])
 
 #%% Amount of overlap needed for converting between abbreviations 
 from difflib import SequenceMatcher

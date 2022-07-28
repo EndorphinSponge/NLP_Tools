@@ -4,11 +4,10 @@ For process that handles more than one doc at a time
 #%% Imports
 # General 
 import os, re, math, csv, difflib, json
-from pickle import TUPLE3
 from collections import Counter
-from tabnanny import check
 from typing import Union
 from difflib import SequenceMatcher
+from itertools import combinations
 
 # NLP
 import spacy 
@@ -264,10 +263,16 @@ class Abrv:
     Corresponds with output of extractAbrvCont method 
     """
     def __init__(self, abrv: list[list[str, str], int]) -> None:
+        self.original = abrv # Store original container for easy back and forth conversion
         self.short: str = abrv[0][0]
         self.long: str = abrv[0][1]
         self.count: int = abrv[1]
-
+    def __hash__(self) -> int: # Required for being put in a set, seems like it is overwritten when __eq__ is changed
+        return hash((self.short, self.long)) # Use the tuple of short and long for hash, ignore count
+    def __eq__(self, __o: object) -> bool: # Used for set comparison
+        return self.__hash__() == __o.__hash__() 
+    def __ne__(self, __o: object) -> bool: # Add reverse just in case
+        return self.__hash__() != __o.__hash__() 
 
 class DocParse:
     """
@@ -522,9 +527,9 @@ class ManualExtractor:
 def checkAbrvs(json_path: Union[str, bytes, os.PathLike], diff_thresh = 0.9):
     with open(json_path, "r") as file:
         abrv_json: list[list[list[str, str], int]] = json.load(file) # List of tuples of the counted object (tuple[str, str]) and its count
-        abrv_list = [Abrv(abrv) for abrv in abrv_json] # Convert to Abrv object for better readability 
-    short_forms = [abrv.short for abrv in abrv_list]
-    long_forms = [abrv.long for abrv in abrv_list]
+        abrv_set = {Abrv(abrv) for abrv in abrv_json} # Convert to Abrv object for better readability 
+    short_forms = [abrv.short for abrv in abrv_set]
+    long_forms = [abrv.long for abrv in abrv_set]
     
     short_conf: set[str] = set()
     for short in short_forms:
@@ -547,36 +552,35 @@ def checkAbrvs(json_path: Union[str, bytes, os.PathLike], diff_thresh = 0.9):
 
     print("Short form conflicts: ========================================")
     for conflict in short_conf:
-        conf_abrvs = [abrv for abrv in abrv_list if abrv.short == conflict]
+        conf_abrvs = [abrv for abrv in abrv_set if abrv.short == conflict]
         conf_abrvs = [(abrv.short, abrv.long, abrv.count) for abrv in conf_abrvs] # Unpack Abrv object
         print(conf_abrvs)
         
     print("Long form conflicts: ========================================")
     for conflict in long_conf:
-        conf_abrvs = [abrv for abrv in abrv_list if abrv.long == conflict]
+        conf_abrvs = [abrv for abrv in abrv_set if abrv.long == conflict]
         conf_abrvs = [(abrv.short, abrv.long, abrv.count) for abrv in conf_abrvs] # Unpack Abrv object
         print(conf_abrvs)
     
     print("Long form warnings: ========================================")
     for term, similars in long_warn:
-        term_abrv = [abrv for abrv in abrv_list if abrv.long == term] # Extract full abbreviation 
+        term_abrv = [abrv for abrv in abrv_set if abrv.long == term] # Extract full abbreviation 
         term_abrv = [(abrv.short, abrv.long, abrv.count) for abrv in term_abrv] # Unpack Abrv object
         print(f">>>> Similar terms for {term_abrv} <<<<")
         for similar in similars:
             similarity = SequenceMatcher(a=term.lower(), b=similar.lower()).ratio()
-            conf_abrvs = [abrv for abrv in abrv_list if abrv.long == similar] # Should only return one item if long forms are all unique
+            conf_abrvs = [abrv for abrv in abrv_set if abrv.long == similar] # Should only return one item if long forms are all unique
             conf_abrvs = [(abrv.short, abrv.long, abrv.count) for abrv in conf_abrvs] # Unpack Abrv object
             print(round(similarity, 3), conf_abrvs)
 
 def tuneAbrvs(json_path: Union[str, bytes, os.PathLike],
               l_thresh: float = 0.9,
-              s_thresh: float = 0.7,
               ):
     with open(json_path, "r") as file:
         abrv_json: list[list[list[str, str], int]] = json.load(file) # List of tuples of the counted object (tuple[str, str]) and its count
-        abrv_list = [Abrv(abrv) for abrv in abrv_json] # Convert to Abrv object for better readability 
-    short_forms = [abrv.short for abrv in abrv_list]
-    long_forms = [abrv.long for abrv in abrv_list]
+        abrv_set = {Abrv(abrv) for abrv in abrv_json} # Convert to Abrv object for better readability 
+    short_forms = [abrv.short for abrv in abrv_set]
+    long_forms = [abrv.long for abrv in abrv_set]
 
             
     print("Short form major conflicts: ========================================")
@@ -587,12 +591,12 @@ def tuneAbrvs(json_path: Union[str, bytes, os.PathLike],
             short_conf.add(short) # Add to set so that repeats of same term are ignored 
             
     for conflict in short_conf:
-        conf_abrvs = [abrv for abrv in abrv_list if abrv.short == conflict] # Collect corresponding abrvs
-        warnings: set[frozenset[tuple[str, str, int]]] = set()
+        conf_abrvs = [abrv for abrv in abrv_set if abrv.short == conflict] # Collect corresponding abrvs
+        warnings = set()
         for abrv1 in conf_abrvs:
             for abrv2 in [abrv for abrv in conf_abrvs if abrv != abrv1]: #
                 l_similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio() # Compare long forms
-                if l_similarity < l_thresh: # If low similarity between long forms, make warning
+                if l_similarity < l_thresh: # If low similarity between long forms, make warning, otherwise ignore (no else statement)
                     abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
                     abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
                     warnings.add(frozenset([abrv1_data, abrv2_data])) # Add conflict as frozenset so that order doesn't matter, needs to be frozen to be hashable by outer set
@@ -604,20 +608,20 @@ def tuneAbrvs(json_path: Union[str, bytes, os.PathLike],
     
     long_conf: set[str]  = set()
     long_similar: list[tuple[str, set[str]]] = []
-    for abrv1 in abrv_list: # Use full Abrv objects for parsing long forms
-        warnings: set[frozenset[tuple[str, str, int]]] = set()
+    for abrv1 in abrv_set.copy(): # Use full Abrv objects for parsing long forms
+        warnings = set()
+        abrv_tracker = set()
         if long_forms.count(abrv1.long) > 1: # Check if long form occurs more than once
             long_conf.add(abrv1.long)
         else: # Otherwise check if the abbreviation has similarities with other long forms
-            for abrv2 in [abrv2 for abrv2 in set(abrv_list) if abrv2.long != abrv1.long]: # Compare against each term excluding itself
+            for abrv2 in [abrv2 for abrv2 in abrv_set if abrv2 != abrv1]: # Compare against each term excluding itself
                 l_similarity = SequenceMatcher(a=abrv1.long.lower(), b=abrv2.long.lower()).ratio()
                 if l_similarity > l_thresh: # If long forms are similar
                     if abrv1.short == abrv2.short:
                         pass # Ignore, since we would want similar long forms to converge on the same short form
                     elif set(abrv1.short).issubset(set(abrv2.short)) or \
                         set(abrv2.short).issubset(set(abrv1.short)): # Use sets to check if one short form is a subset of another (rearrangements also qualify)
-                        print("Similar short and long forms")
-                        " same processing as long form conflict, but add both long forms as keys instead of merging"
+                        _mergeConf([abrv1, abrv2], abrv_set)
                     else: # Assume they are dissimilar and make a warning 
                         abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
                         abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
@@ -625,18 +629,36 @@ def tuneAbrvs(json_path: Union[str, bytes, os.PathLike],
         if warnings:
             print(warnings)
 
-
-
-    def _resolveConf(abrvs: list[Abrv]):
-        
-        pass         
     for conflict in long_conf:
-        _resolveConf()
-    
+        conf_abrvs = [abrv for abrv in abrv_set if abrv.long == conflict]
+        _mergeConf(conf_abrvs, abrv_set)
+
+    return "merged abrv_json but directly save both abrv_json and alternative translations for short forms to be passed through abbreviation fuzzy matching rather than strict translation "    
+
+def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv]):
+    # Goal is to have one short form for a long form (or a group of similar long forms)
+    abrv_confs.sort(key=lambda x: x.count, reverse=True) # Sort by count, descending
+    shorts = [abrv.short for abrv in abrv_confs]
+    shorts.sort(key=lambda x: len(x)) # Sort short forms by ascending length
+    longs = [abrv.long for abrv in abrv_confs]
+    print([(abrv.count, abrv.short, abrv.long) for abrv in abrv_confs])
+    if len(set(shorts)) > 1 and abrv_confs[0].count/abrv_confs[1].count >= 2: # If most common abrv is twice as common as 2nd most common
+        short = abrv_confs[0].short # Take short form of the most common abrv
+    else: # Assume abrvs are similarly common or there's only one unique short form
+        short = shorts[0] # Take the shortest short form (better to be more general than wrongly specific)
+    alt_shorts = set([alt_short for alt_short in shorts if alt_short != short]) # Get list of unique alternative short forms
+    for abrv_conf in abrv_confs:
+        if abrv_conf in abrv_set: # May already be removed by another similar pairing 
+            abrv_set.remove(abrv_conf) # Remove conflicts from master abrv list
+    for uniq_long in set(longs):
+        total_count = sum([abrv.count for abrv in abrv_confs if abrv.long == uniq_long]) # Get count of entries with same long form, currently not used
+        abrv_set.add(Abrv([[short, uniq_long], 0])) # Add new merged entry, Abrv.short and Abrv.long are used for comparison via hash
+        
 
 if __name__ == "__main__":
     # checkAbrvs("test_fmt_abrvs.json")
-    tuneAbrvs("test_fmt_abrvs.json")
+    tuneAbrvs("gpt3_output_abrvs.json")
+    # tuneAbrvs("test_fmt_abrvs.json")
 
 #%% Snippets
 TEXT = """Older patients had a higher mortality, with the highest mortality (37.5%) among those over 50 years old (p = 0.009)"""

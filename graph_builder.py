@@ -260,12 +260,13 @@ def mapAbrv(string, abrv_container, threshold = 0.9):
     return string
 
 def transEnts(string, trans_dict):
+    # Different logic from map abrv which uses fuzzy matching 
     if string in trans_dict.keys(): # If the string matches a translation key
         print("Translated " + string + " to " + trans_dict[string])
         return trans_dict[string]
     else:
         return string
-
+    
 def extractAbrvs(string: str) -> list:
     """
     Takes a string and returns a set of all the abbreviations
