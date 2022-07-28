@@ -98,6 +98,8 @@ a = "gos"
 b = "gcs"
 a = "mtbi"
 b = "stbi"
+a = "test"
+b = "test"
 SequenceMatcher(a=a.lower(), b=b.lower()).ratio()
 
 
