@@ -8,8 +8,10 @@ os.chdir(DIRPATH)
 if True:
     from graph_builder import EntProcessor
     a = EntProcessor()
-    list_ents = [{"factor": ["mechanical ventilation"], "outcome": ["neurological"]}, {"factor": ["severity", "head injury"], "outcome": ["neurological"]}, {"factor": ["blood transfusion"], "outcome": ["neurological"]}, {"factor": ["neurosurgical intervention"], "outcome": ["neurological"]}, {"factor": ["mechanical ventilation"], "outcome": ["non-neurological", "complication"]}, {"factor": ["glasgow coma scale"], "outcome": ["non-neurological", "complication"]}, {"factor": ["blood transfusion"], "outcome": ["non-neurological", "complication"]}, {"factor": ["injury", "concomitant"], "outcome": ["non-neurological", "complication"]}]
+    list_ents = [{"factor": ["mechanical ventilation"], "outcome": ["neurological"]}, {"factor": ["severity", "head injury"], "outcome": ["neurological"]}, {"factor": ["blood transfusion"], "outcome": ["neurological"]}, {"factor": ["neurosurgical intervention"], "outcome": ["neurological"]}, {"factor": ["mechanical ventilation"], "outcome": ["non-neurological", "complication"]}, {"factor": ["glasgow coma scale"], "outcome": ["non-neurological", "complication"]}, {"factor": ["blood transfusion"], "outcome": ["non-neurological", "complication", "neurosurgical intervention"]}, {"factor": ["injury", "concomitant"], "outcome": ["non-neurological", "complication", "gcs"]}]
     a.procEnts(list_ents)
+    a.sepConfEnts(list_ents)
+    a.printLogs()
 
 
 if False:

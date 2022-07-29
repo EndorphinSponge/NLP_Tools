@@ -266,11 +266,11 @@ class EntProcessor:
         self.exclusions = exclude_cont
         self.translations = trans_cont
         self.proc_ents: dict[str, set[str]] = dict() # Tracks processed ents of each type, initialize a set for each type of ent
+        self.abrv_log = Counter()
+        self.trans_log = Counter()
+        self.conf_ent_log = Counter()
     # Ignore and translation containers will be dictionaries with labels of types of nodes that it applies to 
     def procEnts(self, list_ents: list[dict[str, list[str]]]):
-        
-        print(list_ents)
-        
         for ind, ent_dict in enumerate(list_ents):
             for ent_type in ent_dict:
                 ents = set(ent_dict[ent_type]) # Convert list from JSON to set
@@ -279,33 +279,33 @@ class EntProcessor:
                 ents = {ent for ent in ents if ent not in self.exclusions[ent_type]}
                 ents = {self._transEnts(ent, ent_type) for ent in ents}
                 
-                "ISSUE SOMEWHERE HERE"
-                
                 ent_dict[ent_type] = list(ents) # Update container with new contents of ents, changes will propagate to entry ents list
-                if ent_type not in self.proc_ents: # Initialize ent type in tracker if it doesn't exist
-                    self.proc_ents[ent_type] = set()                     
+                if ent_type not in self.proc_ents: 
+                    self.proc_ents[ent_type] = set() # Initialize ent type in tracker if it doesn't exist                
                 self.proc_ents[ent_type].update(ents) # Track change by adding ents to its corresponding type in tracker
                 
-        print(list_ents)
-        return "new list ents in same format"
+        return list_ents
     
     def _abrvEnts(self, ent: str, thresh: int = 0.9):
         for long_form in self.abbreviations:
             if SequenceMatcher(a=ent.lower(), b=long_form.lower()).ratio() > thresh:
-                return self.abbreviations[long_form] # Return corresponding short form in abbreviation
+                short_form = self.abbreviations[long_form]
+                self.abrv_log[(short_form, ent)] += 1 # Log abbreviation mapping
+                return short_form # Return corresponding short form in abbreviation
         return ent # If no fuzzy matches, return input unchanged 
     
     def _transEnts(self, ent: str, ent_type: str):
         # Different logic from map abrv which uses fuzzy matching 
         type_specific_trans = self.translations[ent_type]
         if ent in type_specific_trans:
+            self.trans_log[(type_specific_trans[ent], ent)] += 1 # Log translation 
             return type_specific_trans[ent]
         else: 
             return ent
     
     def sepConfEnts(self, list_ents: list[dict[str, list[str]]], igno_type: list[str] = []):
         # Should resolve overlap between any number of groups 
-        # NOT VERIFIED YET
+        # Needs to be run after procEnts has been run on all ents
         common_ents: set[str] = set()
         for ent_type1, ent_type2 in combinations(self.proc_ents, 2):
             if ent_type1 not in igno_type and ent_type2 not in igno_type: # If neither types are being ignored
@@ -316,11 +316,14 @@ class EntProcessor:
                 for ent in ent_dict[ent_type].copy():
                     if ent in common_ents:
                         ind = ent_dict[ent_type].index(ent) # Get index of ent within its list
-                        ent_dict[ent_type][ind] = ent + f" {ent_type}" # Replace value with annotated version
-                        print("Resolved overlap")
-        # DEBUG TO FIND OUT IF LOGIC IS ACTUALLY BEING CARRIED THROUGH 
+                        ent_dict[ent_type][ind] = ent + f" ({ent_type})" # Replace value with annotated version
+                        self.conf_ent_log[ent] += 1 # Log conflict resolution
         return list_ents
 
+    def printLogs(self):
+        print("Abbreviations: ", self.abrv_log)
+        print("Translations: ", self.trans_log)
+        print("Conflicts: ", self.conf_ent_log)
 
 def mapAbrv(string, abrv_container, threshold = 0.9):
     """
