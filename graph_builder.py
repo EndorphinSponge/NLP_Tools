@@ -315,7 +315,7 @@ class EntProcessor:
             for ent_type in [t for t in ent_dict if t not in igno_type]: 
                 ents = set(ent_dict[ent_type]) # Convert list from JSON to set
                 
-                ents = {abrvEnts(self, ent, thresh=0.9) for ent in ents}
+                ents = {abrvEnts(self, ent) for ent in ents}
                 ents = {ent for ent in ents if ent not in self.exclusions[ent_type]}
                 ents = {transEnts(self, ent, ent_type) for ent in ents}
                 

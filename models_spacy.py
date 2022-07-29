@@ -185,7 +185,7 @@ class SpacyModelTBI(SpacyModel):
             statements: list[list[str]] = json.loads(row[col]) # list[str] of items for each statement 
             
             statements_ents: list[tuple[list[str], list[str]]] = []
-            "REFACTOR THIS INTO components_tbi?"
+            "REFACTOR THIS WHOLE SECTION AS A COMPONENT INTO components_tbi?"
             for items in statements:
                 factors = items[0]
                 if re.search(R"\w", factors):
@@ -418,7 +418,7 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
         if conversions_made == 0:
             continue_conversion = False
             
-    trans_final: dict[str, str] = {item[0][0]: item[0][1] for item in trans_counter.items()}
+    trans_final: dict[str, str] = {item[0][1]: item[0][0] for item in trans_counter.items()} # Note that items are stored in (alternate, common) format
     
         
     with open(f"{root_name}_trans.json", "w") as file:

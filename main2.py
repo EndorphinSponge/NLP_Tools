@@ -11,8 +11,11 @@ if True:
     a.procDfEnts("test/test_fmt_ents.xlsx")
     a.printLogs()
 
-
 if False:
+    from models_spacy import refineAbrvs
+    refineAbrvs("gpt3_output_abrvs.json")
+    
+    
     from graph_builder import EntProcessor
     a = EntProcessor()
     list_ents = [{"factor": ["mechanical ventilation"], "outcome": ["neurological"]}, {"factor": ["severity", "head injury"], "outcome": ["neurological"]}, {"factor": ["blood transfusion"], "outcome": ["neurological"]}, {"factor": ["neurosurgical intervention"], "outcome": ["neurological"]}, {"factor": ["mechanical ventilation"], "outcome": ["non-neurological", "complication"]}, {"factor": ["glasgow coma scale"], "outcome": ["non-neurological", "complication"]}, {"factor": ["blood transfusion"], "outcome": ["non-neurological", "complication", "neurosurgical intervention"]}, {"factor": ["injury", "concomitant"], "outcome": ["non-neurological", "complication", "gcs"]}]
@@ -27,8 +30,7 @@ if False:
     nlpmodel.extractEntsTBI(R"test\test_fmt.xlsx", "Model_output", "Ents")
     
     
-    from models_spacy import checkAbrvs
-    checkAbrvs("test_fmt_abrvs.json")
+
     
     from models_spacy import SpacyModelTBI
     model = SpacyModelTBI()
