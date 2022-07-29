@@ -161,6 +161,7 @@ class SpacyModelTBI(SpacyModel):
                  disable: list[str] = []): 
         super().__init__(model, disable)
         self.NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
+        self.empty_log = Counter()
     
     def extractEntsTBI(self, 
                      df_path: Union[str, bytes, os.PathLike], 
@@ -189,15 +190,17 @@ class SpacyModelTBI(SpacyModel):
             for items in statements:
                 factors = items[0]
                 if re.search(R"\w", factors):
-                    factor_ents = self._gatherAbrvEnts(factors)
+                    factor_ents = self._gatherEnts(factors)
                 else:
                     factor_ents = set()
+                    self.empty_log[tuple(items)] += 1
                     
                 outcomes = items[1]
                 if re.search(R"\w", outcomes):
-                    outcome_ents = self._gatherAbrvEnts(outcomes)
+                    outcome_ents = self._gatherEnts(outcomes)
                 else:
                     outcome_ents = set()
+                    self.empty_log[tuple(items)] += 1
                 """CAN UNPACK MORE FACTORS HERE"""
                 statements_ents.append({"factor": list(factor_ents), "outcome": list(outcome_ents)}) # Need convertion to list since sets can't be serialized into JSON
             
@@ -208,9 +211,8 @@ class SpacyModelTBI(SpacyModel):
         df_merged = pd.concat([df, df_out], axis=1)
         df_merged.to_excel(f"{root_name}_ents.xlsx")
                 
-                
     
-    def _gatherAbrvEnts(self, string: str):
+    def _gatherEnts(self, string: str):
         # Extracts entities in lemmatized and abbreviated form (if they are available)
         doc = self.NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
         if len(doc) > 1: # Only process if there is more than one token
@@ -220,13 +222,6 @@ class SpacyModelTBI(SpacyModel):
                     ents.add(ent.text.lower().strip())
                 else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
                     ents.add(ent.lemma_.lower().strip())
-            abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
-            for abrv, full in abrvs:
-                for ent in ents.copy(): # Iterate over a copy of the set while changing the original
-                    similarity = SequenceMatcher(a=full.lower(), b=ent.lower()).ratio() # Search for full form of abrv in ents 
-                    if similarity > 0.9: # Only replace abbreviated form if there's a high overlap
-                        ents.remove(ent) # Remove full form
-                        ents.add(abrv) # Add abbreviated form
             return ents
         else: # Otherwise there will be only one token, return its lemma 
             if len(doc[0].text.lower().strip()) <= 5:

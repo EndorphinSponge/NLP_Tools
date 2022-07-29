@@ -300,6 +300,7 @@ class EntProcessor:
                     short_form = self.abbreviations[long_form]
                     self.abrv_log[(short_form, ent)] += 1 # Log abbreviation mapping
                     return short_form # Return corresponding short form in abbreviation
+                    # Other short form is either merged by set or translated and merged in transEnts
             return ent # If no fuzzy matches, return input unchanged 
         
         def transEnts(self: EntProcessor, ent: str, ent_type: str) -> str:
