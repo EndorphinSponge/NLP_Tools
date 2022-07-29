@@ -55,7 +55,7 @@ class SpacyModel:
         Args:
             corpora_path: path to the dataframe containing the corpora
             col: Column label for column containing text to parse 
-            annotation_cols: Optional list of column labels of columns to be passed as annotations to the processed text 
+            annotation_cols: Optional list of column labels of columns to be passed as annotations to the processed text, data added to doc.user_data as dict
         """
         df = importData(corpora_path, screen_dupl=[col], screen_text=[col]) # Screen for duplicates and presence of text for the column containing the text 
         self.lastimportsrc = os.path.splitext(corpora_path)[0] # Assign path without extension to tracker in case it's needed for export naming
@@ -183,6 +183,7 @@ class SpacyModelTBI(SpacyModel):
         for index, row in df.iterrows():
             print("NLP extracting ents for: " + str(index))
             statements: list[list[str]] = json.loads(row[col]) # list[str] of items for each statement 
+            
             statements_ents: list[tuple[list[str], list[str]]] = []
             "REFACTOR THIS INTO components_tbi?"
             for items in statements:
@@ -199,6 +200,7 @@ class SpacyModelTBI(SpacyModel):
                     outcome_ents = set()
                 """CAN UNPACK MORE FACTORS HERE"""
                 statements_ents.append({"factor": list(factor_ents), "outcome": list(outcome_ents)}) # Need convertion to list since sets can't be serialized into JSON
+            
             stmts_ents_json = json.dumps(statements_ents)
             new_row = DataFrame({col_out: [stmts_ents_json]})
             new_row.index = pd.RangeIndex(start=index, stop=index+1, step=1) # Reassign index of new row by using current index 
@@ -486,7 +488,7 @@ class DocVis:
     """
     Container for visualization functions performed on processed docs 
     """
-    def visSentStruct(docs):
+    def visSentStruct(cls, docs):
         """
         Visualize the sentence structure (root, children, dep tags of children)
         """
@@ -502,7 +504,7 @@ class DocVis:
                         print("True root: " + child.text)
         return
 
-    def visSpecChildren(docs, target_dep = "nmod"):
+    def visSpecChildren(cls, docs, target_dep = "nmod"):
         """
         Visualize specific children of subj and obj of sentence based on dep attribute
         target_dep: relationship for visualization 
@@ -528,7 +530,7 @@ class DocVis:
                 print("Object: " + str(obj) + F" {target_dep.upper()}: " + str(objnmod))
         return
 
-    def visEntities(docs):
+    def visEntities(cls, docs):
         """
         Visualize entities and noun chunks in a document 
         """
@@ -539,7 +541,21 @@ class DocVis:
                 print("Entities: " + str(sent.ents))
                 print("Noun chunks: " + str(list(sent.noun_chunks)))
         return 
-    
+    def visAbrvsEntsDep(cls, doc: Doc):
+        # Display abbreviations, entities, DEP
+        print("Length: " + str(len(doc)))
+        for ent in doc.ents:
+            print(ent.lemma_)
+        sent_no = 0
+        for abrv in doc._.abbreviations:
+            print(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")
+        for sentence in doc.sents:
+            print(sent_no)
+            displacy_image = displacy.render(sentence, jupyter = True, style = "ent")
+            sent_no += 1
+        print(list(doc.noun_chunks))
+        dep_figure = displacy.render(doc,style="dep", options={"compact":True, "distance":100})
+
 
 class ManualExtractor:
     """
@@ -665,7 +681,7 @@ class ManualExtractor:
         # print (subj, obj)
         return (factors, outcomes)
     
-    def genDFSVO(cls):
+    def genDFSVO(cls, doc_bin):
         df = pd.DataFrame(columns = ["Title", "Abstract", "Included sentences", "Roots", "Subjects", "Objects", "Noun chunks", "Entities"])
         for doc in doc_bin:
             sentences = []
@@ -744,80 +760,3 @@ TEXT = "Condition and prognosis after a severe TBI"
 TEXT = "PCS at 30 days"
 TEXT = "Being under the influence of drugs or alcohol at the time of injury"
 TEXT = "6-month Glasgow-Outcome-Scale score"
-
-#%% Post-processing
-
-def visAbrvs():
-    # Display abbreviations, entities, DEP
-    TEXT = "patients"
-
-    doc = NLP(TEXT)
-
-    print("Length: " + str(len(doc)))
-    for ent in doc.ents:
-        print(ent.lemma_)
-    sent_no = 0
-    for abrv in doc._.abbreviations:
-        print(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")
-    for sentence in doc.sents:
-        print(sent_no)
-        displacy_image = displacy.render(sentence, jupyter = True, style = "ent")
-        sent_no += 1
-    print(list(doc.noun_chunks))
-    dep_figure = displacy.render(doc,style="dep", options={"compact":True, "distance":100})
-
-
-
-
-
-if False:
-    #%% Visualize graph of entities by co-mentions in a sentence 
-    keywords = ["augments", "increased", "decreased", "increases", "decreases", "more", "less", "higher", "lower", "greater", "lesser", "improved", "worsened", "improves", "worsens", "predict", "predicts", "predicted", "predictor", "predictors", "predictive", "factor", "factors", "variable", "variables", "marker", "markers", "biomarker", "biomarkers", "correlate", "correlates", "correlated ", "correlation", "correlations", "associates", "associated ", "association", "associations", "related", "relationship", "relationships ", "link", "linked", "linkage", "connected", "connection", "connections"]
-    TEXT = """
-    BACKGROUND: Between 20-50% of those suffering a mild traumatic brain injury (MTBI) will suffer symptoms beyond 3 months or post-concussive disorder (PCD). Researchers in Sydney conducted a prospective controlled study which identified that bedside recordings of memory impairment together with recordings of moderate or severe pain could predict those who would suffer PCS with 80% sensitivity and specificity of 76%., PRIMARY OBJECTIVE: This study is a cross-validation study of the Sydney predictive model conducted at Montreal General Hospital, Montreal, Canada., METHODS: One hundred and seven patients were assessed in the Emergency Department following a MTBI and followed up by phone at 3 months. The Rivermead Post-Concussive Questionnaire was the main outcome measure., RESULTS: Regression analysis showed that immediate verbal recall and quantitative recording of headache was able to predict PCD with a sensitivity of 71.4% and a specificity of 63.3%. In the combined MTBI groups from Sydney and Montreal the sensitivity was 70.2% and the specificity was 64.2%., CONCLUSION: This is the first study to compare populations from different countries with diverse language groups using a predictive model for identifying PCD following MTBI. The model may be able to identify an 'at risk' population to whom pre-emptive treatment can be offered.
-    """
-    doc = NLP(TEXT.strip())
-    # Counters used to track number of occurences, later used for display 
-    edges = Counter()
-    entities = Counter() # Track how many times each entity was mentioned by a sentence
-    for sent in doc.sents:
-        contains_keyword = False
-        for keyword in keywords: # Loop through all keywords
-            match = re.search(rf"\b{keyword}\b", sent.text.lower())
-            if match != None: # Only process sentence if it contains the keyword 
-                print(match.group())
-                contains_keyword = True
-                # Interconnect all nodes of a sentence together as a measure of co-mentions 
-                node_list = set([str(ent) for ent in sent.ents]) # Unpack in set to remove duplicates
-                # Make sure to process all entities to string to avoid issues in graphing nodes
-                node_list = [*node_list] # Unpack set into list to allow iteration
-                for entity in node_list:
-                    entities[entity] += 1
-                for (i, node_start) in enumerate(node_list): # Enumerate used to simulatenously return index for loop
-                    for (j, node_end) in enumerate(node_list[i+1:]): # To prevent repeating already enumarated nodes
-                        # Add edges in duplicate for undirected graph
-                        edges[(node_start, node_end)] += 1
-                        edges[(node_end, node_start)] += 1
-        if contains_keyword:
-            print(sent.text.lower())
-
-    #%% Generate edges and entities for subsequent generation
-    # Counters used to track number of occurences, later used for display 
-    edges = Counter()
-    entities = Counter() # Track how many times each entity was mentioned by a sentence
-    num_doc = 0
-    for doc in doc_bin:
-        print(num_doc)
-        for sent in doc.sents:
-            # Interconnect all nodes of a sentence together as a measure of co-mentions 
-            node_list = set([str(ent) for ent in sent.ents]) # Unpack in set to remove duplicates
-            # Make sure to process all entities to string to avoid issues in graphing nodes
-            node_list = [*node_list] # Unpack set into list to allow iteration
-            for entity in node_list:
-                entities[entity] += 1
-            for (i, node_start) in enumerate(node_list): # Enumerate used to simulatenously return index for loop
-                for (j, node_end) in enumerate(node_list[i+1:]): # To prevent repeating already enumarated nodes
-                    # Add edges in duplicate for undirected graph
-                    edges[(node_start, node_end)] += 1
-                    edges[(node_end, node_start)] += 1
-        num_doc += 1

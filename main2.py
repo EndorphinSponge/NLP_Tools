@@ -8,13 +8,19 @@ os.chdir(DIRPATH)
 if True:
     from graph_builder import EntProcessor
     a = EntProcessor()
-    list_ents = [{"factor": ["mechanical ventilation"], "outcome": ["neurological"]}, {"factor": ["severity", "head injury"], "outcome": ["neurological"]}, {"factor": ["blood transfusion"], "outcome": ["neurological"]}, {"factor": ["neurosurgical intervention"], "outcome": ["neurological"]}, {"factor": ["mechanical ventilation"], "outcome": ["non-neurological", "complication"]}, {"factor": ["glasgow coma scale"], "outcome": ["non-neurological", "complication"]}, {"factor": ["blood transfusion"], "outcome": ["non-neurological", "complication", "neurosurgical intervention"]}, {"factor": ["injury", "concomitant"], "outcome": ["non-neurological", "complication", "gcs"]}]
-    a.procEnts(list_ents)
-    a.sepConfEnts(list_ents)
+    a.procDfEnts("test/test_fmt_ents.xlsx")
     a.printLogs()
 
 
 if False:
+    from graph_builder import EntProcessor
+    a = EntProcessor()
+    list_ents = [{"factor": ["mechanical ventilation"], "outcome": ["neurological"]}, {"factor": ["severity", "head injury"], "outcome": ["neurological"]}, {"factor": ["blood transfusion"], "outcome": ["neurological"]}, {"factor": ["neurosurgical intervention"], "outcome": ["neurological"]}, {"factor": ["mechanical ventilation"], "outcome": ["non-neurological", "complication"]}, {"factor": ["glasgow coma scale"], "outcome": ["non-neurological", "complication"]}, {"factor": ["blood transfusion"], "outcome": ["non-neurological", "complication", "neurosurgical intervention"]}, {"factor": ["injury", "concomitant"], "outcome": ["non-neurological", "complication", "gcs"]}]
+    a._procEnts(list_ents)
+    a._sepConfEnts(list_ents)
+    a.printLogs()
+    
+    
     from models_spacy import SpacyModelTBI
     nlpmodel = SpacyModelTBI("en_core_sci_scibert")
     print(nlpmodel.model)

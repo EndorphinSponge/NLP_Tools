@@ -3,16 +3,19 @@
 from collections import Counter
 from itertools import combinations
 from difflib import SequenceMatcher
+from typing import Union
 import re, os, json
 
 # Data science
 import pandas as pd
+from pandas import DataFrame
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
 
 # Internal imports
 from components_tbi import factors_ignore, factors_trans, outcomes_ignore, outcomes_trans
+from internal_globals import importData
 
 #%% Constants
 # NLP = spacy.load("en_core_sci_scibert") # Requires GPU
@@ -47,6 +50,7 @@ class GraphBuilder:
     """
     def __init__(self, abrv_cont = None, ):
         self.abrvs = abrv_cont # Is only needed for NLP processing, not needed beyond populating counters
+        self.df = DataFrame()
         self.graph = nx.Graph()
         self.factor_counter = Counter()
         self.outcome_counter = Counter()
@@ -83,7 +87,7 @@ class GraphBuilder:
 
 
 
-    def populateCounters(self, df_path, col_input = "Extracted_Text"):
+    def populateCounters(self, df_path, col = "Ents"):
         """
         Populates the graph's counters using df and abbreviation container originally passed 
         into the class 
@@ -101,7 +105,7 @@ class GraphBuilder:
         for index, row in df_path.iterrows():
             print("NLP processing: " + str(index))
             article_statements: list[tuple[set[str], set[str]]] = [] # List of tuples (per statement) of set containing entities from each individual statement
-            text = row[col_input]
+            text = row[col]
             # Return a list of statements for each row/article
             statements = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
             for statement in statements: # Iterate through each statement of GPT3 output
@@ -198,24 +202,6 @@ class GraphBuilder:
         # Graphml documentation: https://networkx.org/documentation/stable/reference/readwrite/graphml.html
         nx.write_graphml(self.graph, path)
         return None
-
-    def postprocessEntitySet(self, set_entities, entity_type):
-        """
-        entity_type: type of entities contained by the set (e.g., factor vs outcome), specifies
-        which containers will be used for processing 
-        """
-        # Order matters: ignore, translate, then map
-        if entity_type == "factor":
-            set_entities = {ent for ent in set_entities if ent not in self.factors_ignore}
-            set_entities = {transEnts(ent, self.factors_trans) for ent in set_entities}
-            set_entities = {mapAbrv(ent, self.abrvs) for ent in set_entities} # Map any abbreviable strings to their abbreviations
-            return set_entities
-        elif entity_type == "outcome":
-            set_entities = {ent for ent in set_entities if ent not in self.outcomes_ignore}
-            set_entities = {transEnts(ent, self.outcomes_trans) for ent in set_entities}
-            set_entities = {mapAbrv(ent, self.abrvs) for ent in set_entities} # Map any abbreviable strings to their abbreviations
-            return set_entities
-        # Can add other entity pipelines here
         
     def resetCounters(self):
         self.factor_counter = Counter()
@@ -270,14 +256,68 @@ class EntProcessor:
         self.trans_log = Counter()
         self.conf_ent_log = Counter()
     # Ignore and translation containers will be dictionaries with labels of types of nodes that it applies to 
-    def procEnts(self, list_ents: list[dict[str, list[str]]]):
-        for ind, ent_dict in enumerate(list_ents):
-            for ent_type in ent_dict:
+    def procDfEnts(self,
+                   df_path: Union[str, bytes, os.PathLike],
+                   col: str = "Ents",
+                   col_out: str = "Processed_ents"):
+        root_name = os.path.splitext(df_path)[0]
+        if root_name.endswith("ents"): # Replace raw with fmt if it exists at end of filename
+            new_name = re.sub(R"ents$", "fmtents", root_name)
+        else: # Otherwise append fmt to end
+            new_name = root_name + "fmtents"
+        df = importData(df_path, screen_text=[col]) # Screen col for text
+        
+        df_out = DataFrame()        
+        for ind, row in df.iterrows():
+            print("Processing ents for: ", ind)
+            ents_json: list[dict[str, list[str]]] = json.loads(row[col]) # List of ent dicts containing list of ent (value) for each ent type (key)
+            
+            list_ents = self._procEnts(ents_json)
+            
+            new_row = DataFrame({col_out: [list_ents]})
+            new_row.index = pd.RangeIndex(start=ind, stop=ind+1, step=1) # Assign corresponding index to new row
+            df_out = pd.concat([df_out, new_row])
+        df_merged = pd.concat([df, df_out], axis=1)
+            
+        
+        print("Separating overlapping ents")
+        for ind, row in df_merged.iterrows(): # Iterate through merged df to resolve any overlaps between node types
+            list_ents: list[dict[str, list[str]]] = row[col_out] # Will not be serialized into json yet
+            
+            list_ents = self._sepConfEnts(list_ents)
+            
+            row[col_out] = json.dumps(list_ents)
+        df_merged.to_excel(f"{new_name}.xlsx")
+    
+    def _procEnts(self,
+                  list_ents: list[dict[str, list[str]]],
+                  igno_type: list[str] = []
+                  ) -> list[dict[str, list[str]]]:
+        
+        def abrvEnts(self: EntProcessor, ent: str, thresh: int = 0.95) -> str:
+            for long_form in self.abbreviations:
+                if SequenceMatcher(a=ent.lower(), b=long_form.lower()).ratio() > thresh:
+                    short_form = self.abbreviations[long_form]
+                    self.abrv_log[(short_form, ent)] += 1 # Log abbreviation mapping
+                    return short_form # Return corresponding short form in abbreviation
+            return ent # If no fuzzy matches, return input unchanged 
+        
+        def transEnts(self: EntProcessor, ent: str, ent_type: str) -> str:
+            # Different logic from map abrv which uses fuzzy matching 
+            type_specific_trans = self.translations[ent_type]
+            if ent in type_specific_trans:
+                self.trans_log[(type_specific_trans[ent], ent)] += 1 # Log translation 
+                return type_specific_trans[ent]
+            else: 
+                return ent
+            
+        for ent_dict in list_ents:
+            for ent_type in [t for t in ent_dict if t not in igno_type]: 
                 ents = set(ent_dict[ent_type]) # Convert list from JSON to set
                 
-                ents = {self._abrvEnts(ent, thresh=0.9) for ent in ents}
+                ents = {abrvEnts(self, ent, thresh=0.9) for ent in ents}
                 ents = {ent for ent in ents if ent not in self.exclusions[ent_type]}
-                ents = {self._transEnts(ent, ent_type) for ent in ents}
+                ents = {transEnts(self, ent, ent_type) for ent in ents}
                 
                 ent_dict[ent_type] = list(ents) # Update container with new contents of ents, changes will propagate to entry ents list
                 if ent_type not in self.proc_ents: 
@@ -286,24 +326,10 @@ class EntProcessor:
                 
         return list_ents
     
-    def _abrvEnts(self, ent: str, thresh: int = 0.9):
-        for long_form in self.abbreviations:
-            if SequenceMatcher(a=ent.lower(), b=long_form.lower()).ratio() > thresh:
-                short_form = self.abbreviations[long_form]
-                self.abrv_log[(short_form, ent)] += 1 # Log abbreviation mapping
-                return short_form # Return corresponding short form in abbreviation
-        return ent # If no fuzzy matches, return input unchanged 
-    
-    def _transEnts(self, ent: str, ent_type: str):
-        # Different logic from map abrv which uses fuzzy matching 
-        type_specific_trans = self.translations[ent_type]
-        if ent in type_specific_trans:
-            self.trans_log[(type_specific_trans[ent], ent)] += 1 # Log translation 
-            return type_specific_trans[ent]
-        else: 
-            return ent
-    
-    def sepConfEnts(self, list_ents: list[dict[str, list[str]]], igno_type: list[str] = []):
+    def _sepConfEnts(self,
+                     list_ents: list[dict[str, list[str]]],
+                     igno_type: list[str] = []
+                     ) -> list[dict[str, list[str]]]:
         # Should resolve overlap between any number of groups 
         # Needs to be run after procEnts has been run on all ents
         common_ents: set[str] = set()
@@ -312,7 +338,7 @@ class EntProcessor:
                 overlap = set.intersection(self.proc_ents[ent_type1], self.proc_ents[ent_type2])
                 common_ents.update(overlap) # Add overlap between group to all common ents
         for ent_dict in list_ents:
-            for ent_type in [ent_type for ent_type in ent_dict if ent_type not in igno_type]:
+            for ent_type in [t for t in ent_dict if t not in igno_type]:
                 for ent in ent_dict[ent_type].copy():
                     if ent in common_ents:
                         ind = ent_dict[ent_type].index(ent) # Get index of ent within its list
@@ -414,3 +440,4 @@ if False:
     plt.ylabel('count')
 
     plt.show()
+# %%
