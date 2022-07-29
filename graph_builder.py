@@ -1,27 +1,39 @@
 #%% Imports 
 # General
 from collections import Counter
-import re
-import difflib
-import os
+from itertools import combinations
+from difflib import SequenceMatcher
+import re, os, json
 
 # Data science
 import pandas as pd
 import numpy as np
-from pyvis.network import Network
 import networkx as nx
 import matplotlib.pyplot as plt
 
-# NLP
-import spacy 
-from scispacy.abbreviation import AbbreviationDetector # Added via NLP.add_pipe("abbreviation_detector")
-
-from spacy import displacy
-from scispacy.linking import EntityLinker
+# Internal imports
+from components_tbi import factors_ignore, factors_trans, outcomes_ignore, outcomes_trans
 
 #%% Constants
-NLP = spacy.load("en_core_sci_scibert") # Requires GPU
-NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
+# NLP = spacy.load("en_core_sci_scibert") # Requires GPU
+# NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
+with open("gpt3_output_abrvs_rfn.json", "r") as file:
+    abrv_json: list[list[list[str, str], int]] = json.load(file)
+
+with open("gpt3_output_abrvs_trans.json", "r") as file:
+    trans_json: dict[str, str] = json.load(file)
+
+ABRVS = {abrv[0][1]: abrv[0][0] for abrv in abrv_json} # Unpack abrvs with LONG AS KEY and short as value (reversed order compared to original tuples)
+
+EXCLUDE = {
+    "factor": factors_ignore,
+    "outcome": outcomes_ignore,
+}
+
+TRANSLATE = {
+    "factor": factors_trans | trans_json, # Merge custom translations with automatically generated ones
+    "outcome": outcomes_trans | trans_json,
+}
 
 #%% Classes & Functions
 
@@ -67,8 +79,6 @@ class GraphBuilder:
             "mortality rate": "mortality",
             "survival": "mortality",
             "functional": "functional outcome",
-
-
         }
 
 
@@ -217,7 +227,7 @@ class GraphBuilder:
         self.graph = nx.Graph()
 
 def compareStrings(str1, str2):
-    return difflib.SequenceMatcher(a=str1.lower(), b=str2.lower()).ratio()
+    return SequenceMatcher(a=str1.lower(), b=str2.lower()).ratio()
 
 def nlpString(string):
     """
@@ -245,6 +255,71 @@ def nlpString(string):
             return {doc[0].text.lower().strip(),}
         else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
             return {doc[0].lemma_.strip().lower(),} 
+
+class EntProcessor:
+    def __init__(self,
+                 abrv_cont: dict[str, str] = ABRVS,
+                 exclude_cont: dict[str, set[str]] = EXCLUDE,
+                 trans_cont: dict[str, dict[str, str]] = TRANSLATE,
+                 ) -> None:
+        self.abbreviations = abrv_cont
+        self.exclusions = exclude_cont
+        self.translations = trans_cont
+        self.proc_ents: dict[str, set[str]] = dict() # Tracks processed ents of each type, initialize a set for each type of ent
+    # Ignore and translation containers will be dictionaries with labels of types of nodes that it applies to 
+    def procEnts(self, list_ents: list[dict[str, list[str]]]):
+        
+        print(list_ents)
+        
+        for ind, ent_dict in enumerate(list_ents):
+            for ent_type in ent_dict:
+                ents = set(ent_dict[ent_type]) # Convert list from JSON to set
+                
+                ents = {self._abrvEnts(ent, thresh=0.9) for ent in ents}
+                ents = {ent for ent in ents if ent not in self.exclusions[ent_type]}
+                ents = {self._transEnts(ent, ent_type) for ent in ents}
+                
+                "ISSUE SOMEWHERE HERE"
+                
+                ent_dict[ent_type] = list(ents) # Update container with new contents of ents, changes will propagate to entry ents list
+                if ent_type not in self.proc_ents: # Initialize ent type in tracker if it doesn't exist
+                    self.proc_ents[ent_type] = set()                     
+                self.proc_ents[ent_type].update(ents) # Track change by adding ents to its corresponding type in tracker
+                
+        print(list_ents)
+        return "new list ents in same format"
+    
+    def _abrvEnts(self, ent: str, thresh: int = 0.9):
+        for long_form in self.abbreviations:
+            if SequenceMatcher(a=ent.lower(), b=long_form.lower()).ratio() > thresh:
+                return self.abbreviations[long_form] # Return corresponding short form in abbreviation
+        return ent # If no fuzzy matches, return input unchanged 
+    
+    def _transEnts(self, ent: str, ent_type: str):
+        # Different logic from map abrv which uses fuzzy matching 
+        type_specific_trans = self.translations[ent_type]
+        if ent in type_specific_trans:
+            return type_specific_trans[ent]
+        else: 
+            return ent
+    
+    def sepConfEnts(self, list_ents: list[dict[str, list[str]]], igno_type: list[str] = []):
+        # Should resolve overlap between any number of groups 
+        # NOT VERIFIED YET
+        common_ents: set[str] = set()
+        for ent_type1, ent_type2 in combinations(self.proc_ents, 2):
+            if ent_type1 not in igno_type and ent_type2 not in igno_type: # If neither types are being ignored
+                overlap = set.intersection(self.proc_ents[ent_type1], self.proc_ents[ent_type2])
+                common_ents.update(overlap) # Add overlap between group to all common ents
+        for ent_dict in list_ents:
+            for ent_type in [ent_type for ent_type in ent_dict if ent_type not in igno_type]:
+                for ent in ent_dict[ent_type].copy():
+                    if ent in common_ents:
+                        ind = ent_dict[ent_type].index(ent) # Get index of ent within its list
+                        ent_dict[ent_type][ind] = ent + f" {ent_type}" # Replace value with annotated version
+                        print("Resolved overlap")
+        # DEBUG TO FIND OUT IF LOGIC IS ACTUALLY BEING CARRIED THROUGH 
+        return list_ents
 
 
 def mapAbrv(string, abrv_container, threshold = 0.9):
@@ -291,7 +366,9 @@ def extractAbrvCont(df, col_input = "Extracted_Text"):
             abrv_container.update(extractAbrvs(item))
     return abrv_container
 
-if __name__ == "__main__":
+
+
+if False:
     #%%
     builder = GraphBuilder()
     builder.importGraph("tbi_topic0_graph.xml")

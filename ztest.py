@@ -1,3 +1,18 @@
+#%%
+
+
+#%% Set operations
+
+s1 = set([1,2,3])
+s2 = set([3,4,5])
+
+print(set.intersection(s1, s2))
+print(s1 | s2)
+print(s1)
+s1 = s1 - s2
+print(s1)
+
+
 #%% Hashing Abrv class
 class Abrv: 
     """
