@@ -20,10 +20,10 @@ from internal_globals import importData
 #%% Constants
 # NLP = spacy.load("en_core_sci_scibert") # Requires GPU
 # NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
-with open("test/gpt3_output_fmt_abrvs_rfn.json", "r") as file:
+with open("test/test_abrvs_rfn.json", "r") as file:
     abrv_json: list[list[list[str, str], int]] = json.load(file)
 
-with open("test/gpt3_output_fmt_abrvs_trans.json", "r") as file:
+with open("test/test_abrvs_trans.json", "r") as file:
     trans_json: dict[str, str] = json.load(file)
 
 ABRVS = {abrv[0][1]: abrv[0][0] for abrv in abrv_json} # Unpack abrvs with LONG AS KEY and short as value (reversed order compared to original tuples)
@@ -59,10 +59,10 @@ class EntProcessor:
                    col: str = "Ents",
                    col_out: str = "Processed_ents"):
         root_name = os.path.splitext(df_path)[0]
-        if root_name.endswith("ents"): # Replace raw with fmt if it exists at end of filename
-            new_name = re.sub(R"ents$", "fmtents", root_name)
+        if root_name.endswith("entsR"): # Replace raw with fmt if it exists at end of filename
+            new_name = re.sub(R"entsR$", "entsF", root_name)
         else: # Otherwise append fmt to end
-            new_name = root_name + "_fmtents"
+            new_name = root_name + "_entsF"
         df = importData(df_path, screen_text=[col]) # Screen col for text
         
         df_out = DataFrame()        
@@ -146,9 +146,9 @@ class EntProcessor:
         return list_ents
 
     def printLogs(self):
-        print("Abbreviations: ", self.abrv_log)
-        print("Translations: ", self.trans_log)
-        print("Conflicts: ", self.conf_ent_log)
+        print("Abbreviations:", self.abrv_log)
+        print("Translations:", self.trans_log)
+        print("Conflicts:", self.conf_ent_log)
 
         
 class GraphBuilder:
@@ -163,6 +163,7 @@ class GraphBuilder:
         self.node_counters: dict[str, Counter[str]] = dict()
         self.edge_counters: dict[tuple[str, str], Counter[tuple[str, str]]] = dict()
         self.df_root_name: str = "" # Populated by the root name of the last df that was used to populate counters
+        self.graph_root_name: str = "" # Derived from df_root_name, includes information about thresholding
 
 
     def popCountersMulti(self, df_path, col = "Processed_ents"):
@@ -261,9 +262,9 @@ class GraphBuilder:
                 count = edge_counter[edge]
                 node1 = edge[0]
                 node2 = edge[1]
-                if (node1_counter[node1] > thresh or node2_counter[node2] > thresh): # Don't need to check in both counters like before since node type is already specified by edge_type
+                if (node1_counter[node1] > thresh and node2_counter[node2] > thresh): # Don't need to check in both counters like before since node type is already specified by edge_type
                     self.graph.add_edge(node1, node2, width=count) # "width" attribute affects pyvis rendering, pyvis doesn't support edge opacity
-
+        self.graph_root_name = self.df_root_name + f"_t{thresh}" # Add threshold information 
 
     def exportGraph(self, path: Union[str, bytes, os.PathLike] = ""):
         """
@@ -272,11 +273,11 @@ class GraphBuilder:
         if path:
             file_name = path
         else:
-            file_name = self.df_root_name + ".xml"
+            file_name = self.graph_root_name + ".xml"
         # Export graph , https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml
         # Graphml documentation: https://networkx.org/documentation/stable/reference/readwrite/graphml.html
         nx.write_graphml(self.graph, file_name)
-        print("Exported graph to ", file_name)
+        print("Exported graph to", file_name)
         
     def resetCounters(self):
         self.node_counters: dict[str, Counter[str]] = dict()
@@ -285,52 +286,9 @@ class GraphBuilder:
     def resetGraph(self):
         self.graph = nx.Graph()
 
-if __name__ == "__main__":
+if __name__ == "__main__": # For testing purposes
     b = GraphBuilder()
     b.popCountersMulti("test/gpt3_output_fmt_fmtents.xlsx")
     b.buildGraph()
     b.exportGraph()
 
-if False:
-    #%%
-    builder = GraphBuilder()
-    builder.importGraph("tbi_topic0_graph.xml")
-    builder.renderGraphNX(cmap = True)
-    #%%
-    builder = GraphBuilder()
-    builder.importGraph("tbi_topic10_t1_graph.xml")
-    builder.renderGraphNX(cmap = True)
-
-    #%%
-    builder = GraphBuilder()
-    builder.importGraph("tbi_ymcombined_t5_graph.xml")
-    builder.renderGraphNX(cmap = True)
-    #%% Build abbreviations
-    df_origin = pd.read_excel("gpt3_output_formatted_annotated25.xlsx", engine='openpyxl') # For colab support after installing openpyxl for xlsx files
-    abrvs = extractAbrvCont(df_origin, col_input = "Extracted_Text")
-    #%% Build graph 
-    builder = GraphBuilder(abrvs)
-    builder.populateCounters(df_origin)
-    builder.buildGraph(thresh = 1)
-    builder.exportGraph("tempgraph.xml")
-    builder.renderGraphNX(cmap = True)
-
-    #%%
-    g1 = nx.read_graphml("tbi_ymcombined_t15_graph.xml")
-    print(g1.nodes(data = "size"))
-    sorted_sizes = sorted(list(g1.nodes(data = "size")), key = lambda x: x[1])
-    sorted_edges = sorted(list(g1.edges(data = "width")), key = lambda x: x[2])
-    print(sorted_sizes)
-    print(sorted_edges)
-
-    #%% Preview distributions contained within an array
-    data = [] # Container for data
-    bins = np.arange(min(data), max(data), 1) # fixed bin size
-    plt.xlim([min(data), max(data)])
-
-    plt.hist(data, bins=bins, alpha=0.5)
-    plt.title('Test')
-    plt.xlabel('variable X')
-    plt.ylabel('count')
-
-    plt.show()

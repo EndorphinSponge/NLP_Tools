@@ -211,8 +211,8 @@ class SpacyModelTBI(SpacyModel):
             new_row.index = pd.RangeIndex(start=index, stop=index+1, step=1) # Reassign index of new row by using current index 
             df_out = pd.concat([df_out, new_row])
         df_merged = pd.concat([df, df_out], axis=1)
-        df_merged.to_excel(f"{root_name}_ents.xlsx")
-        print(f"Exported processed ents to {root_name}_ents.xlsx")
+        df_merged.to_excel(f"{root_name}_entsR.xlsx")
+        print(f"Exported raw ents to {root_name}_entsR.xlsx")
                 
     
     def _gatherEnts(self, string: str):

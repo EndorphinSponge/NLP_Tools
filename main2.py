@@ -1,55 +1,36 @@
-from internal_globals import importData
-import pandas as pd
 import os
 
 DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 
-if True:
-    # from models_spacy import SpacyModelTBI
-    # nlpmodel = SpacyModelTBI()
-    # # nlpmodel.extractEntsTBI(R"test/gpt3_output_fmt.xlsx")
-    # nlpmodel.extractAbrvCont(R"test/gpt3_output_fmt.xlsx")
-    # print(nlpmodel.empty_log)
-    
-    # from models_spacy import refineAbrvs
-    # refineAbrvs("test/gpt3_output_fmt_abrvs.json")
-    
-    # from graph_builder import EntProcessor
-    # a = EntProcessor()
-    # a.procDfEnts("test/gpt3_output_fmt_ents.xlsx")
-    # # a.procDfEnts("test/test_fmt_ents.xlsx")
-    # a.printLogs()
-    
-    from graph_builder import GraphBuilder
-    b = GraphBuilder()
-    b.popCountersMulti("test/gpt3_output_fmt_fmtents.xlsx")
-    b.buildGraph()
-    b.exportGraph()
-    
-
-if False:
-    
-    
-    from graph_builder import EntProcessor
-    a = EntProcessor()
-    list_ents = [{"factor": ["mechanical ventilation"], "outcome": ["neurological"]}, {"factor": ["severity", "head injury"], "outcome": ["neurological"]}, {"factor": ["blood transfusion"], "outcome": ["neurological"]}, {"factor": ["neurosurgical intervention"], "outcome": ["neurological"]}, {"factor": ["mechanical ventilation"], "outcome": ["non-neurological", "complication"]}, {"factor": ["glasgow coma scale"], "outcome": ["non-neurological", "complication"]}, {"factor": ["blood transfusion"], "outcome": ["non-neurological", "complication", "neurosurgical intervention"]}, {"factor": ["injury", "concomitant"], "outcome": ["non-neurological", "complication", "gcs"]}]
-    a._procEnts(list_ents)
-    a._sepConfEnts(list_ents)
-    a.printLogs()
-    
-
-
-    import time
+   
+if True: # Full pipeline using test.xlsx
     from models_api import CloudModel
-    fetcher = CloudModel("tbi_ymcombined_subset25.csv")
-    fetcher.mineTextGpt3((16, 19))
-    fetcher.storeOutputFormatted("gpt3")
+    fetcher = CloudModel("test/test.xlsx")
+    fetcher.mineTextGpt3() # *_gpt3R.xlsx
+    fetcher.exportOutputFormatted("gpt3") # *_gpt3F.xlsx
+    
+    from models_spacy import SpacyModelTBI, refineAbrvs
+    model = SpacyModelTBI()
+    model.extractEntsTBI(R"test/test_gpt3F.xlsx") # *_gpt3F_entsR.xlsx
+    model.extractAbrvCont(R"test/test.xlsx") # *_abrvs.json
+    print(model.empty_log)
+    refineAbrvs("test/test_abrvs.json") # *_abrvs_rfn.json, *_abrvs_trans.json
+    
+    from graph_builder import EntProcessor, GraphBuilder
+    a = EntProcessor()
+    a.procDfEnts("test/test_gpt3F_entsR.xlsx") # *_gpt3F_entsF.xlsx
+    a.printLogs()
+    b = GraphBuilder()
+    b.popCountersMulti("test/test_gpt3F_entsF.xlsx")
+    thresh = 2
+    b.buildGraph(thresh=thresh)
+    b.exportGraph() # *_gpt3F_entsF_t{int}.xml
+    
+    from graph_renderer import GraphVisualizer
+    c = GraphVisualizer(f"test/test_gpt3F_entsF_t{str(thresh)}.xml")
+    c.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
 
-    print("Pause")
-    time.sleep(30)
-    print("Resume")
+    
 
-    importer = CloudModel("")
-    importer.importRaw("tbi_ymcombined_subset25(16, 19)_gpt3raw.xlsx")
-    importer.storeOutputFormatted("gpt3")
+

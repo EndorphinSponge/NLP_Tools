@@ -2,7 +2,7 @@
 # General
 from collections import Counter
 from math import log
-import os
+import os, re
 from typing import Union
 
 # Data science
@@ -23,15 +23,16 @@ class GraphVisualizer:
     """
     def __init__(self, graphml_path: Union[str, bytes, os.PathLike]):
         self.graph = nx.read_graphml(graphml_path)
+        self.graph_root_name = os.path.splitext(graphml_path)[0]
 
 
-    def importGraph(self, path):
+    def importGraph(self, graphml_path):
         """
         Imports a new NX graph from an XML file into the object and replaces old
         """
         # Import graph https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.read_graphml.html#networkx.readwrite.graphml.read_graphml
-        self.graph = nx.read_graphml(path)
-        return None
+        self.graph = nx.read_graphml(graphml_path)
+        self.graph_root_name: str = os.path.splitext(graphml_path)[0]
 
     def resetGraph(self,):
         self.graph = nx.Graph()
@@ -39,7 +40,7 @@ class GraphVisualizer:
     def renderGraphNX(self, 
         width_log = 2, width_min = 0.2, 
         alpha_max = 0.95, alpha_min = 0.01, alpha_root = 1, 
-        save_prefix = False, cmap= True, fig_size = 10,
+        display = False, cmap= True, fig_size = 10,
         ):
         """
         Renders the graph contained within the object using NX
@@ -47,6 +48,20 @@ class GraphVisualizer:
         save_prefix: prefix for saving figures
         cmap: use color mapping in the stead of transparency 
         """
+        def _roundNum(num, base):
+            """
+            For creating integer numbers for legend and scales in visualization 
+            Rounds a number to a base, will return 1/5 of the base if the number
+            is less than half the base (i.e., rounding with min being half of base)
+            """
+            if num > base/2:
+                return base * round(num/base)
+            elif num <= base/2 and num > base/5: # Catch cases in between and round up (normally it would round down)
+                return base
+            else:
+                return int(base/5)
+        
+        # NOTE THAT AUTOSCALING ONLY WORKS WHEN SAVING FIGURE, doesn't work with matplotlib display
         dict_sizes = dict(self.graph.nodes(data="size")) # Convert node data to dict
         scaling = fig_size*15/log(sum(dict_sizes.values()), 5) # Log the sum of the node sizes for scaling factor, fig_size taken into account, constant made based off manual tweaking
         scaling = fig_size*40/max(list(dict_sizes.values())) # Use max node value 
@@ -61,7 +76,7 @@ class GraphVisualizer:
 
         #%% Networkx visualization (multiple elements)
         # nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
-        fig = plt.figure(1, figsize = (fig_size * 1.1, fig_size), dpi = 800)
+        plt.figure(1, figsize = (fig_size * 1.1, fig_size), dpi = 800)
         plt.clf() # Clear figure, has to be done AFTER setting figure size/DPI, otherwise this information is no assigned properly
         layout = nx.kamada_kawai_layout(self.graph) # Different position solvers available: https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_kamada_kawai.html
         nx.draw_networkx_nodes(self.graph, 
@@ -77,21 +92,21 @@ class GraphVisualizer:
 
         # Draw legend: https://stackoverflow.com/questions/29973952/how-to-draw-legend-for-scatter-plot-indicating-size
         # Same scaling factor but different rounding thresholds
-        d1 = roundNum(0.02*max(node_sizes)/scaling, 5) # Reference of 5 for max of 250
-        d2 = roundNum(0.08*max(node_sizes)/scaling, 10) # Reference of 20 for max of 250 
-        d3 = roundNum(0.4*max(node_sizes)/scaling, 20) # Reference of 100 for max of 250
-        d4 = roundNum(max(node_sizes)/scaling, 50) # Reference of 250 for max of 250
+        d1 = _roundNum(0.02*max(node_sizes)/scaling, 5) # Reference of 5 for max of 250
+        d2 = _roundNum(0.08*max(node_sizes)/scaling, 10) # Reference of 20 for max of 250 
+        d3 = _roundNum(0.4*max(node_sizes)/scaling, 20) # Reference of 100 for max of 250
+        d4 = _roundNum(max(node_sizes)/scaling, 50) # Reference of 250 for max of 250
         p1 = plt.scatter([],[], s=d1*scaling, marker='o', color='#8338ec', alpha = 0.8)
         p2 = plt.scatter([],[], s=d2*scaling, marker='o', color='#8338ec', alpha = 0.8)
         p3 = plt.scatter([],[], s=d3*scaling, marker='o', color='#8338ec', alpha = 0.8)
         p4 = plt.scatter([],[], s=d4*scaling, marker='o', color='#8338ec', alpha = 0.8)
 
-        def genLabel(num):
+        def _genLabel(num):
             """
             Reverts scaled number into original scale and rounds off decimal,
             then converts to string
             """
-            return str(roundNum(num/scaling, 1))
+            return str(_roundNum(num/scaling, 1))
 
         plt.legend((p1, p2, p3, p4), 
             (d1, d2, d3, d4), # Divide by scaling to convert back to normal size
@@ -129,11 +144,19 @@ class GraphVisualizer:
                 alpha = edge_transparency,
                 width = edge_widths,
                 )
-        if save_prefix:
-            plt.savefig(f"net_{save_prefix}_(width[log{str(width_log)}_min{str(width_min)}]alpha[max{str(alpha_max)}min{str(alpha_min)}root{str(alpha_root)}]).png")
+            
+        if re.search(R"F_entsF_t\d+$", self.graph_root_name): # If it has matched naming conventions (remember to stay model agnostic)
+            thresh = re.search(R"F_entsF(_t\d+)$", self.graph_root_name).group(1)
+            root_name = re.sub(R"F_entsF_t\d+$", "", self.graph_root_name) # Remove annotations to leave root E.g., test_gpt3 as root
+            root_name = root_name + thresh # Add threshold annotation to root (can't use lookahead with variable length search)
         else:
+            root_name = self.graph_root_name 
+        if display:
             plt.show()
-        return None
+        else:
+            file_name = f"{root_name}_net(width[log{str(width_log)}_min{str(width_min)}]alpha[max{str(alpha_max)}min{str(alpha_min)}root{str(alpha_root)}]).png"
+            plt.savefig(file_name)
+            print("Exported graph to", file_name)
 
     def renderGraphPyvis(self, path = "pyvis_network.html", solver = "repulsion"):
         """
@@ -154,18 +177,7 @@ class GraphVisualizer:
         graphpy.show_buttons(filter_=['physics'])
         graphpy.show(path)
 
-def roundNum(num, base):
-    """
-    For creating integer numbers for legend and scales in visualization 
-    Rounds a number to a base, will return 1/5 of the base if the number
-    is less than half the base (i.e., rounding with min being half of base)
-    """
-    if num > base/2:
-        return base * round(num/base)
-    elif num <= base/2 and num > base/5: # Catch cases in between and round up (normally it would round down)
-        return base
-    else:
-        return int(base/5)
+
 
 #%% Rendering from exported XMLs
 if __name__ == "__main__":
@@ -173,11 +185,32 @@ if __name__ == "__main__":
     visualizer = GraphVisualizer()
     for i in range(0, 5): # Rendering with threshold = 1
         visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t3_graph.xml"))
-        visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t3_graph.xml", cmap = True)
+        visualizer.renderGraphNX(display = f"tbi_topic{i}_t3_graph.xml", cmap = True)
     for i in range(5, 6): # Rendering with threshold = 2
         visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t2_graph.xml"))
-        visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t2_graph.xml", cmap = True)
+        visualizer.renderGraphNX(display = f"tbi_topic{i}_t2_graph.xml", cmap = True)
     for i in range(6, 11): # Rendering with threshold = 3
         visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t1_graph.xml"))
-        visualizer.renderGraphNX(save_prefix = f"tbi_topic{i}_t1_graph.xml", cmap = True)
+        visualizer.renderGraphNX(display = f"tbi_topic{i}_t1_graph.xml", cmap = True)
 
+if False:
+
+    #%%
+    g1 = nx.read_graphml("tbi_ymcombined_t15_graph.xml")
+    print(g1.nodes(data = "size"))
+    sorted_sizes = sorted(list(g1.nodes(data = "size")), key = lambda x: x[1])
+    sorted_edges = sorted(list(g1.edges(data = "width")), key = lambda x: x[2])
+    print(sorted_sizes)
+    print(sorted_edges)
+
+    #%% Preview distributions contained within an array
+    data = [] # Container for data
+    bins = np.arange(min(data), max(data), 1) # fixed bin size
+    plt.xlim([min(data), max(data)])
+
+    plt.hist(data, bins=bins, alpha=0.5)
+    plt.title('Test')
+    plt.xlabel('variable X')
+    plt.ylabel('count')
+
+    plt.show()

@@ -1,3 +1,12 @@
+#%% Regex
+import re
+    
+if re.search(R"F_entsF_t\d+$", "test_gpt3F_entsF_t420"): # If it has matched naming conventions (remember to stay model agnostic)
+    thresh = re.search(R"F_entsF(_t\d+)$", "test_gpt3F_entsF_t420").group(1)
+    root_name = re.sub(R"F_entsF_t\d+$", "", "test_gpt3F_entsF_t420") # Remove annotations to leave root E.g., test_gpt3F as root
+    root_name = root_name + thresh # Add threshold annotation to root (can't use lookahead with variable length search)
+    print(root_name)
+
 #%% Counters
 from collections import Counter
 a = Counter()
