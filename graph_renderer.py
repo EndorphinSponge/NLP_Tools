@@ -145,20 +145,17 @@ class GraphVisualizer:
                 width = edge_widths,
                 )
             
-        if re.search(R"F_entsF_t\d+$", self.graph_root_name): # If it has matched naming conventions (remember to stay model agnostic)
-            thresh = re.search(R"F_entsF(_t\d+)$", self.graph_root_name).group(1)
-            root_name = re.sub(R"F_entsF_t\d+$", "", self.graph_root_name) # Remove annotations to leave root E.g., test_gpt3 as root
-            root_name = root_name + thresh # Add threshold annotation to root (can't use lookahead with variable length search)
-        else:
-            root_name = self.graph_root_name 
+        root_name = self._getSimplifiedName()
+            
         if display:
             plt.show()
         else:
-            file_name = f"{root_name}_net(width[log{str(width_log)}_min{str(width_min)}]alpha[max{str(alpha_max)}min{str(alpha_min)}root{str(alpha_root)}]).png"
-            plt.savefig(file_name)
-            print("Exported graph to", file_name)
+            output_name = f"{root_name}_net(width[log{str(width_log)}_min{str(width_min)}]alpha[max{str(alpha_max)}min{str(alpha_min)}root{str(alpha_root)}]).png"
+            plt.savefig(output_name)
+            print("Exported rendered graph to", output_name)
+            
 
-    def renderGraphPyvis(self, path = "pyvis_network.html", solver = "repulsion"):
+    def renderGraphPyvis(self, solver = "repulsion"):
         """
         Builds graph from counters and renders it using Pyvis
         """
@@ -175,9 +172,18 @@ class GraphVisualizer:
             graphpy.barnes_hut()
         graphpy.inherit_edge_colors(False)
         graphpy.show_buttons(filter_=['physics'])
-        graphpy.show(path)
+        output_name = self._getSimplifiedName() + "_pyvis.html"
+        graphpy.show(output_name)
+        print(f"Exported rendered graph to {output_name}")
 
-
+    def _getSimplifiedName(self):
+        # Function for returning a simplified version of the graph's name 
+        if re.search(R"F_entsF_t\d+$", self.graph_root_name): # If it has matched naming conventions (remember to stay model agnostic)
+            thresh = re.search(R"F_entsF(_t\d+)$", self.graph_root_name).group(1)
+            root_name = re.sub(R"F_entsF_t\d+$", "", self.graph_root_name) # Remove annotations to leave root E.g., test_gpt3 as root
+            return root_name + thresh # Add threshold annotation to root (can't use lookahead with variable length search)
+        else:
+            return self.graph_root_name 
 
 #%% Rendering from exported XMLs
 if __name__ == "__main__":

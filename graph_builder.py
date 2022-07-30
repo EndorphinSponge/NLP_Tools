@@ -11,44 +11,41 @@ import pandas as pd
 from pandas import DataFrame
 import numpy as np
 import networkx as nx
-import matplotlib.pyplot as plt
+
 
 # Internal imports
-from components_tbi import factors_ignore, factors_trans, outcomes_ignore, outcomes_trans
 from internal_globals import importData
 
 #%% Constants
-# NLP = spacy.load("en_core_sci_scibert") # Requires GPU
-# NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
-with open("test/test_abrvs_rfn.json", "r") as file:
-    abrv_json: list[list[list[str, str], int]] = json.load(file)
 
-with open("test/test_abrvs_trans.json", "r") as file:
-    trans_json: dict[str, str] = json.load(file)
-
-ABRVS = {abrv[0][1]: abrv[0][0] for abrv in abrv_json} # Unpack abrvs with LONG AS KEY and short as value (reversed order compared to original tuples)
-
-EXCLUDE = {
-    "factor": factors_ignore,
-    "outcome": outcomes_ignore,
-}
-
-TRANSLATE = {
-    "factor": factors_trans | trans_json, # Merge custom translations with automatically generated ones
-    "outcome": outcomes_trans | trans_json,
-}
 
 #%% Classes & Functions
 
+class EntProcessorCore:
+    # Core component of EntProcessor, is inherited by different core classes of different components to return their own exclusions and translations
+    def __init__(self,
+                 abrv_path: Union[str, bytes, os.PathLike],
+                 common_trans_path: Union[str, bytes, os.PathLike],
+                 ):
+        with open(abrv_path, "r") as file:
+            abrv_json: list[list[list[str, str], int]] = json.load(file)
+        self.abrv_json = abrv_json
+
+        with open(common_trans_path, "r") as file:
+            trans_json: dict[str, str] = json.load(file)
+        self.trans_json = trans_json
+        
+        self.abbreviations: dict[str, str] = {abrv[0][1]: abrv[0][0] for abrv in abrv_json} # Unpack abrvs with LONG AS KEY and short as value (reversed order compared to original tuples)
+        self.exclusions: dict[str, set[str]] = dict()
+        self.translations: dict[str, dict[str, str]] = dict()
+
 class EntProcessor:
     def __init__(self,
-                 abrv_cont: dict[str, str] = ABRVS,
-                 exclude_cont: dict[str, set[str]] = EXCLUDE,
-                 trans_cont: dict[str, dict[str, str]] = TRANSLATE,
+                 ent_processor_core: EntProcessorCore,
                  ) -> None:
-        self.abbreviations = abrv_cont
-        self.exclusions = exclude_cont
-        self.translations = trans_cont
+        self.abbreviations: dict[str, str] = ent_processor_core.abbreviations
+        self.exclusions: dict[str, set[str]] = ent_processor_core.exclusions
+        self.translations: dict[str, dict[str, str]] = ent_processor_core.translations
         self.proc_ents: dict[str, set[str]] = dict() # Tracks processed ents of each type, initialize a set for each type of ent
         self.abrv_log = Counter()
         self.trans_log = Counter()
