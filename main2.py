@@ -17,8 +17,16 @@ if True:
     
     from graph_builder import EntProcessor
     a = EntProcessor()
-    a.procDfEnts("test/gpt3_output_fmt_ents.xlsx")
+    # a.procDfEnts("test/gpt3_output_fmt_ents.xlsx")
+    a.procDfEnts("test/test_fmt_ents.xlsx")
     a.printLogs()
+    
+    from graph_builder import GraphBuilder
+    b = GraphBuilder()
+    # b.popCountersMulti("test/gpt3_output_fmt_fmtents.xlsx")
+    b.popCountersMulti("test/test_fmt_fmtents.xlsx")
+    b.printCounters()
+    
 
 if False:
     

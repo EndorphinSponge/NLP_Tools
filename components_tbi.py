@@ -13,7 +13,7 @@ common_tbi_ignore = {"tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "
     } # Specific to TBI in both factors and outcomes
 
 #%% Exclusions
-factors_ignore = {"problem","mortality rate"} | common_ignore | common_tbi_ignore
+factors_ignore = {"problem", "mortality rate", "outcome"} | common_ignore | common_tbi_ignore
 outcomes_ignore = {"age", "improved", "reduced", "trauma"} | common_ignore | common_tbi_ignore
 
 #%% Translations
