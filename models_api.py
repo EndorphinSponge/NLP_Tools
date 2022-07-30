@@ -13,11 +13,11 @@ from pandas import DataFrame, Series
 import openai
 from openai.openai_object import OpenAIObject # For type assumption check
 
+# Internals
 from internal_globals import importData
+from private.keys import KEY1
 #%% Constants
-openai.api_key = "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" # Personal
-# openai.api_key = "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" # Throwaway
-# openai.api_key = "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" # Sea
+openai.api_key = KEY1
 TEST = """{
   "choices": [
     {

@@ -3,8 +3,10 @@ import os
 DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 
+
+
    
-if True: # Full pipeline using test.xlsx
+if False: # Full pipeline using test.xlsx
     from models_api import CloudModel
     fetcher = CloudModel("test/test.xlsx")
     fetcher.mineTextGpt3() # *_gpt3R.xlsx
