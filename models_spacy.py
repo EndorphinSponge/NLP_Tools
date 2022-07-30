@@ -249,11 +249,19 @@ class SpacyModelTBI(SpacyModel):
             doc = self.NLP(text.strip())
             abrvs: set[tuple[str, str]] = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
             for abrv in abrvs:
-                abrv_counter[abrv] += 1 # Add unique abbreviation into acounter 
+                abrv_counter[abrv] += 1 # Add unique abbreviation into acounter
+                
+        abrv_items: list[tuple[tuple[str, str], int]] = list(abrv_counter.items()) # Gives list of tuples of the counted object (tuple[str, str]) and its count in dict form
+        for item in abrv_items.copy(): # Screen items
+            (short, long), count = item
+            short_alnum = re.sub(R"[^a-zA-Z0-9]", "", short) # Get alphanumeric version of short
+            if len(short_alnum) < 2: # Screen for invalid abbreviations
+                # Can add low count filter though uncommonly defined abbreviations may help in short form convergence during fuzzy matching 
+                abrv_items.remove(item)
+        abrv_items.sort(key=lambda x: (x[1], len(x[0][1])), reverse=True) # Sort by counts and then by length of long form, will be translated in this priority
         with open(f"{root_name}_abrvs.json", "w") as file:
-            counter_json: list[tuple[tuple[str, str], int]] = abrv_counter.items() # Gives list of tuples of the counted object (tuple[str, str]) and its count
-            json.dump(list(counter_json), file) # Convert to list since sets can't be serialized in JSON 
-        return counter_json
+            json.dump(abrv_items, file) # Items converted to list for serialization 
+        return abrv_items
     
 class Abrv: 
     """

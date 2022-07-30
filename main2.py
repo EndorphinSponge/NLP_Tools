@@ -7,20 +7,20 @@ os.chdir(DIRPATH)
 
 if True:
     from models_spacy import SpacyModelTBI
-    nlpmodel = SpacyModelTBI("en_core_sci_scibert")
-    nlpmodel.extractEntsTBI(R"test\test_fmt.xlsx")
+    nlpmodel = SpacyModelTBI()
+    # nlpmodel.extractEntsTBI(R"test/gpt3_output_fmt.xlsx")
+    nlpmodel.extractAbrvCont(R"test/gpt3_output_fmt.xlsx")
     print(nlpmodel.empty_log)
-
-if False:
-    from graph_builder import EntProcessor
-    a = EntProcessor()
-    a.procDfEnts("test/test_fmt_ents.xlsx")
-    a.printLogs()
-
-    
     
     from models_spacy import refineAbrvs
-    refineAbrvs("gpt3_output_abrvs.json")
+    refineAbrvs("test/gpt3_output_fmt_abrvs.json")
+    
+    from graph_builder import EntProcessor
+    a = EntProcessor()
+    a.procDfEnts("test/gpt3_output_fmt_ents.xlsx")
+    a.printLogs()
+
+if False:
     
     
     from graph_builder import EntProcessor
@@ -30,18 +30,7 @@ if False:
     a._sepConfEnts(list_ents)
     a.printLogs()
     
-    
-    from graph_builder import EntProcessor
-    a = EntProcessor()
-    a.procDfEnts("test/test_fmt_ents.xlsx")
-    a.printLogs()
-    
 
-    
-    from models_spacy import SpacyModelTBI
-    model = SpacyModelTBI()
-    model.extractEntsTBI(R"data\gpt3_output.xlsx")
-    # model.extractAbrvCont(R"test\test_fmt.xlsx")
 
     import time
     from models_api import CloudModel

@@ -1,6 +1,29 @@
-#%%
+#%% String operations
+import re
+print(re.sub(R"[^a-zA-Z0-9]", "", "s-"))
 
+#%% Permutations of lists
+from itertools import product
+a = ["foo", "bar", "baz"]
+b = ["1", "2"]
+c = []
 
+print(list(product(a, b)))
+print(list(product(b, a)))
+print(list(product(c, a)))
+
+for item1, item2 in product(a, b):
+    print(item1, item2)
+
+#%% Sorting things 
+import json
+with open("gpt3_output_abrvs_rfn.json", "r") as file:
+    json_obj: list[tuple[tuple[str, str], int]] = json.load(file)
+
+json_obj.sort(key=lambda x: (x[1], len(x[0][1])), reverse=True)
+ABRVS = {abrv[0][1]: abrv[0][0] for abrv in json_obj}
+for abrv in ABRVS:
+    print(abrv)
 #%% Set operations
 
 s1 = set([1,2,3])
@@ -11,7 +34,6 @@ print(s1 | s2)
 print(s1)
 s1 = s1 - s2
 print(s1)
-
 
 #%% Hashing Abrv class
 class Abrv: 

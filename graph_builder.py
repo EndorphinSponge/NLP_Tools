@@ -1,7 +1,7 @@
 #%% Imports 
 # General
 from collections import Counter
-from itertools import combinations
+from itertools import combinations, product
 from difflib import SequenceMatcher
 from typing import Union
 import re, os, json
@@ -48,62 +48,46 @@ class GraphBuilder:
     Takes structured statements and generates a NetworkX graph depending 
     on the method 
     """
-    def __init__(self, abrv_cont = None, ):
-        self.abrvs = abrv_cont # Is only needed for NLP processing, not needed beyond populating counters
+    def __init__(self):
         self.df = DataFrame()
         self.graph = nx.Graph()
         self.factor_counter = Counter()
         self.outcome_counter = Counter()
         self.edge_counter = Counter()
-        common_ignore = ["patient", "patient\'", "patients", "rate", "associated", "hour", "day", "month", "year", "level", 
-            "favorable", "favourable", "good", "high", "low", "prevalence", "presence", "result", "ratio", "in-hospital",
-            "decrease", "bad", "poor", "unfavorable", "unfavourable", "reduced", "use of", "development",
-            "clinical trial", "significance", "finding", "score", "analysis", "isolate"
-            "early", "adult", "study", "background", "conclusion", "compare", "time"
-            "hours", "days", "months", "years", "rates",
-            ] # Words common to both factors and outcomes
-        common_tbi_ignore = ["tbi", "mtbi", "stbi", "csf", "serum", "blood", "plasma", "mild",
-            "moderate", "severe", "concentration", "risk", "traumatic", "finding", "post-injury",
-            "injury", "injuries",
-            ] # Specific to TBI 
-        self.factors_ignore = ["problem","mortality rate"] + common_ignore + common_tbi_ignore
-        self.outcomes_ignore = ["age", "improved", "reduced", "trauma", "s100b"] + common_ignore + common_tbi_ignore
-        self.factors_trans = {
-            "snps": "snp",
-            "rotterdam ct score": "rotterdam",
-            "rotterdam score": "rotterdam",
-            "marshall ct score": "marshall",
-            "marshall score": "marshall",
-
-        }
-        self.outcomes_trans = {
-            "hospital mortality": "in-hospital mortality",
-            "clinical outcome": "outcome",
-            "death": "mortality",
-            "mortality rate": "mortality",
-            "survival": "mortality",
-            "functional": "functional outcome",
-        }
 
 
-
-    def populateCounters(self, df_path, col = "Ents"):
+    def popCountersMulti(self, df_path, col = "Processed_ents"):
         """
+        For DFs containing multiple entity types
         Populates the graph's counters using df and abbreviation container originally passed 
         into the class 
         """
-        # Reset counters
-        self.resetCounters()
-        
         set_mast_factors = set() # Master set of factors, used for finding intersection
         set_mast_outcomes = set() # Master set of outcomes, used for finding intersection 
         
         list_articles: list[list[tuple[set[str], set[str]]]] = [] # Stores output of each row/article as lists of factors and outcomes for each statement
         # Has shape of list(list(tuple(set(factor), set(outcome)))), outer list for article, inner list for statements within articles
         
+        df = importData(df_path, screen_text=[col])
         
-        for index, row in df_path.iterrows():
-            print("NLP processing: " + str(index))
+        for index, row in df.iterrows():
+            print("Populating counters from: ", index)
+            list_statements: list[dict[str, list[str]]] = row[col]
+            article_nodes: dict[str, set[str]] = {ent_type: set() for ent_type in list_statements[0]} # Take first statement to initialize article ent tracker
+            article_edges = set()
+            for statement in list_statements:
+                for ent_type in statement: # Parsing for each type of entity type
+                    ents = statement[ent_type]
+                    article_nodes[ent_type].update(ents) # Add ent to corresponding ent tracker set
+                for ent_type1, ent_type2 in combinations(statement, 2):
+                    # Can add if statement to screen out relationship between certain types of nodes 
+                    for ent1, ent2 in product(statement[ent_type1], statement[ent_type2]):
+                        article_edges.add((ent1, ent2)) 
+                        article_edges.add((ent2, ent1)) # Add reverse relationship 
+            for ent_type in article_nodes:
+                for node in article_nodes[ent_type]:
+                    pass # Initialize counters for each type?
+                    
             article_statements: list[tuple[set[str], set[str]]] = [] # List of tuples (per statement) of set containing entities from each individual statement
             text = row[col]
             # Return a list of statements for each row/article
@@ -264,7 +248,7 @@ class EntProcessor:
         if root_name.endswith("ents"): # Replace raw with fmt if it exists at end of filename
             new_name = re.sub(R"ents$", "fmtents", root_name)
         else: # Otherwise append fmt to end
-            new_name = root_name + "fmtents"
+            new_name = root_name + "_fmtents"
         df = importData(df_path, screen_text=[col]) # Screen col for text
         
         df_out = DataFrame()        
@@ -295,7 +279,7 @@ class EntProcessor:
                   ) -> list[dict[str, list[str]]]:
         
         def abrvEnts(self: EntProcessor, ent: str, thresh: int = 0.95) -> str:
-            for long_form in self.abbreviations:
+            for long_form in self.abbreviations: # Abbreviations ordered by most common and then by longest long form
                 if SequenceMatcher(a=ent.lower(), b=long_form.lower()).ratio() > thresh:
                     short_form = self.abbreviations[long_form]
                     self.abrv_log[(short_form, ent)] += 1 # Log abbreviation mapping

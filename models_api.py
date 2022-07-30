@@ -112,7 +112,7 @@ class CloudModel:
         if self.df_file_name.endswith("raw"): # Replace raw with fmt if it exists at end of filename
             self.df_file_name = re.sub(R"raw$", "fmt", self.df_file_name)
         else: # Otherwise append fmt to end
-            self.df_file_name = self.df_file_name + "fmt"
+            self.df_file_name = self.df_file_name + "_fmt"
             
         if raw_type.lower() == "gpt3":
             for index, row in df.iterrows():
