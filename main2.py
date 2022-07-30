@@ -6,14 +6,14 @@ DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 
 if True:
-    from models_spacy import SpacyModelTBI
-    nlpmodel = SpacyModelTBI()
-    # nlpmodel.extractEntsTBI(R"test/gpt3_output_fmt.xlsx")
-    nlpmodel.extractAbrvCont(R"test/gpt3_output_fmt.xlsx")
-    print(nlpmodel.empty_log)
+    # from models_spacy import SpacyModelTBI
+    # nlpmodel = SpacyModelTBI()
+    # # nlpmodel.extractEntsTBI(R"test/gpt3_output_fmt.xlsx")
+    # nlpmodel.extractAbrvCont(R"test/gpt3_output_fmt.xlsx")
+    # print(nlpmodel.empty_log)
     
-    from models_spacy import refineAbrvs
-    refineAbrvs("test/gpt3_output_fmt_abrvs.json")
+    # from models_spacy import refineAbrvs
+    # refineAbrvs("test/gpt3_output_fmt_abrvs.json")
     
     from graph_builder import EntProcessor
     a = EntProcessor()

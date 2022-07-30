@@ -1,20 +1,26 @@
-#%% String operations
-import re
-print(re.sub(R"[^a-zA-Z0-9]", "", "s-"))
+#%% Counters
+from collections import Counter
+a = Counter()
+a.update({1,4,5,2,2})
+a.update({1,4,5,2,2})
+print(a.items())
 
-#%% Permutations of lists
-from itertools import product
+
+#%% Permutations and combinations of lists
+from itertools import product, combinations, permutations
 a = ["foo", "bar", "baz"]
 b = ["1", "2"]
 c = []
 
-print(list(product(a, b)))
-print(list(product(b, a)))
-print(list(product(c, a)))
 
-for item1, item2 in product(a, b):
-    print(item1, item2)
+# print(list(product(a, b)))
+# print(list(product(b, a)))
+# print(list(product(c, a)))
 
+# for item1, item2 in product(a, b):
+#     print(item1, item2)
+
+print(list(permutations(b, 2)))
 #%% Sorting things 
 import json
 with open("gpt3_output_abrvs_rfn.json", "r") as file:

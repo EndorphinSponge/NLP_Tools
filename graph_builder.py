@@ -1,7 +1,7 @@
 #%% Imports 
 # General
 from collections import Counter
-from itertools import combinations, product
+from itertools import combinations, product, permutations
 from difflib import SequenceMatcher
 from typing import Union
 import re, os, json
@@ -20,10 +20,10 @@ from internal_globals import importData
 #%% Constants
 # NLP = spacy.load("en_core_sci_scibert") # Requires GPU
 # NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
-with open("gpt3_output_abrvs_rfn.json", "r") as file:
+with open("test/gpt3_output_fmt_abrvs_rfn.json", "r") as file:
     abrv_json: list[list[list[str, str], int]] = json.load(file)
 
-with open("gpt3_output_abrvs_trans.json", "r") as file:
+with open("test/gpt3_output_fmt_abrvs_trans.json", "r") as file:
     trans_json: dict[str, str] = json.load(file)
 
 ABRVS = {abrv[0][1]: abrv[0][0] for abrv in abrv_json} # Unpack abrvs with LONG AS KEY and short as value (reversed order compared to original tuples)
@@ -49,32 +49,28 @@ class GraphBuilder:
     on the method 
     """
     def __init__(self):
-        self.df = DataFrame()
         self.graph = nx.Graph()
-        self.factor_counter = Counter()
-        self.outcome_counter = Counter()
-        self.edge_counter = Counter()
+        self.node_counters: dict[str, Counter] = dict()
+        self.edge_counters: dict[(str, str), Counter] = dict()
 
 
     def popCountersMulti(self, df_path, col = "Processed_ents"):
         """
-        For DFs containing multiple entity types
+        For DFs containing multiple entity types (i.e., distinguishes between node types for node and edge enties)
         Populates the graph's counters using df and abbreviation container originally passed 
         into the class 
         """
-        set_mast_factors = set() # Master set of factors, used for finding intersection
-        set_mast_outcomes = set() # Master set of outcomes, used for finding intersection 
-        
-        list_articles: list[list[tuple[set[str], set[str]]]] = [] # Stores output of each row/article as lists of factors and outcomes for each statement
-        # Has shape of list(list(tuple(set(factor), set(outcome)))), outer list for article, inner list for statements within articles
-        
+
         df = importData(df_path, screen_text=[col])
+        proto_stmt: dict[str, list[str]] = json.loads(df[col].iloc[0])[0] # Get prototypical statement (obtains first statment from first row of col of interest)
+        ent_types = [key for key in proto_stmt]
+        edge_types = list(permutations(proto_stmt, 2))
         
         for index, row in df.iterrows():
             print("Populating counters from: ", index)
-            list_statements: list[dict[str, list[str]]] = row[col]
-            article_nodes: dict[str, set[str]] = {ent_type: set() for ent_type in list_statements[0]} # Take first statement to initialize article ent tracker
-            article_edges = set()
+            list_statements: list[dict[str, list[str]]] = json.loads(row[col])
+            article_nodes: dict[str, set[str]] = {t: set() for t in ent_types} # Initialize node container
+            article_edges = {(t[0], t[1]): set() for t in edge_types} # Initialize edge container for all types
             for statement in list_statements:
                 for ent_type in statement: # Parsing for each type of entity type
                     ents = statement[ent_type]
@@ -82,78 +78,19 @@ class GraphBuilder:
                 for ent_type1, ent_type2 in combinations(statement, 2):
                     # Can add if statement to screen out relationship between certain types of nodes 
                     for ent1, ent2 in product(statement[ent_type1], statement[ent_type2]):
-                        article_edges.add((ent1, ent2)) 
-                        article_edges.add((ent2, ent1)) # Add reverse relationship 
+                        article_edges[(ent_type1, ent_type2)].add((ent1, ent2)) 
+                        article_edges[(ent_type2, ent_type1)].add((ent2, ent1)) # Add reverse relationship 
             for ent_type in article_nodes:
-                for node in article_nodes[ent_type]:
-                    pass # Initialize counters for each type?
-                    
-            article_statements: list[tuple[set[str], set[str]]] = [] # List of tuples (per statement) of set containing entities from each individual statement
-            text = row[col]
-            # Return a list of statements for each row/article
-            statements = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
-            for statement in statements: # Iterate through each statement of GPT3 output
-                factor, outcome, *size = list(filter(None, statement.split("|"))) # Filter with none to get rid of empty strings, should only return 3 items corresponding to the 3 columns of output
-                """CAN ADD MORE FACTORS HERE IF GPT3 OUTPUT HAS MORE COLUMNS, *size is a placeholder for extra variables"""
-                if re.search(r"\w", factor) != None: # Given that this cell is not empty
-                    set_factors = nlpString(factor)
-                    set_factors = self.postprocessEntitySet(set_factors, "factor")
-                    set_mast_factors.update(set_factors) # Update master list
-                else:
-                    set_factors = set() # Otherwise, assign empty set to maintain same data type
-                if re.search(r"\w", outcome) != None:
-                    set_outcomes = nlpString(outcome)
-                    set_outcomes = self.postprocessEntitySet(set_outcomes, "outcome")
-                    set_mast_outcomes.update(set_outcomes) # Update master list
-                else:
-                    set_outcomes = set() # Otherwise, assign empty set to maintain same data type
-                article_statements.append((set_factors, set_outcomes)) # Append tuple of set with entities for this statement 
-            list_articles.append(article_statements)
+                if ent_type not in self.node_counters: # Instantiate node counter if not already instantiated
+                    self.node_counters[ent_type] = Counter()
+                self.node_counters[ent_type].update(article_nodes[ent_type]) # Add all nodes of the ent type to counter
+            for edge_type in article_edges:
+                if edge_type not in self.edge_counters: # Instantiate edge type counter if it doesn't exist
+                    self.edge_counters[edge_type] = Counter()
+                self.edge_counters[edge_type].update(article_edges[edge_type]) # Add all edges of this type to counter
 
-        set_common_ents = set_mast_factors.intersection(set_mast_outcomes) # Get intersection between master lists
-
-        # This set of loops uses the post-processed entities 
-        num_article = 0
-        for list_statements in list_articles:
-            print("Appending to counter: " + str(num_article))
-            # Use sets for containers so multiple mentions within same paper are not recounted 
-            set_article_factors = set()
-            set_article_outcomes = set()
-            set_article_relationships = set()            
-            for tuple_columns in list_statements:
-                set_factors, set_outcomes = tuple_columns 
-                """CAN UNPACK MORE VARIABLES HERE IF OUTPUT HAS MORE VARIABLES"""
-                # Can add additional resolution parsing within the if statements
-                if len(set_factors) != 0: # Given that the set is not empty
-                    for ent in set_factors.copy(): # Copy set and modify original
-                        if ent in set_common_ents: # Check against common list
-                            set_factors.remove(ent)
-                            set_factors.add(ent + " (factor)") # Modify with suffix if there are conflicts
-                    set_article_factors.update(set_factors)
-                if len(set_outcomes) != 0:
-                    for ent in set_outcomes.copy(): # Copy set and modify original
-                        if ent in set_common_ents: # Check against common list
-                            set_outcomes.remove(ent)
-                            set_outcomes.add(ent + " (outcome)") # Modify with suffix if there are conflicts
-                    set_article_outcomes.update(set_outcomes)
-                if len(set_factors) != 0 and len(set_outcomes) != 0: # Given that the statement has at least one of each node
-                    for str_factor in set_factors: # Add connection between a factor and all outcomes
-                        for str_outcome in set_outcomes:
-                            if str_factor != str_outcome: # So that you don't get self connections
-                                set_article_relationships.add((str_factor, str_outcome))
-                                set_article_relationships.add((str_outcome, str_factor)) # Add bidirectional relationship
-                                # Remember to enumerate here to avoid repeating connections
-            # Update global counter with information from sets; each entity will only be entered once since all entities are in sets 
-            for factor in set_article_factors:
-                self.factor_counter[factor] += 1
-            for outcome in set_article_outcomes:
-                self.outcome_counter[outcome] += 1
-            for edge in set_article_relationships:
-                self.edge_counter[edge] += 1
-            num_article += 1
-        return None
     
-    def buildGraph(self, thresh = 1, ):
+    def buildGraph(self, thresh = 1,):
         """
         Builds Networkx graph with the populated counters and a threshold for node count
         ---
@@ -170,8 +107,8 @@ class GraphBuilder:
             count = self.outcome_counter[entity]
             if count > thresh:
                 self.graph.add_node(entity, color = "#f72585", size = count) # Color is in #RRGGBBAA format (A is transparency)
-        for (node1, node2) in self.edge_counter:
-            count = self.edge_counter[(node1, node2)]
+        for (node1, node2) in self.edge_counters:
+            count = self.edge_counters[(node1, node2)]
             if (self.factor_counter[node1] > thresh or self.outcome_counter[node1] > thresh) and\
                 (self.factor_counter[node2] > thresh or self.outcome_counter[node2] > thresh): # Need to each node in all sets of counters
                 self.graph.add_edge(node1, node2, width = count) # "width" attribute affects pyvis rendering, pyvis doesn't support edge opacity
@@ -190,41 +127,11 @@ class GraphBuilder:
     def resetCounters(self):
         self.factor_counter = Counter()
         self.outcome_counter = Counter()
-        self.edge_counter = Counter()
+        self.edge_counters = Counter()
         return None
 
     def resetGraph(self,):
         self.graph = nx.Graph()
-
-def compareStrings(str1, str2):
-    return SequenceMatcher(a=str1.lower(), b=str2.lower()).ratio()
-
-def nlpString(string):
-    """
-    Takes a string and returns a set of entities, also combines
-    any abbreviation definitions into the short form (deletes long form to
-    avoid duplication)
-    """
-    doc = NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
-    if len(doc) > 1: # Only process if there is more than one token
-        ents = set()
-        for ent in list(doc.ents):
-            if len(ent.text.lower().strip()) <= 5:
-                ents.add(ent.text.lower().strip())
-            else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
-                ents.add(ent.lemma_.lower().strip())
-        abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
-        for abrv, full in abrvs:
-            for ent in ents.copy(): # Iterate over a copy of the set while changing the original
-                if compareStrings(full, ent) > 0.9: # Find ent matching with full form of abbreviation
-                    ents.remove(ent) # Remove full form
-                    ents.add(abrv) # Add abbreviated form
-        return ents
-    else: # Otherwise there will be only one token, return its lemma 
-        if len(doc[0].text.lower().strip()) <= 5:
-            return {doc[0].text.lower().strip(),}
-        else: # Only add lemma if word is bigger than 5 characters (lemmas on abbreviations tend to be buggy)
-            return {doc[0].lemma_.strip().lower(),} 
 
 class EntProcessor:
     def __init__(self,
@@ -336,51 +243,6 @@ class EntProcessor:
         print("Translations: ", self.trans_log)
         print("Conflicts: ", self.conf_ent_log)
 
-def mapAbrv(string, abrv_container, threshold = 0.9):
-    """
-    Checks if there is an abbreviation in a string given an abbreviation
-    container and maps it to the abbreviation if present
-    Returns original string if no matches
-    """
-    for abrv, full in abrv_container:
-        if compareStrings(full, string) > threshold:
-            print("Mapped " + full + " to " + abrv)
-            return abrv
-    return string
-
-def transEnts(string, trans_dict):
-    # Different logic from map abrv which uses fuzzy matching 
-    if string in trans_dict.keys(): # If the string matches a translation key
-        print("Translated " + string + " to " + trans_dict[string])
-        return trans_dict[string]
-    else:
-        return string
-    
-def extractAbrvs(string: str) -> list:
-    """
-    Takes a string and returns a set of all the abbreviations
-    """
-    doc = NLP(string.strip()) # Need to strip whitespace, otherwise recognition is suboptimal esp for shorter queries
-    abrvs = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) for abrv in doc._.abbreviations])
-    return abrvs 
-
-def extractAbrvCont(df, col_input = "Extracted_Text"):
-    """
-    Separated from main counter process because some tasks may want to use
-    NLP to look ahead and pre-process all documents in a corpora for 
-    metadata (e.g., corpora-wide abbreviations) that can be used to help
-    process subsets of the corpora 
-    """
-    abrv_container = set()
-    for index, row in df.iterrows():
-        print(index)
-        text = row[col_input]
-        items = [item.strip() for item in text.split("\n") if re.search(r"\w", item) != None] # Only include those that have word characters
-        for item in items: # Collect abbreviations 
-            abrv_container.update(extractAbrvs(item))
-    return abrv_container
-
-
 
 if False:
     #%%
@@ -425,4 +287,3 @@ if False:
     plt.ylabel('count')
 
     plt.show()
-# %%

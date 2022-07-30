@@ -428,6 +428,7 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
         json.dump(trans_final, file)
     
     abrv_json_new = [[[abrv.short, abrv.long], abrv.count] for abrv in abrv_set] # Repack into hashable json obj
+    abrv_json_new.sort(key=lambda x: (x[1], len(x[0][1])), reverse=True) # Sort by counts and then by length of long form, will be translated in this priority
     with open(f"{root_name}_rfn.json", "w") as file:
         json.dump(abrv_json_new, file)
     
