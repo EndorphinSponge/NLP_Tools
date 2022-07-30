@@ -15,17 +15,17 @@ if True:
     # from models_spacy import refineAbrvs
     # refineAbrvs("test/gpt3_output_fmt_abrvs.json")
     
-    from graph_builder import EntProcessor
-    a = EntProcessor()
+    # from graph_builder import EntProcessor
+    # a = EntProcessor()
     # a.procDfEnts("test/gpt3_output_fmt_ents.xlsx")
-    a.procDfEnts("test/test_fmt_ents.xlsx")
-    a.printLogs()
+    # # a.procDfEnts("test/test_fmt_ents.xlsx")
+    # a.printLogs()
     
     from graph_builder import GraphBuilder
     b = GraphBuilder()
-    # b.popCountersMulti("test/gpt3_output_fmt_fmtents.xlsx")
-    b.popCountersMulti("test/test_fmt_fmtents.xlsx")
-    b.printCounters()
+    b.popCountersMulti("test/gpt3_output_fmt_fmtents.xlsx")
+    b.buildGraph()
+    b.exportGraph()
     
 
 if False:

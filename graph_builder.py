@@ -85,6 +85,7 @@ class EntProcessor:
             list_ents = self._sepConfEnts(list_ents)
             df_merged.loc[ind, col_out] = json.dumps(list_ents) # Need loc function and original df to modify in place, can't just give index
         df_merged.to_excel(f"{new_name}.xlsx")
+        print(f"Exported processed ents to {new_name}.xlsx")
     
     def _procEnts(self,
                   list_ents: list[dict[str, list[str]]],
@@ -159,8 +160,9 @@ class GraphBuilder:
     """
     def __init__(self):
         self.graph = nx.Graph()
-        self.node_counters: dict[str, Counter] = dict()
-        self.edge_counters: dict[(str, str), Counter] = dict()
+        self.node_counters: dict[str, Counter[str]] = dict()
+        self.edge_counters: dict[tuple[str, str], Counter[tuple[str, str]]] = dict()
+        self.df_root_name: str = "" # Populated by the root name of the last df that was used to populate counters
 
 
     def popCountersMulti(self, df_path, col = "Processed_ents"):
@@ -170,14 +172,13 @@ class GraphBuilder:
         into the class 
         DOES NOT RESET THE COUNTERS
         """
-
+        self.df_root_name = os.path.splitext(df_path)[0] # Store root name
         df = importData(df_path, screen_text=[col])
         proto_stmt: dict[str, list[str]] = json.loads(df[col].iloc[0])[0] # Get prototypical statement (obtains first statment from first row of col of interest)
         ent_types = [key for key in proto_stmt]
         edge_types = list(permutations(proto_stmt, 2))
-        
+        print("Populating counters from DF...") # Below code runs quite fast so we don't need to track progress
         for index, row in df.iterrows():
-            print("Populating counters from: ", index)
             list_statements: list[dict[str, list[str]]] = json.loads(row[col])
             article_nodes: dict[str, set[str]] = {t: set() for t in ent_types} # Initialize node container
             article_edges = {(t[0], t[1]): set() for t in edge_types} # Initialize edge container for all types
@@ -200,10 +201,10 @@ class GraphBuilder:
                 self.edge_counters[edge_type].update(article_edges[edge_type]) # Add all edges of this type to counter
 
     def printCounters(self):
-        print("Nodes ==============================================")
-        for node_type in self.node_counters:
-            print("------------ Node type ", node_type, " ------------")
-            list_items = list(self.node_counters[node_type].items())
+        print("Entities ==============================================")
+        for ent_type in self.node_counters:
+            print("------------ Entity type ", ent_type, " ------------")
+            list_items = list(self.node_counters[ent_type].items())
             list_items.sort(key=lambda x: x[1], reverse=True)
             print(list_items)
             # Print nodes sorted by count
@@ -216,7 +217,7 @@ class GraphBuilder:
             # Print edges sorted by count
 
     
-    def buildGraph(self, thresh = 1,):
+    def buildGraph(self, thresh = 1):
         """
         Builds Networkx graph with the populated counters and a threshold for node count
         ---
@@ -225,47 +226,70 @@ class GraphBuilder:
         # Reminder that nx nodes can have abitrary attributes that don't contribute to rendering, need to manually adjust visual parameters with drawing methods
         # nx.Graph is just a way to store data, data can be stored in node attributes         
         self.graph = nx.Graph() # Reset graph
-        for entity in self.factor_counter:
-            count = self.factor_counter[entity]
-            if count > thresh: # Only add if there is more than 1 mention
-                self.graph.add_node(entity, color = "#8338ec", size = count) # Color is in #RRGGBBAA format (A is transparency)
-        for entity in self.outcome_counter:
-            count = self.outcome_counter[entity]
-            if count > thresh:
-                self.graph.add_node(entity, color = "#f72585", size = count) # Color is in #RRGGBBAA format (A is transparency)
-        for (node1, node2) in self.edge_counters:
-            count = self.edge_counters[(node1, node2)]
-            if (self.factor_counter[node1] > thresh or self.outcome_counter[node1] > thresh) and\
-                (self.factor_counter[node2] > thresh or self.outcome_counter[node2] > thresh): # Need to each node in all sets of counters
-                self.graph.add_edge(node1, node2, width = count) # "width" attribute affects pyvis rendering, pyvis doesn't support edge opacity
-                print(node1, node2)
-        return None
+        print("Building graph from counters...")
+        for ent_type in self.node_counters:
+            node_counter = self.node_counters[ent_type]
+            
+            if ent_type == "factor":
+                color = "#8338ec" # Color is in #RRGGBBAA format (A is transparency)
+            elif ent_type == "outcome":
+                color = "#f72585"
+            else: 
+                color = "#000000" # Default color
+            # Can add other styling options here
+                
+            for ent in node_counter:
+                count = node_counter[ent]
+                if count > thresh:
+                    self.graph.add_node(ent, color=color, size=count)
+                pass
+        
+        for edge_type in self.edge_counters:
+            edge_counter = self.edge_counters[edge_type]
+            node1_counter = self.node_counters[edge_type[0]] # Retrieve node counter for each vertex of the edge
+            node2_counter = self.node_counters[edge_type[1]] # Retrieve node counter for each vertex of the edge
+            
+            
+            if edge_type == ("factor", "outcome"): # Demo for different styling
+                pass
+            elif edge_type == ("outcome", "factor"):
+                pass
+            elif "factor" in edge_type and "outcome" in edge_type: # Can also find bi-directional relationships
+                pass
+            
+            for edge in edge_counter:
+                count = edge_counter[edge]
+                node1 = edge[0]
+                node2 = edge[1]
+                if (node1_counter[node1] > thresh or node2_counter[node2] > thresh): # Don't need to check in both counters like before since node type is already specified by edge_type
+                    self.graph.add_edge(node1, node2, width=count) # "width" attribute affects pyvis rendering, pyvis doesn't support edge opacity
 
-    def exportGraph(self, path):
+
+    def exportGraph(self, path: Union[str, bytes, os.PathLike] = ""):
         """
         Exports currently stored graph to an XML file with the specified path 
         """
+        if path:
+            file_name = path
+        else:
+            file_name = self.df_root_name + ".xml"
         # Export graph , https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml
         # Graphml documentation: https://networkx.org/documentation/stable/reference/readwrite/graphml.html
-        nx.write_graphml(self.graph, path)
-        return None
+        nx.write_graphml(self.graph, file_name)
+        print("Exported graph to ", file_name)
         
     def resetCounters(self):
-        self.factor_counter = Counter()
-        self.outcome_counter = Counter()
-        self.edge_counters = Counter()
-        return None
+        self.node_counters: dict[str, Counter[str]] = dict()
+        self.edge_counters: dict[tuple[str, str], Counter[tuple[str, str]]] = dict()
 
-    def resetGraph(self,):
+    def resetGraph(self):
         self.graph = nx.Graph()
 
 if __name__ == "__main__":
     b = GraphBuilder()
     b.popCountersMulti("test/gpt3_output_fmt_fmtents.xlsx")
-    b.printCounters()
-    
-
-
+    b.buildGraph()
+    b.exportGraph()
 
 if False:
     #%%

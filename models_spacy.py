@@ -86,10 +86,13 @@ class SpacyModel:
         docbin = DocBin(store_user_data=True) # Need store_user_data to save Doc.user_data
         for doc in self.doclist:
             docbin.add(doc) # Serielize processed doc for exporting
+            
         if custom_name: # If custom name not empty, use custom name
             docbin.to_disk(f"{custom_name}({self.model}).spacy") # Saves content using hashes based on a model's vocab, will need this vocab to import it back
+            print(f"Exported DocBin to {custom_name}({self.model}).spacy")
         else: # Otherwise use prefix of last import to name output
             docbin.to_disk(f"{self.lastimportsrc}({self.model}).spacy") # Saves content using hashes based on a model's vocab, will need this vocab to import it back
+            print(f"Exported DocBin to {self.lastimportsrc}({self.model}).spacy")
             
             
 
@@ -107,9 +110,6 @@ class SpacyModel:
     def resetDocs(self):
         self.doclist = []
     
-
-        
-        
     
     def lemmatizeText(self,
                       df_path: Union[str, bytes, os.PathLike],
@@ -177,6 +177,8 @@ class SpacyModelTBI(SpacyModel):
             df_path: path for input DF
             col: column in input DF that has formatted output 
             col_out: column in new DF to export extracted ents to 
+        Returns: 
+            Exports processed entities for each row in a new Excel file
         """
         root_name = os.path.splitext(df_path)[0]
         df = importData(df_path, screen_text=[col]) # Screen for presence of text for the column containing the text
@@ -210,6 +212,7 @@ class SpacyModelTBI(SpacyModel):
             df_out = pd.concat([df_out, new_row])
         df_merged = pd.concat([df, df_out], axis=1)
         df_merged.to_excel(f"{root_name}_ents.xlsx")
+        print(f"Exported processed ents to {root_name}_ents.xlsx")
                 
     
     def _gatherEnts(self, string: str):
@@ -261,6 +264,7 @@ class SpacyModelTBI(SpacyModel):
         abrv_items.sort(key=lambda x: (x[1], len(x[0][1])), reverse=True) # Sort by counts and then by length of long form, will be translated in this priority
         with open(f"{root_name}_abrvs.json", "w") as file:
             json.dump(abrv_items, file) # Items converted to list for serialization 
+        print(f"Exported extracted abbreviations to {root_name}_abrvs.json")
         return abrv_items
     
 class Abrv: 
@@ -426,13 +430,13 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
         
     with open(f"{root_name}_trans.json", "w") as file:
         json.dump(trans_final, file)
+    print(f"Exported alternative translations to {root_name}_trans.json")
     
     abrv_json_new = [[[abrv.short, abrv.long], abrv.count] for abrv in abrv_set] # Repack into hashable json obj
     abrv_json_new.sort(key=lambda x: (x[1], len(x[0][1])), reverse=True) # Sort by counts and then by length of long form, will be translated in this priority
     with open(f"{root_name}_rfn.json", "w") as file:
         json.dump(abrv_json_new, file)
-    
-    return "merged abrv_json but directly save both abrv_json and alternative translations for short forms to be passed through abbreviation fuzzy matching rather than strict translation "    
+    print(f"Exported refined abbreviations to {root_name}_rfn.json")
 
 def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv], trans_conversions: list[tuple[str, str, int]]):
     # Goal is to merge long forms into a single one short
