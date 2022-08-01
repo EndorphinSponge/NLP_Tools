@@ -7,25 +7,25 @@ os.chdir(DIRPATH)
 
    
 
-if 1: # Full pipeline using test.xlsx
-    ROOT_PATH = "test/test.xlsx"
+if 1:
+    ROOT_PATH = "test/gpt3_output.xlsx"
     MODEL = "gpt3"
-    THRESH = 2
+    THRESH = 15
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     
-    # from graph_builder import EntProcessor, GraphBuilder
-    # builder = GraphBuilder()
-    # builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
-    # builder.buildGraph(thresh=THRESH)
-    # builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
+    from graph_builder import EntProcessor, GraphBuilder
+    builder = GraphBuilder()
+    builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
+    builder.buildGraph(thresh=THRESH, multidi=True)
+    builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
     
     from graph_renderer import GraphVisualizer
     visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{str(THRESH)}.xml")
     visualizer.genRenderArgs()
     visualizer.genLegend()
-    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
+    visualizer.renderGraphNX(cmap=False) # *_gpt3_t{int}_net(<rendering info>).png
 
-if F: # Full pipeline using test.xlsx
+if F: # Full pipeline example using test.xlsx
     ROOT_PATH = "test/test.xlsx"
     MODEL = "gpt3"
     THRESH = 2
@@ -58,6 +58,8 @@ if F: # Full pipeline using test.xlsx
     from graph_renderer import GraphVisualizer
     visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{str(THRESH)}.xml")
     visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
+    visualizer.genRenderArgs()
+    visualizer.genLegend()
     visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html
     
 

@@ -1,9 +1,10 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d3" for="edge" attr.name="prob" attr.type="double" />
   <key id="d2" for="edge" attr.name="width" attr.type="long" />
   <key id="d1" for="node" attr.name="size" attr.type="long" />
   <key id="d0" for="node" attr.name="color" attr.type="string" />
-  <graph edgedefault="undirected">
+  <graph edgedefault="directed">
     <node id="admission">
       <data key="d0">#8338ec</data>
       <data key="d1">3</data>
@@ -44,29 +45,69 @@
       <data key="d0">#f72585</data>
       <data key="d1">3</data>
     </node>
-    <edge source="admission" target="outcome">
+    <edge source="admission" target="outcome" id="0">
       <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
     </edge>
-    <edge source="glasgow coma scale score" target="mortality">
+    <edge source="glasgow coma scale score" target="mortality" id="0">
       <data key="d2">1</data>
+      <data key="d3">0.25</data>
     </edge>
-    <edge source="age" target="mortality">
+    <edge source="age" target="mortality" id="0">
       <data key="d2">4</data>
+      <data key="d3">0.4</data>
     </edge>
-    <edge source="gcs" target="mortality">
+    <edge source="gcs" target="mortality" id="0">
       <data key="d2">6</data>
+      <data key="d3">0.6666666666666666</data>
     </edge>
-    <edge source="gcs" target="severity">
+    <edge source="gcs" target="severity" id="0">
       <data key="d2">2</data>
+      <data key="d3">0.2222222222222222</data>
     </edge>
-    <edge source="gcs" target="outcome">
+    <edge source="gcs" target="outcome" id="0">
       <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
     </edge>
-    <edge source="sex" target="mortality">
+    <edge source="sex" target="mortality" id="0">
       <data key="d2">2</data>
+      <data key="d3">0.6666666666666666</data>
     </edge>
-    <edge source="sbp" target="mortality">
+    <edge source="sbp" target="mortality" id="0">
       <data key="d2">3</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="mortality" target="age" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.21052631578947367</data>
+    </edge>
+    <edge source="mortality" target="gcs" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.3157894736842105</data>
+    </edge>
+    <edge source="mortality" target="sex" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.10526315789473684</data>
+    </edge>
+    <edge source="mortality" target="sbp" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.15789473684210525</data>
+    </edge>
+    <edge source="mortality" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="outcome" target="gcs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="admission" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="severity" target="gcs" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.6666666666666666</data>
     </edge>
   </graph>
 </graphml>

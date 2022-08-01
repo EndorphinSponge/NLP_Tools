@@ -215,7 +215,7 @@ class GraphBuilder:
             # Print edges sorted by count
 
     
-    def buildGraph(self, thresh = 1):
+    def buildGraph(self, thresh = 1, multidi = False):
         """
         Builds Networkx graph with the populated counters and a threshold for node count
         ---
@@ -223,7 +223,11 @@ class GraphBuilder:
         """
         # Reminder that nx nodes can have abitrary attributes that don't contribute to rendering, need to manually adjust visual parameters with drawing methods
         # nx.Graph is just a way to store data, data can be stored in node attributes         
-        self.graph = nx.Graph() # Reset graph
+        if multidi:
+            self.graph = nx.MultiDiGraph() # Instantiate multidigraph
+            # Allows parallel and directed relationships to be rendered
+        else:
+            self.graph = nx.Graph() # Instantiate regular graph
         print("Building graph from counters...")
         for ent_type in self.node_counters:
             node_counter = self.node_counters[ent_type]
@@ -244,9 +248,8 @@ class GraphBuilder:
         
         for edge_type in self.edge_counters:
             edge_counter = self.edge_counters[edge_type]
-            node1_counter = self.node_counters[edge_type[0]] # Retrieve node counter for each vertex of the edge
-            node2_counter = self.node_counters[edge_type[1]] # Retrieve node counter for each vertex of the edge
-            
+            node_s_counter = self.node_counters[edge_type[0]] # Retrieve node counter for source
+            node_t_counter = self.node_counters[edge_type[1]] # Retrieve node counter for target
             
             if edge_type == ("factor", "outcome"): # Demo for different styling
                 pass
@@ -257,10 +260,12 @@ class GraphBuilder:
             
             for edge in edge_counter:
                 count = edge_counter[edge]
-                node1 = edge[0]
-                node2 = edge[1]
-                if (node1_counter[node1] > thresh and node2_counter[node2] > thresh): # Don't need to check in both counters like before since node type is already specified by edge_type
-                    self.graph.add_edge(node1, node2, width=count) # "width" attribute affects pyvis rendering, pyvis doesn't support edge opacity
+                node_s = edge[0]
+                node_t = edge[1]
+                if (node_s_counter[node_s] > thresh and node_t_counter[node_t] > thresh): # Don't need to check in both counters like before since node type is already specified by edge_type
+                    node_s_mentions = node_s_counter[node_s]
+                    probability = count/node_s_mentions # Probability of this connection is number of articles supporting this connection divided by total number of articles mentioning source
+                    self.graph.add_edge(node_s, node_t, width=count, prob=probability) # "width" attribute affects pyvis rendering, pyvis doesn't support edge opacity
         self.graph_root_name = self.df_root_name + f"_t{thresh}" # Add threshold information 
 
     def exportGraph(self, path: Union[str, bytes, os.PathLike] = ""):

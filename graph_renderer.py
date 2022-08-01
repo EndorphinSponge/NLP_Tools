@@ -33,7 +33,8 @@ class GraphVisualizer:
         self.node_colors: list[str] # List of hexacedimal color strings
         self.true_edge_widths: list[int]
         self.edge_widths: list[float]
-        self.edge_alphas: list[float]
+        self.edge_widths_alpha: list[float]
+        self.edge_probs: list[float]
         self.edge_zeroes: list[int]
         
         self.args_log: str
@@ -80,9 +81,12 @@ class GraphVisualizer:
         edge_widths = np.clip(edge_widths, width_min, None) # Set lower bound of width to 1
         self.edge_widths = edge_widths
         
-        edge_transparency = [alpha_max*(width/max(edge_width_true))**(1/alpha_root) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root if you want to reduce right skewness 
-        edge_transparency = np.clip(edge_transparency, alpha_min, None) # Use np to set lower bound for edges
-        self.edge_alphas = edge_transparency
+        edge_alphas = [alpha_max*(width/max(edge_width_true))**(1/alpha_root) for width in edge_width_true] # Scaled to max width times 0.7 to avoid solid lines, cube root if you want to reduce right skewness 
+        edge_alphas = np.clip(edge_alphas, alpha_min, None) # Use np to set lower bound for edges
+        self.edge_widths_alpha = edge_alphas # For manually width to transparency 
+        
+        edge_probs = [prob for (node1, node2, prob) in self.graph.edges(data="prob")]
+        self.edge_probs = edge_probs
         
         edge_zeroes = [0 for i in edge_width_true]
         self.edge_zeroes = edge_zeroes # Array with zero for each edge
@@ -116,9 +120,7 @@ class GraphVisualizer:
 
         self.legend = {"points": [p1, p2, p3, p4], "labels": [l1, l2, l3, l4]}
 
-    def renderGraphNX(self,
-        display = False, cmap= True,
-        ):
+    def renderGraphNX(self, dpi=800, display = False, cmap= True):
         """
         Renders the graph contained within the object using NX
         ----
@@ -132,7 +134,7 @@ class GraphVisualizer:
         
         #%% Networkx visualization (multiple elements)
         # nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
-        plt.figure(figsize=(fig_size*1.1, fig_size), dpi=800)
+        plt.figure(figsize=(fig_size*1.1, fig_size), dpi=dpi)
         
         # Draw nodes
         nx.draw_networkx_nodes(self.graph, 
@@ -158,30 +160,32 @@ class GraphVisualizer:
         # 10 is default font size
         
         if cmap: # Will map values (in proportion to min/max) to a color spectrum
-            nx.draw_networkx_edges(self.graph,
-                pos = layout,
-                alpha = self.edge_alphas, # Can add transparency on top to accentuate
-                edge_color = self.edge_alphas,
-                width = self.edge_widths,
-                edge_cmap = plt.cm.summer, 
+            rendered_edges = nx.draw_networkx_edges(self.graph,
+                pos=layout,
+                alpha=self.edge_probs, # Can add transparency on top to accentuate
+                width=self.edge_widths,
+                edge_color=self.edge_widths_alpha, # Map color to transparency (calculated based on true widths)
+                edge_cmap=plt.cm.summer, # Colors edges but doesn't generate colorbar scale legend
                 )
-            image = nx.draw_networkx_edges(self.graph, # Dummy variable for if color assignment is cube rooted, (transparency set to zero)
-                pos = layout,
-                alpha = self.edge_zeroes, # Array of zeroes
-                edge_color = self.true_edge_widths, # NOTE THAT THIS IS NOT EXACTLY THE SAME SCALE (due to cube root)
-                edge_cmap = plt.cm.summer, 
+            cbar_edges = nx.draw_networkx_edges(self.graph, # Dummy variable for if color assignment is cube rooted, (transparency set to zero)
+                pos=layout,
+                alpha=self.edge_zeroes, # Array of zeroes
+                edge_color=self.true_edge_widths, # NOTE THAT THIS IS NOT EXACTLY THE SAME SCALE (due to cube root)
+                edge_cmap=plt.cm.summer, 
+                arrows=False, # Need to disable arrows, otherwise draw_edges method returns a FancyArrowPatch for every edge, unable to
                 )
             # Colorbar legend solution: https://groups.google.com/g/networkx-discuss/c/gZmr-YgvIQs
             # Alternative solution using FuncFormatter here: https://stackoverflow.com/questions/38309171/colorbar-change-text-value-matplotlib
-            plt.sci(image) # Set current image to edges created by nx 
-            plt.colorbar().set_label("Number of articles supporting connection")
+            plt.sci(cbar_edges) # Set current image to edges created by nx 
+            colorbar = plt.colorbar() # Creats actual colorbar legend with ticks coresponding to true_edge_widths
+            colorbar.set_label("Number of articles supporting connection")
             # Available colormaps: https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html
             # Tested colormaps: GnBu is too similar to node color scheme, [YlOrRd, PuRd, Wistia] makes small edges too light, 
         else:
             nx.draw_networkx_edges(self.graph,
-                pos = layout,
-                alpha = self.edge_alphas,
-                width = self.edge_widths,
+                pos=layout,
+                alpha=self.edge_probs,
+                width=self.edge_widths,
                 )
             
         root_name = self._getSimplifiedName()
