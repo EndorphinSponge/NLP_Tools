@@ -6,14 +6,30 @@ DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 
    
-if True: 
-    pass
 
 if 1: # Full pipeline using test.xlsx
     ROOT_PATH = "test/test.xlsx"
-    ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     MODEL = "gpt3"
     THRESH = 2
+    ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
+    
+    # from graph_builder import EntProcessor, GraphBuilder
+    # builder = GraphBuilder()
+    # builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
+    # builder.buildGraph(thresh=THRESH)
+    # builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
+    
+    from graph_renderer import GraphVisualizer
+    visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{str(THRESH)}.xml")
+    visualizer.genRenderArgs()
+    visualizer.genLegend()
+    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
+
+if F: # Full pipeline using test.xlsx
+    ROOT_PATH = "test/test.xlsx"
+    MODEL = "gpt3"
+    THRESH = 2
+    ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     
     from models_api import CloudModel
     cloudmodel = CloudModel(ROOT_PATH)

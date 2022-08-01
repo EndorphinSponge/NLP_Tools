@@ -89,7 +89,7 @@ class EntProcessor:
                   igno_type: list[str] = []
                   ) -> list[dict[str, list[str]]]:
         
-        def abrvEnts(self: EntProcessor, ent: str, thresh: int = 0.95) -> str:
+        def _abrvEnts(self: EntProcessor, ent: str, thresh: int = 0.95) -> str:
             for long_form in self.abbreviations: # Abbreviations ordered by most common and then by longest long form
                 if SequenceMatcher(a=ent.lower(), b=long_form.lower()).ratio() > thresh:
                     short_form = self.abbreviations[long_form]
@@ -98,7 +98,7 @@ class EntProcessor:
                     # Other short form is either merged by set or translated and merged in transEnts
             return ent # If no fuzzy matches, return input unchanged 
         
-        def transEnts(self: EntProcessor, ent: str, ent_type: str) -> str:
+        def _transEnts(self: EntProcessor, ent: str, ent_type: str) -> str:
             # Different logic from map abrv which uses fuzzy matching 
             type_specific_trans = self.translations[ent_type]
             if ent in type_specific_trans:
@@ -111,9 +111,9 @@ class EntProcessor:
             for ent_type in [t for t in ent_dict if t not in igno_type]: 
                 ents = set(ent_dict[ent_type]) # Convert list from JSON to set
                 
-                ents = {abrvEnts(self, ent) for ent in ents}
+                ents = {_abrvEnts(self, ent) for ent in ents}
                 ents = {ent for ent in ents if ent not in self.exclusions[ent_type]}
-                ents = {transEnts(self, ent, ent_type) for ent in ents}
+                ents = {_transEnts(self, ent, ent_type) for ent in ents}
                 
                 ent_dict[ent_type] = list(ents) # Update container with new contents of ents, changes will propagate to entry ents list
                 if ent_type not in self.proc_ents: 

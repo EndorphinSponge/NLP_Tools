@@ -1,3 +1,5 @@
+#%%
+
 #%% Regex
 import re
     
@@ -64,16 +66,18 @@ class Abrv:
     def __hash__(self) -> int: # Required for being put in a set, seems like it is overwritten when __eq__ is changed
         return hash((self.short, self.long)) # Use the tuple of short and long for hash, ignore count
     def __eq__(self, __o: object) -> bool: # Used for set comparison
-        return self.__hash__() == __o.__hash__() 
+        return self.__hash__() == __o.__hash__()
     def __ne__(self, __o: object) -> bool: # Add reverse just in case
         return self.__hash__() != __o.__hash__() 
 
-a = Abrv([["test", "long"], 99])
-b = Abrv([["test2", "long"], 1])
-c = Abrv([["test3", "long"], 1])
-d = Abrv([["test", "long"], 11])
+a = Abrv([["test2", "long1"], 99])
+b = Abrv([["test2", "long2"], 1])
+c = Abrv([["test2", "long"], 1])
+d = Abrv([["test2", "long"], 11])
 
 obj_list = set([a, b, c, d])
+print(b == c)
+
 print(obj_list)
 print([(obj.short, obj.long, obj.count) for obj in obj_list])
 print(a == d)
