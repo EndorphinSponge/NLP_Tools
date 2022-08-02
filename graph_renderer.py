@@ -240,12 +240,15 @@ class GraphVisualizer:
 
                 nodes = [node for node, data in self.graph.nodes(data=True) if data["ent_type"] == ent_type]                
                 
+                nodes_counts: list[tuple[Hashable, int]] = list(self.graph.nodes(data="size"))
+                nodes_counts.sort(key=lambda x: x[1]) # Sort by count
+                nodes_counts = nodes_counts[-top_n:] # Take slice starting from end (since hbar plots from bottom of y-axis)
                 
-                degrees_raw: list[tuple[str, int]] = list(self.graph.in_degree(nodes))
+                degrees_raw: list[tuple[Hashable, int]] = list(self.graph.in_degree(nodes))
                 degrees_raw.sort(key=lambda x: x[1]) # Sort by degree
-                degrees_raw = degrees_raw[-top_n:] # Take slice starting from end (since hbar plots from bottom of y-axis)
+                degrees_raw = degrees_raw[-top_n:] 
                 
-                degrees_weighted: list[tuple[str, int]] = list(self.graph.in_degree(nodes, weight="width"))
+                degrees_weighted: list[tuple[Hashable, int]] = list(self.graph.in_degree(nodes, weight="width"))
                 degrees_weighted.sort(key=lambda x: x[1]) 
                 degrees_weighted = degrees_weighted[-top_n:] 
                 
@@ -256,9 +259,9 @@ class GraphVisualizer:
                 
                 fig.set_size_inches(25, 15) # set_size_inches(w, h=None, forward=True)
                 
-                ax1.barh([p[0] for p in degrees_weighted],
-                    [p[1] for p in degrees_weighted])
-                ax1.set_xlabel(f"Number of times {ent_type} is associated with a unique {alt_ent_type}")
+                ax1.barh([p[0] for p in nodes_counts],
+                    [p[1] for p in nodes_counts])
+                ax1.set_xlabel(f"Number of articles report association of the {ent_type} with a {alt_ent_type}")
                 
                 ax2.set_yticklabels([]) # Hide the left y-axis tick-labels
                 ax2.set_yticks([]) # Hide the left y-axis ticks
@@ -283,8 +286,6 @@ class GraphVisualizer:
 
 if __name__ == "__main__":
     a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t15.xml")
-
-    a.genRenderArgs()
     a.renderBarGraph(ent_types=["factor", "outcome"])
 
 

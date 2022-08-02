@@ -21,9 +21,7 @@ if 1:
     
     from graph_renderer import GraphVisualizer
     visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{str(THRESH)}.xml")
-    visualizer.genRenderArgs()
-    visualizer.genLegend()
-    visualizer.renderBarGraph()
+    visualizer.renderBarGraph(ent_types=["factor", "outcome"])
 
 if F: # Full pipeline example using test.xlsx
     ROOT_PATH = "test/test.xlsx"
@@ -58,10 +56,12 @@ if F: # Full pipeline example using test.xlsx
     
     from graph_renderer import GraphVisualizer
     visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{str(THRESH)}.xml")
-    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
+    visualizer.renderBarGraph(ent_types=["factor", "outcome"])
     visualizer.genRenderArgs()
     visualizer.genLegend()
+    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
     visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html
+    
     
 
 
