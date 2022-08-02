@@ -32,7 +32,7 @@ class GraphVisualizer:
         self.graph: Union[Graph, MultiDiGraph] = nx.read_graphml(graphml_path)
         self.graph_root_name = os.path.splitext(graphml_path)[0]
         self.nodes: list[Hashable] = list(self.graph.nodes)
-        self.edges: list[Hashable] = list(self.graph.edges)
+        self.edges: list[tuple[Hashable, Hashable]] = list(self.graph.edges)
         
         self.fig_size: int
         self.scaling: float
@@ -298,10 +298,23 @@ class GraphVisualizer:
         x = self.true_edge_widths
         y = self.edge_probs
         labels = self.edges
+        
+        fig, ax = plt.subplots()
+        fig.set_size_inches(15, 15)
+        ax.scatter(x, y)
+        ax.set_xlabel("Number of articles supporting association between factor and outcome")
+        ax.set_ylabel("Specificity of the association")
+        ax.set_title("Relationship between specificity of a factor-outcome/outcome-factor relationship and how often the relationship is reported", fontsize=15, pad=15)
+        
+        for i, label in enumerate(labels):
+            annotation = f"{label[0]} -> {label[1]}"
+            if x[i] > 25 or y[i] > 0.45: # Only label extreme points
+                ax.annotate(annotation, (x[i], y[i]))
 
 if __name__ == "__main__":
     a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t15.xml")
-    a.renderBarGraph(ent_types=["factor", "outcome"])
+    a.genRenderArgs()
+    a.renderScatter()
 
 
 
