@@ -10,8 +10,11 @@ import numpy as np
 from pyvis.network import Network
 import networkx as nx
 from networkx.classes.reportviews import NodeView
+from networkx import Graph, MultiDiGraph, DiGraph
 import matplotlib.pyplot as plt
 from matplotlib.collections import PathCollection
+from matplotlib.figure import Figure
+from matplotlib.axes import Axes
 
 #%% Constants
 
@@ -23,7 +26,7 @@ class GraphVisualizer:
     Contains 
     """
     def __init__(self, graphml_path: Union[str, bytes, os.PathLike]):
-        self.graph = nx.read_graphml(graphml_path)
+        self.graph: Union[Graph, MultiDiGraph] = nx.read_graphml(graphml_path)
         self.graph_root_name = os.path.splitext(graphml_path)[0]
         
         self.fig_size: int
@@ -197,9 +200,6 @@ class GraphVisualizer:
             plt.savefig(output_name)
             print("Exported rendered graph to", output_name)
     
-    
-    def renderDiGraphNx(self):
-        pass
 
     def renderGraphPyvis(self, solver = "repulsion"):
         """
@@ -230,20 +230,66 @@ class GraphVisualizer:
             return root_name + thresh # Add threshold annotation to root (can't use lookahead with variable length search)
         else:
             return self.graph_root_name 
+        
+    def renderBarGraph(self, ent_types:list[str], top_n=15):
+        if type(self.graph) == DiGraph:
+            for ent_type in ent_types:
+                if len(self.graph.nodes) < top_n:
+                    top_n = len(self.graph.nodes) # Re-assign top_n to length of nodes
+                alt_ent_type = [t for t in ent_types if t != ent_type][0] # Get the other item in a list
 
-#%% Rendering from exported XMLs
+                nodes = [node for node, data in self.graph.nodes(data=True) if data["ent_type"] == ent_type]                
+                
+                
+                degrees_raw: list[tuple[str, int]] = list(self.graph.in_degree(nodes))
+                degrees_raw.sort(key=lambda x: x[1]) # Sort by degree
+                degrees_raw = degrees_raw[-top_n:] # Take slice starting from end (since hbar plots from bottom of y-axis)
+                
+                degrees_weighted: list[tuple[str, int]] = list(self.graph.in_degree(nodes, weight="width"))
+                degrees_weighted.sort(key=lambda x: x[1]) 
+                degrees_weighted = degrees_weighted[-top_n:] 
+                
+                fig, (ax1, ax2) = plt.subplots(1, 2)
+                fig: Figure
+                ax1: Axes
+                ax2: Axes
+                
+                fig.set_size_inches(25, 15) # set_size_inches(w, h=None, forward=True)
+                
+                ax1.barh([p[0] for p in degrees_weighted],
+                    [p[1] for p in degrees_weighted])
+                ax1.set_xlabel(f"Number of times {ent_type} is associated with a unique {alt_ent_type}")
+                
+                ax2.set_yticklabels([]) # Hide the left y-axis tick-labels
+                ax2.set_yticks([]) # Hide the left y-axis ticks
+                ax2.invert_xaxis() # Invert x-axis
+                ax2t = ax2.twinx() # Create twin x-axis
+                ax2t.barh([p[0] for p in degrees_raw],
+                    [p[1] for p in degrees_raw])
+                ax2.set_xlabel(f"Number of {alt_ent_type}s significantly associated with {ent_type}")
+            
+            
+            
+            
+        else: # Undirected graph parsing 
+            print(self.graph.degree())
+            print(self.graph.degree(weight="width"))
+            pass
+        
+        pass
+    
+    def renderScatter(self):
+        pass
+
 if __name__ == "__main__":
-    DIR = r"figures\network_v0.9.1 (colorbar, node legend, no auto size)\exportXML"
-    visualizer = GraphVisualizer()
-    for i in range(0, 5): # Rendering with threshold = 1
-        visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t3_graph.xml"))
-        visualizer.renderGraphNX(display = f"tbi_topic{i}_t3_graph.xml", cmap = True)
-    for i in range(5, 6): # Rendering with threshold = 2
-        visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t2_graph.xml"))
-        visualizer.renderGraphNX(display = f"tbi_topic{i}_t2_graph.xml", cmap = True)
-    for i in range(6, 11): # Rendering with threshold = 3
-        visualizer.importGraph(os.path.join(DIR, f"tbi_topic{i}_t1_graph.xml"))
-        visualizer.renderGraphNX(display = f"tbi_topic{i}_t1_graph.xml", cmap = True)
+    a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t15.xml")
+
+    a.genRenderArgs()
+    a.renderBarGraph(ent_types=["factor", "outcome"])
+
+
+
+#%%
 
 if False:
 

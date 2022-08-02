@@ -23,7 +23,7 @@ if 1:
     visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{str(THRESH)}.xml")
     visualizer.genRenderArgs()
     visualizer.genLegend()
-    visualizer.renderGraphNX(cmap=False) # *_gpt3_t{int}_net(<rendering info>).png
+    visualizer.renderBarGraph()
 
 if F: # Full pipeline example using test.xlsx
     ROOT_PATH = "test/test.xlsx"
@@ -50,6 +50,7 @@ if F: # Full pipeline example using test.xlsx
     processor = EntProcessor(ent_processor_core=core)
     processor.procDfEnts(f"{ROOT_NAME}_{MODEL}F_entsR.xlsx") # *_gpt3F_entsF.xlsx
     processor.printLogs()
+    
     builder = GraphBuilder()
     builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
     builder.buildGraph(thresh=THRESH)

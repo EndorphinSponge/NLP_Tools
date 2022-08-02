@@ -243,7 +243,7 @@ class GraphBuilder:
             for ent in node_counter:
                 count = node_counter[ent]
                 if count > thresh:
-                    self.graph.add_node(ent, color=color, size=count)
+                    self.graph.add_node(ent, color=color, size=count, ent_type=ent_type)
                 pass
         
         for edge_type in self.edge_counters:

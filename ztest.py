@@ -1,4 +1,14 @@
-#%%
+#%% Networkx node degree
+import networkx as nx
+
+a = nx.MultiDiGraph()
+a.add_edge("A", "B", width=1)
+a.add_edge("B", "A", width=1)
+a.add_edge("B", "C", width=1)
+a.add_edge("B", "D", width=1)
+a.add_edge("C", "D", width=1)
+
+
 
 #%% Regex
 import re
