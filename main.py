@@ -12,7 +12,7 @@ if 1:
     MODEL = "gpt3"
     THRESH = 15
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
-    
+
     from graph_builder import EntProcessor, GraphBuilder
     builder = GraphBuilder()
     builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
@@ -51,7 +51,7 @@ if F: # Full pipeline example using test.xlsx
     
     builder = GraphBuilder()
     builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
-    builder.buildGraph(thresh=THRESH)
+    builder.buildGraph(thresh=THRESH, multidi=True)
     builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
     
     from graph_renderer import GraphVisualizer

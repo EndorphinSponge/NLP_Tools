@@ -64,4 +64,30 @@ corpus = DATA.tolist()
 model2 = Top2Vec(corpus)
 # %%
 model2.get_topic_sizes()
-# %%
+#%% Plot generation 
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+data = [("TBI of greater severity", 271),
+        ("Serum markers of neuronal damage/inflammation", 263),
+        ("TBI of lesser severity", 253),
+        ("Prognostic model performance benchmarking", 164),
+        ("MRI imaging markers", 118),
+        ("Hemodynamic markers", 110),
+        ("Genetic markers", 63),
+        ("Metabolic and other common serum markers", 61),
+        ("CT imaging markers", 49),
+        ("Coagulation markers", 38),
+        ("EEG markers", 23)
+            ]
+
+sns.set_theme()
+fig, ax = plt.subplots()
+fig.set_size_inches(10, 5)
+ax.bar([p[0] for p in data],
+       [p[1] for p in data])
+ax.tick_params(axis="x", labelrotation=90)
+ax.set_ylabel("Number of articles in cluster")
+ax.set_xlabel("Topic cluster")
+ax.set_title("Latent topic clusters identified in the corpora via Top2Vec")
+

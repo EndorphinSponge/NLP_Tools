@@ -15,6 +15,9 @@ import matplotlib.pyplot as plt
 from matplotlib.collections import PathCollection
 from matplotlib.figure import Figure
 from matplotlib.axes import Axes
+import seaborn as sns
+
+# Adjusttext package to resolve overlapping labels https://adjusttext.readthedocs.io/en/latest/Examples.html
 
 #%% Constants
 
@@ -28,6 +31,8 @@ class GraphVisualizer:
     def __init__(self, graphml_path: Union[str, bytes, os.PathLike]):
         self.graph: Union[Graph, MultiDiGraph] = nx.read_graphml(graphml_path)
         self.graph_root_name = os.path.splitext(graphml_path)[0]
+        self.nodes: list[Hashable] = list(self.graph.nodes)
+        self.edges: list[Hashable] = list(self.graph.edges)
         
         self.fig_size: int
         self.scaling: float
@@ -238,9 +243,10 @@ class GraphVisualizer:
                     top_n = len(self.graph.nodes) # Re-assign top_n to length of nodes
                 alt_ent_type = [t for t in ent_types if t != ent_type][0] # Get the other item in a list
 
-                nodes = [node for node, data in self.graph.nodes(data=True) if data["ent_type"] == ent_type]                
+                nodes = [node for node, data in self.graph.nodes(data=True) if data["ent_type"] == ent_type]
                 
                 nodes_counts: list[tuple[Hashable, int]] = list(self.graph.nodes(data="size"))
+                nodes_counts = [(node, data["size"])for node, data in self.graph.nodes(data=True) if data["ent_type"] == ent_type]
                 nodes_counts.sort(key=lambda x: x[1]) # Sort by count
                 nodes_counts = nodes_counts[-top_n:] # Take slice starting from end (since hbar plots from bottom of y-axis)
                 
@@ -252,16 +258,18 @@ class GraphVisualizer:
                 degrees_weighted.sort(key=lambda x: x[1]) 
                 degrees_weighted = degrees_weighted[-top_n:] 
                 
+                sns.set_theme()
                 fig, (ax1, ax2) = plt.subplots(1, 2)
                 fig: Figure
                 ax1: Axes
                 ax2: Axes
                 
-                fig.set_size_inches(25, 15) # set_size_inches(w, h=None, forward=True)
+                fig.set_size_inches(15, 10) # set_size_inches(w, h=None, forward=True)
                 
                 ax1.barh([p[0] for p in nodes_counts],
                     [p[1] for p in nodes_counts])
-                ax1.set_xlabel(f"Number of articles report association of the {ent_type} with a {alt_ent_type}")
+                ax1.set_xlabel(f"Number of articles that report association of the {ent_type} with a {alt_ent_type}")
+                ax1.set_ylabel(ent_type.capitalize())
                 
                 ax2.set_yticklabels([]) # Hide the left y-axis tick-labels
                 ax2.set_yticks([]) # Hide the left y-axis ticks
@@ -269,8 +277,13 @@ class GraphVisualizer:
                 ax2t = ax2.twinx() # Create twin x-axis
                 ax2t.barh([p[0] for p in degrees_raw],
                     [p[1] for p in degrees_raw])
+                ax2t.set_ylabel(ent_type.capitalize())
                 ax2.set_xlabel(f"Number of {alt_ent_type}s significantly associated with {ent_type}")
-            
+                
+                if ent_type == "outcome":
+                    fig.suptitle("Top TBI prognosis outcome measures over entire corpora")
+                elif ent_type == "factor":
+                    fig.suptitle("Top TBI prognostic factors over entire corpora")
             
             
             
@@ -282,7 +295,9 @@ class GraphVisualizer:
         pass
     
     def renderScatter(self):
-        pass
+        x = self.true_edge_widths
+        y = self.edge_probs
+        labels = self.edges
 
 if __name__ == "__main__":
     a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t15.xml")
