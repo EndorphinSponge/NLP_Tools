@@ -163,7 +163,8 @@ class GraphBuilder:
         self.graph_root_name: str = "" # Derived from df_root_name, includes information about thresholding
 
 
-    def popCountersMulti(self, df_path, col = "Processed_ents"):
+    def popCountersMulti(self, df_path, col = "Processed_ents",
+                         col_sub = "", subset = ""):
         """
         For DFs containing multiple entity types (i.e., distinguishes between node types for node and edge enties)
         Populates the graph's counters using df and abbreviation container originally passed 
@@ -172,6 +173,8 @@ class GraphBuilder:
         """
         self.df_root_name = os.path.splitext(df_path)[0] # Store root name
         df = importData(df_path, screen_text=[col])
+        if col_sub and subset:
+            pass
         proto_stmt: dict[str, list[str]] = json.loads(df[col].iloc[0])[0] # Get prototypical statement (obtains first statment from first row of col of interest)
         ent_types = [key for key in proto_stmt]
         edge_types = list(permutations(proto_stmt, 2))

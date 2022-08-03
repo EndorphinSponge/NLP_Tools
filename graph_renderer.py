@@ -139,8 +139,9 @@ class GraphVisualizer:
 
         self.legend = {"points": [p1, p2, p3, p4], "labels": [l1, l2, l3, l4]}
 
-    def renderGraphNX(self, title = "Figure", dpi = 800, 
-                      display = False, cmap = True, arrows = False, adjust = True,
+    def renderGraphNX(self, title = "Figure", save_suffix = "", dpi = 800, 
+                      display = False, cmap = True, arrows = False,
+                      adjust_shell = True,
                       ):
         """
         Renders the graph contained within the object using NX
@@ -167,13 +168,21 @@ class GraphVisualizer:
             node_color = self.node_colors,
             )
         # Manually draw labels with different sizes: https://stackoverflow.com/questions/62649745/is-it-possible-to-change-font-sizes-according-to-node-sizes
-        labels = []
+        labels_adjust = []
+        y_coords = [y for node, (x, y) in layout.items()]
+        upper_bound = np.percentile(y_coords, 90)
+        lower_bound = np.percentile(y_coords, 10)
         for node, (x, y) in layout.items():
             label_size = log(self.scaling*self.graph.nodes[node]["size"], 2) # Retrieve size information via node identity in graph
             label = plt.text(x, y, node, fontsize = label_size, ha = "center", va = "center", alpha = 0.7) # Manually draw text
-            labels.append(label)
-        if adjust:
-            adjust_text(labels, autoalign='', only_move={'points':'y', 'text':'y'})
+            if y > upper_bound or y < lower_bound: # Only adjust labels that are outside of bounds
+                labels_adjust.append(label)
+        if adjust_shell:
+            adjust_text(labels_adjust,
+                        autoalign='',
+                        only_move={'points':'y', 'text':'y'},
+                        arrowprops=dict(arrowstyle="-", color="black"),
+                        )
 
         # Plot legend
         plt.legend(self.legend["points"], self.legend["labels"],
@@ -224,7 +233,7 @@ class GraphVisualizer:
         if display:
             plt.show()
         else:
-            output_name = f"{root_name}_net{self.args_log}.png"
+            output_name = f"{root_name}{save_suffix}_net{self.args_log}.png"
             plt.savefig(output_name)
             print("Exported rendered graph to", output_name)
     
@@ -301,13 +310,12 @@ class GraphVisualizer:
                 ax2t.barh([p[0] for p in degrees_raw],
                     [p[1] for p in degrees_raw])
                 ax2t.set_ylabel(ent_type.capitalize())
-                ax2.set_xlabel(f"Number of {alt_ent_type}s significantly associated with {ent_type}")
+                ax2.set_xlabel(f"Number of unique {alt_ent_type}s associated with {ent_type}")
                 
                 if ent_type == "outcome":
-                    fig.suptitle("Top TBI prognosis outcome measures over entire corpora")
+                    fig.suptitle(f"Top {str(top_n)} TBI prognosis outcome measures over entire corpora")
                 elif ent_type == "factor":
-                    fig.suptitle("Top TBI prognostic factors over entire corpora")
-            
+                    fig.suptitle(f"Top {str(top_n)} TBI prognostic factors over entire corpora")
             
             
         else: # Undirected graph parsing 
@@ -335,10 +343,13 @@ class GraphVisualizer:
                 ax.annotate(annotation, (x[i], y[i]))
 
 if __name__ == "__main__":
-    a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t10.xml")
+    a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_t10.xml")
     a.genRenderArgs()
     a.genLegend()
-    a.renderGraphNX(cmap=True, adjust=True)
+    # a.renderScatter()
+    # a.renderBarGraph(ent_types=["factor", "outcome",])
+    title = "Network graph of factors (purple nodes) and outcomes (pink nodes) and \nassociations between them extracted over entire corpora of 1412 abstracts"
+    a.renderGraphNX(title, cmap=True, adjust_shell=True)
 
 
 

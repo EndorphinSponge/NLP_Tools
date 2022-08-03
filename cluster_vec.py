@@ -52,10 +52,10 @@ df_annot.to_excel("topic_annotations.xlsx")
 
 #%% Merge abstract df with annotated df https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html#:~:text=Join%20DataFrames%20using%20their%20indexes.&text=If%20we%20want%20to%20join,have%20key%20as%20its%20index.&text=Another%20option%20to%20join%20using,to%20use%20the%20on%20parameter.
 
-df_origin = pd.read_excel("gpt3_output_formatted.xlsx").set_index("Abstract")
-df_annot = pd.read_excel("topic_annotations.xlsx").set_index("Abstract")
+df_origin = pd.read_excel("data/gpt3_output_gpt3F_entsF.xlsx").set_index("Abstract")
+df_annot = pd.read_excel("data/topic_annotations.xlsx").set_index("Abstract")
 df_merged = df_origin.join(df_annot, lsuffix='_left', rsuffix='_right')
-df_merged.to_excel("gpt3_output_formatted_annotated.xlsx")
+df_merged.to_excel("data/gpt3_output_gpt3F_entsF_topics.xlsx")
 
 # %%
 os.chdir(os.path.dirname(__file__))

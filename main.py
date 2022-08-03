@@ -8,10 +8,12 @@ os.chdir(DIRPATH)
    
 
 if 1:
-    ROOT_PATH = "test/gpt3_output.xlsx"
+    ROOT_PATH = "data/gpt3_output.xlsx"
     MODEL = "gpt3"
     THRESH = 10
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
+    
+    
 
     from graph_builder import EntProcessor, GraphBuilder
     builder = GraphBuilder()
@@ -23,7 +25,7 @@ if 1:
     visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{str(THRESH)}.xml")
     visualizer.genRenderArgs()
     visualizer.genLegend()
-    visualizer.renderGraphNX()
+    visualizer.renderGraphNX(adjust_shell=True)
 
 if F: # Full pipeline example using test.xlsx
     ROOT_PATH = "test/test.xlsx"
@@ -43,7 +45,7 @@ if F: # Full pipeline example using test.xlsx
     print(localmodel.empty_log)
     refineAbrvs(f"{ROOT_NAME}_abrvs.json") # *_abrvs_rfn.json, *_abrvs_trans.json
     
-    from graph_builder import EntProcessor, GraphBuilder
+    from graph_builder import EntProcessor
     from components_tbi import TBICore
     core = TBICore(abrv_path=f"{ROOT_NAME}_abrvs_rfn.json",
                    common_trans_path=f"{ROOT_NAME}_abrvs_trans.json")
@@ -51,6 +53,7 @@ if F: # Full pipeline example using test.xlsx
     processor.procDfEnts(f"{ROOT_NAME}_{MODEL}F_entsR.xlsx") # *_gpt3F_entsF.xlsx
     processor.printLogs()
     
+    from graph_builder import GraphBuilder
     builder = GraphBuilder()
     builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
     builder.buildGraph(thresh=THRESH, multidi=True)
