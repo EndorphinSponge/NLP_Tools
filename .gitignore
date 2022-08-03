@@ -1,2 +1,6 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+figures/
+archive/
+private/
+manual_versioning/
