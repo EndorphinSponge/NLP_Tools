@@ -198,10 +198,16 @@ class GraphVisualizer:
         plt_cmap = plt.cm.Wistia
         plt_cmap = plt.cm.summer
         
+        widths = self.true_edge_widths
+        if max(widths) <= 10: # If range is less than 10, need to use static transparency
+            alphas = [0.95*(width/max(widths))**(2) for width in widths] # Right skew data to make lighter lines easier to see
+        else:
+            alphas = self.edge_widths_alpha
+        
         if cmap: # Will map values (in proportion to min/max) to a color spectrum
             rendered_edges = nx.draw_networkx_edges(self.graph,
                 pos=layout,
-                alpha=self.edge_widths_alpha, # Can add transparency on top to accentuate
+                alpha=alphas, # Can add transparency on top to accentuate
                 width=self.edge_widths,
                 edge_color=self.edge_widths_alpha, # Map color to transparency (calculated based on true widths)
                 edge_cmap=plt_cmap, # Colors edges but doesn't generate colorbar scale legend
@@ -234,7 +240,7 @@ class GraphVisualizer:
             plt.show()
         else:
             output_name = f"{root_name}{save_suffix}_net{self.args_log}.png"
-            plt.savefig(output_name)
+            plt.savefig(output_name, bbox_inches='tight')
             print("Exported rendered graph to", output_name)
     
 
@@ -344,12 +350,16 @@ class GraphVisualizer:
 
 if __name__ == "__main__":
     a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_t10.xml")
+    a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_topics2_t3.xml")
     a.genRenderArgs()
     a.genLegend()
     # a.renderScatter()
     # a.renderBarGraph(ent_types=["factor", "outcome",])
     title = "Network graph of factors (purple nodes) and outcomes (pink nodes) and \nassociations between them extracted over entire corpora of 1412 abstracts"
-    a.renderGraphNX(title, cmap=True, adjust_shell=True)
+    title = f"Network graph of factors (purple nodes) and outcomes (pink nodes) and associations between them \n"
+    title += f"extracted over topic 3 (Markers for TBI of lesser severity)"
+
+    a.renderGraphNX(title, adjust_shell=True)
 
 
 

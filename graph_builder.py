@@ -164,7 +164,7 @@ class GraphBuilder:
 
 
     def popCountersMulti(self, df_path, col = "Processed_ents",
-                         col_sub = "", subset = ""):
+                         col_sub = "", subset: Union[str, int] = ""):
         """
         For DFs containing multiple entity types (i.e., distinguishes between node types for node and edge enties)
         Populates the graph's counters using df and abbreviation container originally passed 
@@ -173,8 +173,8 @@ class GraphBuilder:
         """
         self.df_root_name = os.path.splitext(df_path)[0] # Store root name
         df = importData(df_path, screen_text=[col])
-        if col_sub and subset:
-            pass
+        if col_sub and subset != "": # Need to specify '!= ""' to allow passing of 0 as a subset
+            df = df[df[col_sub] == subset]
         proto_stmt: dict[str, list[str]] = json.loads(df[col].iloc[0])[0] # Get prototypical statement (obtains first statment from first row of col of interest)
         ent_types = [key for key in proto_stmt]
         edge_types = list(permutations(proto_stmt, 2))
@@ -218,7 +218,7 @@ class GraphBuilder:
             # Print edges sorted by count
 
     
-    def buildGraph(self, thresh = 1, multidi = False):
+    def buildGraph(self, thresh = 1, multidi = True):
         """
         Builds Networkx graph with the populated counters and a threshold for node count
         ---
@@ -293,7 +293,10 @@ class GraphBuilder:
 
 if __name__ == "__main__": # For testing purposes
     b = GraphBuilder()
-    b.popCountersMulti("test/gpt3_output_fmt_fmtents.xlsx")
-    b.buildGraph()
-    b.exportGraph()
+    topic = 0
+    thresh = 1
+    b.popCountersMulti(f"data/gpt3_output_gpt3F_entsF_topics.xlsx",
+                       col_sub="Topic", subset=topic)
+    b.buildGraph(thresh=thresh, multidi=True)
+    b.exportGraph(f"data/gpt3_output_gpt3F_entsF_topics{topic}_t{thresh}.xml")
 
