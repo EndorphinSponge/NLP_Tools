@@ -79,11 +79,19 @@ class GraphVisualizer:
         node_sizes = [scaling*size for (node, size) in self.graph.nodes(data="size")]
         self.node_sizes = node_sizes
         
-        node_colors = [color for (node, color) in self.graph.nodes(data="color")]
-        self.node_colors = node_colors
-        
         edge_width_true = [width for (node1, node2, width) in self.graph.edges(data="width")]
         self.true_edge_widths = edge_width_true
+        
+        node_colors = []
+        for node, data in self.graph.nodes(data=True):
+            if data["ent_type"] == "factor":
+                node_colors.append("#8338ec")
+            elif data["ent_type"] == "outcome":
+                node_colors.append("#f72585")
+            else:
+                node_colors.append("#000000")
+        self.node_colors = node_colors
+        
         
         edge_widths = [log(scaling*width, width_log) for width in edge_width_true]
         edge_widths = np.clip(edge_widths, width_min, None) # Set lower bound of width to 1
@@ -116,19 +124,20 @@ class GraphVisualizer:
         # Draw legend: https://stackoverflow.com/questions/29973952/how-to-draw-legend-for-scatter-plot-indicating-size
         # Same scaling factor but different rounding thresholds
         scaling = self.scaling
+        color = '#8338ec'
         max_original = max(self.node_sizes)/scaling # Get original max node size by dividing by scaling factor
         l1 = _roundNum(0.02*max_original, 5) # Reference of 5 for max of 250
         l2 = _roundNum(0.08*max_original, 10) # Reference of 20 for max of 250 
         l3 = _roundNum(0.4*max_original, 20) # Reference of 100 for max of 250
         l4 = _roundNum(max_original, 50) # Reference of 250 for max of 250
-        p1 = plt.scatter([],[], s=l1*scaling, marker='o', color='#8338ec', alpha = 0.8) # Set actual sizes to match scaled rendered nodes
-        p2 = plt.scatter([],[], s=l2*scaling, marker='o', color='#8338ec', alpha = 0.8)
-        p3 = plt.scatter([],[], s=l3*scaling, marker='o', color='#8338ec', alpha = 0.8)
-        p4 = plt.scatter([],[], s=l4*scaling, marker='o', color='#8338ec', alpha = 0.8)
+        p1 = plt.scatter([],[], s=l1*scaling, marker='o', color=color, alpha = 0.8) # Set actual sizes to match scaled rendered nodes
+        p2 = plt.scatter([],[], s=l2*scaling, marker='o', color=color, alpha = 0.8)
+        p3 = plt.scatter([],[], s=l3*scaling, marker='o', color=color, alpha = 0.8)
+        p4 = plt.scatter([],[], s=l4*scaling, marker='o', color=color, alpha = 0.8)
 
         self.legend = {"points": [p1, p2, p3, p4], "labels": [l1, l2, l3, l4]}
 
-    def renderGraphNX(self, dpi=800, display = False, cmap= True):
+    def renderGraphNX(self, dpi=800, display = False, cmap = True, arrows = False):
         """
         Renders the graph contained within the object using NX
         ----
@@ -136,12 +145,13 @@ class GraphVisualizer:
         cmap: use color mapping in the stead of transparency 
         """
        
-        layout: dict[Hashable, tuple[float, float]] = nx.kamada_kawai_layout(self.graph) # Different position solvers available: https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_kamada_kawai.html
+        layout: dict[Hashable, tuple[float, float]] = nx.shell_layout(self.graph) # Different position solvers available: https://networkx.org/documentation/stable/reference/generated/networkx.drawing.nx_pylab.draw_kamada_kawai.html
         
         fig_size = self.fig_size
         
         #%% Networkx visualization (multiple elements)
         # nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
+        sns.set_theme()
         plt.figure(figsize=(fig_size*1.1, fig_size), dpi=dpi)
         
         # Draw nodes
@@ -167,19 +177,23 @@ class GraphVisualizer:
         # prop = container deciding properties of text relating to the size demos
         # 10 is default font size
         
+        plt_cmap = plt.cm.Wistia
+        plt_cmap = plt.cm.summer
+        
         if cmap: # Will map values (in proportion to min/max) to a color spectrum
             rendered_edges = nx.draw_networkx_edges(self.graph,
                 pos=layout,
-                alpha=self.edge_probs, # Can add transparency on top to accentuate
+                alpha=self.edge_widths_alpha, # Can add transparency on top to accentuate
                 width=self.edge_widths,
                 edge_color=self.edge_widths_alpha, # Map color to transparency (calculated based on true widths)
-                edge_cmap=plt.cm.summer, # Colors edges but doesn't generate colorbar scale legend
+                edge_cmap=plt_cmap, # Colors edges but doesn't generate colorbar scale legend
+                arrows=arrows
                 )
             cbar_edges = nx.draw_networkx_edges(self.graph, # Dummy variable for if color assignment is cube rooted, (transparency set to zero)
                 pos=layout,
                 alpha=self.edge_zeroes, # Array of zeroes
                 edge_color=self.true_edge_widths, # NOTE THAT THIS IS NOT EXACTLY THE SAME SCALE (due to cube root)
-                edge_cmap=plt.cm.summer, 
+                edge_cmap=plt_cmap, 
                 arrows=False, # Need to disable arrows, otherwise draw_edges method returns a FancyArrowPatch for every edge, unable to
                 )
             # Colorbar legend solution: https://groups.google.com/g/networkx-discuss/c/gZmr-YgvIQs
@@ -314,7 +328,8 @@ class GraphVisualizer:
 if __name__ == "__main__":
     a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t15.xml")
     a.genRenderArgs()
-    a.renderScatter()
+    a.genLegend()
+    a.renderGraphNX(dpi=300, cmap=True)
 
 
 

@@ -1,3179 +1,3117 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
-  <key id="d4" for="edge" attr.name="prob" attr.type="double" />
-  <key id="d3" for="edge" attr.name="width" attr.type="long" />
-  <key id="d2" for="node" attr.name="ent_type" attr.type="string" />
-  <key id="d1" for="node" attr.name="size" attr.type="long" />
-  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <key id="d3" for="edge" attr.name="prob" attr.type="double" />
+  <key id="d2" for="edge" attr.name="width" attr.type="long" />
+  <key id="d1" for="node" attr.name="ent_type" attr.type="string" />
+  <key id="d0" for="node" attr.name="size" attr.type="long" />
   <graph edgedefault="directed">
-    <node id="gcs (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">259</data>
-      <data key="d2">factor</data>
-    </node>
     <node id="age">
-      <data key="d0">#8338ec</data>
-      <data key="d1">257</data>
-      <data key="d2">factor</data>
+      <data key="d0">257</data>
+      <data key="d1">factor</data>
+    </node>
+    <node id="gcs (factor)">
+      <data key="d0">259</data>
+      <data key="d1">factor</data>
     </node>
     <node id="gos (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">36</data>
-      <data key="d2">factor</data>
+      <data key="d0">36</data>
+      <data key="d1">factor</data>
     </node>
     <node id="impact (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">34</data>
-      <data key="d2">factor</data>
+      <data key="d0">34</data>
+      <data key="d1">factor</data>
     </node>
     <node id="admission (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">53</data>
-      <data key="d2">factor</data>
+      <data key="d0">53</data>
+      <data key="d1">factor</data>
     </node>
     <node id="ct (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">42</data>
-      <data key="d2">factor</data>
+      <data key="d0">42</data>
+      <data key="d1">factor</data>
     </node>
     <node id="mri (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">21</data>
-      <data key="d2">factor</data>
-    </node>
-    <node id="iss (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">21</data>
-      <data key="d2">factor</data>
+      <data key="d0">21</data>
+      <data key="d1">factor</data>
     </node>
     <node id="time (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">16</data>
-      <data key="d2">factor</data>
+      <data key="d0">16</data>
+      <data key="d1">factor</data>
+    </node>
+    <node id="iss (factor)">
+      <data key="d0">21</data>
+      <data key="d1">factor</data>
     </node>
     <node id="sex (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">27</data>
-      <data key="d2">factor</data>
+      <data key="d0">27</data>
+      <data key="d1">factor</data>
     </node>
     <node id="gender">
-      <data key="d0">#8338ec</data>
-      <data key="d1">58</data>
-      <data key="d2">factor</data>
+      <data key="d0">58</data>
+      <data key="d1">factor</data>
     </node>
     <node id="pl">
-      <data key="d0">#8338ec</data>
-      <data key="d1">18</data>
-      <data key="d2">factor</data>
+      <data key="d0">18</data>
+      <data key="d1">factor</data>
     </node>
     <node id="crash (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">19</data>
-      <data key="d2">factor</data>
+      <data key="d0">19</data>
+      <data key="d1">factor</data>
     </node>
     <node id="sbp">
-      <data key="d0">#8338ec</data>
-      <data key="d1">17</data>
-      <data key="d2">factor</data>
+      <data key="d0">17</data>
+      <data key="d1">factor</data>
     </node>
     <node id="classification (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">16</data>
-      <data key="d2">factor</data>
+      <data key="d0">16</data>
+      <data key="d1">factor</data>
     </node>
     <node id="pta (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">29</data>
-      <data key="d2">factor</data>
+      <data key="d0">29</data>
+      <data key="d1">factor</data>
     </node>
     <node id="duration (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">24</data>
-      <data key="d2">factor</data>
+      <data key="d0">24</data>
+      <data key="d1">factor</data>
     </node>
     <node id="il-6">
-      <data key="d0">#8338ec</data>
-      <data key="d1">16</data>
-      <data key="d2">factor</data>
+      <data key="d0">16</data>
+      <data key="d1">factor</data>
     </node>
     <node id="rotterdam">
-      <data key="d0">#8338ec</data>
-      <data key="d1">20</data>
-      <data key="d2">factor</data>
+      <data key="d0">20</data>
+      <data key="d1">factor</data>
     </node>
     <node id="severity (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">61</data>
-      <data key="d2">factor</data>
+      <data key="d0">61</data>
+      <data key="d1">factor</data>
     </node>
     <node id="gfap (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">31</data>
-      <data key="d2">factor</data>
+      <data key="d0">31</data>
+      <data key="d1">factor</data>
     </node>
     <node id="education (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">17</data>
-      <data key="d2">factor</data>
+      <data key="d0">17</data>
+      <data key="d1">factor</data>
     </node>
     <node id="icp (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">59</data>
-      <data key="d2">factor</data>
+      <data key="d0">59</data>
+      <data key="d1">factor</data>
     </node>
     <node id="plt">
-      <data key="d0">#8338ec</data>
-      <data key="d1">17</data>
-      <data key="d2">factor</data>
+      <data key="d0">17</data>
+      <data key="d1">factor</data>
     </node>
     <node id="sss (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">16</data>
-      <data key="d2">factor</data>
+      <data key="d0">16</data>
+      <data key="d1">factor</data>
     </node>
     <node id="initial (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">21</data>
-      <data key="d2">factor</data>
+      <data key="d0">21</data>
+      <data key="d1">factor</data>
     </node>
     <node id="ct scan (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">22</data>
-      <data key="d2">factor</data>
+      <data key="d0">22</data>
+      <data key="d1">factor</data>
     </node>
     <node id="cpp (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">19</data>
-      <data key="d2">factor</data>
-    </node>
-    <node id="hypotension (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">25</data>
-      <data key="d2">factor</data>
+      <data key="d0">19</data>
+      <data key="d1">factor</data>
     </node>
     <node id="pupillary reactivity">
-      <data key="d0">#8338ec</data>
-      <data key="d1">16</data>
-      <data key="d2">factor</data>
+      <data key="d0">16</data>
+      <data key="d1">factor</data>
     </node>
-    <node id="nse (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">18</data>
-      <data key="d2">factor</data>
-    </node>
-    <node id="uch-l1 (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">17</data>
-      <data key="d2">factor</data>
+    <node id="hypotension (factor)">
+      <data key="d0">25</data>
+      <data key="d1">factor</data>
     </node>
     <node id="s100b (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">42</data>
-      <data key="d2">factor</data>
+      <data key="d0">42</data>
+      <data key="d1">factor</data>
+    </node>
+    <node id="uch-l1 (factor)">
+      <data key="d0">17</data>
+      <data key="d1">factor</data>
+    </node>
+    <node id="nse (factor)">
+      <data key="d0">18</data>
+      <data key="d1">factor</data>
     </node>
     <node id="marshall (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">20</data>
-      <data key="d2">factor</data>
+      <data key="d0">20</data>
+      <data key="d1">factor</data>
     </node>
     <node id="hematoma (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">20</data>
-      <data key="d2">factor</data>
+      <data key="d0">20</data>
+      <data key="d1">factor</data>
     </node>
     <node id="subdural (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">20</data>
-      <data key="d2">factor</data>
+      <data key="d0">20</data>
+      <data key="d1">factor</data>
     </node>
     <node id="dti">
-      <data key="d0">#8338ec</data>
-      <data key="d1">16</data>
-      <data key="d2">factor</data>
+      <data key="d0">16</data>
+      <data key="d1">factor</data>
     </node>
     <node id="brain (factor)">
-      <data key="d0">#8338ec</data>
-      <data key="d1">20</data>
-      <data key="d2">factor</data>
+      <data key="d0">20</data>
+      <data key="d1">factor</data>
     </node>
     <node id="mortality (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">433</data>
-      <data key="d2">outcome</data>
-    </node>
-    <node id="severity (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">77</data>
-      <data key="d2">outcome</data>
+      <data key="d0">433</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="outcome">
-      <data key="d0">#f72585</data>
-      <data key="d1">29</data>
-      <data key="d2">outcome</data>
+      <data key="d0">29</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="long-term (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">40</data>
-      <data key="d2">outcome</data>
+      <data key="d0">40</data>
+      <data key="d1">outcome</data>
+    </node>
+    <node id="severity (outcome)">
+      <data key="d0">77</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="gos (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">110</data>
-      <data key="d2">outcome</data>
+      <data key="d0">110</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="prognosis (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">40</data>
-      <data key="d2">outcome</data>
+      <data key="d0">40</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="drs (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">16</data>
-      <data key="d2">outcome</data>
+      <data key="d0">16</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="outcomes (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">231</data>
-      <data key="d2">outcome</data>
+      <data key="d0">231</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="icu (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">19</data>
-      <data key="d2">outcome</data>
+      <data key="d0">19</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="ufo">
-      <data key="d0">#f72585</data>
-      <data key="d1">41</data>
-      <data key="d2">outcome</data>
+      <data key="d0">41</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="poor outcome (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">60</data>
-      <data key="d2">outcome</data>
+      <data key="d0">60</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="functional outcome">
-      <data key="d0">#f72585</data>
-      <data key="d1">96</data>
-      <data key="d2">outcome</data>
+      <data key="d0">96</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="in-hospital mortality (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">61</data>
-      <data key="d2">outcome</data>
+      <data key="d0">61</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="recovery (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">46</data>
-      <data key="d2">outcome</data>
+      <data key="d0">46</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="los (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">25</data>
-      <data key="d2">outcome</data>
+      <data key="d0">25</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="worse">
-      <data key="d0">#f72585</data>
-      <data key="d1">24</data>
-      <data key="d2">outcome</data>
+      <data key="d0">24</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="pcss (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">18</data>
-      <data key="d2">outcome</data>
+      <data key="d0">18</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="disability (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">28</data>
-      <data key="d2">outcome</data>
+      <data key="d0">28</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="neurological outcome">
-      <data key="d0">#f72585</data>
-      <data key="d1">32</data>
-      <data key="d2">outcome</data>
+      <data key="d0">32</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="discharge (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">25</data>
-      <data key="d2">outcome</data>
+      <data key="d0">25</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="symptom (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">23</data>
-      <data key="d2">outcome</data>
+      <data key="d0">23</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="rehabilitation (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">16</data>
-      <data key="d2">outcome</data>
+      <data key="d0">16</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="gcs (outcome)">
-      <data key="d0">#f72585</data>
-      <data key="d1">19</data>
-      <data key="d2">outcome</data>
+      <data key="d0">19</data>
+      <data key="d1">outcome</data>
     </node>
-    <edge source="gcs (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">90</data>
-      <data key="d4">0.3474903474903475</data>
-    </edge>
-    <edge source="gcs (factor)" target="gos (outcome)" id="0">
-      <data key="d3">17</data>
-      <data key="d4">0.06563706563706563</data>
-    </edge>
-    <edge source="gcs (factor)" target="severity (outcome)" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.04633204633204633</data>
-    </edge>
-    <edge source="gcs (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.03088803088803089</data>
-    </edge>
-    <edge source="gcs (factor)" target="functional outcome" id="0">
-      <data key="d3">11</data>
-      <data key="d4">0.04247104247104247</data>
-    </edge>
-    <edge source="gcs (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">32</data>
-      <data key="d4">0.12355212355212356</data>
-    </edge>
-    <edge source="gcs (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">13</data>
-      <data key="d4">0.05019305019305019</data>
-    </edge>
-    <edge source="gcs (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.03088803088803089</data>
-    </edge>
-    <edge source="gcs (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.015444015444015444</data>
-    </edge>
-    <edge source="gcs (factor)" target="icu (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.011583011583011582</data>
-    </edge>
-    <edge source="gcs (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.023166023166023165</data>
-    </edge>
-    <edge source="gcs (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.023166023166023165</data>
-    </edge>
-    <edge source="gcs (factor)" target="neurological outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.007722007722007722</data>
-    </edge>
-    <edge source="gcs (factor)" target="disability (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.011583011583011582</data>
-    </edge>
-    <edge source="gcs (factor)" target="ufo" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.015444015444015444</data>
-    </edge>
-    <edge source="gcs (factor)" target="worse" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.015444015444015444</data>
-    </edge>
-    <edge source="gcs (factor)" target="pcss (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.003861003861003861</data>
-    </edge>
-    <edge source="gcs (factor)" target="los (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.011583011583011582</data>
-    </edge>
-    <edge source="gcs (factor)" target="rehabilitation (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.007722007722007722</data>
-    </edge>
-    <edge source="gcs (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.003861003861003861</data>
-    </edge>
-    <edge source="gcs (factor)" target="gcs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.003861003861003861</data>
-    </edge>
     <edge source="age" target="mortality (outcome)" id="0">
-      <data key="d3">85</data>
-      <data key="d4">0.33073929961089493</data>
+      <data key="d2">85</data>
+      <data key="d3">0.33073929961089493</data>
     </edge>
     <edge source="age" target="gos (outcome)" id="0">
-      <data key="d3">13</data>
-      <data key="d4">0.05058365758754864</data>
+      <data key="d2">13</data>
+      <data key="d3">0.05058365758754864</data>
     </edge>
     <edge source="age" target="outcomes (outcome)" id="0">
-      <data key="d3">30</data>
-      <data key="d4">0.11673151750972763</data>
+      <data key="d2">30</data>
+      <data key="d3">0.11673151750972763</data>
     </edge>
     <edge source="age" target="icu (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.007782101167315175</data>
+      <data key="d2">2</data>
+      <data key="d3">0.007782101167315175</data>
     </edge>
     <edge source="age" target="poor outcome (outcome)" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.027237354085603113</data>
+      <data key="d2">7</data>
+      <data key="d3">0.027237354085603113</data>
     </edge>
     <edge source="age" target="recovery (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.023346303501945526</data>
+      <data key="d2">6</data>
+      <data key="d3">0.023346303501945526</data>
     </edge>
     <edge source="age" target="neurological outcome" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.019455252918287938</data>
+      <data key="d2">5</data>
+      <data key="d3">0.019455252918287938</data>
     </edge>
     <edge source="age" target="ufo" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.0311284046692607</data>
+      <data key="d2">8</data>
+      <data key="d3">0.0311284046692607</data>
     </edge>
     <edge source="age" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">15</data>
-      <data key="d4">0.058365758754863814</data>
+      <data key="d2">15</data>
+      <data key="d3">0.058365758754863814</data>
     </edge>
     <edge source="age" target="prognosis (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.011673151750972763</data>
+      <data key="d2">3</data>
+      <data key="d3">0.011673151750972763</data>
     </edge>
     <edge source="age" target="discharge (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.0311284046692607</data>
+      <data key="d2">8</data>
+      <data key="d3">0.0311284046692607</data>
     </edge>
     <edge source="age" target="worse" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.007782101167315175</data>
+      <data key="d2">2</data>
+      <data key="d3">0.007782101167315175</data>
     </edge>
     <edge source="age" target="long-term (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.0311284046692607</data>
+      <data key="d2">8</data>
+      <data key="d3">0.0311284046692607</data>
     </edge>
     <edge source="age" target="severity (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.011673151750972763</data>
+      <data key="d2">3</data>
+      <data key="d3">0.011673151750972763</data>
     </edge>
     <edge source="age" target="functional outcome" id="0">
-      <data key="d3">9</data>
-      <data key="d4">0.03501945525291829</data>
+      <data key="d2">9</data>
+      <data key="d3">0.03501945525291829</data>
     </edge>
     <edge source="age" target="los (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.011673151750972763</data>
+      <data key="d2">3</data>
+      <data key="d3">0.011673151750972763</data>
     </edge>
     <edge source="age" target="rehabilitation (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.007782101167315175</data>
+      <data key="d2">2</data>
+      <data key="d3">0.007782101167315175</data>
     </edge>
     <edge source="age" target="drs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0038910505836575876</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0038910505836575876</data>
     </edge>
     <edge source="age" target="pcss (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0038910505836575876</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0038910505836575876</data>
     </edge>
     <edge source="age" target="disability (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.007782101167315175</data>
+      <data key="d2">2</data>
+      <data key="d3">0.007782101167315175</data>
+    </edge>
+    <edge source="gcs (factor)" target="mortality (outcome)" id="0">
+      <data key="d2">90</data>
+      <data key="d3">0.3474903474903475</data>
+    </edge>
+    <edge source="gcs (factor)" target="gos (outcome)" id="0">
+      <data key="d2">17</data>
+      <data key="d3">0.06563706563706563</data>
+    </edge>
+    <edge source="gcs (factor)" target="severity (outcome)" id="0">
+      <data key="d2">12</data>
+      <data key="d3">0.04633204633204633</data>
+    </edge>
+    <edge source="gcs (factor)" target="poor outcome (outcome)" id="0">
+      <data key="d2">8</data>
+      <data key="d3">0.03088803088803089</data>
+    </edge>
+    <edge source="gcs (factor)" target="functional outcome" id="0">
+      <data key="d2">11</data>
+      <data key="d3">0.04247104247104247</data>
+    </edge>
+    <edge source="gcs (factor)" target="outcomes (outcome)" id="0">
+      <data key="d2">32</data>
+      <data key="d3">0.12355212355212356</data>
+    </edge>
+    <edge source="gcs (factor)" target="in-hospital mortality (outcome)" id="0">
+      <data key="d2">13</data>
+      <data key="d3">0.05019305019305019</data>
+    </edge>
+    <edge source="gcs (factor)" target="prognosis (outcome)" id="0">
+      <data key="d2">8</data>
+      <data key="d3">0.03088803088803089</data>
+    </edge>
+    <edge source="gcs (factor)" target="recovery (outcome)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.015444015444015444</data>
+    </edge>
+    <edge source="gcs (factor)" target="icu (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.011583011583011582</data>
+    </edge>
+    <edge source="gcs (factor)" target="discharge (outcome)" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.023166023166023165</data>
+    </edge>
+    <edge source="gcs (factor)" target="long-term (outcome)" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.023166023166023165</data>
+    </edge>
+    <edge source="gcs (factor)" target="neurological outcome" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.007722007722007722</data>
+    </edge>
+    <edge source="gcs (factor)" target="disability (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.011583011583011582</data>
+    </edge>
+    <edge source="gcs (factor)" target="ufo" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.015444015444015444</data>
+    </edge>
+    <edge source="gcs (factor)" target="worse" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.015444015444015444</data>
+    </edge>
+    <edge source="gcs (factor)" target="pcss (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.003861003861003861</data>
+    </edge>
+    <edge source="gcs (factor)" target="los (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.011583011583011582</data>
+    </edge>
+    <edge source="gcs (factor)" target="rehabilitation (outcome)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.007722007722007722</data>
+    </edge>
+    <edge source="gcs (factor)" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.003861003861003861</data>
+    </edge>
+    <edge source="gcs (factor)" target="gcs (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.003861003861003861</data>
     </edge>
     <edge source="gos (factor)" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05555555555555555</data>
-    </edge>
-    <edge source="gos (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.027777777777777776</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="gos (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.2222222222222222</data>
+      <data key="d2">8</data>
+      <data key="d3">0.2222222222222222</data>
+    </edge>
+    <edge source="gos (factor)" target="long-term (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.027777777777777776</data>
     </edge>
     <edge source="gos (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.027777777777777776</data>
+      <data key="d2">1</data>
+      <data key="d3">0.027777777777777776</data>
     </edge>
     <edge source="gos (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.08333333333333333</data>
+      <data key="d2">3</data>
+      <data key="d3">0.08333333333333333</data>
     </edge>
     <edge source="gos (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="gos (factor)" target="functional outcome" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.08333333333333333</data>
+      <data key="d2">3</data>
+      <data key="d3">0.08333333333333333</data>
     </edge>
     <edge source="gos (factor)" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.027777777777777776</data>
+      <data key="d2">1</data>
+      <data key="d3">0.027777777777777776</data>
     </edge>
     <edge source="gos (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.027777777777777776</data>
+      <data key="d2">1</data>
+      <data key="d3">0.027777777777777776</data>
     </edge>
     <edge source="gos (factor)" target="disability (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05555555555555555</data>
-    </edge>
-    <edge source="gos (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.027777777777777776</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="gos (factor)" target="drs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.027777777777777776</data>
+      <data key="d2">1</data>
+      <data key="d3">0.027777777777777776</data>
+    </edge>
+    <edge source="gos (factor)" target="in-hospital mortality (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.027777777777777776</data>
     </edge>
     <edge source="gos (factor)" target="gcs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.027777777777777776</data>
+      <data key="d2">1</data>
+      <data key="d3">0.027777777777777776</data>
     </edge>
     <edge source="impact (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.029411764705882353</data>
-    </edge>
-    <edge source="impact (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.20588235294117646</data>
+      <data key="d2">1</data>
+      <data key="d3">0.029411764705882353</data>
     </edge>
     <edge source="impact (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">22</data>
-      <data key="d4">0.6470588235294118</data>
+      <data key="d2">22</data>
+      <data key="d3">0.6470588235294118</data>
+    </edge>
+    <edge source="impact (factor)" target="outcomes (outcome)" id="0">
+      <data key="d2">7</data>
+      <data key="d3">0.20588235294117646</data>
     </edge>
     <edge source="impact (factor)" target="ufo" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.11764705882352941</data>
+      <data key="d2">4</data>
+      <data key="d3">0.11764705882352941</data>
     </edge>
     <edge source="impact (factor)" target="disability (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.058823529411764705</data>
-    </edge>
-    <edge source="impact (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">2</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="impact (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.029411764705882353</data>
+      <data key="d2">1</data>
+      <data key="d3">0.029411764705882353</data>
+    </edge>
+    <edge source="impact (factor)" target="poor outcome (outcome)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="impact (factor)" target="neurological outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">2</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="impact (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.029411764705882353</data>
+      <data key="d2">1</data>
+      <data key="d3">0.029411764705882353</data>
     </edge>
     <edge source="impact (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.029411764705882353</data>
+      <data key="d2">1</data>
+      <data key="d3">0.029411764705882353</data>
     </edge>
     <edge source="admission (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.1509433962264151</data>
-    </edge>
-    <edge source="admission (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">9</data>
-      <data key="d4">0.16981132075471697</data>
+      <data key="d2">8</data>
+      <data key="d3">0.1509433962264151</data>
     </edge>
     <edge source="admission (factor)" target="gos (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.11320754716981132</data>
+      <data key="d2">6</data>
+      <data key="d3">0.11320754716981132</data>
+    </edge>
+    <edge source="admission (factor)" target="outcomes (outcome)" id="0">
+      <data key="d2">9</data>
+      <data key="d3">0.16981132075471697</data>
     </edge>
     <edge source="admission (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">9</data>
-      <data key="d4">0.16981132075471697</data>
+      <data key="d2">9</data>
+      <data key="d3">0.16981132075471697</data>
     </edge>
     <edge source="admission (factor)" target="gcs (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03773584905660377</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03773584905660377</data>
     </edge>
     <edge source="admission (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.07547169811320754</data>
+      <data key="d2">4</data>
+      <data key="d3">0.07547169811320754</data>
     </edge>
     <edge source="admission (factor)" target="functional outcome" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.07547169811320754</data>
+      <data key="d2">4</data>
+      <data key="d3">0.07547169811320754</data>
     </edge>
     <edge source="admission (factor)" target="symptom (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.018867924528301886</data>
-    </edge>
-    <edge source="admission (factor)" target="icu (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.018867924528301886</data>
+      <data key="d2">1</data>
+      <data key="d3">0.018867924528301886</data>
     </edge>
     <edge source="admission (factor)" target="los (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.018867924528301886</data>
+      <data key="d2">1</data>
+      <data key="d3">0.018867924528301886</data>
+    </edge>
+    <edge source="admission (factor)" target="icu (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.018867924528301886</data>
     </edge>
     <edge source="admission (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.018867924528301886</data>
+      <data key="d2">1</data>
+      <data key="d3">0.018867924528301886</data>
     </edge>
     <edge source="admission (factor)" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.018867924528301886</data>
+      <data key="d2">1</data>
+      <data key="d3">0.018867924528301886</data>
     </edge>
     <edge source="admission (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.07547169811320754</data>
+      <data key="d2">4</data>
+      <data key="d3">0.07547169811320754</data>
     </edge>
     <edge source="admission (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.018867924528301886</data>
+      <data key="d2">1</data>
+      <data key="d3">0.018867924528301886</data>
     </edge>
     <edge source="admission (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.018867924528301886</data>
+      <data key="d2">1</data>
+      <data key="d3">0.018867924528301886</data>
     </edge>
     <edge source="ct (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">11</data>
-      <data key="d4">0.2619047619047619</data>
+      <data key="d2">11</data>
+      <data key="d3">0.2619047619047619</data>
     </edge>
     <edge source="ct (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="ct (factor)" target="ufo" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.09523809523809523</data>
+      <data key="d2">4</data>
+      <data key="d3">0.09523809523809523</data>
     </edge>
     <edge source="ct (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">3</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="ct (factor)" target="severity (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="ct (factor)" target="functional outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="ct (factor)" target="disability (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="ct (factor)" target="pcss (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="ct (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="ct (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="ct (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="ct (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="mri (factor)" target="gos (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.14285714285714285</data>
+      <data key="d2">3</data>
+      <data key="d3">0.14285714285714285</data>
     </edge>
     <edge source="mri (factor)" target="severity (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.14285714285714285</data>
+      <data key="d2">3</data>
+      <data key="d3">0.14285714285714285</data>
     </edge>
     <edge source="mri (factor)" target="disability (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="mri (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="mri (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="mri (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09523809523809523</data>
-    </edge>
-    <edge source="iss (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09523809523809523</data>
-    </edge>
-    <edge source="iss (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
-    </edge>
-    <edge source="iss (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.19047619047619047</data>
-    </edge>
-    <edge source="iss (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.2857142857142857</data>
-    </edge>
-    <edge source="iss (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09523809523809523</data>
-    </edge>
-    <edge source="iss (factor)" target="los (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
-    </edge>
-    <edge source="iss (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
-    </edge>
-    <edge source="iss (factor)" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.09523809523809523</data>
     </edge>
     <edge source="time (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.25</data>
+      <data key="d2">4</data>
+      <data key="d3">0.25</data>
     </edge>
     <edge source="time (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
-    </edge>
-    <edge source="time (factor)" target="symptom (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="time (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="time (factor)" target="symptom (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="time (factor)" target="gcs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="time (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="time (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="time (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="time (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="iss (factor)" target="poor outcome (outcome)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.09523809523809523</data>
+    </edge>
+    <edge source="iss (factor)" target="neurological outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
+    </edge>
+    <edge source="iss (factor)" target="mortality (outcome)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.19047619047619047</data>
+    </edge>
+    <edge source="iss (factor)" target="in-hospital mortality (outcome)" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.2857142857142857</data>
+    </edge>
+    <edge source="iss (factor)" target="outcomes (outcome)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.09523809523809523</data>
+    </edge>
+    <edge source="iss (factor)" target="los (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
+    </edge>
+    <edge source="iss (factor)" target="gos (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
+    </edge>
+    <edge source="iss (factor)" target="ufo" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="sex (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.14814814814814814</data>
+      <data key="d2">4</data>
+      <data key="d3">0.14814814814814814</data>
     </edge>
     <edge source="sex (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="sex (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.2962962962962963</data>
+      <data key="d2">8</data>
+      <data key="d3">0.2962962962962963</data>
     </edge>
     <edge source="sex (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.07407407407407407</data>
+      <data key="d2">2</data>
+      <data key="d3">0.07407407407407407</data>
     </edge>
     <edge source="sex (factor)" target="los (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.07407407407407407</data>
+      <data key="d2">2</data>
+      <data key="d3">0.07407407407407407</data>
     </edge>
     <edge source="sex (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.14814814814814814</data>
+      <data key="d2">4</data>
+      <data key="d3">0.14814814814814814</data>
     </edge>
     <edge source="sex (factor)" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="sex (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="sex (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="sex (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="sex (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="sex (factor)" target="symptom (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="sex (factor)" target="rehabilitation (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.037037037037037035</data>
+      <data key="d2">1</data>
+      <data key="d3">0.037037037037037035</data>
     </edge>
     <edge source="gender" target="mortality (outcome)" id="0">
-      <data key="d3">17</data>
-      <data key="d4">0.29310344827586204</data>
+      <data key="d2">17</data>
+      <data key="d3">0.29310344827586204</data>
     </edge>
     <edge source="gender" target="icu (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.017241379310344827</data>
+      <data key="d2">1</data>
+      <data key="d3">0.017241379310344827</data>
     </edge>
     <edge source="gender" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.017241379310344827</data>
+      <data key="d2">1</data>
+      <data key="d3">0.017241379310344827</data>
     </edge>
     <edge source="gender" target="long-term (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">2</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="gender" target="disability (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">2</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="gender" target="severity (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.05172413793103448</data>
+      <data key="d2">3</data>
+      <data key="d3">0.05172413793103448</data>
     </edge>
     <edge source="gender" target="recovery (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">2</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="gender" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">2</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="gender" target="pcss (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.017241379310344827</data>
+      <data key="d2">1</data>
+      <data key="d3">0.017241379310344827</data>
     </edge>
     <edge source="gender" target="rehabilitation (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.017241379310344827</data>
+      <data key="d2">1</data>
+      <data key="d3">0.017241379310344827</data>
     </edge>
     <edge source="gender" target="ufo" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">2</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="gender" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.017241379310344827</data>
+      <data key="d2">1</data>
+      <data key="d3">0.017241379310344827</data>
     </edge>
     <edge source="gender" target="symptom (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.017241379310344827</data>
-    </edge>
-    <edge source="gender" target="outcomes (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.05172413793103448</data>
+      <data key="d2">1</data>
+      <data key="d3">0.017241379310344827</data>
     </edge>
     <edge source="gender" target="functional outcome" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.05172413793103448</data>
+      <data key="d2">3</data>
+      <data key="d3">0.05172413793103448</data>
+    </edge>
+    <edge source="gender" target="outcomes (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.05172413793103448</data>
     </edge>
     <edge source="pl" target="mortality (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.3333333333333333</data>
+      <data key="d2">6</data>
+      <data key="d3">0.3333333333333333</data>
     </edge>
     <edge source="pl" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1111111111111111</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1111111111111111</data>
     </edge>
     <edge source="pl" target="outcomes (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pl" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pl" target="functional outcome" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.16666666666666666</data>
+      <data key="d2">3</data>
+      <data key="d3">0.16666666666666666</data>
     </edge>
     <edge source="pl" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pl" target="symptom (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pl" target="gcs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pl" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="crash (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">13</data>
-      <data key="d4">0.6842105263157895</data>
+      <data key="d2">13</data>
+      <data key="d3">0.6842105263157895</data>
     </edge>
     <edge source="crash (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.42105263157894735</data>
+      <data key="d2">8</data>
+      <data key="d3">0.42105263157894735</data>
     </edge>
     <edge source="crash (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="crash (factor)" target="icu (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="crash (factor)" target="ufo" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.10526315789473684</data>
+      <data key="d2">2</data>
+      <data key="d3">0.10526315789473684</data>
     </edge>
     <edge source="crash (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="crash (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="crash (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="sbp" target="mortality (outcome)" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.7058823529411765</data>
+      <data key="d2">12</data>
+      <data key="d3">0.7058823529411765</data>
     </edge>
     <edge source="sbp" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.11764705882352941</data>
+      <data key="d2">2</data>
+      <data key="d3">0.11764705882352941</data>
     </edge>
     <edge source="sbp" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.11764705882352941</data>
+      <data key="d2">2</data>
+      <data key="d3">0.11764705882352941</data>
     </edge>
     <edge source="classification (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.25</data>
+      <data key="d2">4</data>
+      <data key="d3">0.25</data>
     </edge>
     <edge source="classification (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="classification (factor)" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="classification (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="classification (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="classification (factor)" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="pta (factor)" target="severity (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.06896551724137931</data>
+      <data key="d2">2</data>
+      <data key="d3">0.06896551724137931</data>
     </edge>
     <edge source="pta (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.06896551724137931</data>
+      <data key="d2">2</data>
+      <data key="d3">0.06896551724137931</data>
     </edge>
     <edge source="pta (factor)" target="functional outcome" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.20689655172413793</data>
+      <data key="d2">6</data>
+      <data key="d3">0.20689655172413793</data>
     </edge>
     <edge source="pta (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.06896551724137931</data>
+      <data key="d2">2</data>
+      <data key="d3">0.06896551724137931</data>
     </edge>
     <edge source="pta (factor)" target="gos (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.13793103448275862</data>
+      <data key="d2">4</data>
+      <data key="d3">0.13793103448275862</data>
     </edge>
     <edge source="pta (factor)" target="rehabilitation (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="pta (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="duration (factor)" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">1</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="duration (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">1</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="duration (factor)" target="functional outcome" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.16666666666666666</data>
+      <data key="d2">4</data>
+      <data key="d3">0.16666666666666666</data>
     </edge>
     <edge source="duration (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.08333333333333333</data>
+      <data key="d2">2</data>
+      <data key="d3">0.08333333333333333</data>
     </edge>
     <edge source="duration (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">1</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="duration (factor)" target="gos (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.125</data>
+      <data key="d2">3</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="il-6" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="il-6" target="mortality (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.1875</data>
+      <data key="d2">3</data>
+      <data key="d3">0.1875</data>
     </edge>
     <edge source="il-6" target="outcomes (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="il-6" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="il-6" target="recovery (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="rotterdam" target="mortality (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.4</data>
+      <data key="d2">8</data>
+      <data key="d3">0.4</data>
     </edge>
     <edge source="rotterdam" target="outcomes (outcome)" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.25</data>
+      <data key="d2">5</data>
+      <data key="d3">0.25</data>
     </edge>
     <edge source="rotterdam" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
-    </edge>
-    <edge source="rotterdam" target="rehabilitation (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="rotterdam" target="los (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
+    </edge>
+    <edge source="rotterdam" target="rehabilitation (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="rotterdam" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.2</data>
+      <data key="d2">4</data>
+      <data key="d3">0.2</data>
     </edge>
     <edge source="rotterdam" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="severity (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.06557377049180328</data>
+      <data key="d2">4</data>
+      <data key="d3">0.06557377049180328</data>
     </edge>
     <edge source="severity (factor)" target="disability (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="severity (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">15</data>
-      <data key="d4">0.2459016393442623</data>
+      <data key="d2">15</data>
+      <data key="d3">0.2459016393442623</data>
     </edge>
     <edge source="severity (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">10</data>
-      <data key="d4">0.16393442622950818</data>
+      <data key="d2">10</data>
+      <data key="d3">0.16393442622950818</data>
     </edge>
     <edge source="severity (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="severity (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.04918032786885246</data>
+      <data key="d2">3</data>
+      <data key="d3">0.04918032786885246</data>
     </edge>
     <edge source="severity (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
-    </edge>
-    <edge source="severity (factor)" target="icu (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="severity (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
+    </edge>
+    <edge source="severity (factor)" target="icu (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="severity (factor)" target="pcss (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="severity (factor)" target="drs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="severity (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="severity (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.06557377049180328</data>
+      <data key="d2">4</data>
+      <data key="d3">0.06557377049180328</data>
     </edge>
     <edge source="severity (factor)" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="severity (factor)" target="rehabilitation (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="gfap (factor)" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.06451612903225806</data>
+      <data key="d2">2</data>
+      <data key="d3">0.06451612903225806</data>
     </edge>
     <edge source="gfap (factor)" target="severity (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.0967741935483871</data>
+      <data key="d2">3</data>
+      <data key="d3">0.0967741935483871</data>
     </edge>
     <edge source="gfap (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03225806451612903</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
     </edge>
     <edge source="gfap (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.0967741935483871</data>
+      <data key="d2">3</data>
+      <data key="d3">0.0967741935483871</data>
     </edge>
     <edge source="gfap (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03225806451612903</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
     </edge>
     <edge source="gfap (factor)" target="functional outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.06451612903225806</data>
+      <data key="d2">2</data>
+      <data key="d3">0.06451612903225806</data>
     </edge>
     <edge source="gfap (factor)" target="disability (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03225806451612903</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
     </edge>
     <edge source="gfap (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03225806451612903</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
     </edge>
     <edge source="gfap (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.12903225806451613</data>
+      <data key="d2">4</data>
+      <data key="d3">0.12903225806451613</data>
     </edge>
     <edge source="gfap (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03225806451612903</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
     </edge>
     <edge source="gfap (factor)" target="gcs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03225806451612903</data>
-    </edge>
-    <edge source="education (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
     </edge>
     <edge source="education (factor)" target="functional outcome" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.17647058823529413</data>
+      <data key="d2">3</data>
+      <data key="d3">0.17647058823529413</data>
+    </edge>
+    <edge source="education (factor)" target="gos (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="education (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.11764705882352941</data>
+      <data key="d2">2</data>
+      <data key="d3">0.11764705882352941</data>
     </edge>
     <edge source="education (factor)" target="drs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="education (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.11764705882352941</data>
-    </edge>
-    <edge source="education (factor)" target="rehabilitation (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">2</data>
+      <data key="d3">0.11764705882352941</data>
     </edge>
     <edge source="education (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="education (factor)" target="rehabilitation (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="icp (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.2033898305084746</data>
+      <data key="d2">12</data>
+      <data key="d3">0.2033898305084746</data>
     </edge>
     <edge source="icp (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">21</data>
-      <data key="d4">0.3559322033898305</data>
+      <data key="d2">21</data>
+      <data key="d3">0.3559322033898305</data>
     </edge>
     <edge source="icp (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01694915254237288</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01694915254237288</data>
     </edge>
     <edge source="icp (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01694915254237288</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01694915254237288</data>
     </edge>
     <edge source="icp (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03389830508474576</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03389830508474576</data>
     </edge>
     <edge source="icp (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.05084745762711865</data>
+      <data key="d2">3</data>
+      <data key="d3">0.05084745762711865</data>
     </edge>
     <edge source="icp (factor)" target="gos (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.05084745762711865</data>
+      <data key="d2">3</data>
+      <data key="d3">0.05084745762711865</data>
     </edge>
     <edge source="icp (factor)" target="disability (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01694915254237288</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01694915254237288</data>
     </edge>
     <edge source="icp (factor)" target="functional outcome" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.06779661016949153</data>
-    </edge>
-    <edge source="icp (factor)" target="icu (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.05084745762711865</data>
+      <data key="d2">4</data>
+      <data key="d3">0.06779661016949153</data>
     </edge>
     <edge source="icp (factor)" target="los (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.05084745762711865</data>
+      <data key="d2">3</data>
+      <data key="d3">0.05084745762711865</data>
+    </edge>
+    <edge source="icp (factor)" target="icu (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.05084745762711865</data>
     </edge>
     <edge source="icp (factor)" target="outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03389830508474576</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03389830508474576</data>
     </edge>
     <edge source="icp (factor)" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01694915254237288</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01694915254237288</data>
     </edge>
     <edge source="icp (factor)" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01694915254237288</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01694915254237288</data>
     </edge>
     <edge source="icp (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01694915254237288</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01694915254237288</data>
     </edge>
     <edge source="icp (factor)" target="worse" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01694915254237288</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01694915254237288</data>
     </edge>
     <edge source="plt" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="plt" target="mortality (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.23529411764705882</data>
+      <data key="d2">4</data>
+      <data key="d3">0.23529411764705882</data>
     </edge>
     <edge source="plt" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="plt" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="plt" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.11764705882352941</data>
+      <data key="d2">2</data>
+      <data key="d3">0.11764705882352941</data>
     </edge>
     <edge source="plt" target="outcomes (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
-    </edge>
-    <edge source="plt" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="plt" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="plt" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="plt" target="recovery (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="plt" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
     </edge>
     <edge source="sss (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.1875</data>
+      <data key="d2">3</data>
+      <data key="d3">0.1875</data>
     </edge>
     <edge source="sss (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.375</data>
+      <data key="d2">6</data>
+      <data key="d3">0.375</data>
     </edge>
     <edge source="sss (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="sss (factor)" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="sss (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="sss (factor)" target="worse" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="initial (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="initial (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
-    </edge>
-    <edge source="initial (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.14285714285714285</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="initial (factor)" target="gos (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.14285714285714285</data>
+      <data key="d2">3</data>
+      <data key="d3">0.14285714285714285</data>
     </edge>
-    <edge source="initial (factor)" target="functional outcome" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.14285714285714285</data>
+    <edge source="initial (factor)" target="mortality (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.14285714285714285</data>
     </edge>
     <edge source="initial (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09523809523809523</data>
+      <data key="d2">2</data>
+      <data key="d3">0.09523809523809523</data>
+    </edge>
+    <edge source="initial (factor)" target="functional outcome" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.14285714285714285</data>
     </edge>
     <edge source="initial (factor)" target="worse" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="initial (factor)" target="drs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="initial (factor)" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="initial (factor)" target="los (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="initial (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="initial (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">1</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="ct scan (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09090909090909091</data>
+      <data key="d2">2</data>
+      <data key="d3">0.09090909090909091</data>
     </edge>
     <edge source="ct scan (factor)" target="worse" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.045454545454545456</data>
+      <data key="d2">1</data>
+      <data key="d3">0.045454545454545456</data>
     </edge>
     <edge source="ct scan (factor)" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09090909090909091</data>
+      <data key="d2">2</data>
+      <data key="d3">0.09090909090909091</data>
     </edge>
     <edge source="ct scan (factor)" target="los (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.045454545454545456</data>
+      <data key="d2">1</data>
+      <data key="d3">0.045454545454545456</data>
     </edge>
     <edge source="ct scan (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.22727272727272727</data>
+      <data key="d2">5</data>
+      <data key="d3">0.22727272727272727</data>
     </edge>
     <edge source="ct scan (factor)" target="severity (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09090909090909091</data>
+      <data key="d2">2</data>
+      <data key="d3">0.09090909090909091</data>
     </edge>
     <edge source="ct scan (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.13636363636363635</data>
+      <data key="d2">3</data>
+      <data key="d3">0.13636363636363635</data>
     </edge>
     <edge source="ct scan (factor)" target="neurological outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.09090909090909091</data>
+      <data key="d2">2</data>
+      <data key="d3">0.09090909090909091</data>
     </edge>
     <edge source="ct scan (factor)" target="ufo" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.045454545454545456</data>
+      <data key="d2">1</data>
+      <data key="d3">0.045454545454545456</data>
     </edge>
     <edge source="ct scan (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.045454545454545456</data>
+      <data key="d2">1</data>
+      <data key="d3">0.045454545454545456</data>
     </edge>
     <edge source="cpp (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.42105263157894735</data>
+      <data key="d2">8</data>
+      <data key="d3">0.42105263157894735</data>
     </edge>
     <edge source="cpp (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.21052631578947367</data>
+      <data key="d2">4</data>
+      <data key="d3">0.21052631578947367</data>
     </edge>
     <edge source="cpp (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="cpp (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="cpp (factor)" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="cpp (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
-    </edge>
-    <edge source="hypotension (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.48</data>
-    </edge>
-    <edge source="hypotension (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.12</data>
-    </edge>
-    <edge source="hypotension (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="hypotension (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="hypotension (factor)" target="ufo" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.08</data>
-    </edge>
-    <edge source="hypotension (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.12</data>
-    </edge>
-    <edge source="hypotension (factor)" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="hypotension (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="hypotension (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="hypotension (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="pupillary reactivity" target="outcomes (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.25</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="pupillary reactivity" target="mortality (outcome)" id="0">
-      <data key="d3">10</data>
-      <data key="d4">0.625</data>
+      <data key="d2">10</data>
+      <data key="d3">0.625</data>
+    </edge>
+    <edge source="pupillary reactivity" target="outcomes (outcome)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.25</data>
     </edge>
     <edge source="pupillary reactivity" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="pupillary reactivity" target="ufo" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="pupillary reactivity" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
-    <edge source="nse (factor)" target="severity (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.16666666666666666</data>
+    <edge source="hypotension (factor)" target="mortality (outcome)" id="0">
+      <data key="d2">12</data>
+      <data key="d3">0.48</data>
     </edge>
-    <edge source="nse (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1111111111111111</data>
+    <edge source="hypotension (factor)" target="outcomes (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.12</data>
     </edge>
-    <edge source="nse (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.2777777777777778</data>
+    <edge source="hypotension (factor)" target="neurological outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
-    <edge source="nse (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1111111111111111</data>
+    <edge source="hypotension (factor)" target="gos (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
-    <edge source="nse (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1111111111111111</data>
+    <edge source="hypotension (factor)" target="ufo" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.08</data>
     </edge>
-    <edge source="nse (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+    <edge source="hypotension (factor)" target="in-hospital mortality (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.12</data>
     </edge>
-    <edge source="nse (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+    <edge source="hypotension (factor)" target="severity (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
-    <edge source="nse (factor)" target="gcs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+    <edge source="hypotension (factor)" target="prognosis (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
-    <edge source="uch-l1 (factor)" target="severity (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.17647058823529413</data>
+    <edge source="hypotension (factor)" target="poor outcome (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
-    <edge source="uch-l1 (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.23529411764705882</data>
-    </edge>
-    <edge source="uch-l1 (factor)" target="outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
-    </edge>
-    <edge source="uch-l1 (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
-    </edge>
-    <edge source="uch-l1 (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
-    </edge>
-    <edge source="uch-l1 (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
-    </edge>
-    <edge source="uch-l1 (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
-    </edge>
-    <edge source="uch-l1 (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.058823529411764705</data>
+    <edge source="hypotension (factor)" target="discharge (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="s100b (factor)" target="severity (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">3</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="s100b (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">10</data>
-      <data key="d4">0.23809523809523808</data>
+      <data key="d2">10</data>
+      <data key="d3">0.23809523809523808</data>
     </edge>
     <edge source="s100b (factor)" target="neurological outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="s100b (factor)" target="outcome" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.09523809523809523</data>
+      <data key="d2">4</data>
+      <data key="d3">0.09523809523809523</data>
     </edge>
     <edge source="s100b (factor)" target="disability (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="s100b (factor)" target="long-term (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">3</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="s100b (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.19047619047619047</data>
+      <data key="d2">8</data>
+      <data key="d3">0.19047619047619047</data>
     </edge>
     <edge source="s100b (factor)" target="functional outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="s100b (factor)" target="gos (outcome)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.14285714285714285</data>
+      <data key="d2">6</data>
+      <data key="d3">0.14285714285714285</data>
     </edge>
     <edge source="s100b (factor)" target="drs (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="s100b (factor)" target="pcss (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
     </edge>
     <edge source="s100b (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="s100b (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.047619047619047616</data>
+      <data key="d2">2</data>
+      <data key="d3">0.047619047619047616</data>
     </edge>
     <edge source="s100b (factor)" target="gcs (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.023809523809523808</data>
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="severity (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.17647058823529413</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="recovery (outcome)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.23529411764705882</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="mortality (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="prognosis (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="gos (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="functional outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="uch-l1 (factor)" target="poor outcome (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="nse (factor)" target="severity (outcome)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="nse (factor)" target="mortality (outcome)" id="0">
+      <data key="d2">5</data>
+      <data key="d3">0.2777777777777778</data>
+    </edge>
+    <edge source="nse (factor)" target="long-term (outcome)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="nse (factor)" target="outcomes (outcome)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="nse (factor)" target="prognosis (outcome)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="nse (factor)" target="functional outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
+    </edge>
+    <edge source="nse (factor)" target="poor outcome (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
+    </edge>
+    <edge source="nse (factor)" target="gcs (outcome)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="marshall (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.35</data>
+      <data key="d2">7</data>
+      <data key="d3">0.35</data>
     </edge>
     <edge source="marshall (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.25</data>
+      <data key="d2">5</data>
+      <data key="d3">0.25</data>
     </edge>
     <edge source="marshall (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1</data>
     </edge>
     <edge source="marshall (factor)" target="functional outcome" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="marshall (factor)" target="gos (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1</data>
     </edge>
     <edge source="hematoma (factor)" target="in-hospital mortality (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1</data>
     </edge>
     <edge source="hematoma (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1</data>
     </edge>
     <edge source="hematoma (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.35</data>
+      <data key="d2">7</data>
+      <data key="d3">0.35</data>
     </edge>
     <edge source="hematoma (factor)" target="gos (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="hematoma (factor)" target="discharge (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="hematoma (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="subdural (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.2</data>
+      <data key="d2">4</data>
+      <data key="d3">0.2</data>
     </edge>
     <edge source="subdural (factor)" target="poor outcome (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1</data>
     </edge>
     <edge source="subdural (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.2</data>
+      <data key="d2">4</data>
+      <data key="d3">0.2</data>
     </edge>
     <edge source="subdural (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="subdural (factor)" target="functional outcome" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1</data>
     </edge>
     <edge source="dti" target="recovery (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="dti" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="dti" target="outcomes (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="dti" target="long-term (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="brain (factor)" target="prognosis (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
-    </edge>
-    <edge source="brain (factor)" target="outcomes (outcome)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.2</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="brain (factor)" target="recovery (outcome)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.1</data>
+      <data key="d2">2</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="brain (factor)" target="outcomes (outcome)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.2</data>
     </edge>
     <edge source="brain (factor)" target="mortality (outcome)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.15</data>
+      <data key="d2">3</data>
+      <data key="d3">0.15</data>
     </edge>
     <edge source="brain (factor)" target="severity (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="brain (factor)" target="los (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="brain (factor)" target="rehabilitation (outcome)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="mortality (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">90</data>
-      <data key="d4">0.20785219399538107</data>
+      <data key="d2">90</data>
+      <data key="d3">0.20785219399538107</data>
     </edge>
     <edge source="mortality (outcome)" target="age" id="0">
-      <data key="d3">85</data>
-      <data key="d4">0.19630484988452657</data>
+      <data key="d2">85</data>
+      <data key="d3">0.19630484988452657</data>
     </edge>
     <edge source="mortality (outcome)" target="ct (factor)" id="0">
-      <data key="d3">11</data>
-      <data key="d4">0.025404157043879907</data>
+      <data key="d2">11</data>
+      <data key="d3">0.025404157043879907</data>
     </edge>
     <edge source="mortality (outcome)" target="gender" id="0">
-      <data key="d3">17</data>
-      <data key="d4">0.03926096997690531</data>
+      <data key="d2">17</data>
+      <data key="d3">0.03926096997690531</data>
     </edge>
     <edge source="mortality (outcome)" target="pl" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.013856812933025405</data>
-    </edge>
-    <edge source="mortality (outcome)" target="impact (factor)" id="0">
-      <data key="d3">22</data>
-      <data key="d4">0.050808314087759814</data>
+      <data key="d2">6</data>
+      <data key="d3">0.013856812933025405</data>
     </edge>
     <edge source="mortality (outcome)" target="crash (factor)" id="0">
-      <data key="d3">13</data>
-      <data key="d4">0.03002309468822171</data>
+      <data key="d2">13</data>
+      <data key="d3">0.03002309468822171</data>
+    </edge>
+    <edge source="mortality (outcome)" target="impact (factor)" id="0">
+      <data key="d2">22</data>
+      <data key="d3">0.050808314087759814</data>
     </edge>
     <edge source="mortality (outcome)" target="sbp" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.02771362586605081</data>
+      <data key="d2">12</data>
+      <data key="d3">0.02771362586605081</data>
     </edge>
     <edge source="mortality (outcome)" target="classification (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.009237875288683603</data>
+      <data key="d2">4</data>
+      <data key="d3">0.009237875288683603</data>
     </edge>
     <edge source="mortality (outcome)" target="rotterdam" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.018475750577367205</data>
-    </edge>
-    <edge source="mortality (outcome)" target="cpp (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.018475750577367205</data>
+      <data key="d2">8</data>
+      <data key="d3">0.018475750577367205</data>
     </edge>
     <edge source="mortality (outcome)" target="icp (factor)" id="0">
-      <data key="d3">21</data>
-      <data key="d4">0.04849884526558892</data>
+      <data key="d2">21</data>
+      <data key="d3">0.04849884526558892</data>
     </edge>
-    <edge source="mortality (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.02771362586605081</data>
+    <edge source="mortality (outcome)" target="cpp (factor)" id="0">
+      <data key="d2">8</data>
+      <data key="d3">0.018475750577367205</data>
     </edge>
     <edge source="mortality (outcome)" target="pupillary reactivity" id="0">
-      <data key="d3">10</data>
-      <data key="d4">0.023094688221709007</data>
+      <data key="d2">10</data>
+      <data key="d3">0.023094688221709007</data>
+    </edge>
+    <edge source="mortality (outcome)" target="hypotension (factor)" id="0">
+      <data key="d2">12</data>
+      <data key="d3">0.02771362586605081</data>
     </edge>
     <edge source="mortality (outcome)" target="severity (factor)" id="0">
-      <data key="d3">15</data>
-      <data key="d4">0.03464203233256351</data>
+      <data key="d2">15</data>
+      <data key="d3">0.03464203233256351</data>
     </edge>
     <edge source="mortality (outcome)" target="marshall (factor)" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.016166281755196306</data>
+      <data key="d2">7</data>
+      <data key="d3">0.016166281755196306</data>
     </edge>
     <edge source="mortality (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">10</data>
-      <data key="d4">0.023094688221709007</data>
+      <data key="d2">10</data>
+      <data key="d3">0.023094688221709007</data>
     </edge>
     <edge source="mortality (outcome)" target="il-6" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.006928406466512702</data>
+      <data key="d2">3</data>
+      <data key="d3">0.006928406466512702</data>
     </edge>
     <edge source="mortality (outcome)" target="initial (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.006928406466512702</data>
+      <data key="d2">3</data>
+      <data key="d3">0.006928406466512702</data>
     </edge>
     <edge source="mortality (outcome)" target="sss (factor)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.013856812933025405</data>
-    </edge>
-    <edge source="mortality (outcome)" target="time (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.004618937644341801</data>
+      <data key="d2">6</data>
+      <data key="d3">0.013856812933025405</data>
     </edge>
     <edge source="mortality (outcome)" target="sex (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.018475750577367205</data>
+      <data key="d2">8</data>
+      <data key="d3">0.018475750577367205</data>
+    </edge>
+    <edge source="mortality (outcome)" target="time (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.004618937644341801</data>
     </edge>
     <edge source="mortality (outcome)" target="nse (factor)" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.011547344110854504</data>
+      <data key="d2">5</data>
+      <data key="d3">0.011547344110854504</data>
     </edge>
     <edge source="mortality (outcome)" target="gos (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0023094688221709007</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0023094688221709007</data>
     </edge>
     <edge source="mortality (outcome)" target="plt" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.009237875288683603</data>
+      <data key="d2">4</data>
+      <data key="d3">0.009237875288683603</data>
     </edge>
     <edge source="mortality (outcome)" target="admission (factor)" id="0">
-      <data key="d3">9</data>
-      <data key="d4">0.020785219399538105</data>
+      <data key="d2">9</data>
+      <data key="d3">0.020785219399538105</data>
     </edge>
     <edge source="mortality (outcome)" target="iss (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.009237875288683603</data>
+      <data key="d2">4</data>
+      <data key="d3">0.009237875288683603</data>
     </edge>
     <edge source="mortality (outcome)" target="duration (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.004618937644341801</data>
+      <data key="d2">2</data>
+      <data key="d3">0.004618937644341801</data>
     </edge>
     <edge source="mortality (outcome)" target="hematoma (factor)" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.016166281755196306</data>
+      <data key="d2">7</data>
+      <data key="d3">0.016166281755196306</data>
     </edge>
     <edge source="mortality (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.009237875288683603</data>
+      <data key="d2">4</data>
+      <data key="d3">0.009237875288683603</data>
     </edge>
     <edge source="mortality (outcome)" target="subdural (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.009237875288683603</data>
+      <data key="d2">4</data>
+      <data key="d3">0.009237875288683603</data>
     </edge>
     <edge source="mortality (outcome)" target="uch-l1 (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0023094688221709007</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0023094688221709007</data>
     </edge>
     <edge source="mortality (outcome)" target="ct scan (factor)" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.011547344110854504</data>
+      <data key="d2">5</data>
+      <data key="d3">0.011547344110854504</data>
     </edge>
     <edge source="mortality (outcome)" target="brain (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.006928406466512702</data>
-    </edge>
-    <edge source="severity (outcome)" target="duration (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="pta (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.025974025974025976</data>
-    </edge>
-    <edge source="severity (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.15584415584415584</data>
-    </edge>
-    <edge source="severity (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03896103896103896</data>
-    </edge>
-    <edge source="severity (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03896103896103896</data>
-    </edge>
-    <edge source="severity (outcome)" target="uch-l1 (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03896103896103896</data>
-    </edge>
-    <edge source="severity (outcome)" target="nse (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03896103896103896</data>
-    </edge>
-    <edge source="severity (outcome)" target="age" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03896103896103896</data>
-    </edge>
-    <edge source="severity (outcome)" target="gender" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03896103896103896</data>
-    </edge>
-    <edge source="severity (outcome)" target="ct (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.025974025974025976</data>
-    </edge>
-    <edge source="severity (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="mri (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03896103896103896</data>
-    </edge>
-    <edge source="severity (outcome)" target="classification (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="ct scan (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.025974025974025976</data>
-    </edge>
-    <edge source="severity (outcome)" target="pl" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="icp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="cpp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="severity (outcome)" target="brain (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.012987012987012988</data>
+      <data key="d2">3</data>
+      <data key="d3">0.006928406466512702</data>
     </edge>
     <edge source="outcome" target="s100b (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.13793103448275862</data>
+      <data key="d2">4</data>
+      <data key="d3">0.13793103448275862</data>
     </edge>
     <edge source="outcome" target="gfap (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="outcome" target="uch-l1 (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="outcome" target="gcs (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
-    </edge>
-    <edge source="outcome" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="outcome" target="admission (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
+    </edge>
+    <edge source="outcome" target="plt" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="outcome" target="icp (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.06896551724137931</data>
+      <data key="d2">2</data>
+      <data key="d3">0.06896551724137931</data>
     </edge>
     <edge source="outcome" target="cpp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="outcome" target="mri (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="outcome" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="outcome" target="ct (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.034482758620689655</data>
+      <data key="d2">1</data>
+      <data key="d3">0.034482758620689655</data>
     </edge>
     <edge source="long-term (outcome)" target="gos (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="long-term (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.15</data>
+      <data key="d2">6</data>
+      <data key="d3">0.15</data>
     </edge>
     <edge source="long-term (outcome)" target="gender" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05</data>
-    </edge>
-    <edge source="long-term (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.075</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="long-term (outcome)" target="nse (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05</data>
+    </edge>
+    <edge source="long-term (outcome)" target="s100b (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.075</data>
     </edge>
     <edge source="long-term (outcome)" target="age" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.2</data>
+      <data key="d2">8</data>
+      <data key="d3">0.2</data>
     </edge>
     <edge source="long-term (outcome)" target="education (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="long-term (outcome)" target="severity (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.1</data>
+      <data key="d2">4</data>
+      <data key="d3">0.1</data>
     </edge>
     <edge source="long-term (outcome)" target="pta (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="long-term (outcome)" target="admission (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="long-term (outcome)" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
-    </edge>
-    <edge source="long-term (outcome)" target="time (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="long-term (outcome)" target="dti" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
+    </edge>
+    <edge source="long-term (outcome)" target="time (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
+    </edge>
+    <edge source="severity (outcome)" target="gcs (factor)" id="0">
+      <data key="d2">12</data>
+      <data key="d3">0.15584415584415584</data>
+    </edge>
+    <edge source="severity (outcome)" target="pta (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.025974025974025976</data>
+    </edge>
+    <edge source="severity (outcome)" target="duration (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="uch-l1 (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.03896103896103896</data>
+    </edge>
+    <edge source="severity (outcome)" target="gfap (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.03896103896103896</data>
+    </edge>
+    <edge source="severity (outcome)" target="nse (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.03896103896103896</data>
+    </edge>
+    <edge source="severity (outcome)" target="s100b (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.03896103896103896</data>
+    </edge>
+    <edge source="severity (outcome)" target="age" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.03896103896103896</data>
+    </edge>
+    <edge source="severity (outcome)" target="gender" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.03896103896103896</data>
+    </edge>
+    <edge source="severity (outcome)" target="ct (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.025974025974025976</data>
+    </edge>
+    <edge source="severity (outcome)" target="hypotension (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="plt" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="classification (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="mri (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.03896103896103896</data>
+    </edge>
+    <edge source="severity (outcome)" target="sex (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="ct scan (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.025974025974025976</data>
+    </edge>
+    <edge source="severity (outcome)" target="pl" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="icp (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="cpp (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
+    </edge>
+    <edge source="severity (outcome)" target="brain (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.012987012987012988</data>
     </edge>
     <edge source="gos (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">17</data>
-      <data key="d4">0.15454545454545454</data>
+      <data key="d2">17</data>
+      <data key="d3">0.15454545454545454</data>
     </edge>
     <edge source="gos (outcome)" target="gos (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="age" id="0">
-      <data key="d3">13</data>
-      <data key="d4">0.11818181818181818</data>
+      <data key="d2">13</data>
+      <data key="d3">0.11818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="mri (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.02727272727272727</data>
+      <data key="d2">3</data>
+      <data key="d3">0.02727272727272727</data>
     </edge>
     <edge source="gos (outcome)" target="il-6" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="crash (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="initial (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.02727272727272727</data>
+      <data key="d2">3</data>
+      <data key="d3">0.02727272727272727</data>
     </edge>
     <edge source="gos (outcome)" target="admission (factor)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.05454545454545454</data>
-    </edge>
-    <edge source="gos (outcome)" target="sss (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">6</data>
+      <data key="d3">0.05454545454545454</data>
     </edge>
     <edge source="gos (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
+    </edge>
+    <edge source="gos (outcome)" target="sss (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="impact (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="pl" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="sbp" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="icp (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.02727272727272727</data>
-    </edge>
-    <edge source="gos (outcome)" target="duration (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.02727272727272727</data>
-    </edge>
-    <edge source="gos (outcome)" target="pta (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.03636363636363636</data>
+      <data key="d2">3</data>
+      <data key="d3">0.02727272727272727</data>
     </edge>
     <edge source="gos (outcome)" target="education (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
+    </edge>
+    <edge source="gos (outcome)" target="pta (factor)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.03636363636363636</data>
+    </edge>
+    <edge source="gos (outcome)" target="duration (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.02727272727272727</data>
     </edge>
     <edge source="gos (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.05454545454545454</data>
+      <data key="d2">6</data>
+      <data key="d3">0.05454545454545454</data>
     </edge>
     <edge source="gos (outcome)" target="gender" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="ct scan (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="iss (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="hematoma (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="classification (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="ct (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="marshall (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.01818181818181818</data>
+      <data key="d2">2</data>
+      <data key="d3">0.01818181818181818</data>
     </edge>
     <edge source="gos (outcome)" target="uch-l1 (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="gos (outcome)" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.00909090909090909</data>
+      <data key="d2">1</data>
+      <data key="d3">0.00909090909090909</data>
     </edge>
     <edge source="prognosis (outcome)" target="impact (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="age" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.075</data>
-    </edge>
-    <edge source="prognosis (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.2</data>
+      <data key="d2">3</data>
+      <data key="d3">0.075</data>
     </edge>
     <edge source="prognosis (outcome)" target="gender" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="rotterdam" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
+    </edge>
+    <edge source="prognosis (outcome)" target="gcs (factor)" id="0">
+      <data key="d2">8</data>
+      <data key="d3">0.2</data>
     </edge>
     <edge source="prognosis (outcome)" target="gos (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.075</data>
+      <data key="d2">3</data>
+      <data key="d3">0.075</data>
     </edge>
     <edge source="prognosis (outcome)" target="icp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="brain (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="nse (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="prognosis (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="il-6" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
-    </edge>
-    <edge source="prognosis (outcome)" target="uch-l1 (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
-    <edge source="prognosis (outcome)" target="hematoma (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+    <edge source="prognosis (outcome)" target="uch-l1 (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="subdural (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
+    </edge>
+    <edge source="prognosis (outcome)" target="hematoma (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="mri (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="dti" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.025</data>
     </edge>
     <edge source="prognosis (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.05</data>
+      <data key="d2">2</data>
+      <data key="d3">0.05</data>
     </edge>
     <edge source="drs (outcome)" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="drs (outcome)" target="age" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="drs (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="drs (outcome)" target="education (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="drs (outcome)" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="drs (outcome)" target="gos (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="outcomes (outcome)" target="age" id="0">
-      <data key="d3">30</data>
-      <data key="d4">0.12987012987012986</data>
+      <data key="d2">30</data>
+      <data key="d3">0.12987012987012986</data>
     </edge>
     <edge source="outcomes (outcome)" target="sex (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.017316017316017316</data>
-    </edge>
-    <edge source="outcomes (outcome)" target="crash (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.03463203463203463</data>
+      <data key="d2">4</data>
+      <data key="d3">0.017316017316017316</data>
     </edge>
     <edge source="outcomes (outcome)" target="impact (factor)" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.030303030303030304</data>
+      <data key="d2">7</data>
+      <data key="d3">0.030303030303030304</data>
     </edge>
-    <edge source="outcomes (outcome)" target="icp (factor)" id="0">
-      <data key="d3">12</data>
-      <data key="d4">0.05194805194805195</data>
-    </edge>
-    <edge source="outcomes (outcome)" target="duration (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.004329004329004329</data>
-    </edge>
-    <edge source="outcomes (outcome)" target="time (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.017316017316017316</data>
+    <edge source="outcomes (outcome)" target="crash (factor)" id="0">
+      <data key="d2">8</data>
+      <data key="d3">0.03463203463203463</data>
     </edge>
     <edge source="outcomes (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">32</data>
-      <data key="d4">0.13852813852813853</data>
+      <data key="d2">32</data>
+      <data key="d3">0.13852813852813853</data>
+    </edge>
+    <edge source="outcomes (outcome)" target="icp (factor)" id="0">
+      <data key="d2">12</data>
+      <data key="d3">0.05194805194805195</data>
+    </edge>
+    <edge source="outcomes (outcome)" target="duration (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.004329004329004329</data>
+    </edge>
+    <edge source="outcomes (outcome)" target="time (factor)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.017316017316017316</data>
     </edge>
     <edge source="outcomes (outcome)" target="gos (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.03463203463203463</data>
+      <data key="d2">8</data>
+      <data key="d3">0.03463203463203463</data>
     </edge>
     <edge source="outcomes (outcome)" target="sss (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.012987012987012988</data>
-    </edge>
-    <edge source="outcomes (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.012987012987012988</data>
+      <data key="d2">3</data>
+      <data key="d3">0.012987012987012988</data>
     </edge>
     <edge source="outcomes (outcome)" target="pupillary reactivity" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.017316017316017316</data>
+      <data key="d2">4</data>
+      <data key="d3">0.017316017316017316</data>
+    </edge>
+    <edge source="outcomes (outcome)" target="hypotension (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.012987012987012988</data>
     </edge>
     <edge source="outcomes (outcome)" target="rotterdam" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.021645021645021644</data>
+      <data key="d2">5</data>
+      <data key="d3">0.021645021645021644</data>
     </edge>
     <edge source="outcomes (outcome)" target="severity (factor)" id="0">
-      <data key="d3">10</data>
-      <data key="d4">0.04329004329004329</data>
+      <data key="d2">10</data>
+      <data key="d3">0.04329004329004329</data>
     </edge>
     <edge source="outcomes (outcome)" target="marshall (factor)" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.021645021645021644</data>
+      <data key="d2">5</data>
+      <data key="d3">0.021645021645021644</data>
     </edge>
     <edge source="outcomes (outcome)" target="admission (factor)" id="0">
-      <data key="d3">9</data>
-      <data key="d4">0.03896103896103896</data>
+      <data key="d2">9</data>
+      <data key="d3">0.03896103896103896</data>
     </edge>
     <edge source="outcomes (outcome)" target="initial (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.008658008658008658</data>
+      <data key="d2">2</data>
+      <data key="d3">0.008658008658008658</data>
     </edge>
     <edge source="outcomes (outcome)" target="ct (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.012987012987012988</data>
+      <data key="d2">3</data>
+      <data key="d3">0.012987012987012988</data>
     </edge>
     <edge source="outcomes (outcome)" target="cpp (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.017316017316017316</data>
+      <data key="d2">4</data>
+      <data key="d3">0.017316017316017316</data>
     </edge>
     <edge source="outcomes (outcome)" target="pl" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.004329004329004329</data>
+      <data key="d2">1</data>
+      <data key="d3">0.004329004329004329</data>
     </edge>
     <edge source="outcomes (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.03463203463203463</data>
+      <data key="d2">8</data>
+      <data key="d3">0.03463203463203463</data>
     </edge>
     <edge source="outcomes (outcome)" target="nse (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.008658008658008658</data>
+      <data key="d2">2</data>
+      <data key="d3">0.008658008658008658</data>
     </edge>
     <edge source="outcomes (outcome)" target="il-6" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.008658008658008658</data>
+      <data key="d2">2</data>
+      <data key="d3">0.008658008658008658</data>
     </edge>
     <edge source="outcomes (outcome)" target="iss (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.008658008658008658</data>
+      <data key="d2">2</data>
+      <data key="d3">0.008658008658008658</data>
     </edge>
     <edge source="outcomes (outcome)" target="brain (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.017316017316017316</data>
+      <data key="d2">4</data>
+      <data key="d3">0.017316017316017316</data>
     </edge>
     <edge source="outcomes (outcome)" target="classification (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.008658008658008658</data>
+      <data key="d2">2</data>
+      <data key="d3">0.008658008658008658</data>
     </edge>
     <edge source="outcomes (outcome)" target="subdural (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.017316017316017316</data>
+      <data key="d2">4</data>
+      <data key="d3">0.017316017316017316</data>
     </edge>
     <edge source="outcomes (outcome)" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.004329004329004329</data>
+      <data key="d2">1</data>
+      <data key="d3">0.004329004329004329</data>
     </edge>
     <edge source="outcomes (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.004329004329004329</data>
+      <data key="d2">1</data>
+      <data key="d3">0.004329004329004329</data>
     </edge>
     <edge source="outcomes (outcome)" target="ct scan (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.012987012987012988</data>
+      <data key="d2">3</data>
+      <data key="d3">0.012987012987012988</data>
     </edge>
     <edge source="outcomes (outcome)" target="gender" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.012987012987012988</data>
+      <data key="d2">3</data>
+      <data key="d3">0.012987012987012988</data>
     </edge>
     <edge source="outcomes (outcome)" target="mri (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.008658008658008658</data>
+      <data key="d2">2</data>
+      <data key="d3">0.008658008658008658</data>
     </edge>
     <edge source="outcomes (outcome)" target="dti" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.008658008658008658</data>
+      <data key="d2">2</data>
+      <data key="d3">0.008658008658008658</data>
     </edge>
     <edge source="outcomes (outcome)" target="education (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.004329004329004329</data>
-    </edge>
-    <edge source="icu (outcome)" target="age" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.10526315789473684</data>
+      <data key="d2">1</data>
+      <data key="d3">0.004329004329004329</data>
     </edge>
     <edge source="icu (outcome)" target="gender" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="icu (outcome)" target="age" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.10526315789473684</data>
     </edge>
     <edge source="icu (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.15789473684210525</data>
+      <data key="d2">3</data>
+      <data key="d3">0.15789473684210525</data>
     </edge>
     <edge source="icu (outcome)" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="icu (outcome)" target="crash (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="icu (outcome)" target="icp (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.15789473684210525</data>
+      <data key="d2">3</data>
+      <data key="d3">0.15789473684210525</data>
     </edge>
     <edge source="icu (outcome)" target="admission (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="ufo" target="impact (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.0975609756097561</data>
+      <data key="d2">4</data>
+      <data key="d3">0.0975609756097561</data>
     </edge>
     <edge source="ufo" target="age" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.1951219512195122</data>
+      <data key="d2">8</data>
+      <data key="d3">0.1951219512195122</data>
     </edge>
     <edge source="ufo" target="ct (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.0975609756097561</data>
+      <data key="d2">4</data>
+      <data key="d3">0.0975609756097561</data>
     </edge>
     <edge source="ufo" target="gcs (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.0975609756097561</data>
+      <data key="d2">4</data>
+      <data key="d3">0.0975609756097561</data>
     </edge>
     <edge source="ufo" target="gos (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
-    </edge>
-    <edge source="ufo" target="pupillary reactivity" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.04878048780487805</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="ufo" target="hypotension (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.04878048780487805</data>
+      <data key="d2">2</data>
+      <data key="d3">0.04878048780487805</data>
+    </edge>
+    <edge source="ufo" target="pupillary reactivity" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.04878048780487805</data>
     </edge>
     <edge source="ufo" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
-    </edge>
-    <edge source="ufo" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="ufo" target="pl" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
+    </edge>
+    <edge source="ufo" target="plt" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="ufo" target="admission (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="ufo" target="icp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="ufo" target="gender" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.04878048780487805</data>
+      <data key="d2">2</data>
+      <data key="d3">0.04878048780487805</data>
     </edge>
     <edge source="ufo" target="iss (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="ufo" target="crash (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.04878048780487805</data>
+      <data key="d2">2</data>
+      <data key="d3">0.04878048780487805</data>
     </edge>
     <edge source="ufo" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="ufo" target="ct scan (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.024390243902439025</data>
+      <data key="d2">1</data>
+      <data key="d3">0.024390243902439025</data>
     </edge>
     <edge source="poor outcome (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.13333333333333333</data>
-    </edge>
-    <edge source="poor outcome (outcome)" target="iss (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03333333333333333</data>
-    </edge>
-    <edge source="poor outcome (outcome)" target="severity (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.06666666666666667</data>
+      <data key="d2">8</data>
+      <data key="d3">0.13333333333333333</data>
     </edge>
     <edge source="poor outcome (outcome)" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.016666666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.016666666666666666</data>
+    </edge>
+    <edge source="poor outcome (outcome)" target="severity (factor)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.06666666666666667</data>
+    </edge>
+    <edge source="poor outcome (outcome)" target="iss (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.03333333333333333</data>
     </edge>
     <edge source="poor outcome (outcome)" target="age" id="0">
-      <data key="d3">7</data>
-      <data key="d4">0.11666666666666667</data>
+      <data key="d2">7</data>
+      <data key="d3">0.11666666666666667</data>
     </edge>
     <edge source="poor outcome (outcome)" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.016666666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.016666666666666666</data>
     </edge>
     <edge source="poor outcome (outcome)" target="icp (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03333333333333333</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03333333333333333</data>
     </edge>
     <edge source="poor outcome (outcome)" target="hematoma (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03333333333333333</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03333333333333333</data>
     </edge>
     <edge source="poor outcome (outcome)" target="impact (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03333333333333333</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03333333333333333</data>
     </edge>
     <edge source="poor outcome (outcome)" target="subdural (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03333333333333333</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03333333333333333</data>
     </edge>
     <edge source="poor outcome (outcome)" target="admission (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.06666666666666667</data>
+      <data key="d2">4</data>
+      <data key="d3">0.06666666666666667</data>
     </edge>
     <edge source="poor outcome (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03333333333333333</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03333333333333333</data>
     </edge>
     <edge source="poor outcome (outcome)" target="nse (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.016666666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.016666666666666666</data>
     </edge>
     <edge source="poor outcome (outcome)" target="ct (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.016666666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.016666666666666666</data>
     </edge>
     <edge source="poor outcome (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.016666666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.016666666666666666</data>
     </edge>
     <edge source="poor outcome (outcome)" target="uch-l1 (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.016666666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.016666666666666666</data>
     </edge>
     <edge source="functional outcome" target="gcs (factor)" id="0">
-      <data key="d3">11</data>
-      <data key="d4">0.11458333333333333</data>
+      <data key="d2">11</data>
+      <data key="d3">0.11458333333333333</data>
     </edge>
     <edge source="functional outcome" target="gos (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03125</data>
-    </edge>
-    <edge source="functional outcome" target="duration (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">3</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="functional outcome" target="pta (factor)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">6</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="functional outcome" target="duration (factor)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="functional outcome" target="initial (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">3</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="functional outcome" target="pl" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">3</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="functional outcome" target="age" id="0">
-      <data key="d3">9</data>
-      <data key="d4">0.09375</data>
+      <data key="d2">9</data>
+      <data key="d3">0.09375</data>
     </edge>
     <edge source="functional outcome" target="gfap (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.020833333333333332</data>
+      <data key="d2">2</data>
+      <data key="d3">0.020833333333333332</data>
     </edge>
     <edge source="functional outcome" target="education (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">3</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="functional outcome" target="sss (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="ct (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.020833333333333332</data>
+      <data key="d2">2</data>
+      <data key="d3">0.020833333333333332</data>
     </edge>
     <edge source="functional outcome" target="s100b (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.020833333333333332</data>
+      <data key="d2">2</data>
+      <data key="d3">0.020833333333333332</data>
     </edge>
     <edge source="functional outcome" target="icp (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">4</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="functional outcome" target="admission (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.041666666666666664</data>
-    </edge>
-    <edge source="functional outcome" target="rotterdam" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
-    </edge>
-    <edge source="functional outcome" target="classification (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">4</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="functional outcome" target="marshall (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
+    </edge>
+    <edge source="functional outcome" target="classification (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
+    </edge>
+    <edge source="functional outcome" target="rotterdam" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="nse (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="cpp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="gender" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">3</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="functional outcome" target="subdural (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.020833333333333332</data>
+      <data key="d2">2</data>
+      <data key="d3">0.020833333333333332</data>
     </edge>
     <edge source="functional outcome" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
-    </edge>
-    <edge source="functional outcome" target="impact (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="crash (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
+    </edge>
+    <edge source="functional outcome" target="impact (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="time (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="uch-l1 (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="functional outcome" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.010416666666666666</data>
+      <data key="d2">1</data>
+      <data key="d3">0.010416666666666666</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="pl" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
-    </edge>
-    <edge source="in-hospital mortality (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">13</data>
-      <data key="d4">0.21311475409836064</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="age" id="0">
-      <data key="d3">15</data>
-      <data key="d4">0.2459016393442623</data>
+      <data key="d2">15</data>
+      <data key="d3">0.2459016393442623</data>
+    </edge>
+    <edge source="in-hospital mortality (outcome)" target="gcs (factor)" id="0">
+      <data key="d2">13</data>
+      <data key="d3">0.21311475409836064</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="hematoma (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="admission (factor)" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.13114754098360656</data>
+      <data key="d2">8</data>
+      <data key="d3">0.13114754098360656</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="pupillary reactivity" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.04918032786885246</data>
-    </edge>
-    <edge source="in-hospital mortality (outcome)" target="icp (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.04918032786885246</data>
+      <data key="d2">3</data>
+      <data key="d3">0.04918032786885246</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="ct scan (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
-    <edge source="in-hospital mortality (outcome)" target="rotterdam" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.06557377049180328</data>
+    <edge source="in-hospital mortality (outcome)" target="icp (factor)" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.04918032786885246</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="marshall (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
+    </edge>
+    <edge source="in-hospital mortality (outcome)" target="rotterdam" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.06557377049180328</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="sex (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="severity (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="iss (factor)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.09836065573770492</data>
+      <data key="d2">6</data>
+      <data key="d3">0.09836065573770492</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="sbp" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="plt" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.03278688524590164</data>
+      <data key="d2">2</data>
+      <data key="d3">0.03278688524590164</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="gos (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="cpp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="gender" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="in-hospital mortality (outcome)" target="ct (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.01639344262295082</data>
+      <data key="d2">1</data>
+      <data key="d3">0.01639344262295082</data>
     </edge>
     <edge source="recovery (outcome)" target="age" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.13043478260869565</data>
+      <data key="d2">6</data>
+      <data key="d3">0.13043478260869565</data>
     </edge>
     <edge source="recovery (outcome)" target="dti" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">2</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="recovery (outcome)" target="icp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.021739130434782608</data>
-    </edge>
-    <edge source="recovery (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.08695652173913043</data>
+      <data key="d2">1</data>
+      <data key="d3">0.021739130434782608</data>
     </edge>
     <edge source="recovery (outcome)" target="gos (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">2</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
-    <edge source="recovery (outcome)" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.021739130434782608</data>
+    <edge source="recovery (outcome)" target="gcs (factor)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.08695652173913043</data>
     </edge>
     <edge source="recovery (outcome)" target="pta (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">2</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
-    <edge source="recovery (outcome)" target="uch-l1 (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.08695652173913043</data>
+    <edge source="recovery (outcome)" target="initial (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.021739130434782608</data>
     </edge>
     <edge source="recovery (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.06521739130434782</data>
+      <data key="d2">3</data>
+      <data key="d3">0.06521739130434782</data>
+    </edge>
+    <edge source="recovery (outcome)" target="uch-l1 (factor)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.08695652173913043</data>
     </edge>
     <edge source="recovery (outcome)" target="time (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.021739130434782608</data>
+      <data key="d2">1</data>
+      <data key="d3">0.021739130434782608</data>
     </edge>
     <edge source="recovery (outcome)" target="il-6" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.021739130434782608</data>
+      <data key="d2">1</data>
+      <data key="d3">0.021739130434782608</data>
     </edge>
     <edge source="recovery (outcome)" target="gender" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">2</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="recovery (outcome)" target="brain (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">2</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="recovery (outcome)" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.021739130434782608</data>
-    </edge>
-    <edge source="recovery (outcome)" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.021739130434782608</data>
+      <data key="d2">1</data>
+      <data key="d3">0.021739130434782608</data>
     </edge>
     <edge source="recovery (outcome)" target="education (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">2</data>
+      <data key="d3">0.043478260869565216</data>
+    </edge>
+    <edge source="recovery (outcome)" target="sex (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.021739130434782608</data>
     </edge>
     <edge source="los (outcome)" target="rotterdam" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="los (outcome)" target="age" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.12</data>
+      <data key="d2">3</data>
+      <data key="d3">0.12</data>
     </edge>
     <edge source="los (outcome)" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="los (outcome)" target="ct scan (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="los (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.12</data>
+      <data key="d2">3</data>
+      <data key="d3">0.12</data>
     </edge>
     <edge source="los (outcome)" target="iss (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
+    <edge source="los (outcome)" target="ct scan (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="los (outcome)" target="sex (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.08</data>
+      <data key="d2">2</data>
+      <data key="d3">0.08</data>
     </edge>
     <edge source="los (outcome)" target="icp (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.12</data>
+      <data key="d2">3</data>
+      <data key="d3">0.12</data>
     </edge>
     <edge source="los (outcome)" target="admission (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="los (outcome)" target="brain (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="worse" target="age" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.08333333333333333</data>
+      <data key="d2">2</data>
+      <data key="d3">0.08333333333333333</data>
     </edge>
     <edge source="worse" target="gcs (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.16666666666666666</data>
-    </edge>
-    <edge source="worse" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">4</data>
+      <data key="d3">0.16666666666666666</data>
     </edge>
     <edge source="worse" target="ct scan (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">1</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
-    <edge source="worse" target="icp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.041666666666666664</data>
+    <edge source="worse" target="initial (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="worse" target="sss (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.041666666666666664</data>
+      <data key="d2">1</data>
+      <data key="d3">0.041666666666666664</data>
+    </edge>
+    <edge source="worse" target="icp (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.041666666666666664</data>
     </edge>
     <edge source="pcss (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pcss (outcome)" target="gender" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
-    </edge>
-    <edge source="pcss (outcome)" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pcss (outcome)" target="age" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
-    <edge source="pcss (outcome)" target="ct (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+    <edge source="pcss (outcome)" target="severity (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="pcss (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05555555555555555</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
+    </edge>
+    <edge source="pcss (outcome)" target="ct (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05555555555555555</data>
     </edge>
     <edge source="disability (outcome)" target="impact (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">2</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="disability (outcome)" target="severity (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">2</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="disability (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03571428571428571</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03571428571428571</data>
     </edge>
     <edge source="disability (outcome)" target="gender" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">2</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="disability (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.10714285714285714</data>
+      <data key="d2">3</data>
+      <data key="d3">0.10714285714285714</data>
     </edge>
     <edge source="disability (outcome)" target="gos (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">2</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="disability (outcome)" target="icp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03571428571428571</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03571428571428571</data>
     </edge>
     <edge source="disability (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03571428571428571</data>
-    </edge>
-    <edge source="disability (outcome)" target="ct (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03571428571428571</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03571428571428571</data>
     </edge>
     <edge source="disability (outcome)" target="mri (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03571428571428571</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03571428571428571</data>
+    </edge>
+    <edge source="disability (outcome)" target="ct (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.03571428571428571</data>
     </edge>
     <edge source="disability (outcome)" target="age" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.07142857142857142</data>
+      <data key="d2">2</data>
+      <data key="d3">0.07142857142857142</data>
     </edge>
     <edge source="neurological outcome" target="age" id="0">
-      <data key="d3">5</data>
-      <data key="d4">0.15625</data>
+      <data key="d2">5</data>
+      <data key="d3">0.15625</data>
     </edge>
     <edge source="neurological outcome" target="gfap (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="neurological outcome" target="s100b (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="neurological outcome" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
-    </edge>
-    <edge source="neurological outcome" target="plt" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="neurological outcome" target="iss (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
-    <edge source="neurological outcome" target="hypotension (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+    <edge source="neurological outcome" target="plt" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="neurological outcome" target="gcs (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">2</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="neurological outcome" target="hypotension (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="neurological outcome" target="impact (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">2</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="neurological outcome" target="crash (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
-    </edge>
-    <edge source="neurological outcome" target="ct scan (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="neurological outcome" target="time (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
+    </edge>
+    <edge source="neurological outcome" target="ct scan (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="neurological outcome" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="neurological outcome" target="admission (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.03125</data>
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
     </edge>
     <edge source="discharge (outcome)" target="gos (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="discharge (outcome)" target="age" id="0">
-      <data key="d3">8</data>
-      <data key="d4">0.32</data>
-    </edge>
-    <edge source="discharge (outcome)" target="classification (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="discharge (outcome)" target="ct (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.08</data>
-    </edge>
-    <edge source="discharge (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">6</data>
-      <data key="d4">0.24</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="discharge (outcome)" target="sss (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="discharge (outcome)" target="pupillary reactivity" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
+    <edge source="discharge (outcome)" target="ct (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.08</data>
+    </edge>
+    <edge source="discharge (outcome)" target="classification (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
+    <edge source="discharge (outcome)" target="gcs (factor)" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.24</data>
+    </edge>
+    <edge source="discharge (outcome)" target="age" id="0">
+      <data key="d2">8</data>
+      <data key="d3">0.32</data>
     </edge>
     <edge source="discharge (outcome)" target="severity (factor)" id="0">
-      <data key="d3">3</data>
-      <data key="d4">0.12</data>
-    </edge>
-    <edge source="discharge (outcome)" target="time (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
-    </edge>
-    <edge source="discharge (outcome)" target="admission (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.16</data>
-    </edge>
-    <edge source="discharge (outcome)" target="duration (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">3</data>
+      <data key="d3">0.12</data>
     </edge>
     <edge source="discharge (outcome)" target="pta (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.08</data>
+      <data key="d2">2</data>
+      <data key="d3">0.08</data>
+    </edge>
+    <edge source="discharge (outcome)" target="duration (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
+    <edge source="discharge (outcome)" target="time (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
+    <edge source="discharge (outcome)" target="admission (factor)" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.16</data>
     </edge>
     <edge source="discharge (outcome)" target="sex (factor)" id="0">
-      <data key="d3">4</data>
-      <data key="d4">0.16</data>
-    </edge>
-    <edge source="discharge (outcome)" target="hematoma (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">4</data>
+      <data key="d3">0.16</data>
     </edge>
     <edge source="discharge (outcome)" target="initial (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
-    <edge source="discharge (outcome)" target="impact (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+    <edge source="discharge (outcome)" target="hematoma (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="discharge (outcome)" target="crash (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
+    <edge source="discharge (outcome)" target="impact (factor)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="discharge (outcome)" target="icp (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="discharge (outcome)" target="ct scan (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="discharge (outcome)" target="hypotension (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.04</data>
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="symptom (outcome)" target="time (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">1</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="symptom (outcome)" target="admission (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">1</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="symptom (outcome)" target="pl" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">1</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="symptom (outcome)" target="gender" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">1</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="symptom (outcome)" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.043478260869565216</data>
+      <data key="d2">1</data>
+      <data key="d3">0.043478260869565216</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="rotterdam" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="age" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
-    </edge>
-    <edge source="rehabilitation (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.125</data>
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="pta (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="rehabilitation (outcome)" target="gcs (factor)" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="gender" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="education (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="severity (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="brain (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="rehabilitation (outcome)" target="sex (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.0625</data>
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
     </edge>
     <edge source="gcs (outcome)" target="time (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="gcs (outcome)" target="admission (factor)" id="0">
-      <data key="d3">2</data>
-      <data key="d4">0.10526315789473684</data>
+      <data key="d2">2</data>
+      <data key="d3">0.10526315789473684</data>
     </edge>
     <edge source="gcs (outcome)" target="pl" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="gcs (outcome)" target="nse (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="gcs (outcome)" target="gcs (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="gcs (outcome)" target="gos (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="gcs (outcome)" target="gfap (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
     <edge source="gcs (outcome)" target="s100b (factor)" id="0">
-      <data key="d3">1</data>
-      <data key="d4">0.05263157894736842</data>
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
     </edge>
   </graph>
 </graphml>

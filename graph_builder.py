@@ -232,18 +232,18 @@ class GraphBuilder:
         for ent_type in self.node_counters:
             node_counter = self.node_counters[ent_type]
             
+            # Can add specific data into into node depending on node type
             if ent_type == "factor":
-                color = "#8338ec" # Color is in #RRGGBBAA format (A is transparency)
+                pass
             elif ent_type == "outcome":
-                color = "#f72585"
+                pass
             else: 
-                color = "#000000" # Default color
-            # Can add other styling options here
+                pass 
                 
             for ent in node_counter:
                 count = node_counter[ent]
                 if count > thresh:
-                    self.graph.add_node(ent, color=color, size=count, ent_type=ent_type)
+                    self.graph.add_node(ent, size=count, ent_type=ent_type)
                 pass
         
         for edge_type in self.edge_counters:
