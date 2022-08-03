@@ -1,5 +1,6 @@
 #%% Imports 
 # General
+from cgitb import text
 from collections import Counter
 from math import log
 import os, re
@@ -16,6 +17,7 @@ from matplotlib.collections import PathCollection
 from matplotlib.figure import Figure
 from matplotlib.axes import Axes
 import seaborn as sns
+from adjustText import adjust_text
 
 # Adjusttext package to resolve overlapping labels https://adjusttext.readthedocs.io/en/latest/Examples.html
 
@@ -137,7 +139,9 @@ class GraphVisualizer:
 
         self.legend = {"points": [p1, p2, p3, p4], "labels": [l1, l2, l3, l4]}
 
-    def renderGraphNX(self, dpi=800, display = False, cmap = True, arrows = False):
+    def renderGraphNX(self, title = "Figure", dpi = 800, 
+                      display = False, cmap = True, arrows = False, adjust = True,
+                      ):
         """
         Renders the graph contained within the object using NX
         ----
@@ -153,6 +157,7 @@ class GraphVisualizer:
         # nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
         sns.set_theme()
         plt.figure(figsize=(fig_size*1.1, fig_size), dpi=dpi)
+        plt.title(title)
         
         # Draw nodes
         nx.draw_networkx_nodes(self.graph, 
@@ -162,14 +167,18 @@ class GraphVisualizer:
             node_color = self.node_colors,
             )
         # Manually draw labels with different sizes: https://stackoverflow.com/questions/62649745/is-it-possible-to-change-font-sizes-according-to-node-sizes
+        labels = []
         for node, (x, y) in layout.items():
             label_size = log(self.scaling*self.graph.nodes[node]["size"], 2) # Retrieve size information via node identity in graph
-            plt.text(x, y, node, fontsize = label_size, ha = "center", va = "center", alpha = 0.7) # Manually draw text
+            label = plt.text(x, y, node, fontsize = label_size, ha = "center", va = "center", alpha = 0.7) # Manually draw text
+            labels.append(label)
+        if adjust:
+            adjust_text(labels, autoalign='', only_move={'points':'y', 'text':'y'})
 
         # Plot legend
         plt.legend(self.legend["points"], self.legend["labels"],
             scatterpoints=1, ncol=4,
-            title="Number of articles with factor/outcome", title_fontsize=fig_size,
+            title="Number of articles reporting factor/outcome", title_fontsize=fig_size,
             loc='lower left', prop={'size': fig_size},borderpad = 0.8,
             )
         # scatterpoints = number of points in each size demo
@@ -200,7 +209,7 @@ class GraphVisualizer:
             # Alternative solution using FuncFormatter here: https://stackoverflow.com/questions/38309171/colorbar-change-text-value-matplotlib
             plt.sci(cbar_edges) # Set current image to edges created by nx 
             colorbar = plt.colorbar() # Creats actual colorbar legend with ticks coresponding to true_edge_widths
-            colorbar.set_label("Number of articles supporting connection")
+            colorbar.set_label("Number of articles reporting association")
             # Available colormaps: https://matplotlib.org/3.5.0/tutorials/colors/colormaps.html
             # Tested colormaps: GnBu is too similar to node color scheme, [YlOrRd, PuRd, Wistia] makes small edges too light, 
         else:
@@ -326,33 +335,12 @@ class GraphVisualizer:
                 ax.annotate(annotation, (x[i], y[i]))
 
 if __name__ == "__main__":
-    a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t15.xml")
+    a = GraphVisualizer("test/gpt3_output_gpt3F_entsF_t10.xml")
     a.genRenderArgs()
     a.genLegend()
-    a.renderGraphNX(dpi=300, cmap=True)
+    a.renderGraphNX(cmap=True, adjust=True)
 
 
 
-#%%
 
-if False:
-
-    #%%
-    g1 = nx.read_graphml("tbi_ymcombined_t15_graph.xml")
-    print(g1.nodes(data = "size"))
-    sorted_sizes = sorted(list(g1.nodes(data = "size")), key = lambda x: x[1])
-    sorted_edges = sorted(list(g1.edges(data = "width")), key = lambda x: x[2])
-    print(sorted_sizes)
-    print(sorted_edges)
-
-    #%% Preview distributions contained within an array
-    data = [] # Container for data
-    bins = np.arange(min(data), max(data), 1) # fixed bin size
-    plt.xlim([min(data), max(data)])
-
-    plt.hist(data, bins=bins, alpha=0.5)
-    plt.title('Test')
-    plt.xlabel('variable X')
-    plt.ylabel('count')
-
-    plt.show()
+# %%

@@ -10,7 +10,7 @@ os.chdir(DIRPATH)
 if 1:
     ROOT_PATH = "test/gpt3_output.xlsx"
     MODEL = "gpt3"
-    THRESH = 15
+    THRESH = 10
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
 
     from graph_builder import EntProcessor, GraphBuilder
