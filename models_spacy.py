@@ -110,8 +110,7 @@ class SpacyModel:
     def resetDocs(self):
         self.doclist = []
     
-    
-    def lemmatizeCorpora(self,
+    def lemmatizeCorpus(self,
                       df_path: Union[str, bytes, os.PathLike],
                       col: str,
                       pos_tags: list[str] = ["NOUN", "ADJ", "VERB", "ADV"],
@@ -142,6 +141,27 @@ class SpacyModel:
                 texts_lemmatized.append(row_lemmatized)
         return texts_lemmatized
     
+    # Start of single doc operations 
+    
+    def lemmatizeDoc(self, text: str,
+                     pos_tags: list[str] = ["NOUN", "ADJ", "VERB", "ADV"], 
+                     stopwords: list[str] = [],
+                     ) -> str:
+        # Takes document in form of string and returns all tokens (filtered by POS tags)
+        # in their lemmatized form
+        if isinstance(text, str): # Only parse if doc is string
+            doc = self.NLP(text)
+            doc_lemmas = []
+            for token in doc:
+                if all([token.pos_ in pos_tags,
+                       token.lemma_ not in stopwords,
+                       token.text not in stopwords]):
+                    doc_lemmas.append(token.lemma_)
+            doc_lemmatized = " ".join(doc_lemmas) # Join all lemmatized tokens
+            return doc_lemmatized
+        else:
+            return ""
+        
     def listSimilar(self, word: str, top_n: int = 10):
         """Prints top n similar words based on word vectors in the loaded model
 

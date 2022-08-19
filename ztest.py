@@ -1,3 +1,22 @@
+#%% Pandas concatentation 
+import pandas as pd
+df = pd.DataFrame({
+    "col1": ["series1", "series2", "series3", "series4"],
+    "col2": ["series1", float("nan"), "series3", "series4"],
+    "col3": ["series1", "series2", "series3", "series4"],
+})
+print(df)
+df = df[df["col2"].str.contains(r"[A-Za-z]", regex=True) == True]
+print(df)
+
+for ind, row in df.iterrows():
+    print(ind)
+    new_entry = pd.DataFrame({"col4": [F"data for series{ind}"]})
+    new_entry.index = pd.RangeIndex(ind, ind+1, 1)
+    df = pd.concat([df, new_entry], axis=1)
+print(df)
+
+
 #%% Networkx node degree
 import networkx as nx
 
