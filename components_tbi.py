@@ -1,5 +1,14 @@
 # Custom definitions/components for TBI prognostication 
 
+# LDA custom components
+from nltk.corpus import stopwords
+
+LDA_STOPWORDS = stopwords.words("english") + ["patient", "outcome", "mortality", "year", "month", "day", "hour", "predict", "factor", "follow", \
+    "favorable", "adult", "difference", "tbi", "score", "auc", "risk", "head", "associate", \
+    "significantly", "group", "unfavorable", "outcome", "accuracy", "probability", "median", "mean", \
+    "average", "high", "analysis",] # List of other stop words to include 
+
+# NLP entity processing custom components 
 common_ignore = {"patient", "patient\'", "patients", 
     "increase", "favorable", "favourable", "good", "high", "low", 
     "decrease", "bad", "poor", "unfavorable", "unfavourable", "reduced", "worse",

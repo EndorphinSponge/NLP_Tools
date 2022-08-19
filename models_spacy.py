@@ -111,7 +111,7 @@ class SpacyModel:
         self.doclist = []
     
     
-    def lemmatizeText(self,
+    def lemmatizeCorpora(self,
                       df_path: Union[str, bytes, os.PathLike],
                       col: str,
                       pos_tags: list[str] = ["NOUN", "ADJ", "VERB", "ADV"],
