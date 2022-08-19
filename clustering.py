@@ -1,7 +1,7 @@
 #%% Imports
 # General
 import os, sys, pickle
-from typing import Dict, Union
+from typing import Union
 
 
 # Data science
