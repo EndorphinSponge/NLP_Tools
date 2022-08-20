@@ -21,7 +21,7 @@ import pyLDAvis.gensim_models
 # Local imports
 from internal_globals import importData
 from models_spacy import SpacyModel
-from components_tbi import TBI_LDA_STOPWORDS
+from components_diseases import TBI_LDA_STOPWORDS
 
 #%% Logging 
 import logging
@@ -36,7 +36,7 @@ ch.setFormatter(formatter)
 logger.addHandler(ch)
 
 # Logging file output stream
-fh = logging.FileHandler("mylog.log", "w")
+fh = logging.FileHandler("data/clustering.log", "w")
 fh.setLevel(logging.INFO)
 fh.setFormatter(formatter)
 logger.addHandler(fh)

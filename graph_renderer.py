@@ -154,7 +154,7 @@ class GraphVisualizer:
         
         fig_size = self.fig_size
         
-        #%% Networkx visualization (multiple elements)
+        # Networkx visualization (multiple elements)
         # nx uses matplotlib.pyplot for figures, can use plt manipulation to modify size
         sns.set_theme()
         plt.figure(figsize=(fig_size*1.1, fig_size), dpi=dpi)
@@ -348,7 +348,7 @@ class GraphVisualizer:
             if x[i] > 25 or y[i] > 0.45: # Only label extreme points
                 ax.annotate(annotation, (x[i], y[i]))
 
-if __name__ == "__main__":
+if __name__ == "__main__": # For testing
     a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_t10.xml")
     a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_topics2_t3.xml")
     a.genRenderArgs()

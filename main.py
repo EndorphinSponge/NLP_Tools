@@ -4,10 +4,11 @@ import os
 
 DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
+os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 
 
-if 1: # Render graphs for each topic 
+if 0: # Render graphs for each topic 
     ROOT_PATH = "data/gpt3_output.xlsx"
     SUFFIX = "_topics"
     MODEL = "gpt3"
@@ -49,7 +50,7 @@ if 1: # Render graphs for each topic
 F = False # To guard against running of test code while still keeping linting active
 
 if F: # Full pipeline example using test.xlsx
-    ROOT_PATH = "test/test.xlsx"
+    ROOT_PATH = "data/test.xlsx"
     MODEL = "gpt3"
     THRESH = 2
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
@@ -67,7 +68,7 @@ if F: # Full pipeline example using test.xlsx
     refineAbrvs(f"{ROOT_NAME}_abrvs.json") # *_abrvs_rfn.json, *_abrvs_trans.json
     
     from graph_builder import EntProcessor
-    from components_tbi import TBICore
+    from components_diseases import TBICore
     core = TBICore(abrv_path=f"{ROOT_NAME}_abrvs_rfn.json",
                    common_trans_path=f"{ROOT_NAME}_abrvs_trans.json")
     processor = EntProcessor(ent_processor_core=core)
