@@ -1,6 +1,7 @@
 #%% Imports
 from typing import Union
 import os, csv, sys
+from datetime import datetime
 
 import pandas as pd
 from pandas import DataFrame
@@ -9,18 +10,24 @@ from pandas import DataFrame
 #%% Logging 
 import logging
 LOG = logging.getLogger(__name__)
-LOG.setLevel(logging.INFO)
+LOG.setLevel(logging.DEBUG) # Sets level at which info will be captured, can elevate level for CLI and file output to filter out lower level messages
 formatter = logging.Formatter(fmt="%(asctime)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d - %H:%M:%S")
 
 # Logging CLI output stream
 ch = logging.StreamHandler(sys.stdout)
-ch.setLevel(logging.INFO)
+ch.setLevel(logging.INFO) # Set to INFO to display only up to INFO level
 ch.setFormatter(formatter)
 LOG.addHandler(ch)
 
 # Logging file output stream
-fh = logging.FileHandler("data/clustering.log", "w")
-fh.setLevel(logging.INFO)
+date_time = datetime.now().strftime("%Y-%m-%d %H-%M-%S")
+if os.path.exists("archive/logs/"):
+    log_dir = "archive/logs/"
+else:
+    log_dir = "" # Use root dir
+# fh = logging.FileHandler(F"{log_dir}{date_time}.log", "w")
+fh = logging.FileHandler(F"{log_dir}{date_time}.log", "w")
+fh.setLevel(logging.DEBUG) # Log info all the way down to DEBUG level  
 fh.setFormatter(formatter)
 LOG.addHandler(fh)
 #%% Functions 

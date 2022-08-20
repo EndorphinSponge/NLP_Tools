@@ -19,11 +19,10 @@ import pyLDAvis
 import pyLDAvis.gensim_models
 
 # Local imports
-from internals import importData
+from internals import importData, LOG
 from models_spacy import SpacyModel
 from components_diseases import TBI_LDA_STOPWORDS
 
-from internals import LOG
 
 #%% Classes
 
