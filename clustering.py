@@ -19,27 +19,11 @@ import pyLDAvis
 import pyLDAvis.gensim_models
 
 # Local imports
-from internal_globals import importData
+from internals import importData
 from models_spacy import SpacyModel
 from components_diseases import TBI_LDA_STOPWORDS
 
-#%% Logging 
-import logging
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.INFO)
-formatter = logging.Formatter(fmt="%(asctime)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d - %H:%M:%S")
-
-# Logging CLI output stream
-ch = logging.StreamHandler(sys.stdout)
-ch.setLevel(logging.INFO)
-ch.setFormatter(formatter)
-logger.addHandler(ch)
-
-# Logging file output stream
-fh = logging.FileHandler("data/clustering.log", "w")
-fh.setLevel(logging.INFO)
-fh.setFormatter(formatter)
-logger.addHandler(fh)
+from internals import LOG
 
 #%% Classes
 
@@ -65,7 +49,7 @@ class Clusterer:
         self.root_base = os.path.splitext(os.path.basename(df_path))[0] # Get base name without extension
         self.df = importData(df_path, screen_dupl=[col], screen_text=[col]) # Can't have any data type apart from str in list
         self.col_corpora = col
-        logger.info(F"Imported data from {df_path}")
+        LOG.info(F"Imported data from {df_path}")
         
     def genVocabAndBow(self, tfidf_thresh = 0.03, save = False):
         # Only for LDA pipeline, generates vocab including bi/trigrams and BOWs of every corpora
@@ -87,7 +71,7 @@ class Clusterer:
             new_entry.index = pd.RangeIndex(start=ind, stop=ind+1, step=1)
             df_lemmatized = pd.concat([df_lemmatized, new_entry])
             if ind % 10 == 0: # Log info every 10th document
-                logger.info(F"Lemmatized doc #{ind}")
+                LOG.info(F"Lemmatized doc #{ind}")
         
         list_doc_lemmatized: list[str] = list(df_lemmatized[col_lemmatized]) # Convert into list for eventual usage in tfidf
         list_doc_lemmatized = [doc for doc in list_doc_lemmatized if doc] # Filter empty strings 
@@ -162,7 +146,7 @@ class Clusterer:
             with open(F"{self.root_name}_vocab_bow.dat", "w+b") as file:
                 pickle.dump(vocab_bow_obj, file)
                 
-            logger.info(F"Saved vocab and bow tuple in {self.root_name}_vocab_bow.dat")
+            LOG.info(F"Saved vocab and bow tuple in {self.root_name}_vocab_bow.dat")
         
         
 
@@ -189,7 +173,7 @@ class Clusterer:
         
         if save:
             lda_model.save(F"{self.root_name}_lda") # Creates this main file without an extension, has other files with extensions that is linked to this main file
-            logger.info(F"Saved LDA topic model to {self.root_name}_lda and associated files")
+            LOG.info(F"Saved LDA topic model to {self.root_name}_lda and associated files")
             
     def loadLdaModel(self, df_of_origin: Union[str, bytes, os.PathLike], col: str = "Abstract"):
         # Uses importVocabBow to instantiate df info and populate self.vocab and self.corpus_bow
@@ -208,7 +192,7 @@ class Clusterer:
                                              sort_topics=False, # False to preserve original topic IDs
                                              )
         pyLDAvis.save_html(vis, f"figures/{self.root_base}_lda_n{num_topics}.html")
-        logger.info(f"Saved LDA visualization to figures/{self.root_base}_lda_n{num_topics}.html")
+        LOG.info(f"Saved LDA visualization to figures/{self.root_base}_lda_n{num_topics}.html")
     
     def annotateCorporaLda(self):
         
@@ -232,7 +216,7 @@ class Clusterer:
             
         df_merged = pd.concat([df_bow, df_annot], axis=1)
         df_merged.to_csv(F"{self.root_name}_annotlda.csv")
-        logger.info(F"Successfully saved annotations to {self.root_name}_annotlda.csv")
+        LOG.info(F"Successfully saved annotations to {self.root_name}_annotlda.csv")
 
         
     def clusterTopicsVec(self, save = False):
@@ -240,10 +224,10 @@ class Clusterer:
         corpus_list = list(corpus_df) # Need list format 
         self.model_vec = Top2Vec(corpus_list) # Need a minimum number of present topics to cluster, otherwise throws error
         num_topics = self.model_vec.get_num_topics()
-        logger.info(F"Successfully built topic model with {num_topics} topics")
+        LOG.info(F"Successfully built topic model with {num_topics} topics")
         if save:
             self.model_vec.save(F"{self.root_name}_top2vec.dat")
-            logger.info(F"Saved trained model in {self.root_name}_top2vec.dat")
+            LOG.info(F"Saved trained model in {self.root_name}_top2vec.dat")
             
     def loadTop2VecModel(self, df_of_origin: Union[str, bytes, os.PathLike], col: str = "Abstract"):
         # Basically combines importCorpora with loading of corresponding top2vec model
@@ -255,7 +239,7 @@ class Clusterer:
         # Only has support for top2vec models
         model = self.model_vec
         topic_words, word_scores, topic_nums = model.get_topics()
-        logger.info(F"Found {len(topic_nums)} topics")
+        LOG.info(F"Found {len(topic_nums)} topics")
         for topic in topic_nums:
             model.generate_topic_wordcloud(topic)
             plt.savefig(F"figures/{self.root_base}_topic{topic}.png")
@@ -277,7 +261,7 @@ class Clusterer:
 
         if save:
             df_annot.to_csv(F"{self.root_name}_t2v_annotations.csv", index=False)
-            logger.info(F"Exported annotations to {self.root_name}_t2v_annotations.csv")
+            LOG.info(F"Exported annotations to {self.root_name}_t2v_annotations.csv")
 
 
         df_origin = self.df
@@ -287,7 +271,7 @@ class Clusterer:
         # Merge abstract df with annotated df https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.join.html#:~:text=Join%20DataFrames%20using%20their%20indexes.&text=If%20we%20want%20to%20join,have%20key%20as%20its%20index.&text=Another%20option%20to%20join%20using,to%20use%20the%20on%20parameter.
         df_merged = df_origin.join(df_annot, lsuffix='_left', rsuffix='_right')
         df_merged.to_csv(F"{self.root_name}_annotvec.csv")
-        logger.info(F"Successfully saved annotations to {self.root_name}_annotvec.csv")
+        LOG.info(F"Successfully saved annotations to {self.root_name}_annotvec.csv")
         
 #%%
 a = Clusterer()

@@ -23,7 +23,7 @@ from pandas import DataFrame
 import numpy as np
 
 # Internals 
-from internal_globals import importData
+from internals import importData
 #%% Constants
 
 

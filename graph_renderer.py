@@ -325,6 +325,7 @@ class GraphVisualizer:
             
             
         else: # Undirected graph parsing 
+            print()
             print(self.graph.degree())
             print(self.graph.degree(weight="width"))
             pass

@@ -14,7 +14,7 @@ import openai
 from openai.openai_object import OpenAIObject # For type assumption check
 
 # Internals
-from internal_globals import importData
+from internals import importData
 from private.keys import KEY1
 #%% Constants
 openai.api_key = KEY1

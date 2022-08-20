@@ -14,7 +14,7 @@ import networkx as nx
 
 
 # Internal imports
-from internal_globals import importData
+from internals import importData
 
 #%% Constants
 

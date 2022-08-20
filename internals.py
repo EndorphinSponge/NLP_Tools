@@ -1,12 +1,28 @@
 #%% Imports
 from typing import Union
-import os, csv
+import os, csv, sys
 
 import pandas as pd
 from pandas import DataFrame
 
 # Probably should not have internal imports for global_functions to avoid circular imports 
+#%% Logging 
+import logging
+LOG = logging.getLogger(__name__)
+LOG.setLevel(logging.INFO)
+formatter = logging.Formatter(fmt="%(asctime)s %(levelname)s: %(message)s", datefmt="%Y-%m-%d - %H:%M:%S")
 
+# Logging CLI output stream
+ch = logging.StreamHandler(sys.stdout)
+ch.setLevel(logging.INFO)
+ch.setFormatter(formatter)
+LOG.addHandler(ch)
+
+# Logging file output stream
+fh = logging.FileHandler("data/clustering.log", "w")
+fh.setLevel(logging.INFO)
+fh.setFormatter(formatter)
+LOG.addHandler(fh)
 #%% Functions 
 
 def mergeDfSlices(prefix: str, dir: str = os.getcwd()):
