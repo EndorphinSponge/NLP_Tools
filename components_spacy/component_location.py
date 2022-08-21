@@ -5,26 +5,25 @@ import json, pickle, os
 import spacy
 from spacy.matcher import PhraseMatcher, Matcher
 from spacy.tokens import Span, Doc
-from spacy.lang.en import English
 from spacy.language import Language
 
 
 #%%
 
-
-
+DEPRAC = False # Guard while keeping linting active
 # Reminder that set_extension is a classmethod, will affect all instances of Doc
-Doc.set_extension("targets_spans", default = [], force = True) # Force true to avoid having to restart kernel every debug cycle
-Doc.set_extension("targets_text", default = [], force = True)
+if DEPRAC:
+    Doc.set_extension("targets_spans", default = [], force = True) # Force true to avoid having to restart kernel every debug cycle
+    Doc.set_extension("targets_text", default = [], force = True)
 
-@Language.component("extractTargets")
-def extractTargets(doc):
+@Language.component("extractCnsLocations")
+def extractCnsLocations(doc: Doc):
     global matcher
     global targets_syn_dict
     matches = matcher(doc)
     spans = [Span(doc, start, end, label="TARGET") 
              for (match_id, start, end) in matches] # Convert matches to spans
-    doc._.targets_spans = spans
+    doc.user_data["cns_locs_spans"] = [span.text for span in spans] # Convert to text to serlialize into JSON
     spans_unique = [*{*[span.text for span in spans]}] # Get str and remove duplicates
     for ind, span in enumerate(spans_unique): # Replace any synonyms with their standard terms
         for term_std, term_syns in targets_syn_dict.items():
@@ -32,8 +31,7 @@ def extractTargets(doc):
                 spans_unique[ind] = term_std # Replace span with standard term
                 
     spans_unique = {*spans_unique} # To get rid of any new duplicate terms
-    doc._.targets_text = [*spans_unique] 
-    # print(doc._.targets_text)
+    doc.user_data["cns_locs"] = [*spans_unique]
     #FIXME Will have to concatenate nested spans (e.g., thalamus in anterior thalamus)
     #FIXME Add another doc extension to process synonyms, using array of strings instead of spans which are harder to manipulate 
     return doc

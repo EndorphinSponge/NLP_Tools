@@ -2,60 +2,56 @@
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
   <key id="d3" for="edge" attr.name="prob" attr.type="double" />
   <key id="d2" for="edge" attr.name="width" attr.type="long" />
-  <key id="d1" for="node" attr.name="size" attr.type="long" />
-  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <key id="d1" for="node" attr.name="ent_type" attr.type="string" />
+  <key id="d0" for="node" attr.name="size" attr.type="long" />
   <graph edgedefault="directed">
     <node id="admission">
-      <data key="d0">#8338ec</data>
-      <data key="d1">3</data>
+      <data key="d0">3</data>
+      <data key="d1">factor</data>
     </node>
     <node id="glasgow coma scale score">
-      <data key="d0">#8338ec</data>
-      <data key="d1">4</data>
-    </node>
-    <node id="age">
-      <data key="d0">#8338ec</data>
-      <data key="d1">10</data>
+      <data key="d0">4</data>
+      <data key="d1">factor</data>
     </node>
     <node id="gcs">
-      <data key="d0">#8338ec</data>
-      <data key="d1">9</data>
+      <data key="d0">9</data>
+      <data key="d1">factor</data>
+    </node>
+    <node id="age">
+      <data key="d0">10</data>
+      <data key="d1">factor</data>
     </node>
     <node id="sex">
-      <data key="d0">#8338ec</data>
-      <data key="d1">3</data>
+      <data key="d0">3</data>
+      <data key="d1">factor</data>
     </node>
     <node id="sbp">
-      <data key="d0">#8338ec</data>
-      <data key="d1">3</data>
+      <data key="d0">3</data>
+      <data key="d1">factor</data>
     </node>
     <node id="il-6">
-      <data key="d0">#8338ec</data>
-      <data key="d1">3</data>
+      <data key="d0">3</data>
+      <data key="d1">factor</data>
     </node>
     <node id="mortality">
-      <data key="d0">#f72585</data>
-      <data key="d1">19</data>
+      <data key="d0">19</data>
+      <data key="d1">outcome</data>
     </node>
-    <node id="outcome">
-      <data key="d0">#f72585</data>
-      <data key="d1">8</data>
+    <node id="unspecified clinical outcome">
+      <data key="d0">8</data>
+      <data key="d1">outcome</data>
     </node>
     <node id="severity">
-      <data key="d0">#f72585</data>
-      <data key="d1">3</data>
+      <data key="d0">3</data>
+      <data key="d1">outcome</data>
     </node>
-    <edge source="admission" target="outcome" id="0">
+    <edge source="admission" target="unspecified clinical outcome" id="0">
       <data key="d2">1</data>
       <data key="d3">0.3333333333333333</data>
     </edge>
     <edge source="glasgow coma scale score" target="mortality" id="0">
       <data key="d2">1</data>
       <data key="d3">0.25</data>
-    </edge>
-    <edge source="age" target="mortality" id="0">
-      <data key="d2">4</data>
-      <data key="d3">0.4</data>
     </edge>
     <edge source="gcs" target="mortality" id="0">
       <data key="d2">6</data>
@@ -65,9 +61,13 @@
       <data key="d2">2</data>
       <data key="d3">0.2222222222222222</data>
     </edge>
-    <edge source="gcs" target="outcome" id="0">
+    <edge source="gcs" target="unspecified clinical outcome" id="0">
       <data key="d2">1</data>
       <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="age" target="mortality" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.4</data>
     </edge>
     <edge source="sex" target="mortality" id="0">
       <data key="d2">2</data>
@@ -97,11 +97,11 @@
       <data key="d2">1</data>
       <data key="d3">0.05263157894736842</data>
     </edge>
-    <edge source="outcome" target="gcs" id="0">
+    <edge source="unspecified clinical outcome" target="gcs" id="0">
       <data key="d2">1</data>
       <data key="d3">0.125</data>
     </edge>
-    <edge source="outcome" target="admission" id="0">
+    <edge source="unspecified clinical outcome" target="admission" id="0">
       <data key="d2">1</data>
       <data key="d3">0.125</data>
     </edge>

@@ -23,30 +23,35 @@ from pandas import DataFrame
 import numpy as np
 
 # Internals 
-from internals import importData
+from internals import importData, LOG
 #%% Constants
 
 
 #%% Classes and functions
 
 class SpacyModel:
+    # Base class for other classes using SpaCy functions 
     def __init__(self, model: str = "en_core_web_sm", disable: list[str] = []):
         self.model = model
         self.NLP = spacy.load(model, disable=disable)
         self.doclist: list[Doc] = [] # List of processed text, directly usable 
-        self.lastimportsrc: str = "" # Tracker of source path (no extension) for last import to docbin for export naming 
+        self.df_root_name: str = "" # Tracker of source path (no extension) for last import to docbin for export naming 
     
-    def printAvailableModels():
-        print("en_core_sci_scibert", spacy.util.is_package("en_core_sci_scibert"))
-        print("en_core_sci_lg", spacy.util.is_package("en_core_sci_lg"))
-        print("en_core_web_trf", spacy.util.is_package("en_core_web_trf"))
-        print("en_core_web_sm", spacy.util.is_package("en_core_web_sm"))
-        print("en_core_web_lg", spacy.util.is_package("en_core_web_lg"))
+    @classmethod
+    def printAvailableModels(cls):
+        LOG.info(F"en_core_sci_scibert: {spacy.util.is_package('en_core_sci_scibert')}")
+        LOG.info(F"en_core_sci_lg: {spacy.util.is_package('en_core_sci_lg')}")
+        LOG.info(F"en_core_web_trf: {spacy.util.is_package('en_core_web_trf')}")
+        LOG.info(F"en_core_web_sm: {spacy.util.is_package('en_core_web_sm')}")
+        LOG.info(F"en_core_web_lg: {spacy.util.is_package('en_core_web_lg')}")
     
-    def importCorpora(self,
+    def parseCorpora(self,
                       corpora_path: Union[str, bytes, os.PathLike],
                       col: str,
-                      annotation_cols: list[str] = []):
+                      annotation_cols: list[str] = [],
+                      export_userdata: bool = False,
+                      **kwargs,
+                      ):
         """Imports Excel or CSV file with corpora in the specified column and processes 
         it using the loaded SpaCy model. Processed results are appended to the class 
         instance in both doclist (for immediate use) and docbin (for export)
@@ -57,23 +62,38 @@ class SpacyModel:
             col: Column label for column containing text to parse 
             annotation_cols: Optional list of column labels of columns to be passed as annotations to the processed text, data added to doc.user_data as dict
         """
-        df = importData(corpora_path, screen_dupl=[col], screen_text=[col]) # Screen for duplicates and presence of text for the column containing the text 
-        self.lastimportsrc = os.path.splitext(corpora_path)[0] # Assign path without extension to tracker in case it's needed for export naming
-        text_list: list[tuple[str, dict]] = []
+        df = importData(corpora_path, screen_dupl=[col], screen_text=[col], **kwargs) # Screen for duplicates and presence of text for the column containing the text 
+        self.df_root_name = os.path.splitext(corpora_path)[0] # Assign path without extension to tracker in case it's needed for export naming
         
-        for index, row in df.iterrows():
+        df_userdata = DataFrame()
+        
+        counter = 0
+        for ind, row in df.iterrows():
             text: str = row[col]
             context = dict()
             for annot_col in annotation_cols: # Will not loop if list is empty 
                 context[annot_col] = row[annot_col] # Add new entry for every annotation column by using data from corresponding column cell of the current row
-            text_list.append((text, context)) # Append text together with the context dictionary
-        
-        counter = 0
-        for (doc, context) in self.NLP.pipe(text_list, as_tuples=True): # Pass in (text, context) tuples to get (doc, context) tuples
-            doc.user_data = context
+            doc = self.NLP(text)
+            
+            # Parse user data from pipelines, assumes that all objects within user_data is JSON serializable 
+            user_data = {key: [json.dumps(value)] 
+                         for key, value in doc.user_data.items()} # Package userdata values in list so that they can be instantiated in DataFrame
+            new_entry = DataFrame(user_data)
+            new_entry.index = pd.RangeIndex(start=ind, stop=ind+1, step=1)
+            df_userdata = pd.concat([df_userdata, new_entry])
+            
+            doc.user_data.update(context) # Add annotation columns to .user_data attribute after user data from pipeline has been extracted
+            
             self.doclist.append(doc) # Add processed doc to list for immediate use
-            counter += 1 
-            print("NLP processing text no: ", counter)
+            counter += 1
+            LOG.debug(F"NLP processing text no: {counter}")
+            if counter % 10 == 0: 
+                LOG.info(F"NLP processing text no: {counter}") # Only print out every 10 texts
+        
+        if export_userdata:
+            df_merged = pd.concat([df, df_userdata], axis=1)
+            df_merged.to_csv(F"{self.df_root_name}_userdata.csv", index=False)
+        
             
         return self.doclist
     
@@ -91,8 +111,8 @@ class SpacyModel:
             docbin.to_disk(f"{custom_name}({self.model}).spacy") # Saves content using hashes based on a model's vocab, will need this vocab to import it back
             print(f"Exported DocBin to {custom_name}({self.model}).spacy")
         else: # Otherwise use prefix of last import to name output
-            docbin.to_disk(f"{self.lastimportsrc}({self.model}).spacy") # Saves content using hashes based on a model's vocab, will need this vocab to import it back
-            print(f"Exported DocBin to {self.lastimportsrc}({self.model}).spacy")
+            docbin.to_disk(f"{self.df_root_name}({self.model}).spacy") # Saves content using hashes based on a model's vocab, will need this vocab to import it back
+            print(f"Exported DocBin to {self.df_root_name}({self.model}).spacy")
             
             
 
@@ -105,7 +125,10 @@ class SpacyModel:
         """
         docbin = DocBin().from_disk(path) # Don't need to set store_user_data=True for import
         doclist = list(docbin.get_docs(self.NLP.vocab)) # Retrieves content by mapping hashes back to words by using the vocab dictionary 
-        self.doclist += doclist # Concat imported doclist to current doclist 
+        self.doclist += doclist # Concat imported doclist to current doclist in case exports were done in batches
+        
+    def exportDocsUserdata(self, ):
+        pass
         
     def resetDocs(self):
         self.doclist = []
@@ -174,16 +197,32 @@ class SpacyModel:
         similar_words = [self.NLP.vocab.strings[i] for i in similar_vectors[0][0]]
         print(similar_words)
     
+class SpacyExtractor(SpacyModel):
+    def __init__(self, model: str = "en_core_web_sm", disable: list[str] = []):
+        super().__init__(model, disable)
+        
+    def addPipeSampleSize(self):
+        from components_spacy import component_sample_size
+        self.NLP.add_pipe("extractSampleSize")
+    
+    def addPipeNmParams(self):
+        from components_spacy import component_parameters
+        self.NLP.add_pipe("extractNmParams")
+    
+    def addPipeCnsLocs(self):
+        from components_spacy import component_location
+        self.NLP.add_pipe("extractCnsLocations")
+    
 
-
-class SpacyModelTBI(SpacyModel):
+class PostProcessor(SpacyModel):
+    # Postprocessing using SpaCy for outputs for large NLP models (e.g., GPT3)
     def __init__(self, model: str = "en_core_sci_scibert",
                  disable: list[str] = []): 
         super().__init__(model, disable)
         self.NLP.add_pipe("abbreviation_detector") # Requires AbbreviationDetector to be imported first 
         self.empty_log = Counter()
     
-    def extractEntsTBI(self, 
+    def extractEnts(self, 
                      df_path: Union[str, bytes, os.PathLike], 
                      col: str = "Model_output", 
                      col_out: str = "Ents",):
@@ -207,8 +246,10 @@ class SpacyModelTBI(SpacyModel):
             print("NLP extracting ents for: " + str(index))
             statements: list[list[str]] = json.loads(row[col]) # list[str] of items for each statement 
             
-            statements_ents: list[tuple[list[str], list[str]]] = []
-            "REFACTOR THIS WHOLE SECTION AS A COMPONENT INTO components_tbi?"
+            statements_ents: list[tuple[list[str], list[str]]] = [] # Container for ents
+            """
+            Unpacks statements so that NLP can be called on each of the statements separately
+            REFACTOR THIS WHOLE SECTION AS A COMPONENT INTO components_tbi?"""
             for items in statements:
                 factors = items[0]
                 if re.search(R"\w", factors):

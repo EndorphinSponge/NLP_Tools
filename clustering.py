@@ -75,12 +75,6 @@ class Clusterer:
         list_doc_lemmatized: list[str] = list(df_lemmatized[col_lemmatized]) # Convert into list for eventual usage in tfidf
         list_doc_lemmatized = [doc for doc in list_doc_lemmatized if doc] # Filter empty strings 
             
-        
-        # docs_lemma: list[str] = nlpmodel.lemmatizeCorpus(df_path=self.file_path,
-        #                                                col=self.col_corpora,
-        #                                                pos_tags=pos_tags,
-        #                                                stopwords=TBI_LDA_STOPWORDS)
-
         list_doc_tokens = [gensim.utils.simple_preprocess(doc, deacc=True)
                     for doc in list_doc_lemmatized] # Is a list of lists of processed tokens
         
@@ -130,12 +124,6 @@ class Clusterer:
         
         df_merged = pd.concat([self.df, df_lemmatized, df_bow], axis=1) # Concatenate all results
         df_merged.to_csv(f"{self.root_name}_bow.csv", index=False)
-        
-        # for ind, doc_bow in enumerate(corpus_bow):
-        #     low_value_words = [id for id, value in tfidf[doc_bow] if value < low_value]
-        #     new_bow = [(id, count) for (id, count) in doc_bow 
-        #             if id not in low_value_words]
-        #     corpus_bow_processed.append(new_bow)
             
         self.vocab = vocab
         self.corpus_bow = corpus_bow_processed
@@ -273,13 +261,14 @@ class Clusterer:
         LOG.info(F"Successfully saved annotations to {self.root_name}_annotvec.csv")
         
 #%%
-a = Clusterer()
-a.importCorpora("data/tbi_ymcombined.csv")
-a.genVocabAndBow(save=True)
-a.clusterTopicsLda(11)
-a.visLdaTopics()
-a.annotateCorporaLda()
-# a.loadLdaModel("data/tbi_ymcombined.csv")
+if __name__ == "__main__":
+    a = Clusterer()
+    a.importCorpora("data/tbi_ymcombined.csv")
+    a.genVocabAndBow(save=True)
+    a.clusterTopicsLda(11)
+    a.visLdaTopics()
+    a.annotateCorporaLda()
+    # a.loadLdaModel("data/tbi_ymcombined.csv")
 
 #%% Plot generation (vec clusters for TBI)
 if 0:

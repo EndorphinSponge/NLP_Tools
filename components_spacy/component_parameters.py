@@ -2,33 +2,28 @@
 #%% Imports
 import re
 
-from spacy.matcher import PhraseMatcher, Matcher
 from spacy.tokens import Span, Doc
-from spacy.lang.en import English
 from spacy.language import Language
 
 #%%
 
-
-
+DEPRAC = False # Guard while keeping linting active
 # Reminder that set_extension is a classmethod, will affect all instances of Doc
-Doc.set_extension("frequency", default = None, force = True) # Force true to avoid having to restart kernel every debug cycle
-Doc.set_extension("voltage", default = None, force = True)
-Doc.set_extension("amperage", default = None, force = True)
+if DEPRAC:
+    Doc.set_extension("frequency", default = None, force = True) # Force true to avoid having to restart kernel every debug cycle
+    Doc.set_extension("voltage", default = None, force = True)
+    Doc.set_extension("amperage", default = None, force = True)
 
 
-@Language.component("extractParameters")
-def extractParameters(doc):
+@Language.component("extractNmParams")
+def extractNmParams(doc: Doc):
     # Frequency parsing - Only in range of Hz, mHz and kHz units not found, probably not within physiological range
-    # doc._.frequency = extractParameter(doc.text, r"Hz|Hertz|hertz|Hert|hert")
-    doc._.frequency = extractParameter(doc.text, r"Hz\b|Hertz\b|hertz\b|Hert\b|hert\b") # Word boundary delimiters are safer but more false positives
+    doc.user_data["frequency"] = _extractParameter(doc.text, r"Hz\b|Hertz\b|hertz\b|Hert\b|hert\b") # Word boundary delimiters are safer but more false positives
     # Voltage parsing - Only in range of V, mV and kV units not found    
-    doc._.voltage = extractParameter(doc.text, r"V\b")    
+    doc.user_data["voltage"] = _extractParameter(doc.text, r"V\b")    
     # Amperage parsing - Found in ranges of mA and muA, will parse separately and converge numbers to mA since it is more common
-    # dict_mA = extractParameter(doc.text, r"mA")
-    # dict_muA = extractParameter(doc.text, r"muA")
-    dict_mA = extractParameter(doc.text, r"mA\b") # Word boundary delimiters are safer but more false positives
-    dict_muA = extractParameter(doc.text, r"muA\b")
+    dict_mA = _extractParameter(doc.text, r"mA\b") # Word boundary delimiters are safer but more false positives
+    dict_muA = _extractParameter(doc.text, r"muA\b")
     if dict_muA["fl"] != []:
         for fl in dict_muA["fl"]:
             dict_mA["fl"].append(float(fl)/1000)
@@ -38,11 +33,10 @@ def extractParameters(doc):
     if dict_muA["cp"] != []:
         for (op, num) in dict_muA["cp"]:
             dict_mA["cp"].append((op, float(num)/1000))
-    doc._.amperage = dict_mA
-    print("Freq:", doc._.frequency, "Voltage:", doc._.voltage, "Amperage", doc._.amperage)
+    doc.user_data["amperage"] = dict_mA
     return doc
 
-def extractParameter(text: str, units: str):
+def _extractParameter(text: str, units: str):
     """
         
     Parameters

@@ -21,6 +21,9 @@ from adjustText import adjust_text
 
 # Adjusttext package to resolve overlapping labels https://adjusttext.readthedocs.io/en/latest/Examples.html
 
+# Internals
+from internals import LOG
+
 #%% Constants
 
 #%% Classes & Functions
@@ -325,12 +328,11 @@ class GraphVisualizer:
             
             
         else: # Undirected graph parsing 
-            print()
+            LOG.warning("Undirected graph detected, this pipeline has not been built yet")
             print(self.graph.degree())
             print(self.graph.degree(weight="width"))
             pass
-        
-        pass
+
     
     def renderScatter(self):
         x = self.true_edge_widths
