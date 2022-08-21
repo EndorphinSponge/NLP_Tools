@@ -93,6 +93,12 @@ class GraphVisualizer:
                 node_colors.append("#8338ec")
             elif data["ent_type"] == "outcome":
                 node_colors.append("#f72585")
+            elif data["ent_type"] == "cns_locs":
+                node_colors.append("green")
+            elif data["ent_type"] == "modalities":
+                node_colors.append("blue")
+            elif data["ent_type"] == "diseases_broad":
+                node_colors.append("red")
             else:
                 node_colors.append("#000000")
         self.node_colors = node_colors
@@ -261,6 +267,8 @@ class GraphVisualizer:
             graph = self.graph
             
         graphpy.from_nx(graph)
+        
+        # Way to further modify node and edge sizes to scaling to screen
 
         graphpy.toggle_physics(True)
         if solver == "repulsion":
@@ -335,6 +343,9 @@ class GraphVisualizer:
                     fig.suptitle(f"Top {str(top_n)} TBI prognosis outcome measures over entire corpora")
                 elif ent_type == "factor":
                     fig.suptitle(f"Top {str(top_n)} TBI prognostic factors over entire corpora")
+                
+                output_name = F"{self._getSimplifiedName()}_bargraph_{ent_type}.png"
+                fig.savefig(output_name, bbox_inches='tight')
             
             
         else: # Undirected graph parsing 

@@ -9,22 +9,44 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 if 1:
     ROOT_PATH = "data/test2/Data.xls"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
+    THRESH = 5
     
     if 0:
-        from models_spacy import GeneralExtractor
-        extractor = GeneralExtractor()
-        extractor.addPipeSampleSize()
-        extractor.addPipeNmParams()
-        extractor.addPipeCnsLocs()
-        extractor.parseCorpora(ROOT_PATH, "AB", export_userdata=True, skiprows=1) # *_userdata.csv
+        pass
     
-        from components_diseases import procKeywordsEpilep
-        procKeywordsEpilep(F"{ROOT_NAME}_userdata.csv") # *_userdata_kw.csv
         
     from components_diseases import visHeatmapParams
     visHeatmapParams(F"{ROOT_NAME}_userdata_kw.csv",
-                     col="frequency",
-                     col_sampsize="sample_size")
+                    col="frequency",
+                    col_sampsize="sample_size")
+    
+    from models_spacy import GeneralExtractor
+    extractor = GeneralExtractor()
+    extractor.addPipeSampleSize()
+    extractor.addPipeNmParams()
+    extractor.addPipeCnsLocs()
+    extractor.parseCorpora(ROOT_PATH, "AB", export_userdata=True, skiprows=1) # *_userdata.csv
+    
+    from components_diseases import procKeywordsEpilep
+    procKeywordsEpilep(F"{ROOT_NAME}_userdata.csv") # *_userdata_kw.csv
+    
+    GeneralExtractor.convColsToStmts(F"{ROOT_NAME}_userdata_kw.csv",
+                              cols=["cns_locs", "modalities", "diseases_broad"]) # *_userdata_kw_entsF.csv
+    
+    from graph_builder import GraphBuilder
+    builder = GraphBuilder()
+    builder.popCountersMulti(f"{ROOT_NAME}_userdata_kw_entsF.csv")
+    builder.buildGraph(thresh=THRESH, multidi=False)
+    builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
+    
+    from graph_renderer import GraphVisualizer
+    visualizer = GraphVisualizer(f"{ROOT_NAME}_userdata_kw_entsF_t{THRESH}.xml")
+    visualizer.renderBarGraph(ent_types=["cns_locs", "modalities"])
+    visualizer.genRenderArgs()
+    visualizer.genLegend()
+    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
+    visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html, ONLY WORKS with undirected Graphs
+
         
     
 

@@ -130,6 +130,25 @@ class SpacyModel:
     def exportDocsUserdata(self, ):
         pass
         
+    @staticmethod # Don't need to load self, hence bypasses need to load language model
+    def convColsToStmts(df_path, cols: list[str], col_out: str = "Processed_ents"):
+        # Converts JSON string items in cols to JSON string in format of statements used by graph_builder
+        root_name = os.path.splitext(df_path)[0] # Store root name
+        df = importData(df_path)
+        df_stmts = DataFrame()
+        for ind, row in df.iterrows():
+            ents_dict: dict[str, list[str]] = {c: json.loads(row[c]) for c in cols}
+            ents_dict_fmt = json.dumps([ents_dict]) # Wrap in list to keep consistent formatting (GPT3 output has multiple output statements)
+            new_entry = DataFrame({col_out: [ents_dict_fmt]})
+            new_entry.index = pd.RangeIndex(start=ind, stop=ind+1, step=1)
+            df_stmts = pd.concat([df_stmts, new_entry])
+            
+        df_merged = pd.concat([df, df_stmts], axis=1)
+        df_merged.to_csv(F"{root_name}_entsF.csv")
+        LOG.info(F"Exported to {root_name}_entsF.csv")
+        
+        
+        
     def resetDocs(self):
         self.doclist = []
     
