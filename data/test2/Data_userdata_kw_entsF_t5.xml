@@ -17,24 +17,24 @@
       <data key="d0">17</data>
       <data key="d1">cns_locs</data>
     </node>
-    <node id="subthalamic nucleus">
-      <data key="d0">9</data>
-      <data key="d1">cns_locs</data>
-    </node>
     <node id="globus pallidus">
       <data key="d0">6</data>
+      <data key="d1">cns_locs</data>
+    </node>
+    <node id="subthalamic nucleus">
+      <data key="d0">9</data>
       <data key="d1">cns_locs</data>
     </node>
     <node id="motor cortex">
       <data key="d0">32</data>
       <data key="d1">cns_locs</data>
     </node>
-    <node id="insular cortex">
-      <data key="d0">8</data>
-      <data key="d1">cns_locs</data>
-    </node>
     <node id="insula">
       <data key="d0">16</data>
+      <data key="d1">cns_locs</data>
+    </node>
+    <node id="insular cortex">
+      <data key="d0">8</data>
       <data key="d1">cns_locs</data>
     </node>
     <node id="hippocampus">
@@ -85,12 +85,12 @@
       <data key="d0">6</data>
       <data key="d1">cns_locs</data>
     </node>
-    <node id="brain">
-      <data key="d0">7</data>
-      <data key="d1">cns_locs</data>
-    </node>
     <node id="frontal cortex">
       <data key="d0">6</data>
+      <data key="d1">cns_locs</data>
+    </node>
+    <node id="brain">
+      <data key="d0">7</data>
       <data key="d1">cns_locs</data>
     </node>
     <node id="cerebral cortex">
@@ -157,6 +157,90 @@
       <data key="d2">6</data>
       <data key="d3">0.14285714285714285</data>
     </edge>
+    <edge source="temporal lobe" target="anterior nuclear group">
+      <data key="d2">6</data>
+      <data key="d3">0.10909090909090909</data>
+    </edge>
+    <edge source="temporal lobe" target="insular cortex">
+      <data key="d2">4</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="temporal lobe" target="insula">
+      <data key="d2">6</data>
+      <data key="d3">0.375</data>
+    </edge>
+    <edge source="temporal lobe" target="thalamus">
+      <data key="d2">10</data>
+      <data key="d3">0.18181818181818182</data>
+    </edge>
+    <edge source="temporal lobe" target="hippocampus">
+      <data key="d2">6</data>
+      <data key="d3">0.10909090909090909</data>
+    </edge>
+    <edge source="temporal lobe" target="basal ganglia">
+      <data key="d2">3</data>
+      <data key="d3">0.05454545454545454</data>
+    </edge>
+    <edge source="temporal lobe" target="brainstem">
+      <data key="d2">2</data>
+      <data key="d3">0.03636363636363636</data>
+    </edge>
+    <edge source="temporal lobe" target="caudate nucleus">
+      <data key="d2">2</data>
+      <data key="d3">0.03636363636363636</data>
+    </edge>
+    <edge source="temporal lobe" target="vagus nerve">
+      <data key="d2">4</data>
+      <data key="d3">0.07272727272727272</data>
+    </edge>
+    <edge source="temporal lobe" target="subthalamic nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.01818181818181818</data>
+    </edge>
+    <edge source="temporal lobe" target="centromedian nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="temporal lobe" target="motor cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.01818181818181818</data>
+    </edge>
+    <edge source="temporal lobe" target="head of the caudate nucleus">
+      <data key="d2">3</data>
+      <data key="d3">0.23076923076923078</data>
+    </edge>
+    <edge source="temporal lobe" target="frontal lobe">
+      <data key="d2">5</data>
+      <data key="d3">0.09090909090909091</data>
+    </edge>
+    <edge source="temporal lobe" target="amygdala">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="temporal lobe" target="neocortex">
+      <data key="d2">3</data>
+      <data key="d3">0.2727272727272727</data>
+    </edge>
+    <edge source="temporal lobe" target="nucleus accumbens">
+      <data key="d2">1</data>
+      <data key="d3">0.14285714285714285</data>
+    </edge>
+    <edge source="temporal lobe" target="globus pallidus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="temporal lobe" target="limbic system">
+      <data key="d2">2</data>
+      <data key="d3">0.2857142857142857</data>
+    </edge>
+    <edge source="temporal lobe" target="brain">
+      <data key="d2">1</data>
+      <data key="d3">0.01818181818181818</data>
+    </edge>
+    <edge source="temporal lobe" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
     <edge source="anterior nuclear group" target="brain depth stimulation">
       <data key="d2">19</data>
       <data key="d3">0.051490514905149054</data>
@@ -181,6 +265,38 @@
       <data key="d2">4</data>
       <data key="d3">0.09302325581395349</data>
     </edge>
+    <edge source="anterior nuclear group" target="hippocampus">
+      <data key="d2">2</data>
+      <data key="d3">0.06451612903225806</data>
+    </edge>
+    <edge source="anterior nuclear group" target="neocortex">
+      <data key="d2">4</data>
+      <data key="d3">0.36363636363636365</data>
+    </edge>
+    <edge source="anterior nuclear group" target="vagus nerve">
+      <data key="d2">2</data>
+      <data key="d3">0.08</data>
+    </edge>
+    <edge source="anterior nuclear group" target="thalamus">
+      <data key="d2">8</data>
+      <data key="d3">0.17777777777777778</data>
+    </edge>
+    <edge source="anterior nuclear group" target="nucleus accumbens">
+      <data key="d2">3</data>
+      <data key="d3">0.42857142857142855</data>
+    </edge>
+    <edge source="anterior nuclear group" target="insula">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="anterior nuclear group" target="limbic system">
+      <data key="d2">1</data>
+      <data key="d3">0.14285714285714285</data>
+    </edge>
+    <edge source="anterior nuclear group" target="head of the caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
     <edge source="frontal lobe" target="brain depth stimulation">
       <data key="d2">17</data>
       <data key="d3">0.04607046070460705</data>
@@ -189,29 +305,49 @@
       <data key="d2">1</data>
       <data key="d3">0.038461538461538464</data>
     </edge>
-    <edge source="frontal lobe" target="focal epilepsy">
-      <data key="d2">17</data>
-      <data key="d3">0.04607046070460705</data>
-    </edge>
     <edge source="frontal lobe" target="generalized epilepsy">
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
+    </edge>
+    <edge source="frontal lobe" target="focal epilepsy">
+      <data key="d2">17</data>
+      <data key="d3">0.04607046070460705</data>
     </edge>
     <edge source="frontal lobe" target="drug resistant epilepsy">
       <data key="d2">1</data>
       <data key="d3">0.022222222222222223</data>
     </edge>
-    <edge source="subthalamic nucleus" target="brain depth stimulation">
-      <data key="d2">9</data>
-      <data key="d3">0.024390243902439025</data>
-    </edge>
-    <edge source="subthalamic nucleus" target="focal epilepsy">
-      <data key="d2">9</data>
-      <data key="d3">0.024390243902439025</data>
-    </edge>
-    <edge source="subthalamic nucleus" target="drug resistant epilepsy">
+    <edge source="frontal lobe" target="motor cortex">
       <data key="d2">2</data>
-      <data key="d3">0.044444444444444446</data>
+      <data key="d3">0.11764705882352941</data>
+    </edge>
+    <edge source="frontal lobe" target="brain">
+      <data key="d2">2</data>
+      <data key="d3">0.2857142857142857</data>
+    </edge>
+    <edge source="frontal lobe" target="thalamus">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="frontal lobe" target="head of the caudate nucleus">
+      <data key="d2">3</data>
+      <data key="d3">0.17647058823529413</data>
+    </edge>
+    <edge source="frontal lobe" target="white matter">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="frontal lobe" target="insula">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="frontal lobe" target="insular cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.058823529411764705</data>
+    </edge>
+    <edge source="frontal lobe" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
     </edge>
     <edge source="globus pallidus" target="brain depth stimulation">
       <data key="d2">6</data>
@@ -228,6 +364,78 @@
     <edge source="globus pallidus" target="generalized epilepsy">
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
+    </edge>
+    <edge source="globus pallidus" target="subthalamic nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="globus pallidus" target="brain">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="globus pallidus" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="globus pallidus" target="hippocampus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="globus pallidus" target="thalamus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="globus pallidus" target="head of the caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="globus pallidus" target="basal ganglia">
+      <data key="d2">2</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="globus pallidus" target="motor cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="brain depth stimulation">
+      <data key="d2">9</data>
+      <data key="d3">0.024390243902439025</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="focal epilepsy">
+      <data key="d2">9</data>
+      <data key="d3">0.024390243902439025</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="drug resistant epilepsy">
+      <data key="d2">2</data>
+      <data key="d3">0.044444444444444446</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="motor cortex">
+      <data key="d2">3</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="caudate nucleus">
+      <data key="d2">2</data>
+      <data key="d3">0.2222222222222222</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="thalamus">
+      <data key="d2">2</data>
+      <data key="d3">0.044444444444444446</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="basal ganglia">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="cerebral cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="brainstem">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="subthalamic nucleus" target="centromedian nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
     </edge>
     <edge source="motor cortex" target="brain depth stimulation">
       <data key="d2">32</data>
@@ -257,17 +465,25 @@
       <data key="d2">2</data>
       <data key="d3">0.047619047619047616</data>
     </edge>
-    <edge source="insular cortex" target="brain depth stimulation">
-      <data key="d2">8</data>
-      <data key="d3">0.02168021680216802</data>
-    </edge>
-    <edge source="insular cortex" target="focal epilepsy">
-      <data key="d2">8</data>
-      <data key="d3">0.02168021680216802</data>
-    </edge>
-    <edge source="insular cortex" target="drug resistant epilepsy">
+    <edge source="motor cortex" target="hippocampus">
       <data key="d2">1</data>
-      <data key="d3">0.022222222222222223</data>
+      <data key="d3">0.03125</data>
+    </edge>
+    <edge source="motor cortex" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="motor cortex" target="head of the caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
+    </edge>
+    <edge source="motor cortex" target="basal ganglia">
+      <data key="d2">1</data>
+      <data key="d3">0.03125</data>
+    </edge>
+    <edge source="motor cortex" target="vagus nerve">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
     </edge>
     <edge source="insula" target="brain depth stimulation">
       <data key="d2">16</data>
@@ -284,6 +500,54 @@
     <edge source="insula" target="intractable epilepsy">
       <data key="d2">2</data>
       <data key="d3">0.046511627906976744</data>
+    </edge>
+    <edge source="insula" target="insular cortex">
+      <data key="d2">8</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="insula" target="thalamus">
+      <data key="d2">1</data>
+      <data key="d3">0.022222222222222223</data>
+    </edge>
+    <edge source="insula" target="white matter">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="insula" target="amygdala">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="insula" target="limbic system">
+      <data key="d2">2</data>
+      <data key="d3">0.2857142857142857</data>
+    </edge>
+    <edge source="insula" target="hippocampus">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="insula" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="insula" target="neocortex">
+      <data key="d2">1</data>
+      <data key="d3">0.09090909090909091</data>
+    </edge>
+    <edge source="insular cortex" target="brain depth stimulation">
+      <data key="d2">8</data>
+      <data key="d3">0.02168021680216802</data>
+    </edge>
+    <edge source="insular cortex" target="focal epilepsy">
+      <data key="d2">8</data>
+      <data key="d3">0.02168021680216802</data>
+    </edge>
+    <edge source="insular cortex" target="drug resistant epilepsy">
+      <data key="d2">1</data>
+      <data key="d3">0.022222222222222223</data>
+    </edge>
+    <edge source="insular cortex" target="thalamus">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="hippocampus" target="brain depth stimulation">
       <data key="d2">31</data>
@@ -309,6 +573,54 @@
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
     </edge>
+    <edge source="hippocampus" target="neocortex">
+      <data key="d2">4</data>
+      <data key="d3">0.12903225806451613</data>
+    </edge>
+    <edge source="hippocampus" target="white matter">
+      <data key="d2">2</data>
+      <data key="d3">0.2222222222222222</data>
+    </edge>
+    <edge source="hippocampus" target="thalamus">
+      <data key="d2">8</data>
+      <data key="d3">0.17777777777777778</data>
+    </edge>
+    <edge source="hippocampus" target="frontal cortex">
+      <data key="d2">2</data>
+      <data key="d3">0.06451612903225806</data>
+    </edge>
+    <edge source="hippocampus" target="brain">
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
+    </edge>
+    <edge source="hippocampus" target="basal ganglia">
+      <data key="d2">2</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="hippocampus" target="head of the caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.03225806451612903</data>
+    </edge>
+    <edge source="hippocampus" target="vagus nerve">
+      <data key="d2">3</data>
+      <data key="d3">0.0967741935483871</data>
+    </edge>
+    <edge source="hippocampus" target="centromedian nucleus">
+      <data key="d2">2</data>
+      <data key="d3">0.06451612903225806</data>
+    </edge>
+    <edge source="hippocampus" target="amygdala">
+      <data key="d2">6</data>
+      <data key="d3">0.1935483870967742</data>
+    </edge>
+    <edge source="hippocampus" target="limbic system">
+      <data key="d2">2</data>
+      <data key="d3">0.06451612903225806</data>
+    </edge>
+    <edge source="hippocampus" target="caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
     <edge source="neocortex" target="brain depth stimulation">
       <data key="d2">11</data>
       <data key="d3">0.02981029810298103</data>
@@ -324,6 +636,34 @@
     <edge source="neocortex" target="generalized epilepsy">
       <data key="d2">2</data>
       <data key="d3">0.047619047619047616</data>
+    </edge>
+    <edge source="neocortex" target="centromedian nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="neocortex" target="thalamus">
+      <data key="d2">2</data>
+      <data key="d3">0.18181818181818182</data>
+    </edge>
+    <edge source="neocortex" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.09090909090909091</data>
+    </edge>
+    <edge source="neocortex" target="limbic system">
+      <data key="d2">1</data>
+      <data key="d3">0.09090909090909091</data>
+    </edge>
+    <edge source="neocortex" target="vagus nerve">
+      <data key="d2">1</data>
+      <data key="d3">0.09090909090909091</data>
+    </edge>
+    <edge source="neocortex" target="cerebral cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="neocortex" target="amygdala">
+      <data key="d2">1</data>
+      <data key="d3">0.09090909090909091</data>
     </edge>
     <edge source="thalamus" target="brain depth stimulation">
       <data key="d2">45</data>
@@ -353,6 +693,58 @@
       <data key="d2">7</data>
       <data key="d3">0.16279069767441862</data>
     </edge>
+    <edge source="thalamus" target="nucleus accumbens">
+      <data key="d2">4</data>
+      <data key="d3">0.08888888888888889</data>
+    </edge>
+    <edge source="thalamus" target="basal ganglia">
+      <data key="d2">3</data>
+      <data key="d3">0.06666666666666667</data>
+    </edge>
+    <edge source="thalamus" target="brainstem">
+      <data key="d2">3</data>
+      <data key="d3">0.06666666666666667</data>
+    </edge>
+    <edge source="thalamus" target="centromedian nucleus">
+      <data key="d2">5</data>
+      <data key="d3">0.8333333333333334</data>
+    </edge>
+    <edge source="thalamus" target="vagus nerve">
+      <data key="d2">7</data>
+      <data key="d3">0.15555555555555556</data>
+    </edge>
+    <edge source="thalamus" target="frontal cortex">
+      <data key="d2">2</data>
+      <data key="d3">0.044444444444444446</data>
+    </edge>
+    <edge source="thalamus" target="head of the caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.07692307692307693</data>
+    </edge>
+    <edge source="thalamus" target="brain">
+      <data key="d2">1</data>
+      <data key="d3">0.022222222222222223</data>
+    </edge>
+    <edge source="thalamus" target="caudate nucleus">
+      <data key="d2">3</data>
+      <data key="d3">0.06666666666666667</data>
+    </edge>
+    <edge source="thalamus" target="cerebral cortex">
+      <data key="d2">2</data>
+      <data key="d3">0.044444444444444446</data>
+    </edge>
+    <edge source="thalamus" target="limbic system">
+      <data key="d2">1</data>
+      <data key="d3">0.022222222222222223</data>
+    </edge>
+    <edge source="thalamus" target="white matter">
+      <data key="d2">1</data>
+      <data key="d3">0.022222222222222223</data>
+    </edge>
+    <edge source="thalamus" target="amygdala">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
     <edge source="nucleus accumbens" target="brain depth stimulation">
       <data key="d2">7</data>
       <data key="d3">0.018970189701897018</data>
@@ -377,19 +769,47 @@
       <data key="d2">1</data>
       <data key="d3">0.017543859649122806</data>
     </edge>
-    <edge source="head of the caudate nucleus" target="focal epilepsy">
-      <data key="d2">13</data>
-      <data key="d3">0.03523035230352303</data>
-    </edge>
     <edge source="head of the caudate nucleus" target="generalized epilepsy">
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
+    </edge>
+    <edge source="head of the caudate nucleus" target="focal epilepsy">
+      <data key="d2">13</data>
+      <data key="d3">0.03523035230352303</data>
     </edge>
     <edge source="head of the caudate nucleus" target="intractable epilepsy">
       <data key="d2">3</data>
       <data key="d3">0.06976744186046512</data>
     </edge>
+    <edge source="head of the caudate nucleus" target="brainstem">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="head of the caudate nucleus" target="amygdala">
+      <data key="d2">2</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="head of the caudate nucleus" target="basal ganglia">
+      <data key="d2">1</data>
+      <data key="d3">0.07692307692307693</data>
+    </edge>
+    <edge source="head of the caudate nucleus" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.07692307692307693</data>
+    </edge>
+    <edge source="head of the caudate nucleus" target="brain">
+      <data key="d2">1</data>
+      <data key="d3">0.07692307692307693</data>
+    </edge>
+    <edge source="head of the caudate nucleus" target="limbic system">
+      <data key="d2">1</data>
+      <data key="d3">0.14285714285714285</data>
+    </edge>
     <edge source="brainstem" target="brain depth stimulation">
+      <data key="d2">8</data>
+      <data key="d3">0.02168021680216802</data>
+    </edge>
+    <edge source="brainstem" target="focal epilepsy">
       <data key="d2">8</data>
       <data key="d3">0.02168021680216802</data>
     </edge>
@@ -397,9 +817,25 @@
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
     </edge>
-    <edge source="brainstem" target="focal epilepsy">
-      <data key="d2">8</data>
-      <data key="d3">0.02168021680216802</data>
+    <edge source="brainstem" target="basal ganglia">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="brainstem" target="centromedian nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="brainstem" target="cerebral cortex">
+      <data key="d2">2</data>
+      <data key="d3">0.2</data>
+    </edge>
+    <edge source="brainstem" target="caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="brainstem" target="amygdala">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
     </edge>
     <edge source="basal ganglia" target="brain depth stimulation">
       <data key="d2">6</data>
@@ -425,6 +861,26 @@
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
     </edge>
+    <edge source="basal ganglia" target="caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="basal ganglia" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="basal ganglia" target="brain">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="basal ganglia" target="centromedian nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
+    <edge source="basal ganglia" target="vagus nerve">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
     <edge source="centromedian nucleus" target="brain depth stimulation">
       <data key="d2">6</data>
       <data key="d3">0.016260162601626018</data>
@@ -449,6 +905,18 @@
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
     </edge>
+    <edge source="centromedian nucleus" target="vagus nerve">
+      <data key="d2">1</data>
+      <data key="d3">0.04</data>
+    </edge>
+    <edge source="centromedian nucleus" target="cerebral cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="centromedian nucleus" target="caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
     <edge source="vagus nerve" target="vagus nerve stimulation">
       <data key="d2">23</data>
       <data key="d3">0.40350877192982454</data>
@@ -469,13 +937,17 @@
       <data key="d2">4</data>
       <data key="d3">0.08888888888888889</data>
     </edge>
+    <edge source="vagus nerve" target="intractable epilepsy">
+      <data key="d2">5</data>
+      <data key="d3">0.11627906976744186</data>
+    </edge>
     <edge source="vagus nerve" target="generalized epilepsy">
       <data key="d2">7</data>
       <data key="d3">0.16666666666666666</data>
     </edge>
-    <edge source="vagus nerve" target="intractable epilepsy">
-      <data key="d2">5</data>
-      <data key="d3">0.11627906976744186</data>
+    <edge source="vagus nerve" target="cerebral cortex">
+      <data key="d2">2</data>
+      <data key="d3">0.08</data>
     </edge>
     <edge source="white matter" target="brain depth stimulation">
       <data key="d2">9</data>
@@ -501,6 +973,18 @@
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
     </edge>
+    <edge source="amygdala" target="limbic system">
+      <data key="d2">4</data>
+      <data key="d3">0.5714285714285714</data>
+    </edge>
+    <edge source="amygdala" target="caudate nucleus">
+      <data key="d2">1</data>
+      <data key="d3">0.0625</data>
+    </edge>
+    <edge source="amygdala" target="frontal cortex">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
+    </edge>
     <edge source="caudate nucleus" target="brain depth stimulation">
       <data key="d2">6</data>
       <data key="d3">0.016260162601626018</data>
@@ -517,25 +1001,9 @@
       <data key="d2">1</data>
       <data key="d3">0.023809523809523808</data>
     </edge>
-    <edge source="brain" target="brain depth stimulation">
-      <data key="d2">7</data>
-      <data key="d3">0.018970189701897018</data>
-    </edge>
-    <edge source="brain" target="transcranial magnetic stimulation">
+    <edge source="caudate nucleus" target="cerebral cortex">
       <data key="d2">1</data>
-      <data key="d3">0.038461538461538464</data>
-    </edge>
-    <edge source="brain" target="intractable epilepsy">
-      <data key="d2">1</data>
-      <data key="d3">0.023255813953488372</data>
-    </edge>
-    <edge source="brain" target="focal epilepsy">
-      <data key="d2">7</data>
-      <data key="d3">0.018970189701897018</data>
-    </edge>
-    <edge source="brain" target="generalized epilepsy">
-      <data key="d2">1</data>
-      <data key="d3">0.023809523809523808</data>
+      <data key="d3">0.16666666666666666</data>
     </edge>
     <edge source="frontal cortex" target="brain depth stimulation">
       <data key="d2">6</data>
@@ -549,17 +1017,41 @@
       <data key="d2">6</data>
       <data key="d3">0.016260162601626018</data>
     </edge>
-    <edge source="cerebral cortex" target="brain depth stimulation">
-      <data key="d2">10</data>
-      <data key="d3">0.02710027100271003</data>
+    <edge source="frontal cortex" target="brain">
+      <data key="d2">1</data>
+      <data key="d3">0.16666666666666666</data>
     </edge>
-    <edge source="cerebral cortex" target="focal epilepsy">
+    <edge source="brain" target="brain depth stimulation">
+      <data key="d2">7</data>
+      <data key="d3">0.018970189701897018</data>
+    </edge>
+    <edge source="brain" target="transcranial magnetic stimulation">
+      <data key="d2">1</data>
+      <data key="d3">0.038461538461538464</data>
+    </edge>
+    <edge source="brain" target="focal epilepsy">
+      <data key="d2">7</data>
+      <data key="d3">0.018970189701897018</data>
+    </edge>
+    <edge source="brain" target="intractable epilepsy">
+      <data key="d2">1</data>
+      <data key="d3">0.023255813953488372</data>
+    </edge>
+    <edge source="brain" target="generalized epilepsy">
+      <data key="d2">1</data>
+      <data key="d3">0.023809523809523808</data>
+    </edge>
+    <edge source="cerebral cortex" target="brain depth stimulation">
       <data key="d2">10</data>
       <data key="d3">0.02710027100271003</data>
     </edge>
     <edge source="cerebral cortex" target="drug resistant epilepsy">
       <data key="d2">1</data>
       <data key="d3">0.022222222222222223</data>
+    </edge>
+    <edge source="cerebral cortex" target="focal epilepsy">
+      <data key="d2">10</data>
+      <data key="d3">0.02710027100271003</data>
     </edge>
     <edge source="limbic system" target="brain depth stimulation">
       <data key="d2">7</data>
@@ -569,13 +1061,13 @@
       <data key="d2">1</data>
       <data key="d3">0.017543859649122806</data>
     </edge>
-    <edge source="limbic system" target="intractable epilepsy">
-      <data key="d2">1</data>
-      <data key="d3">0.023255813953488372</data>
-    </edge>
     <edge source="limbic system" target="focal epilepsy">
       <data key="d2">7</data>
       <data key="d3">0.018970189701897018</data>
+    </edge>
+    <edge source="limbic system" target="intractable epilepsy">
+      <data key="d2">1</data>
+      <data key="d3">0.023255813953488372</data>
     </edge>
     <edge source="brain depth stimulation" target="focal epilepsy">
       <data key="d2">369</data>
@@ -593,13 +1085,21 @@
       <data key="d2">43</data>
       <data key="d3">1.0</data>
     </edge>
-    <edge source="transcranial magnetic stimulation" target="focal epilepsy">
+    <edge source="brain depth stimulation" target="transcranial magnetic stimulation">
       <data key="d2">26</data>
       <data key="d3">0.07046070460704607</data>
+    </edge>
+    <edge source="brain depth stimulation" target="vagus nerve stimulation">
+      <data key="d2">57</data>
+      <data key="d3">0.15447154471544716</data>
     </edge>
     <edge source="transcranial magnetic stimulation" target="generalized epilepsy">
       <data key="d2">8</data>
       <data key="d3">0.19047619047619047</data>
+    </edge>
+    <edge source="transcranial magnetic stimulation" target="focal epilepsy">
+      <data key="d2">26</data>
+      <data key="d3">0.07046070460704607</data>
     </edge>
     <edge source="transcranial magnetic stimulation" target="drug resistant epilepsy">
       <data key="d2">2</data>
@@ -609,13 +1109,17 @@
       <data key="d2">2</data>
       <data key="d3">0.046511627906976744</data>
     </edge>
-    <edge source="vagus nerve stimulation" target="generalized epilepsy">
-      <data key="d2">13</data>
-      <data key="d3">0.30952380952380953</data>
+    <edge source="transcranial magnetic stimulation" target="vagus nerve stimulation">
+      <data key="d2">7</data>
+      <data key="d3">0.2692307692307692</data>
     </edge>
     <edge source="vagus nerve stimulation" target="focal epilepsy">
       <data key="d2">57</data>
       <data key="d3">0.15447154471544716</data>
+    </edge>
+    <edge source="vagus nerve stimulation" target="generalized epilepsy">
+      <data key="d2">13</data>
+      <data key="d3">0.30952380952380953</data>
     </edge>
     <edge source="vagus nerve stimulation" target="drug resistant epilepsy">
       <data key="d2">10</data>
@@ -624,6 +1128,30 @@
     <edge source="vagus nerve stimulation" target="intractable epilepsy">
       <data key="d2">14</data>
       <data key="d3">0.32558139534883723</data>
+    </edge>
+    <edge source="focal epilepsy" target="generalized epilepsy">
+      <data key="d2">42</data>
+      <data key="d3">0.11382113821138211</data>
+    </edge>
+    <edge source="focal epilepsy" target="drug resistant epilepsy">
+      <data key="d2">45</data>
+      <data key="d3">0.12195121951219512</data>
+    </edge>
+    <edge source="focal epilepsy" target="intractable epilepsy">
+      <data key="d2">43</data>
+      <data key="d3">0.11653116531165311</data>
+    </edge>
+    <edge source="generalized epilepsy" target="drug resistant epilepsy">
+      <data key="d2">7</data>
+      <data key="d3">0.15555555555555556</data>
+    </edge>
+    <edge source="generalized epilepsy" target="intractable epilepsy">
+      <data key="d2">7</data>
+      <data key="d3">0.16279069767441862</data>
+    </edge>
+    <edge source="drug resistant epilepsy" target="intractable epilepsy">
+      <data key="d2">4</data>
+      <data key="d3">0.09302325581395349</data>
     </edge>
   </graph>
 </graphml>

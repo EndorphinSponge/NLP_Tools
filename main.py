@@ -6,7 +6,7 @@ DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
-if 0:
+if 1: # Refactored pipeline from NeuromodulationNLP
     ROOT_PATH = "data/test2/Data.xls"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     THRESH = 5
@@ -15,27 +15,27 @@ if 0:
         pass
     
         
-    from components_diseases import visHeatmapParams
-    visHeatmapParams(F"{ROOT_NAME}_userdata_kw.csv",
-                    col="frequency",
-                    col_sampsize="sample_size")
-    
-    from models_spacy import GeneralExtractor
-    extractor = GeneralExtractor()
-    extractor.addPipeSampleSize()
-    extractor.addPipeNmParams()
-    extractor.addPipeCnsLocs()
-    extractor.parseCorpora(ROOT_PATH, "AB", export_userdata=True, skiprows=1) # *_userdata.csv
-    
-    from components_diseases import procKeywordsEpilep
-    procKeywordsEpilep(F"{ROOT_NAME}_userdata.csv") # *_userdata_kw.csv
-    
-    GeneralExtractor.convColsToStmts(F"{ROOT_NAME}_userdata_kw.csv",
-                              cols=["cns_locs", "modalities", "diseases_broad"]) # *_userdata_kw_entsF.csv
+        from components_diseases import visHeatmapParams
+        visHeatmapParams(F"{ROOT_NAME}_userdata_kw.csv",
+                        col="frequency",
+                        col_sampsize="sample_size")
+        
+        from models_spacy import GeneralExtractor
+        extractor = GeneralExtractor()
+        extractor.addPipeSampleSize()
+        extractor.addPipeNmParams()
+        extractor.addPipeCnsLocs()
+        extractor.parseCorpora(ROOT_PATH, "AB", export_userdata=True, skiprows=1) # *_userdata.csv
+        
+        from components_diseases import procKeywordsEpilep
+        procKeywordsEpilep(F"{ROOT_NAME}_userdata.csv") # *_userdata_kw.csv
+        
+        GeneralExtractor.convColsToStmts(F"{ROOT_NAME}_userdata_kw.csv",
+                                cols=["cns_locs", "modalities", "diseases_broad"]) # *_userdata_kw_entsF.csv
     
     from graph_builder import GraphBuilder
     builder = GraphBuilder()
-    builder.popCountersMulti(f"{ROOT_NAME}_userdata_kw_entsF.csv")
+    builder.popCountersMulti(f"{ROOT_NAME}_userdata_kw_entsF.csv", intra_type=True)
     builder.buildGraph(thresh=THRESH, multidi=False)
     builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
     
@@ -53,7 +53,7 @@ if 0:
 
 
 
-if 1: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
+if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
     ROOT_PATH = "data/test/test.xlsx"
     MODEL = "gpt3"
     THRESH = 2

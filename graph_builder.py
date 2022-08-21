@@ -62,10 +62,12 @@ class GraphBuilder:
         edge_types = list(permutations(proto_stmt, 2))
         print("Populating counters from DF...") # Below code runs quite fast so we don't need to track progress
         for index, row in df.iterrows():
+            sample_size = row[col_sampsize] if col_sampsize else 1
             list_statements: list[dict[str, list[str]]] = json.loads(row[col])
             article_nodes: dict[str, set[str]] = {t: set() for t in ent_types} # Initialize node container
             article_edges: dict[tuple[str, str], set[tuple[str, str]]] = {(t[0], t[1]): set() for t in edge_types} # Initialize edge container for all types
-            sample_size = row[col_sampsize] if col_sampsize else 1
+            if intra_type:
+                article_edges.update({(et, et): set() for et in ent_types}) # Add container for edges between the same ent types
             
             for statement in list_statements:
                 for ent_type in statement: # Parsing for each type of entity type
