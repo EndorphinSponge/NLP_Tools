@@ -65,7 +65,7 @@ outcomes_trans = {
 import os
 from typing import Union
 
-from graph_builder import EntProcessorCore # Import statement run at root directory 
+from ent_processing import EntProcessorCore # Import statement run at root directory 
 
 class TBICore(EntProcessorCore):
     # Core component of EntProcessor, returns 

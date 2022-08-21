@@ -127,8 +127,6 @@ class SpacyModel:
         doclist = list(docbin.get_docs(self.NLP.vocab)) # Retrieves content by mapping hashes back to words by using the vocab dictionary 
         self.doclist += doclist # Concat imported doclist to current doclist in case exports were done in batches
         
-    def exportDocsUserdata(self, ):
-        pass
         
     @staticmethod # Don't need to load self, hence bypasses need to load language model
     def convColsToStmts(df_path, cols: list[str], col_out: str = "Processed_ents"):

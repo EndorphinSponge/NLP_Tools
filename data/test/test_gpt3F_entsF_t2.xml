@@ -5,20 +5,20 @@
   <key id="d1" for="node" attr.name="ent_type" attr.type="string" />
   <key id="d0" for="node" attr.name="size" attr.type="long" />
   <graph edgedefault="directed">
-    <node id="glasgow coma scale score">
-      <data key="d0">4</data>
-      <data key="d1">factor</data>
-    </node>
     <node id="admission">
       <data key="d0">3</data>
       <data key="d1">factor</data>
     </node>
-    <node id="age">
-      <data key="d0">10</data>
+    <node id="glasgow coma scale score">
+      <data key="d0">4</data>
       <data key="d1">factor</data>
     </node>
     <node id="gcs">
       <data key="d0">9</data>
+      <data key="d1">factor</data>
+    </node>
+    <node id="age">
+      <data key="d0">10</data>
       <data key="d1">factor</data>
     </node>
     <node id="sex">
@@ -45,17 +45,13 @@
       <data key="d0">8</data>
       <data key="d1">outcome</data>
     </node>
-    <edge source="glasgow coma scale score" target="mortality" id="0">
-      <data key="d2">1</data>
-      <data key="d3">0.25</data>
-    </edge>
     <edge source="admission" target="unspecified clinical outcome" id="0">
       <data key="d2">1</data>
       <data key="d3">0.3333333333333333</data>
     </edge>
-    <edge source="age" target="mortality" id="0">
-      <data key="d2">4</data>
-      <data key="d3">0.4</data>
+    <edge source="glasgow coma scale score" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
     </edge>
     <edge source="gcs" target="mortality" id="0">
       <data key="d2">6</data>
@@ -69,6 +65,10 @@
       <data key="d2">1</data>
       <data key="d3">0.1111111111111111</data>
     </edge>
+    <edge source="age" target="mortality" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.4</data>
+    </edge>
     <edge source="sex" target="mortality" id="0">
       <data key="d2">2</data>
       <data key="d3">0.6666666666666666</data>
@@ -77,21 +77,21 @@
       <data key="d2">3</data>
       <data key="d3">1.0</data>
     </edge>
-    <edge source="mortality" target="gcs" id="0">
-      <data key="d2">6</data>
-      <data key="d3">0.3157894736842105</data>
-    </edge>
     <edge source="mortality" target="age" id="0">
       <data key="d2">4</data>
       <data key="d3">0.21052631578947367</data>
     </edge>
-    <edge source="mortality" target="sbp" id="0">
-      <data key="d2">3</data>
-      <data key="d3">0.15789473684210525</data>
+    <edge source="mortality" target="gcs" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.3157894736842105</data>
     </edge>
     <edge source="mortality" target="sex" id="0">
       <data key="d2">2</data>
       <data key="d3">0.10526315789473684</data>
+    </edge>
+    <edge source="mortality" target="sbp" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.15789473684210525</data>
     </edge>
     <edge source="mortality" target="glasgow coma scale score" id="0">
       <data key="d2">1</data>

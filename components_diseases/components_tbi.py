@@ -65,7 +65,7 @@ outcomes_trans = {
 import os
 from typing import Union
 
-from graph_builder import EntProcessorCore # All import statement run at directory that Python interpreter starts at (unless changed)
+from ent_processing import EntProcessorCore # Import statement run at root directory  # All import statement run at directory that Python interpreter starts at (unless changed)
 
 class TBICore(EntProcessorCore):
     # Core component of EntProcessor, returns 

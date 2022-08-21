@@ -6,7 +6,7 @@ DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
-if 1:
+if 0:
     ROOT_PATH = "data/test2/Data.xls"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     THRESH = 5
@@ -53,7 +53,7 @@ if 1:
 
 
 
-if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
+if 1: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
     ROOT_PATH = "data/test/test.xlsx"
     MODEL = "gpt3"
     THRESH = 2
@@ -67,14 +67,14 @@ if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
         cloudmodel.exportOutputFormatted(MODEL) # *_gpt3F.xlsx
     
     from models_spacy import EntityExtractor
-    from abrvs_syns import refineAbrvs
+    from ent_processing import refineAbrvs
     localmodel = EntityExtractor()
     localmodel.extractEnts(f"{ROOT_NAME}_{MODEL}F.xlsx") # *_gpt3F_entsR.xlsx
     localmodel.extractAbrvCont(ROOT_PATH) # *_abrvs.json
     print(localmodel.empty_log)
     refineAbrvs(f"{ROOT_NAME}_abrvs.json") # *_abrvs_rfn.json, *_abrvs_trans.json
     
-    from graph_builder import EntProcessor
+    from ent_processing import EntProcessor
     from components_diseases import TBICore
     core = TBICore(abrv_path=f"{ROOT_NAME}_abrvs_rfn.json",
                    common_trans_path=f"{ROOT_NAME}_abrvs_trans.json")
@@ -103,7 +103,9 @@ if 0: # Pipeline to render graphs for each topic
     MODEL = "gpt3"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     
-    from graph_builder import EntProcessor, GraphBuilder
+    
+    from ent_processing import EntProcessor
+    from graph_builder import GraphBuilder
     from graph_renderer import GraphVisualizer
     
     for i in range(11):
@@ -136,25 +138,3 @@ if 0: # Pipeline to render graphs for each topic
             title = "Network graph of factors (purple nodes) and outcomes (pink nodes) and associations between them"
         visualizer.renderGraphNX(title, adjust_shell=True)
 
-if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
-    ROOT_PATH = "data/test/test.xlsx"
-    MODEL = "gpt3"
-    THRESH = 2
-    ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
-    RUN_CLOUD = 0 # Extra guard against running cloud model
-    
-
-    
-    from graph_builder import GraphBuilder
-    builder = GraphBuilder()
-    builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
-    builder.buildGraph(thresh=THRESH, multidi=True)
-    builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
-    
-    from graph_renderer import GraphVisualizer
-    visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{THRESH}.xml")
-    visualizer.renderBarGraph(ent_types=["factor", "outcome"])
-    visualizer.genRenderArgs()
-    visualizer.genLegend()
-    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
-    visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html, ONLY WORKS with undirected Graphs
