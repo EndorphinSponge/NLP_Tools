@@ -5,7 +5,8 @@ import os
 DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
-if 1:
+
+if 0:
     ROOT_PATH = "data/test2/Data.xls"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     

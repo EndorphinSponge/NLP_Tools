@@ -164,13 +164,18 @@ class GraphBuilder:
         self.graph_root_name: str = "" # Derived from df_root_name, includes information about thresholding
 
 
-    def popCountersMulti(self, df_path, col = "Processed_ents",
-                         col_sub = "", subset: Union[str, int] = ""):
+    def popCountersMulti(self, df_path, 
+                         col = "Processed_ents",
+                         col_sub = "", 
+                         subset: Union[str, int] = "",
+                         intra_type = False,
+                         ):
         """
         For DFs containing multiple entity types (i.e., distinguishes between node types for node and edge enties)
         Populates the graph's counters using df and abbreviation container originally passed 
         into the class 
         DOES NOT RESET THE COUNTERS
+        intra_type - whether edges should be created between entities of the same type 
         """
         self.df_root_name = os.path.splitext(df_path)[0] # Store root name
         df = importData(df_path, screen_text=[col])
@@ -191,8 +196,15 @@ class GraphBuilder:
                 for ent_type1, ent_type2 in combinations(statement, 2):
                     # Can add if statement to screen out relationship between certain types of nodes 
                     for ent1, ent2 in product(statement[ent_type1], statement[ent_type2]):
-                        article_edges[(ent_type1, ent_type2)].add((ent1, ent2)) 
+                        article_edges[(ent_type1, ent_type2)].add((ent1, ent2))
                         article_edges[(ent_type2, ent_type1)].add((ent2, ent1)) # Add reverse relationship 
+                if intra_type:
+                    for ent_type in statement:
+                        ents = statement[ent_type]
+                        for ent1, ent2 in combinations(ents, 2):
+                            article_edges[(ent_type, ent_type)].add((ent1, ent2))
+                            article_edges[(ent_type, ent_type)].add((ent2, ent1)) # Add reverse relationship 
+                            
             for ent_type in article_nodes:
                 if ent_type not in self.node_counters: # Instantiate node counter if not already instantiated
                     self.node_counters[ent_type] = Counter()

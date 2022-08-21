@@ -11,7 +11,7 @@ import numpy as np
 from pyvis.network import Network
 import networkx as nx
 from networkx.classes.reportviews import NodeView
-from networkx import Graph, MultiDiGraph, DiGraph
+from networkx import Graph, MultiDiGraph, DiGraph, MultiGraph
 import matplotlib.pyplot as plt
 from matplotlib.collections import PathCollection
 from matplotlib.figure import Figure
@@ -252,7 +252,15 @@ class GraphVisualizer:
         Builds graph from counters and renders it using Pyvis
         """
         graphpy = Network()
-        graphpy.from_nx(self.graph)
+        
+        if type(self.graph) in [MultiDiGraph, DiGraph, MultiGraph]: # Need convertion to simple Graph for pyvis to work
+            graph = self.graph.to_undirected()
+            LOG.warning("Imported graph was not a simple Graph type, may not render correctly")
+            # FIXME find way to convert to Graph whie enabling visualization
+        else:
+            graph = self.graph
+            
+        graphpy.from_nx(graph)
 
         graphpy.toggle_physics(True)
         if solver == "repulsion":
