@@ -6,7 +6,7 @@ DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
-if 0:
+if 1:
     ROOT_PATH = "data/test2/Data.xls"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     
@@ -20,6 +20,11 @@ if 0:
     
         from components_diseases import procKeywordsEpilep
         procKeywordsEpilep(F"{ROOT_NAME}_userdata.csv") # *_userdata_kw.csv
+        
+    from components_diseases import visHeatmapParams
+    visHeatmapParams(F"{ROOT_NAME}_userdata_kw.csv",
+                     col="frequency",
+                     col_sampsize="sample_size")
         
     
 
@@ -67,7 +72,7 @@ if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
     visualizer.genRenderArgs()
     visualizer.genLegend()
     visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
-    visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html
+    visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html, ONLY WORKS with undirected Graphs
     
 # 0 guard to keep linting active without running code
 if 0: # Pipeline to render graphs for each topic 
@@ -109,3 +114,25 @@ if 0: # Pipeline to render graphs for each topic
             title = "Network graph of factors (purple nodes) and outcomes (pink nodes) and associations between them"
         visualizer.renderGraphNX(title, adjust_shell=True)
 
+if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
+    ROOT_PATH = "data/test/test.xlsx"
+    MODEL = "gpt3"
+    THRESH = 2
+    ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
+    RUN_CLOUD = 0 # Extra guard against running cloud model
+    
+
+    
+    from graph_builder import GraphBuilder
+    builder = GraphBuilder()
+    builder.popCountersMulti(f"{ROOT_NAME}_{MODEL}F_entsF.xlsx")
+    builder.buildGraph(thresh=THRESH, multidi=True)
+    builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
+    
+    from graph_renderer import GraphVisualizer
+    visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{THRESH}.xml")
+    visualizer.renderBarGraph(ent_types=["factor", "outcome"])
+    visualizer.genRenderArgs()
+    visualizer.genLegend()
+    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
+    visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html, ONLY WORKS with undirected Graphs

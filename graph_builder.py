@@ -168,6 +168,7 @@ class GraphBuilder:
                          col = "Processed_ents",
                          col_sub = "", 
                          subset: Union[str, int] = "",
+                         col_sampsize = "",
                          intra_type = False,
                          ):
         """
@@ -176,6 +177,8 @@ class GraphBuilder:
         into the class 
         DOES NOT RESET THE COUNTERS
         intra_type - whether edges should be created between entities of the same type 
+        col_sub and subset arguments used to get subset of df (e.g., certain topics)
+        col_size for sample size
         """
         self.df_root_name = os.path.splitext(df_path)[0] # Store root name
         df = importData(df_path, screen_text=[col])
@@ -188,7 +191,9 @@ class GraphBuilder:
         for index, row in df.iterrows():
             list_statements: list[dict[str, list[str]]] = json.loads(row[col])
             article_nodes: dict[str, set[str]] = {t: set() for t in ent_types} # Initialize node container
-            article_edges = {(t[0], t[1]): set() for t in edge_types} # Initialize edge container for all types
+            article_edges: dict[tuple[str, str], set[tuple[str, str]]] = {(t[0], t[1]): set() for t in edge_types} # Initialize edge container for all types
+            sample_size = row[col_sampsize] if col_sampsize else 1
+            
             for statement in list_statements:
                 for ent_type in statement: # Parsing for each type of entity type
                     ents = statement[ent_type]
@@ -208,11 +213,15 @@ class GraphBuilder:
             for ent_type in article_nodes:
                 if ent_type not in self.node_counters: # Instantiate node counter if not already instantiated
                     self.node_counters[ent_type] = Counter()
-                self.node_counters[ent_type].update(article_nodes[ent_type]) # Add all nodes of the ent type to counter
+                ent_type_counter = self.node_counters[ent_type] # Retrieve ent type's respective counter
+                for ent in article_nodes[ent_type]:
+                    ent_type_counter[ent] += sample_size # Scale by sample size
             for edge_type in article_edges:
                 if edge_type not in self.edge_counters: # Instantiate edge type counter if it doesn't exist
                     self.edge_counters[edge_type] = Counter()
-                self.edge_counters[edge_type].update(article_edges[edge_type]) # Add all edges of this type to counter
+                edge_type_counter = self.edge_counters[edge_type] # Retrieve edge type's respective counter
+                for edge in article_edges[edge_type]:
+                    edge_type_counter[edge] += sample_size
 
     def printCounters(self):
         print("Entities ==============================================")

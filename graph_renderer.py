@@ -292,10 +292,12 @@ class GraphVisualizer:
                     top_n = len(self.graph.nodes) # Re-assign top_n to length of nodes
                 alt_ent_type = [t for t in ent_types if t != ent_type][0] # Get the other item in a list
 
-                nodes = [node for node, data in self.graph.nodes(data=True) if data["ent_type"] == ent_type]
+                nodes = [node for node, data in self.graph.nodes(data=True) 
+                         if data["ent_type"] == ent_type]
                 
                 nodes_counts: list[tuple[Hashable, int]] = list(self.graph.nodes(data="size"))
-                nodes_counts = [(node, data["size"])for node, data in self.graph.nodes(data=True) if data["ent_type"] == ent_type]
+                nodes_counts = [(node, data["size"])for node, data in self.graph.nodes(data=True) 
+                                if data["ent_type"] == ent_type]
                 nodes_counts.sort(key=lambda x: x[1]) # Sort by count
                 nodes_counts = nodes_counts[-top_n:] # Take slice starting from end (since hbar plots from bottom of y-axis)
                 
@@ -358,6 +360,7 @@ class GraphVisualizer:
             annotation = f"{label[0]} -> {label[1]}"
             if x[i] > 25 or y[i] > 0.45: # Only label extreme points
                 ax.annotate(annotation, (x[i], y[i]))
+
 
 if __name__ == "__main__": # For testing
     a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_t10.xml")
