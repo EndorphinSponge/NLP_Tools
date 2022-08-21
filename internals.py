@@ -69,17 +69,19 @@ def importData(file_path: Union[str, bytes, os.PathLike],
     filt_col: String of column to apply filter to
     skiprows: number of rows to skip when processing data
     """
-
+    # Import function 
     if (file_path.endswith(".xls") or file_path.endswith(".xlsx")):
         df = pd.read_excel(file_path, skiprows = skiprows)
     elif (file_path.endswith(".csv")):
         df = pd.read_csv(file_path, skiprows = skiprows)
     elif (file_path == ""):
-        print("Empty file path, returning empty DataFrame")
+        LOG.warning("Empty file path, returning empty DataFrame")
         return DataFrame() # Return empty dataframe to maintain type consistency
     else:
-        print("Invalid filetype, returning empty DataFrame")
+        LOG.warning("Invalid filetype, returning empty DataFrame")
         return DataFrame() # Return empty dataframe to maintain type consistency
+    
+    # Extra pre-processing functions
     if screen_dupl:
         for col in screen_dupl: # Drop duplicates for every column mentioned, built-in behaviour is to look at combination of columns: https://stackoverflow.com/questions/23667369/drop-all-duplicate-rows-across-multiple-columns-in-python-pandas
             df = df.drop_duplicates(subset=[col])
@@ -94,6 +96,7 @@ def importData(file_path: Union[str, bytes, os.PathLike],
         df: DataFrame = df.reset_index(drop=True) # to re-index dataframe so it becomes iterable again, drop variable to avoid old index being added as a column
     if cols: # If cols is not empty, will filter df through cols, otherwise leave df unchanged
         df = df[cols] 
+        
     return df
 
 def exportJSON(obj, path):

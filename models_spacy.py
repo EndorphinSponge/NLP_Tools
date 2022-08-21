@@ -72,12 +72,13 @@ class SpacyModel:
             context = dict()
             for annot_col in annotation_cols: # Will not loop if list is empty 
                 context[annot_col] = row[annot_col] # Add new entry for every annotation column by using data from corresponding column cell of the current row
+                
             doc = self.NLP(text)
             
             # Parse user data from pipelines, assumes that all objects within user_data is JSON serializable 
-            user_data = {key: [json.dumps(value)] 
+            user_data_dict = {key: [json.dumps(value)] 
                          for key, value in doc.user_data.items()} # Package userdata values in list so that they can be instantiated in DataFrame
-            new_entry = DataFrame(user_data)
+            new_entry = DataFrame(user_data_dict)
             new_entry.index = pd.RangeIndex(start=ind, stop=ind+1, step=1)
             df_userdata = pd.concat([df_userdata, new_entry])
             
@@ -93,7 +94,7 @@ class SpacyModel:
             df_merged = pd.concat([df, df_userdata], axis=1)
             df_merged.to_csv(F"{self.df_root_name}_userdata.csv", index=False)
         
-            
+        
         return self.doclist
     
     def exportDocs(self, custom_name: Union[str, bytes, os.PathLike] = ""):
@@ -196,7 +197,7 @@ class SpacyModel:
         similar_words = [self.NLP.vocab.strings[i] for i in similar_vectors[0][0]]
         print(similar_words)
     
-class SpacyExtractor(SpacyModel):
+class GeneralExtractor(SpacyModel):
     def __init__(self, model: str = "en_core_web_sm", disable: list[str] = []):
         super().__init__(model, disable)
         
@@ -213,7 +214,7 @@ class SpacyExtractor(SpacyModel):
         self.NLP.add_pipe("extractCnsLocations")
     
 
-class PostProcessor(SpacyModel):
+class EntityExtractor(SpacyModel):
     # Postprocessing using SpaCy for outputs for large NLP models (e.g., GPT3)
     def __init__(self, model: str = "en_core_sci_scibert",
                  disable: list[str] = []): 
@@ -338,6 +339,7 @@ class DocVis:
     """
     Container for visualization functions performed on processed docs 
     """
+    @classmethod
     def visSentStruct(cls, docs):
         """
         Visualize the sentence structure (root, children, dep tags of children)
@@ -354,6 +356,7 @@ class DocVis:
                         print("True root: " + child.text)
         return
 
+    @classmethod
     def visSpecChildren(cls, docs, target_dep = "nmod"):
         """
         Visualize specific children of subj and obj of sentence based on dep attribute
@@ -379,7 +382,8 @@ class DocVis:
                 print("Subject: " + str(subj) + F" {target_dep.upper()}: " + str(subnmod))
                 print("Object: " + str(obj) + F" {target_dep.upper()}: " + str(objnmod))
         return
-
+    
+    @classmethod
     def visEntities(cls, docs):
         """
         Visualize entities and noun chunks in a document 
@@ -391,6 +395,8 @@ class DocVis:
                 print("Entities: " + str(sent.ents))
                 print("Noun chunks: " + str(list(sent.noun_chunks)))
         return 
+    
+    @classmethod
     def visAbrvsEntsDep(cls, doc: Doc):
         # Display abbreviations, entities, DEP
         print("Length: " + str(len(doc)))
@@ -412,6 +418,7 @@ class ManualExtractor:
     Container for functions used in manual DEP information extraction
     Mostly deprecated
     """
+    @classmethod
     def mapEntity(cls, token):
         """
         Maps the token to the highest available resolution entity by
@@ -426,7 +433,7 @@ class ManualExtractor:
                 return span
         return token
 
-
+    @classmethod
     def colAllChildren(cls, token, dep = ["conj"]):
         """ 
         Recursive function that gathers all tokens connected by the same dep relationship
@@ -440,7 +447,7 @@ class ManualExtractor:
                 children += cls.colAllChildren(child) # Collate all variables to flatten
         return children
 
-
+    @classmethod
     def checkChildDep(cls, token, dep_list: list):
         """
         Check if the children of a given token match any items in a dep list
@@ -451,7 +458,8 @@ class ManualExtractor:
                 if child_dep == dep:
                     return True # Only return true if the dep of the children of root matches one of the given deps
         return False 
-
+    
+    @classmethod
     def checkChildWord(cls, token, dep_list: list, word_list: list):
         """
         Check if the children of a given token match any combination of items in the dep list and item list
@@ -464,6 +472,8 @@ class ManualExtractor:
                 if child == word:
                     return True # True if the child token is both a listed dep and matches a word in the word list
         return False 
+    
+    @classmethod
     def checkChildText(cls, token, text_list: list):
         """
         Check if children of a given token match the strings in the given list regardless of DEP
@@ -474,6 +484,7 @@ class ManualExtractor:
                     return True # True if the child token is both a listed dep and matches a word in the word list
         return False 
 
+    @classmethod
     def extractType1(cls, root_token):
         subj = []
         obj = []
@@ -487,6 +498,7 @@ class ManualExtractor:
         # print (subj, obj)
         return (subj, obj)
 
+    @classmethod
     def extractType2(cls, root_token):
         factors = []
         outcomes = []
@@ -502,6 +514,7 @@ class ManualExtractor:
         # print (subj, obj)
         return (factors, outcomes)
 
+    @classmethod
     def extractType3(cls, root_token):
         factors = []
         outcomes = []
@@ -517,6 +530,7 @@ class ManualExtractor:
         # print (subj, obj)
         return (factors, outcomes)
 
+    @classmethod
     def extractType4(cls, root_token):
         factors = []
         outcomes = []
@@ -531,6 +545,7 @@ class ManualExtractor:
         # print (subj, obj)
         return (factors, outcomes)
     
+    @classmethod
     def genDFSVO(cls, doc_bin):
         df = pd.DataFrame(columns = ["Title", "Abstract", "Included sentences", "Roots", "Subjects", "Objects", "Noun chunks", "Entities"])
         for doc in doc_bin:

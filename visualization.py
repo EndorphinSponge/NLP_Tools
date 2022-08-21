@@ -151,69 +151,8 @@ class Visualizer:
         net.show_buttons(filter_=['physics'])
         net.show(f"figures/pyvis_thresh{min_count}.html")
 
-   
 
-if __name__ == "__main__":
-    pass    
-    #%% Diagnostics 
 
-    df = pd.DataFrame(columns = ["TEXT", "SIZE", "FREQMAX", "VOLTMAX", "AMPMAX"])
-    for (doc, context) in docs:
-        text = doc.text
-        size = doc._.sample_size
-        # Frequency
-        container = doc._.frequency
-        x = []
-        if container["fl"] != []:
-            for fl in container["fl"]:
-                x.append(float(fl))
-        if container["rg"] != []:
-            for (low, high) in container["rg"]:
-                x.append(float(low)) # Takes the average of the min and max of the range
-                x.append(float(high))
-        if container["cp"] != []:
-            for (op, num) in container["cp"]:
-                x.append(float(num)) # Takes specified number in the comparator expression, will have to refine later
-        freq = None
-        if x != []:
-            amp = max(x)
-        
-        # Voltage
-        container = doc._.voltage
-        x = []
-        if container["fl"] != []:
-            for fl in container["fl"]:
-                x.append(float(fl))
-        if container["rg"] != []:
-            for (low, high) in container["rg"]:
-                x.append(float(low)) # Takes the average of the min and max of the range
-                x.append(float(high))
-        if container["cp"] != []:
-            for (op, num) in container["cp"]:
-                x.append(float(num)) # Takes specified number in the comparator expression, will have to refine later
-        volt = None
-        if x != []:
-            volt = max(x)
-        
-        # Amperage
-        container = doc._.amperage
-        x = []
-        if container["fl"] != []:
-            for fl in container["fl"]:
-                x.append(float(fl))
-        if container["rg"] != []:
-            for (low, high) in container["rg"]:
-                x.append(float(low)) # Takes the average of the min and max of the range
-                x.append(float(high))
-        if container["cp"] != []:
-            for (op, num) in container["cp"]:
-                x.append(float(num)) # Takes specified number in the comparator expression, will have to refine later
-        amp = None
-        if x != []:
-            amp = max(x)
-        df = df.append({"TEXT": text, "SIZE": size, "FREQMAX": freq, "VOLTMAX": volt, "AMPMAX": amp}, ignore_index=True)
-
-    df.to_csv("Embase Data Diagnostics.csv")
 
 
 

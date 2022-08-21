@@ -21,6 +21,7 @@ from internals import importData
 
 #%% Classes & Functions
 
+####### Ent processing should probably be a part of the abrvs processing
 class EntProcessorCore:
     # Core component of EntProcessor, is inherited by different core classes of different components to return their own exclusions and translations
     def __init__(self,

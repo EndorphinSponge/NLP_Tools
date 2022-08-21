@@ -1,24 +1,28 @@
 # Post-processing component for keyword associations in documents
 #%% Imports
-from word2number import w2n
+import os, json
+from typing import Union
 
-from spacy.tokens import Span, Doc
+import pandas as pd
+from pandas import DataFrame
+
+from internals import importData
 
 #%% 
-# Reminder that set_extension is a classmethod, will affect all instances of Doc
-Doc.set_extension("modality", default = None, force = True) # Force true to avoid having to restart kernel every debug cycle
-modalities = ["brain depth stimulation",
+
+# Keyword list obtained from MeSH standardized terms 
+MODALITIES = ["brain depth stimulation",
               "transcranial magnetic stimulation",
               "vagus nerve stimulation"]
-Doc.set_extension("disease_broad", default = None, force = True)
-diseases_broad = ["drug resistant epilepsy",
+
+DISEASES_BROAD = ["drug resistant epilepsy",
             "focal epilepsy",
             "intractable epilepsy",
             "focal epilepsy",
             "generalized epilepsy"
             ]
-Doc.set_extension("disease_narrow", default = None, force = True)
-diseases_narrow = ["complex partial seizure",
+
+DISEASES_NARROW = ["complex partial seizure",
                    "frontal lobe epilepsy",
                    "gelastic seizure",
                    "panayiotopoulos syndrome",
@@ -45,36 +49,46 @@ diseases_narrow = ["complex partial seizure",
                    "tonic seizure"]
                 # Split into focal and generalized epilepsy terms
                 
-def processKeywords(docs):
-    for (doc, context) in docs:
-        # Cleanup keywords
-        keywords = context["mh"].split("\n\n")
-        for i in range(len(keywords)):
-            if keywords[i].find("/") != -1: # Split based on presence of forwardslash which precedes the modifier
-                keywords[i] = keywords[i].split("/")[0] # Only store the main keyword, exclude the modifier
-        doc._.modality = [*{*[keyword for keyword in keywords 
-                              if keyword.strip("*") in modalities]}]
-        doc._.disease_broad = [*{*[keyword for keyword in keywords 
-                                   if keyword.strip("*") in diseases_broad]}]
-        doc._.disease_narrow = [*{*[keyword for keyword in keywords 
-                                    if keyword.strip("*") in diseases_narrow]}]
-        # Only get main keywords
-        # doc._.modality = [item.strip("*") for item in doc._.modality if item.startswith("*")]
-        # doc._.disease_broad = [item.strip("*") for item in doc._.disease_broad if item.startswith("*")]
-        # doc._.disease_narrow = [item.strip("*") for item in doc._.disease_narrow if item.startswith("*")]
-        # Strip asterisk
-        doc._.modality = [item.strip("*") for item in doc._.modality]
-        doc._.disease_broad = [item.strip("*") for item in doc._.disease_broad]
-        doc._.disease_narrow = [item.strip("*") for item in doc._.disease_narrow]
-        print(doc._.modality)
-        print(doc._.disease_broad)
-        print(doc._.disease_narrow)
+def procKeywordsEpilep(df_path: Union[str, bytes, os.PathLike],
+                    col: str = "MH",
+                    delim: str = "\n\n"
+                    ):
+    # Processing of OVID output format only
+    root_name = os.path.splitext(df_path)[0]
+    df = importData(df_path)
+    
+    df_keyword_info = DataFrame()
+    for ind, row in df.iterrows():
+        keyword_str: str = row[col]
+        keywords: list[str] = keyword_str.split(delim)
+        for i, kw in enumerate(keywords): # Remove modifiers
+            if kw.find("/") != -1: # Split based on presence of forwardslash which precedes the modifier
+                keywords[i] = kw.split("/")[0] # Only store the main keyword, exclude the modifier
+        
 
-    # Additional screening based on keywords
+        modalities = {kw.strip("*") for kw in keywords if kw.strip("*") in MODALITIES}
+        broad = {kw.strip("*") for kw in keywords if kw.strip("*") in DISEASES_BROAD}
+        narrow = {kw.strip("*") for kw in keywords if kw.strip("*") in DISEASES_NARROW}
+        
+        if 0: # Use these generators to get main keywords only
+            modalities = {kw.strip("*") for kw in keywords 
+                          if kw.startswith("*") and kw.strip("*") in MODALITIES}
+            broad = {kw.strip("*") for kw in keywords 
+                     if kw.startswith("*") and kw.strip("*") in DISEASES_BROAD}
+            narrow = {kw.strip("*") for kw in keywords
+                      if kw.startswith("*") and kw.strip("*") in DISEASES_NARROW}
 
-    docs_new = []
-    for (doc, context) in docs:
-        if doc._.modality != [] and (doc._.disease_broad != [] or doc._.disease_narrow != []):
-            docs_new.append((doc, context))
-    return docs_new
+        new_entry = DataFrame({
+            "modalities": [json.dumps(list(modalities))],
+            "diseases_broad": [json.dumps(list(broad))],
+            "diseases_narrow": [json.dumps(list(narrow))],
+        })
+        new_entry.index = pd.RangeIndex(start=ind, stop=ind+1, step=1)
+        df_keyword_info = pd.concat([df_keyword_info, new_entry])
+    
+    df_merged = pd.concat([df, df_keyword_info], axis=1)
+    df_merged.to_csv(F"{root_name}_kw.csv")
 
+
+
+    

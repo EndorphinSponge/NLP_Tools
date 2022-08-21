@@ -5,19 +5,27 @@ import os
 DIRPATH = os.path.dirname(os.path.abspath(__file__))
 os.chdir(DIRPATH)
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+if 1:
+    ROOT_PATH = "data/test2/Data.xls"
+    ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
+    
+    if 0:
+        from models_spacy import GeneralExtractor
+        extractor = GeneralExtractor()
+        extractor.addPipeSampleSize()
+        extractor.addPipeNmParams()
+        extractor.addPipeCnsLocs()
+        extractor.parseCorpora(ROOT_PATH, "AB", export_userdata=True, skiprows=1) # *_userdata.csv
+    
+        from components_diseases import procKeywordsEpilep
+        procKeywordsEpilep(F"{ROOT_NAME}_userdata.csv") # *_userdata_kw.csv
+        
+    
 
-if 0:
-    from models_spacy import SpacyExtractor
-    a = SpacyExtractor()
-    a.addPipeSampleSize()
-    a.addPipeNmParams()
-    a.addPipeCnsLocs()
-    a.parseCorpora("data/test2/Data.xls", "AB", export_userdata=True, skiprows=1)
 
 
 
-
-if 1: # Full pipeline example using test.xlsx
+if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
     ROOT_PATH = "data/test/test.xlsx"
     MODEL = "gpt3"
     THRESH = 2
@@ -30,9 +38,9 @@ if 1: # Full pipeline example using test.xlsx
         cloudmodel.mineTextGpt3() # *_gpt3R.xlsx
         cloudmodel.exportOutputFormatted(MODEL) # *_gpt3F.xlsx
     
-    from models_spacy import PostProcessor
+    from models_spacy import EntityExtractor
     from abrvs_syns import refineAbrvs
-    localmodel = PostProcessor()
+    localmodel = EntityExtractor()
     localmodel.extractEnts(f"{ROOT_NAME}_{MODEL}F.xlsx") # *_gpt3F_entsR.xlsx
     localmodel.extractAbrvCont(ROOT_PATH) # *_abrvs.json
     print(localmodel.empty_log)
@@ -60,7 +68,7 @@ if 1: # Full pipeline example using test.xlsx
     visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
     visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html
     
-# 0/1 guard to keep linting active without running code
+# 0 guard to keep linting active without running code
 if 0: # Pipeline to render graphs for each topic 
     ROOT_PATH = "data/gpt3_output.xlsx"
     SUFFIX = "_topics"
