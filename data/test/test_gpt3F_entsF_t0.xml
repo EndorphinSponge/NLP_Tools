@@ -1,0 +1,2341 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d3" for="edge" attr.name="prob" attr.type="double" />
+  <key id="d2" for="edge" attr.name="width" attr.type="long" />
+  <key id="d1" for="node" attr.name="size" attr.type="long" />
+  <key id="d0" for="node" attr.name="color" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="thioredoxin concentration">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="glasgow coma scale score">
+      <data key="d0">#8338ec</data>
+      <data key="d1">4</data>
+    </node>
+    <node id="admission">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="anysochoria">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="gcs">
+      <data key="d0">#8338ec</data>
+      <data key="d1">9</data>
+    </node>
+    <node id="age">
+      <data key="d0">#8338ec</data>
+      <data key="d1">10</data>
+    </node>
+    <node id="mif">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="macrophage migration inhibitory factor">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="monitoring">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="intracranial">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="artificial ventilation">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="impact">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="fatal">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="calculator">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="prognosis">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="expect risk">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="predict risk">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="cognitive function">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="time post-tbi">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="ct">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="hemorrhagic mass volume">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="subarachnoid hemorrhage">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="basal cistern absence">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="intraventricular">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="positive midline shift">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="marshall and rotterdam scoring system">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="sofa">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="apache ii">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="sap ii">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="v/c ratio">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="timp-1 level">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="contusion">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="severely">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="fa">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="neuropsychiatric history">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="reduce">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="mri">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="roi">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="year of">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="evidence">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="depressive symptom">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="preinjury">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="gender">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="deyo-charlson comorbidity index">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="surgeon">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="volume">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="hospital volume">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="sex">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="etiology">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="change">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="abeta42">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="amyloid-beta1-42 (abeta42)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="urokinase">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="soluble">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="supar">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="d-dimer">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="plasminogen activator receptor">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="sbp">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="creatinine">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="serum glucose">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="body temperature">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="mechanism">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="serum potassium">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="intubation">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="serum chloride">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="arterial partial pressure">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="motor score">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="carbon dioxide">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="pupil">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="serum calcium">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="international">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="respiratory rate">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="serum sodium">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="arterial">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="urea nitrogen">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="ph">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="fdp">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="aptt">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="latency">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="cct">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="central conduction time">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="dprx">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="dose">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="tsp-1">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="brain-derived neurotrophic factor (bdnf)">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="plasma level">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="hosmer-lemeshow p value">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="crash-ct model">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="time to death">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="comorbiditie">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="ais">
+      <data key="d0">#8338ec</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="multiple">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="absent">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="brainstem lesion">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="head abbreviate injury scale">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="sign of compress">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="intracerebral mass lesion">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="basal cistern">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="extend model">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="core model">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="lab model">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="pta">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="duration">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="c-reactive protein level">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="il-6">
+      <data key="d0">#8338ec</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="rotterdam">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="glucose">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="level of">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="il-10">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="il-8">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="svcam-1">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="il-5">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="sfas">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="pc1">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="head">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="severity score">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="pg">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="gfap">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="acute">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="subacute">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="mechanical ventilation">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="concomitant">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="neurosurgical intervention">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="blood transfusion">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="hospital">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="refer">
+      <data key="d0">#8338ec</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="imaes">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="mortality">
+      <data key="d0">#f72585</data>
+      <data key="d1">19</data>
+    </node>
+    <node id="inflammation">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="severity">
+      <data key="d0">#f72585</data>
+      <data key="d1">3</data>
+    </node>
+    <node id="outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">8</data>
+    </node>
+    <node id="gos">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="long-term">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="actual">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="elderly">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="conservative treatment">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="predict">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="percentage">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="cognitive functionality gain">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="six-month">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="icu-treated">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="drs">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="gos score">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="lcf score">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="gos-e">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="physical problem">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="health-related quality-of-life">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="affective/behavioral">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="cognitive">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="in-hospital mortality rate">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="icu">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="neurological status">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="deterioration">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="surgery">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="1-week">
+      <data key="d0">#f72585</data>
+      <data key="d1">2</data>
+    </node>
+    <node id="performance">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="model">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="older">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="discrimination">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="calibration">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="withdrawal">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="life-sustaining">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="therapy">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="olfactory problem">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="septic">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="multiple organ dysfunction">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="hospital discharge">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="weeks">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="poor outcome">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="survival status">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="complication">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="non-neurological">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <node id="neurological">
+      <data key="d0">#f72585</data>
+      <data key="d1">1</data>
+    </node>
+    <edge source="thioredoxin concentration" target="imaes" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="glasgow coma scale score" target="imaes" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
+    </edge>
+    <edge source="glasgow coma scale score" target="gos" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
+    </edge>
+    <edge source="glasgow coma scale score" target="discrimination" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
+    </edge>
+    <edge source="glasgow coma scale score" target="model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
+    </edge>
+    <edge source="glasgow coma scale score" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
+    </edge>
+    <edge source="glasgow coma scale score" target="hospital discharge" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
+    </edge>
+    <edge source="glasgow coma scale score" target="weeks" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.25</data>
+    </edge>
+    <edge source="admission" target="imaes" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="admission" target="cognitive functionality gain" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="admission" target="percentage" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="admission" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="anysochoria" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gcs" target="mortality" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.6666666666666666</data>
+    </edge>
+    <edge source="gcs" target="six-month" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="gcs" target="icu-treated" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="gcs" target="severity" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.2222222222222222</data>
+    </edge>
+    <edge source="gcs" target="1-week" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="gcs" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="gcs" target="poor outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1111111111111111</data>
+    </edge>
+    <edge source="age" target="mortality" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.4</data>
+    </edge>
+    <edge source="age" target="six-month" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="icu-treated" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="in-hospital mortality rate" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="icu" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="performance" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="older" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="hospital discharge" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="weeks" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="age" target="poor outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.1</data>
+    </edge>
+    <edge source="mif" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="mif" target="inflammation" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="mif" target="severity" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="macrophage migration inhibitory factor" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="macrophage migration inhibitory factor" target="severity" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="macrophage migration inhibitory factor" target="inflammation" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="monitoring" target="long-term" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="monitoring" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="intracranial" target="long-term" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="intracranial" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="artificial ventilation" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="impact" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="impact" target="elderly" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="fatal" target="conservative treatment" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="calculator" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="calculator" target="elderly" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="prognosis" target="elderly" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="prognosis" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="expect risk" target="conservative treatment" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="predict risk" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="predict risk" target="predict" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="predict risk" target="actual" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cognitive function" target="cognitive functionality gain" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cognitive function" target="percentage" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="time post-tbi" target="cognitive functionality gain" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="time post-tbi" target="percentage" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="ct" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hemorrhagic mass volume" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="subarachnoid hemorrhage" target="mortality" id="0">
+      <data key="d2">2</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="basal cistern absence" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="intraventricular" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="positive midline shift" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="marshall and rotterdam scoring system" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sofa" target="icu-treated" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sofa" target="six-month" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sofa" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="apache ii" target="icu-treated" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="apache ii" target="six-month" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="apache ii" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sap ii" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sap ii" target="icu-treated" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sap ii" target="six-month" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="v/c ratio" target="lcf score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="v/c ratio" target="drs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="v/c ratio" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="timp-1 level" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="contusion" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="severely" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="fa" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="fa" target="drs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="neuropsychiatric history" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="reduce" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="mri" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="roi" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="year of" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="evidence" target="gos-e" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="depressive symptom" target="health-related quality-of-life" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="depressive symptom" target="cognitive" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="depressive symptom" target="physical problem" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="depressive symptom" target="affective/behavioral" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="preinjury" target="physical problem" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="preinjury" target="cognitive" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="preinjury" target="affective/behavioral" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="preinjury" target="health-related quality-of-life" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gender" target="icu" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="deyo-charlson comorbidity index" target="in-hospital mortality rate" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="surgeon" target="in-hospital mortality rate" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="volume" target="in-hospital mortality rate" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hospital volume" target="in-hospital mortality rate" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sex" target="in-hospital mortality rate" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="sex" target="mortality" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.6666666666666666</data>
+    </edge>
+    <edge source="sex" target="hospital discharge" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="sex" target="weeks" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="etiology" target="icu" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="change" target="neurological status" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="abeta42" target="neurological status" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="amyloid-beta1-42 (abeta42)" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="d-dimer" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="d-dimer" target="surgery" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="d-dimer" target="deterioration" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="sbp" target="mortality" id="0">
+      <data key="d2">3</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="creatinine" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="serum glucose" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="body temperature" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="mechanism" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="serum potassium" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="intubation" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="serum chloride" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="arterial partial pressure" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="motor score" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="carbon dioxide" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="pupil" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="serum calcium" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="international" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="respiratory rate" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="serum sodium" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="arterial" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="urea nitrogen" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="ph" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="fdp" target="surgery" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="fdp" target="deterioration" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="aptt" target="surgery" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="aptt" target="deterioration" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="latency" target="long-term" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="latency" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cct" target="long-term" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cct" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="central conduction time" target="long-term" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="central conduction time" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="dprx" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="dose" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="tsp-1" target="1-week" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="tsp-1" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="tsp-1" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="brain-derived neurotrophic factor (bdnf)" target="icu" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="brain-derived neurotrophic factor (bdnf)" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="plasma level" target="icu" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="plasma level" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hosmer-lemeshow p value" target="model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hosmer-lemeshow p value" target="calibration" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="crash-ct model" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="time to death" target="life-sustaining" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="time to death" target="therapy" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="time to death" target="withdrawal" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="comorbiditie" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="ais" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="ais" target="poor outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="multiple" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="absent" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="brainstem lesion" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="head abbreviate injury scale" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sign of compress" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="intracerebral mass lesion" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="basal cistern" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="extend model" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="extend model" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="core model" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="core model" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="lab model" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="lab model" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="pta" target="olfactory problem" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="duration" target="olfactory problem" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="c-reactive protein level" target="multiple organ dysfunction" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="il-6" target="septic" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="il-6" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="il-6" target="survival status" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="il-6" target="gos" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="rotterdam" target="weeks" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="rotterdam" target="hospital discharge" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="rotterdam" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="glucose" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="level of" target="outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="il-10" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="il-8" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="svcam-1" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="il-5" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="sfas" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="pc1" target="gos score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="head" target="poor outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="severity score" target="poor outcome" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="pg" target="gos" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="pg" target="survival status" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gfap" target="survival status" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gfap" target="gos" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="acute" target="drs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="subacute" target="drs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="mechanical ventilation" target="neurological" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="concomitant" target="non-neurological" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="concomitant" target="complication" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="neurosurgical intervention" target="neurological" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="blood transfusion" target="neurological" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hospital" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="refer" target="mortality" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="imaes" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="imaes" target="admission" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="imaes" target="thioredoxin concentration" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="mortality" target="gcs" id="0">
+      <data key="d2">6</data>
+      <data key="d3">0.3157894736842105</data>
+    </edge>
+    <edge source="mortality" target="anysochoria" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="age" id="0">
+      <data key="d2">4</data>
+      <data key="d3">0.21052631578947367</data>
+    </edge>
+    <edge source="mortality" target="artificial ventilation" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="hemorrhagic mass volume" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="positive midline shift" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="subarachnoid hemorrhage" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.10526315789473684</data>
+    </edge>
+    <edge source="mortality" target="intraventricular" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="basal cistern absence" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="ct" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="marshall and rotterdam scoring system" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="apache ii" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="sap ii" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="sofa" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="timp-1 level" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="amyloid-beta1-42 (abeta42)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="d-dimer" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="international" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="serum glucose" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="serum potassium" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="arterial" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="sex" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.10526315789473684</data>
+    </edge>
+    <edge source="mortality" target="mechanism" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="serum chloride" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="serum calcium" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="respiratory rate" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="urea nitrogen" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="serum sodium" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="arterial partial pressure" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="body temperature" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="ph" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="motor score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="sbp" id="0">
+      <data key="d2">3</data>
+      <data key="d3">0.15789473684210525</data>
+    </edge>
+    <edge source="mortality" target="creatinine" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="pupil" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="carbon dioxide" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="intubation" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="dose" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="dprx" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="tsp-1" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="plasma level" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="brain-derived neurotrophic factor (bdnf)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="crash-ct model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="multiple" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="absent" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="basal cistern" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="head abbreviate injury scale" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="sign of compress" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="intracerebral mass lesion" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="comorbiditie" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="brainstem lesion" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="ais" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="lab model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="extend model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="core model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="rotterdam" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="hospital" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="mortality" target="refer" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.05263157894736842</data>
+    </edge>
+    <edge source="inflammation" target="macrophage migration inhibitory factor" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="inflammation" target="mif" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="severity" target="mif" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="severity" target="macrophage migration inhibitory factor" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.3333333333333333</data>
+    </edge>
+    <edge source="severity" target="gcs" id="0">
+      <data key="d2">2</data>
+      <data key="d3">0.6666666666666666</data>
+    </edge>
+    <edge source="outcome" target="macrophage migration inhibitory factor" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="mif" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="intracranial" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="monitoring" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="calculator" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="prognosis" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="impact" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="predict risk" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="latency" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="cct" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="central conduction time" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="tsp-1" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="lab model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="core model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="extend model" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="gcs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="level of" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="admission" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="outcome" target="glucose" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.125</data>
+    </edge>
+    <edge source="gos" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos" target="il-6" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos" target="pg" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos" target="gfap" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="long-term" target="monitoring" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="long-term" target="intracranial" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="long-term" target="latency" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="long-term" target="cct" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="long-term" target="central conduction time" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="actual" target="predict risk" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="elderly" target="calculator" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="elderly" target="prognosis" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="elderly" target="impact" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="conservative treatment" target="fatal" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="conservative treatment" target="expect risk" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="predict" target="predict risk" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="percentage" target="time post-tbi" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="percentage" target="cognitive function" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="percentage" target="admission" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cognitive functionality gain" target="cognitive function" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cognitive functionality gain" target="admission" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cognitive functionality gain" target="time post-tbi" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="six-month" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="six-month" target="sofa" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="six-month" target="apache ii" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="six-month" target="sap ii" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="six-month" target="gcs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="icu-treated" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="icu-treated" target="sofa" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="icu-treated" target="apache ii" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="icu-treated" target="sap ii" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="icu-treated" target="gcs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="drs" target="v/c ratio" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="drs" target="fa" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="drs" target="subacute" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="drs" target="acute" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="v/c ratio" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="il-5" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="il-6" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="svcam-1" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="sfas" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="il-8" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="pc1" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="gos score" target="il-10" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="lcf score" target="v/c ratio" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="roi" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="severely" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="year of" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="fa" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="reduce" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="contusion" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="evidence" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="neuropsychiatric history" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="gos-e" target="mri" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="physical problem" target="preinjury" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="physical problem" target="depressive symptom" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="health-related quality-of-life" target="preinjury" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="health-related quality-of-life" target="depressive symptom" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="affective/behavioral" target="preinjury" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="affective/behavioral" target="depressive symptom" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cognitive" target="preinjury" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="cognitive" target="depressive symptom" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="in-hospital mortality rate" target="sex" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="in-hospital mortality rate" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="in-hospital mortality rate" target="volume" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="in-hospital mortality rate" target="surgeon" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="in-hospital mortality rate" target="hospital volume" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="in-hospital mortality rate" target="deyo-charlson comorbidity index" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="icu" target="etiology" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="icu" target="gender" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="icu" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="icu" target="brain-derived neurotrophic factor (bdnf)" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="icu" target="plasma level" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="neurological status" target="abeta42" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="neurological status" target="change" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="deterioration" target="fdp" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="deterioration" target="d-dimer" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="deterioration" target="aptt" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="surgery" target="d-dimer" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="surgery" target="aptt" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="surgery" target="fdp" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="1-week" target="tsp-1" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="1-week" target="gcs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">0.5</data>
+    </edge>
+    <edge source="performance" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="model" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="model" target="hosmer-lemeshow p value" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="model" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="older" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="discrimination" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="calibration" target="hosmer-lemeshow p value" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="withdrawal" target="time to death" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="life-sustaining" target="time to death" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="therapy" target="time to death" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="olfactory problem" target="duration" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="olfactory problem" target="pta" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="septic" target="il-6" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="multiple organ dysfunction" target="c-reactive protein level" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hospital discharge" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hospital discharge" target="rotterdam" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hospital discharge" target="sex" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="hospital discharge" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="weeks" target="sex" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="weeks" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="weeks" target="glasgow coma scale score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="weeks" target="rotterdam" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="poor outcome" target="gcs" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="poor outcome" target="severity score" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="poor outcome" target="age" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="poor outcome" target="head" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="poor outcome" target="ais" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="survival status" target="il-6" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="survival status" target="pg" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="survival status" target="gfap" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="complication" target="concomitant" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="non-neurological" target="concomitant" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="neurological" target="neurosurgical intervention" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="neurological" target="mechanical ventilation" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+    <edge source="neurological" target="blood transfusion" id="0">
+      <data key="d2">1</data>
+      <data key="d3">1.0</data>
+    </edge>
+  </graph>
+</graphml>
