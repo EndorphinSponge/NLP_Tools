@@ -7,6 +7,7 @@ from spacy.matcher import PhraseMatcher, Matcher
 from spacy.tokens import Span, Doc
 from spacy.language import Language
 
+from internals import LOG
 
 #%%
 
@@ -42,7 +43,7 @@ if os.path.exists(CACHE_LOCATION): # Used cached version if possible
     with open(CACHE_LOCATION, "rb") as file:
         matcher_cache = pickle.load(file)
         matcher, targets_syn_dict = matcher_cache # Unpack into variables
-    print("Cache found")
+    LOG.info(F"Cache found at {CACHE_LOCATION}")
 else: # Generate from scatch
     # NLP = spacy.load("en_core_web_trf") # Loads in model as an object which can be used as a function to analyze other strings 
     # NLP = spacy.load("en_core_web_lg") # Loads in model as an object which can be used as a function to analyze other strings 

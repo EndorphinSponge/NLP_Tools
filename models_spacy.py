@@ -109,10 +109,10 @@ class SpacyModel:
             
         if custom_name: # If custom name not empty, use custom name
             docbin.to_disk(f"{custom_name}({self.model}).spacy") # Saves content using hashes based on a model's vocab, will need this vocab to import it back
-            print(f"Exported DocBin to {custom_name}({self.model}).spacy")
+            LOG.info(f"Exported DocBin to {custom_name}({self.model}).spacy")
         else: # Otherwise use prefix of last import to name output
             docbin.to_disk(f"{self.df_root_name}({self.model}).spacy") # Saves content using hashes based on a model's vocab, will need this vocab to import it back
-            print(f"Exported DocBin to {self.df_root_name}({self.model}).spacy")
+            LOG.info(f"Exported DocBin to {self.df_root_name}({self.model}).spacy")
             
             
 
@@ -170,7 +170,7 @@ class SpacyModel:
         df = importData(df_path, screen_dupl=[col], screen_text=[col]) # Screen for duplicates and presence of text for the column containing the text
         texts_lemmatized = []
         for index, row in df.iterrows():
-            print("Lemmatizing row: ", index)
+            LOG.info(F"Lemmatizing row: {index}")
             if type(row[col]) == str:
                 doc = self.NLP(row[col])
                 row_lemmas = []
@@ -212,7 +212,7 @@ class SpacyModel:
         word_vector = np.asarray([self.NLP.vocab.vectors[self.NLP.vocab.strings[word]]])
         similar_vectors = self.NLP.vocab.vectors.most_similar(word_vector, n=top_n)
         similar_words = [self.NLP.vocab.strings[i] for i in similar_vectors[0][0]]
-        print(similar_words)
+        LOG.info(similar_words)
     
 class GeneralExtractor(SpacyModel):
     def __init__(self, model: str = "en_core_web_sm", disable: list[str] = []):
@@ -260,7 +260,7 @@ class EntityExtractor(SpacyModel):
         df = importData(df_path, screen_text=[col]) # Screen for presence of text for the column containing the text
         df_out = DataFrame() # Placeholder for output of lemmatized/abbreviated entities
         for index, row in df.iterrows():
-            print("NLP extracting ents for: " + str(index))
+            LOG.debug(F"NLP extracting ents for: {index}")
             statements: list[list[str]] = json.loads(row[col]) # list[str] of items for each statement 
             
             statements_ents: list[tuple[list[str], list[str]]] = [] # Container for ents
@@ -290,7 +290,7 @@ class EntityExtractor(SpacyModel):
             df_out = pd.concat([df_out, new_row])
         df_merged = pd.concat([df, df_out], axis=1)
         df_merged.to_excel(f"{root_name}_entsR.xlsx")
-        print(f"Exported raw ents to {root_name}_entsR.xlsx")
+        LOG.info(f"Exported raw ents to {root_name}_entsR.xlsx")
                 
     
     def _gatherEnts(self, string: str):
@@ -325,7 +325,7 @@ class EntityExtractor(SpacyModel):
         df = importData(df_path, screen_dupl=[col], screen_text=[col]) # Screen for duplicates and presence of text for the column of interest
         abrv_counter = Counter()
         for index, row in df.iterrows():
-            print("Extracting abbreviations for :", index)
+            LOG.info(F"Extracting abbreviations for: {index}")
             text: str = row[col]
             doc = self.NLP(text.strip())
             abrvs: set[tuple[str, str]] = set([(abrv.text.lower().strip(), abrv._.long_form.text.lower().strip()) 
@@ -343,7 +343,7 @@ class EntityExtractor(SpacyModel):
         abrv_items.sort(key=lambda x: (x[1], len(x[0][1])), reverse=True) # Sort by counts and then by length of long form, will be translated in this priority
         with open(f"{root_name}_abrvs.json", "w") as file:
             json.dump(abrv_items, file) # Items converted to list for serialization 
-        print(f"Exported extracted abbreviations to {root_name}_abrvs.json")
+        LOG.info(f"Exported extracted abbreviations to {root_name}_abrvs.json")
         return abrv_items
 
 #%% Extraneous classes & functions
@@ -362,15 +362,15 @@ class DocVis:
         Visualize the sentence structure (root, children, dep tags of children)
         """
         for doc in docs:
-            print("---------------------------")
-            print(doc)
+            LOG.info("---------------------------")
+            LOG.info(doc)
             for sent in doc.sents:
-                print("Root: " + sent.root.text)
-                print("Children: " + str([word.text for word in sent.root.children]))
-                print("Dep tags: " + str([word.dep_ for word in sent.root.children]))
+                LOG.info("Root: " + sent.root.text)
+                LOG.info("Children: " + str([word.text for word in sent.root.children]))
+                LOG.info("Dep tags: " + str([word.dep_ for word in sent.root.children]))
                 for child in sent.root.children:
                     if child.dep_ in ["cop", "auxpass"]: # If root is not centered around a state of being word
-                        print("True root: " + child.text)
+                        LOG.info("True root: " + child.text)
         return
 
     @classmethod
@@ -380,10 +380,10 @@ class DocVis:
         target_dep: relationship for visualization 
         """
         for doc in docs:
-            print("---------------------------")
-            print(doc)
+            LOG.info("---------------------------")
+            LOG.info(doc)
             for sent in doc.sents:
-                print("Root: " + sent.root.text)
+                LOG.info("Root: " + sent.root.text)
                 subj = [word for word in sent.root.children if word.dep_ == "nsubj"]
                 subnmod = []
                 for subject in subj: # Should only have one
@@ -396,8 +396,8 @@ class DocVis:
                     for child in object.children:
                         if child.dep_ == target_dep:
                             objnmod.append(child)
-                print("Subject: " + str(subj) + F" {target_dep.upper()}: " + str(subnmod))
-                print("Object: " + str(obj) + F" {target_dep.upper()}: " + str(objnmod))
+                LOG.info("Subject: " + str(subj) + F" {target_dep.upper()}: " + str(subnmod))
+                LOG.info("Object: " + str(obj) + F" {target_dep.upper()}: " + str(objnmod))
         return
     
     @classmethod
@@ -406,27 +406,27 @@ class DocVis:
         Visualize entities and noun chunks in a document 
         """
         for doc in docs:
-            print("---------------------------")
-            print(doc)
+            LOG.info("---------------------------")
+            LOG.info(doc)
             for sent in doc.sents:
-                print("Entities: " + str(sent.ents))
-                print("Noun chunks: " + str(list(sent.noun_chunks)))
+                LOG.info("Entities: " + str(sent.ents))
+                LOG.info("Noun chunks: " + str(list(sent.noun_chunks)))
         return 
     
     @classmethod
     def visAbrvsEntsDep(cls, doc: Doc):
         # Display abbreviations, entities, DEP
-        print("Length: " + str(len(doc)))
+        LOG.info("Length: " + str(len(doc)))
         for ent in doc.ents:
-            print(ent.lemma_)
+            LOG.info(ent.lemma_)
         sent_no = 0
         for abrv in doc._.abbreviations:
-            print(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")
+            LOG.info(f"{abrv} \t ({abrv.start}, {abrv.end}) {abrv._.long_form}")
         for sentence in doc.sents:
-            print(sent_no)
+            LOG.info(sent_no)
             displacy_image = displacy.render(sentence, jupyter = True, style = "ent")
             sent_no += 1
-        print(list(doc.noun_chunks))
+        LOG.info(list(doc.noun_chunks))
         dep_figure = displacy.render(doc,style="dep", options={"compact":True, "distance":100})
 
 

@@ -14,7 +14,7 @@ import networkx as nx
 
 
 # Internal imports
-from internals import importData
+from internals import importData, LOG
 
 #%% Constants
 
@@ -60,7 +60,7 @@ class GraphBuilder:
         proto_stmt: dict[str, list[str]] = json.loads(df[col].iloc[0])[0] # Get prototypical statement (obtains first statment from first row of col of interest)
         ent_types = [key for key in proto_stmt]
         edge_types = list(permutations(proto_stmt, 2))
-        print("Populating counters from DF...") # Below code runs quite fast so we don't need to track progress
+        LOG.info("Populating counters from DF...") # Below code runs quite fast so we don't need to track progress
         for index, row in df.iterrows():
             sample_size = row[col_sampsize] if col_sampsize else 1
             list_statements: list[dict[str, list[str]]] = json.loads(row[col])
@@ -99,19 +99,19 @@ class GraphBuilder:
                     edge_type_counter[edge] += sample_size
 
     def printCounters(self):
-        print("Entities ==============================================")
+        LOG.info("Entities ==============================================")
         for ent_type in self.node_counters:
-            print("------------ Entity type ", ent_type, " ------------")
+            LOG.info(F"------------ Entity type {ent_type} ------------")
             list_items = list(self.node_counters[ent_type].items())
             list_items.sort(key=lambda x: x[1], reverse=True)
-            print(list_items)
+            LOG.info(list_items)
             # Print nodes sorted by count
-        print("Edges ==============================================")
+        LOG.info("Edges ==============================================")
         for edge_type in self.edge_counters:
-            print("------------ Edge type ", edge_type, " ------------")
+            LOG.info(F"------------ Edge type {edge_type} ------------")
             list_items = list(self.edge_counters[edge_type].items())
             list_items.sort(key=lambda x: x[1], reverse=True)
-            print(list_items)
+            LOG.info(list_items)
             # Print edges sorted by count
 
     
@@ -128,7 +128,7 @@ class GraphBuilder:
             # Allows parallel and directed relationships to be rendered
         else:
             self.graph = nx.Graph() # Instantiate regular graph
-        print("Building graph from counters...")
+        LOG.info("Building graph from counters...")
         for ent_type in self.node_counters:
             node_counter = self.node_counters[ent_type]
             
@@ -179,7 +179,7 @@ class GraphBuilder:
         # Export graph , https://networkx.org/documentation/stable/reference/readwrite/generated/networkx.readwrite.graphml.write_graphml.html#networkx.readwrite.graphml.write_graphml
         # Graphml documentation: https://networkx.org/documentation/stable/reference/readwrite/graphml.html
         nx.write_graphml(self.graph, file_name)
-        print("Exported graph to", file_name)
+        LOG.info(F"Exported graph to {file_name}")
         
     def resetCounters(self):
         self.node_counters: dict[str, Counter[str]] = dict()

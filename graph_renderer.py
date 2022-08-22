@@ -249,7 +249,7 @@ class GraphVisualizer:
         else:
             output_name = f"{root_name}{save_suffix}_net{self.args_log}.png"
             plt.savefig(output_name, bbox_inches='tight')
-            print("Exported rendered graph to", output_name)
+            LOG.info(F"Exported rendered graph to {output_name}")
     
 
     def renderGraphPyvis(self,
@@ -306,7 +306,7 @@ class GraphVisualizer:
         
         output_name = self._getSimplifiedName() + "_pyvis.html"
         graphpy.show(output_name)
-        print(f"Exported rendered graph to {output_name}")
+        LOG.info(f"Exported rendered graph to {output_name}")
 
     def _getSimplifiedName(self):
         # Function for returning a simplified version of the graph's name 

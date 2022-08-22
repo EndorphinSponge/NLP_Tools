@@ -14,7 +14,7 @@ import openai
 from openai.openai_object import OpenAIObject # For type assumption check
 
 # Internals
-from internals import importData
+from internals import importData, LOG
 from private.keys import KEY1
 #%% Constants
 openai.api_key = KEY1
@@ -65,7 +65,7 @@ class CloudModel:
             # self.df_file_name is unchanged 
         df_out_raw = DataFrame() # Placeholder for new output
         for index, row in df.iterrows():
-            print("Extraction using GPT3, entry: ", index)
+            LOG.info(F"Extraction using GPT3, entry: {index}")
             query_insert = row[self.input_col]
             query_complete = f"A table summarizing each of the predictors, what they predict, and the total number of subjects in the study:\n\n{query_insert}\n\n| Predictor | Outcome being predicted | Number of subjects |"
             query_complete = f"A table summarizing each of the predictors and what they predict:\n\n{query_insert}\n\n| Predictor | Outcome being predicted |"
@@ -84,7 +84,7 @@ class CloudModel:
         # df_out_raw = df_out_raw.reset_index(drop = True) # Drop variable avoids adding old index as a column
         df_merged = pd.concat([df, df_out_raw], axis=1) # Axis 1 to concat on columns
         df_merged.to_excel(f"{self.df_file_name}_gpt3R.xlsx", index=False)
-        print(f"Saved raw output to {self.df_file_name}_gpt3R.xlsx")
+        LOG.info(f"Saved raw output to {self.df_file_name}_gpt3R.xlsx")
         self.df = df_merged # Set current DF to the df that was just exported
         self.df_file_name = f"{self.df_file_name}_gpt3R" # Also update name with output name excluding extension
     
@@ -128,7 +128,7 @@ class CloudModel:
                 df_out = pd.concat([df_out, new_row])
             df_merged = pd.concat([df, df_out], axis = 1) # Concat on columns instead of rows
             df_merged.to_excel(f"{self.df_file_name}.xlsx", index=False)
-            print(f"Exported formatted output to {self.df_file_name}.xlsx")
+            LOG.info(f"Exported formatted output to {self.df_file_name}.xlsx")
             
         elif raw_type == "jur1":
             pass

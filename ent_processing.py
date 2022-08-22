@@ -7,7 +7,7 @@ from collections import Counter
 import pandas as pd
 from pandas import DataFrame
 
-from internals import importData
+from internals import importData, LOG
 
 class Abrv: 
     """
@@ -69,7 +69,7 @@ class EntProcessor:
         
         df_out = DataFrame()        
         for ind, row in df.iterrows():
-            print("Processing ents for: ", ind)
+            LOG.info(F"Processing ents for: {ind}")
             ents_json: list[dict[str, list[str]]] = json.loads(row[col]) # List of ent dicts containing list of ent (value) for each ent type (key)
             
             list_ents = self._procEnts(ents_json)
@@ -80,14 +80,14 @@ class EntProcessor:
         df_merged = pd.concat([df, df_out], axis=1)
             
         
-        print("Separating overlapping ents")
+        LOG.info("Separating overlapping ents")
         for ind, row in df_merged.iterrows(): # Iterate through merged df to resolve any overlaps between node types
             list_ents: list[dict[str, list[str]]] = row[col_out] # Will not be serialized into json yet
             
             list_ents = self._sepConfEnts(list_ents)
             df_merged.loc[ind, col_out] = json.dumps(list_ents) # Need loc function and original df to modify in place, can't just give index
         df_merged.to_excel(f"{new_name}.xlsx")
-        print(f"Exported processed ents to {new_name}.xlsx")
+        LOG.info(f"Exported processed ents to {new_name}.xlsx")
     
     def _procEnts(self,
                   list_ents: list[dict[str, list[str]]],
@@ -148,9 +148,9 @@ class EntProcessor:
         return list_ents
 
     def printLogs(self):
-        print("Abbreviations:", self.abrv_log)
-        print("Translations:", self.trans_log)
-        print("Conflicts:", self.conf_ent_log)
+        LOG.info(F"Abbreviations: {self.abrv_log}")
+        LOG.info(F"Translations: {self.trans_log}")
+        LOG.info(F"Conflicts: {self.conf_ent_log}")
 
 #%% Independent functions for abbreviations
 def checkAbrvs(json_path: Union[str, bytes, os.PathLike], diff_thresh = 0.9):
@@ -179,28 +179,28 @@ def checkAbrvs(json_path: Union[str, bytes, os.PathLike], diff_thresh = 0.9):
             if similar_terms:
                 long_warn.append((full, similar_terms))
 
-    print("Short form conflicts: ========================================")
+    LOG.info("Short form conflicts: ========================================")
     for conflict in short_conf:
         conf_abrvs = [abrv for abrv in abrv_set if abrv.short == conflict]
         conf_abrvs = [(abrv.short, abrv.long, abrv.count) for abrv in conf_abrvs] # Unpack Abrv object
-        print(conf_abrvs)
+        LOG.info(conf_abrvs)
         
-    print("Long form conflicts: ========================================")
+    LOG.info("Long form conflicts: ========================================")
     for conflict in long_conf:
         conf_abrvs = [abrv for abrv in abrv_set if abrv.long == conflict]
         conf_abrvs = [(abrv.short, abrv.long, abrv.count) for abrv in conf_abrvs] # Unpack Abrv object
-        print(conf_abrvs)
+        LOG.info(conf_abrvs)
     
-    print("Long form warnings: ========================================")
+    LOG.info("Long form warnings: ========================================")
     for term, similars in long_warn:
         term_abrv = [abrv for abrv in abrv_set if abrv.long == term] # Extract full abbreviation 
         term_abrv = [(abrv.short, abrv.long, abrv.count) for abrv in term_abrv] # Unpack Abrv object
-        print(f">>>> Similar terms for {term_abrv} <<<<")
+        LOG.info(f">>>> Similar terms for {term_abrv} <<<<")
         for similar in similars:
             similarity = SequenceMatcher(a=term.lower(), b=similar.lower()).ratio()
             conf_abrvs = [abrv for abrv in abrv_set if abrv.long == similar] # Should only return one item if long forms are all unique
             conf_abrvs = [(abrv.short, abrv.long, abrv.count) for abrv in conf_abrvs] # Unpack Abrv object
-            print(round(similarity, 3), conf_abrvs)
+            LOG.info(F"{round(similarity, 3)} | {conf_abrvs}")
 
 def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
               l_thresh: float = 0.9,
@@ -213,7 +213,7 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
     long_forms = [abrv.long for abrv in abrv_set]
     trans_conversions: list[tuple[str, str, int]] = []
             
-    print("Short form major conflicts: ========================================")
+    LOG.info("Short form major conflicts: ========================================")
     
     short_conf: set[str] = set()
     for short in short_forms:
@@ -231,9 +231,9 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
                 warnings.add(abrv1_data) # Don't need to add both nodes together as a single item since it generates too many combinations for largers conflict containers
                 warnings.add(abrv2_data)
         if warnings:
-            print(tuple(warnings))
+            LOG.info(tuple(warnings))
     
-    print("Long form major conflict conversions: ========================================")
+    LOG.info("Long form major conflict conversions: ========================================")
     
     long_conf: set[str]  = set()
     for abrv in abrv_set.copy(): # Use full Abrv objects for parsing long forms
@@ -245,9 +245,9 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
         _mergeConf(conf_abrvs, abrv_set, trans_conversions) # Will not be left with any more conflicts after merge, only similar abbreviation long forms
     
     
-    print("Long form minor conflict conversions: ========================================")
+    LOG.info("Long form minor conflict conversions: ========================================")
     for i in range(1): # Can run for multiple iterations 
-        print("Iteration no ", i+1)
+        LOG.info(F"Iteration no {i+1}")
         warnings: set[frozenset] = set()
         conversions_made = 0
         for abrv1, abrv2 in combinations(abrv_set, 2): # Find all combinations of comparing abrvs using class
@@ -263,20 +263,20 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
                     abrv1_data = (abrv1.short, abrv1.long, abrv1.count) # Need to unpack data from classes for sets (since different instances are not treated equal even if same data)
                     abrv2_data = (abrv2.short, abrv2.long, abrv2.count) 
                     warnings.add(frozenset([abrv1_data, abrv2_data])) # Add conflict as frozenset so that order doesn't matter, needs to be frozen to be hashable by outer set
-        print("Conversions made: ", conversions_made)
+        LOG.info(f"Conversions made: {conversions_made}")
 
     
-    print("Long form major conflicts: ========================================")
+    LOG.info("Long form major conflicts: ========================================")
     warnings_list: list[tuple] = [tuple(warning) for warning in warnings]
     for warning in warnings_list:
-        print(warning)
+        LOG.info(warning)
         
 
     trans_counter = Counter()
     for dest, key, count in trans_conversions:
         trans_counter[(dest, key)] += count # Add count as weight to this particular translation 
     
-    print("Short form translations: ========================================")
+    LOG.info("Short form translations: ========================================")
     continue_conversion = True
     while continue_conversion: # Keep running until there are no more conflicts
         conversions_made = 0
@@ -285,10 +285,10 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
             if set(trans1[0]) == set(trans2[0]): # Check if items within the counter items are the same (will filter for translations that are the inverse of each other)
                 items = [trans1, trans2]
                 items.sort(key=lambda x: x[1]) # Sort by count, ascending
-                print(items)
+                LOG.info(items)
                 del trans_counter[items[0][0]] # Remove the less common translation of the pair
                 conversions_made += 1
-        print("Conversions made: ", conversions_made)
+        LOG.info(f"Conversions made: {conversions_made}")
         if conversions_made == 0:
             continue_conversion = False
             
@@ -297,13 +297,13 @@ def refineAbrvs(json_path: Union[str, bytes, os.PathLike],
         
     with open(f"{root_name}_trans.json", "w") as file:
         json.dump(trans_final, file)
-    print(f"Exported alternative translations to {root_name}_trans.json")
+    LOG.info(f"Exported alternative translations to {root_name}_trans.json")
     
     abrv_json_new = [[[abrv.short, abrv.long], abrv.count] for abrv in abrv_set] # Repack into hashable json obj
     abrv_json_new.sort(key=lambda x: (x[1], len(x[0][1])), reverse=True) # Sort by counts and then by length of long form, will be translated in this priority
     with open(f"{root_name}_rfn.json", "w") as file:
         json.dump(abrv_json_new, file)
-    print(f"Exported refined abbreviations to {root_name}_rfn.json")
+    LOG.info(f"Exported refined abbreviations to {root_name}_rfn.json")
 
 def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv], trans_conversions: list[tuple[str, str, int]]):
     # Goal is to merge long forms into a single one short
@@ -332,7 +332,7 @@ def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv], trans_conversions: l
         uniq_long = longs[0] # First long form should be representative of rest of long forms
         total_count = sum([abrv.count for abrv in abrv_confs if abrv.long == uniq_long]) # Get count of entries with same long form
         abrv_set.add(Abrv([[common_short, uniq_long], total_count])) # Add new merged entry, Abrv.short and Abrv.long are used for comparison via hash
-        print(f"New entry {(common_short, uniq_long, total_count)} <==== {[(abrv.count, abrv.short, abrv.long) for abrv in abrv_confs]}")
+        LOG.info(f"New entry {(common_short, uniq_long, total_count)} <==== {[(abrv.count, abrv.short, abrv.long) for abrv in abrv_confs]}")
     else: # Should be no duplicates of long forms at this point 
         assert len(abrv_confs) == 2 # Assume we are only comparing two abrvs (since comparisons with different long forms will only be done with two abrvs at a time)
         for abrv_conf in abrv_confs:
@@ -342,11 +342,11 @@ def _mergeConf(abrv_confs: list[Abrv], abrv_set: set[Abrv], trans_conversions: l
                 abrv_origin = abrv_origin[0] # Should only have one 
                 abrv_set.remove(abrv_origin)
                 abrv_set.add(new_abrv)
-                print(f"Modified entry of {(new_abrv.short, new_abrv.long, new_abrv.count)} <=== {(abrv_conf.short, abrv_conf.long, abrv_conf.count)}")
+                LOG.info(f"Modified entry of {(new_abrv.short, new_abrv.long, new_abrv.count)} <=== {(abrv_conf.short, abrv_conf.long, abrv_conf.count)}")
             else:
-                print(f"Kept: {(abrv_conf.short, abrv_conf.long, abrv_conf.count)}")
+                LOG.info(f"Kept: {(abrv_conf.short, abrv_conf.long, abrv_conf.count)}")
                 
-        print("------------")
+        LOG.info("------------")
 
 
 if __name__ == "__main__":
