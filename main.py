@@ -13,13 +13,13 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 
 
-
-if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
-    ROOT_PATH = "data/test/test.xlsx"
-    MODEL = "gpt3"
-    THRESH = 2
+# 0 if statement guard to keep linting active without running code
+if 0: # Full GPT3/JUR1 TBI factors/outcomes entity detection and visualization pipeline example using test.xlsx (Only contains ~40 abstracts, for demo purposes)
+    ROOT_PATH = "data/test/test.xlsx" # Path to csv/xlsx containing abstracts
+    MODEL = "gpt3" # Large language model to use for initial unstructured text parsing 
+    THRESH = 2 # Lower bound (exclusive) of hits required for an entity to be added to visualization
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
-    RUN_CLOUD = 0 # Extra guard against running cloud model
+    RUN_CLOUD = 0 # Extra guard against running cloud model, set to 1 or True to activate
     
     if RUN_CLOUD:
         from models_api import CloudModel
@@ -57,8 +57,8 @@ if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
     visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html, ONLY WORKS with undirected Graphs
     visualizer.renderBarGraph(ent_types=["factor", "outcome"])
     
-# 0 guard to keep linting active without running code
-if 0: # Pipeline to render graphs for each topic 
+
+if 0: # Pipeline to render graphs for each topic directly from pre-generated gpt3 output on TBI prognostication factors and outcomes
     ROOT_PATH = "data/gpt3_output.xlsx"
     SUFFIX = "_topics"
     MODEL = "gpt3"
@@ -99,7 +99,7 @@ if 0: # Pipeline to render graphs for each topic
             title = "Network graph of factors (purple nodes) and outcomes (pink nodes) and associations between them"
         visualizer.renderGraphNX(title, adjust_shell=True)
 
-if 0: # Refactored pipeline from NeuromodulationNLP
+if 0: # Refactored pipeline from NeuromodulationNLP for extraction of epilepsy neuromodulation parameters 
     ROOT_PATH = "data/test2/Data.xls"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
     THRESH = 5
