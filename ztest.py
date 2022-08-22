@@ -1,3 +1,15 @@
+#%% Networkx inheritance
+import networkx as nx
+a = nx.Graph()
+b = nx.DiGraph()
+c = nx.MultiGraph()
+d = nx.MultiDiGraph()
+
+print([isinstance(i, nx.Graph) for i in [a, b, c, d]])
+print([isinstance(i, nx.DiGraph) for i in [a, b, c, d]])
+print([isinstance(i, nx.MultiGraph) for i in [a, b, c, d]])
+
+
 #%% Pandas concatentation 
 import pandas as pd
 df = pd.DataFrame({

@@ -35,17 +35,17 @@ if 1: # Refactored pipeline from NeuromodulationNLP
     
     from graph_builder import GraphBuilder
     builder = GraphBuilder()
-    builder.popCountersMulti(f"{ROOT_NAME}_userdata_kw_entsF.csv", intra_type=True)
-    builder.buildGraph(thresh=THRESH, multidi=False)
+    builder.popCountersMulti(f"{ROOT_NAME}_userdata_kw_entsF.csv", intra_type=False)
+    builder.buildGraph(thresh=THRESH, multidi=True)
     builder.exportGraph() # *_gpt3F_entsF_t{int}.xml
     
     from graph_renderer import GraphVisualizer
     visualizer = GraphVisualizer(f"{ROOT_NAME}_userdata_kw_entsF_t{THRESH}.xml")
+    # visualizer.genRenderArgs()
+    # visualizer.genLegend()
+    # visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
+    # visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html
     visualizer.renderBarGraph(ent_types=["cns_locs", "modalities"])
-    visualizer.genRenderArgs()
-    visualizer.genLegend()
-    visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
-    visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html, ONLY WORKS with undirected Graphs
 
         
     
@@ -90,11 +90,11 @@ if 0: # Full GPT3/JUR1 entity detection pipeline example using test.xlsx
     
     from graph_renderer import GraphVisualizer
     visualizer = GraphVisualizer(f"{ROOT_NAME}_{MODEL}F_entsF_t{THRESH}.xml")
-    visualizer.renderBarGraph(ent_types=["factor", "outcome"])
     visualizer.genRenderArgs()
     visualizer.genLegend()
     visualizer.renderGraphNX() # *_gpt3_t{int}_net(<rendering info>).png
     visualizer.renderGraphPyvis() # *_gpt3_t{int}_pyvis.html, ONLY WORKS with undirected Graphs
+    visualizer.renderBarGraph(ent_types=["factor", "outcome"])
     
 # 0 guard to keep linting active without running code
 if 0: # Pipeline to render graphs for each topic 

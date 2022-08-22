@@ -1,7 +1,5 @@
 #%% Imports 
 # General
-from cgitb import text
-from collections import Counter
 from math import log
 import os, re
 from typing import Union, Hashable
@@ -9,6 +7,7 @@ from typing import Union, Hashable
 # Data science
 import numpy as np
 from pyvis.network import Network
+from pyvis.options import EdgeOptions
 import networkx as nx
 from networkx.classes.reportviews import NodeView
 from networkx import Graph, MultiDiGraph, DiGraph, MultiGraph
@@ -253,24 +252,46 @@ class GraphVisualizer:
             print("Exported rendered graph to", output_name)
     
 
-    def renderGraphPyvis(self, solver = "repulsion"):
+    def renderGraphPyvis(self,
+                         solver = "repulsion",
+                         log_size = 1.2,
+                         log_width = 2,
+                         inherit_color = True):
         """
         Builds graph from counters and renders it using Pyvis
+        log_size and log_width to log the size and width by the specified base
         """
-        graphpy = Network()
-        
-        if type(self.graph) in [MultiDiGraph, DiGraph, MultiGraph]: # Need convertion to simple Graph for pyvis to work
-            graph = self.graph.to_undirected()
-            LOG.warning("Imported graph was not a simple Graph type, may not render correctly")
-            # FIXME find way to convert to Graph whie enabling visualization
-        else:
-            graph = self.graph
+        graph = Graph()
+        for node, data in self.graph.nodes(data=True):
+            data: dict
+            if log_size:
+                data["size"] = log(data["size"], log_size)
             
+            if data["ent_type"] == "cns_locs":
+                data["color"] = "green"
+            elif data["ent_type"] == "modalities":
+                data["color"] = "blue"
+            elif data["ent_type"] == "diseases_broad":
+                data["color"] = "red"
+            
+            graph.add_node(node, **data)
+        
+        for node1, node2, data in self.graph.edges(data=True):
+            data: dict
+            if log_width:
+                data["width"] = log(data["width"], log_width)
+            data.pop("id") # For some reason, ID attribute is added for Digraphs which conflicts with Pyvis
+            graph.add_edge(node1, node2, **data)
+
+
+
+        graphpy = Network()
         graphpy.from_nx(graph)
         
         # Way to further modify node and edge sizes to scaling to screen
 
         graphpy.toggle_physics(True)
+        
         if solver == "repulsion":
             graphpy.repulsion()
         elif solver == "atlas":
@@ -278,8 +299,11 @@ class GraphVisualizer:
             # graphpy.force_atlas_2based(damping = 1, gravity = -12, central_gravity = 0.01, spring_length = 100) # For larger graphs 
         else:
             graphpy.barnes_hut()
-        graphpy.inherit_edge_colors(False)
+            
+        graphpy.inherit_edge_colors("both") # More options can be found by showing all buttons and browsing through options
+        
         graphpy.show_buttons(filter_=['physics'])
+        
         output_name = self._getSimplifiedName() + "_pyvis.html"
         graphpy.show(output_name)
         print(f"Exported rendered graph to {output_name}")
@@ -294,21 +318,22 @@ class GraphVisualizer:
             return self.graph_root_name 
         
     def renderBarGraph(self, ent_types:list[str], top_n=15):
-        if type(self.graph) == DiGraph:
-            for ent_type in ent_types:
-                if len(self.graph.nodes) < top_n:
-                    top_n = len(self.graph.nodes) # Re-assign top_n to length of nodes
-                alt_ent_type = [t for t in ent_types if t != ent_type][0] # Get the other item in a list
+        for ent_type in ent_types:
+            if len(self.graph.nodes) < top_n:
+                top_n = len(self.graph.nodes) # Re-assign top_n to length of nodes
+            alt_ent_type = [t for t in ent_types if t != ent_type][0] # Get the other item in a list
 
-                nodes = [node for node, data in self.graph.nodes(data=True) 
-                         if data["ent_type"] == ent_type]
-                
-                nodes_counts: list[tuple[Hashable, int]] = list(self.graph.nodes(data="size"))
-                nodes_counts = [(node, data["size"])for node, data in self.graph.nodes(data=True) 
-                                if data["ent_type"] == ent_type]
-                nodes_counts.sort(key=lambda x: x[1]) # Sort by count
-                nodes_counts = nodes_counts[-top_n:] # Take slice starting from end (since hbar plots from bottom of y-axis)
-                
+            nodes = [node for node, data in self.graph.nodes(data=True) 
+                        if data["ent_type"] == ent_type]
+            
+            nodes_counts: list[tuple[Hashable, int]] = list(self.graph.nodes(data="size"))
+            nodes_counts = [(node, data["size"])for node, data in self.graph.nodes(data=True) 
+                            if data["ent_type"] == ent_type]
+            nodes_counts.sort(key=lambda x: x[1]) # Sort by count
+            nodes_counts = nodes_counts[-top_n:] # Take slice starting from end (since hbar plots from bottom of y-axis)
+            
+            if isinstance(self.graph, DiGraph): # Check if graph is directed
+                LOG.debug("Directed graph type detected")
                 degrees_raw: list[tuple[Hashable, int]] = list(self.graph.in_degree(nodes))
                 degrees_raw.sort(key=lambda x: x[1]) # Sort by degree
                 degrees_raw = degrees_raw[-top_n:] 
@@ -317,42 +342,47 @@ class GraphVisualizer:
                 degrees_weighted.sort(key=lambda x: x[1]) 
                 degrees_weighted = degrees_weighted[-top_n:] 
                 
-                sns.set_theme()
-                fig, (ax1, ax2) = plt.subplots(1, 2)
-                fig: Figure
-                ax1: Axes
-                ax2: Axes
+            else: # Assume undirected 
+                LOG.debug("Undirected graph type detected")
+                degrees_raw: list[tuple[Hashable, int]] = list(self.graph.degree(nodes))
+                degrees_raw.sort(key=lambda x: x[1]) # Sort by degree
+                degrees_raw = degrees_raw[-top_n:] 
                 
-                fig.set_size_inches(15, 10) # set_size_inches(w, h=None, forward=True)
-                
-                ax1.barh([p[0] for p in nodes_counts],
-                    [p[1] for p in nodes_counts])
-                ax1.set_xlabel(f"Number of articles that report association of the {ent_type} with a {alt_ent_type}")
-                ax1.set_ylabel(ent_type.capitalize())
-                
-                ax2.set_yticklabels([]) # Hide the left y-axis tick-labels
-                ax2.set_yticks([]) # Hide the left y-axis ticks
-                ax2.invert_xaxis() # Invert x-axis
-                ax2t = ax2.twinx() # Create twin x-axis
-                ax2t.barh([p[0] for p in degrees_raw],
-                    [p[1] for p in degrees_raw])
-                ax2t.set_ylabel(ent_type.capitalize())
-                ax2.set_xlabel(f"Number of unique {alt_ent_type}s associated with {ent_type}")
-                
-                if ent_type == "outcome":
-                    fig.suptitle(f"Top {str(top_n)} TBI prognosis outcome measures over entire corpora")
-                elif ent_type == "factor":
-                    fig.suptitle(f"Top {str(top_n)} TBI prognostic factors over entire corpora")
-                
-                output_name = F"{self._getSimplifiedName()}_bargraph_{ent_type}.png"
-                fig.savefig(output_name, bbox_inches='tight')
+                degrees_weighted: list[tuple[Hashable, int]] = list(self.graph.degree(nodes, weight="width"))
+                degrees_weighted.sort(key=lambda x: x[1]) 
+                degrees_weighted = degrees_weighted[-top_n:] 
             
+            sns.set_theme()
+            fig, (ax1, ax2) = plt.subplots(1, 2)
+            fig: Figure
+            ax1: Axes
+            ax2: Axes
             
-        else: # Undirected graph parsing 
-            LOG.warning("Undirected graph detected, this pipeline has not been built yet")
-            print(self.graph.degree())
-            print(self.graph.degree(weight="width"))
-            pass
+            fig.set_size_inches(15, 10) # set_size_inches(w, h=None, forward=True)
+            
+            ax1.barh([p[0] for p in nodes_counts],
+                [p[1] for p in nodes_counts])
+            ax1.set_xlabel(f"Number of articles that report association of the {ent_type} with a {alt_ent_type}")
+            ax1.set_ylabel(ent_type.capitalize())
+            
+            ax2.set_yticklabels([]) # Hide the left y-axis tick-labels
+            ax2.set_yticks([]) # Hide the left y-axis ticks
+            ax2.invert_xaxis() # Invert x-axis
+            ax2t = ax2.twinx() # Create twin x-axis
+            ax2t.barh([p[0] for p in degrees_raw],
+                [p[1] for p in degrees_raw])
+            ax2t.set_ylabel(ent_type.capitalize())
+            ax2.set_xlabel(f"Number of unique {alt_ent_type}s associated with {ent_type}")
+            
+            if ent_type == "outcome":
+                fig.suptitle(f"Top {str(top_n)} TBI prognosis outcome measures over entire corpora")
+            elif ent_type == "factor":
+                fig.suptitle(f"Top {str(top_n)} TBI prognostic factors over entire corpora")
+            
+            output_name = F"{self._getSimplifiedName()}_bargraph_{ent_type}.png"
+            fig.savefig(output_name, bbox_inches='tight')
+            
+
 
     
     def renderScatter(self):
@@ -374,18 +404,9 @@ class GraphVisualizer:
 
 
 if __name__ == "__main__": # For testing
-    a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_t10.xml")
-    a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_topics2_t3.xml")
-    a.genRenderArgs()
-    a.genLegend()
-    # a.renderScatter()
-    # a.renderBarGraph(ent_types=["factor", "outcome",])
-    title = "Network graph of factors (purple nodes) and outcomes (pink nodes) and \nassociations between them extracted over entire corpora of 1412 abstracts"
-    title = f"Network graph of factors (purple nodes) and outcomes (pink nodes) and associations between them \n"
-    title += f"extracted over topic 3 (Markers for TBI of lesser severity)"
-
-    a.renderGraphNX(title, adjust_shell=True)
-
+    # a = GraphVisualizer("data/gpt3_output_gpt3F_entsF_t10.xml")
+    a = GraphVisualizer("test graph.xml")
+    a.renderGraphPyvis()
 
 
 
