@@ -99,7 +99,7 @@ class GraphVisualizer:
             elif data["ent_type"] == "diseases_broad":
                 node_colors.append("red")
             else:
-                node_colors.append("#000000")
+                node_colors.append("#699DEB")
         self.node_colors = node_colors
         
         

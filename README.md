@@ -21,3 +21,11 @@ _Note that source code documentation is only partially complete_
 - Some graphical outputs are saved to the `figures/` directory which needs to be created locally before these outputs can be generated (some graphical outputs are quite large so `figures/` is included in `.gitignore` to avoid tracking these files)
 - Note that to use GPT3 parsing, an API key needs to be generated and put into `private/keys.py` with the variable name `KEY1` so that it can be imported from `models_api.py`
 
+**Demo figures**
+![Figure](/data/zdemo1.png)
+![Figure](/data/zdemo1-1.png)
+![Figure](/data/zdemo2.png)
+![Figure](/data/zdemo3.png)
+![Figure](/data/zdemo4.png)
+![Figure](/data/zdemo5.png)
+![Figure](/data/zdemo6.png)
