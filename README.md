@@ -22,10 +22,10 @@ _Note that source code documentation is only partially complete_
 - Note that to use GPT3 parsing, an API key needs to be generated and put into `private/keys.py` with the variable name `KEY1` so that it can be imported from `models_api.py`
 
 **Demo figures**
-![Figure](/data/zdemo1.png)
-![Figure](/data/zdemo1-1.png)
-![Figure](/data/zdemo2.png)
-![Figure](/data/zdemo3.png)
-![Figure](/data/zdemo4.png)
-![Figure](/data/zdemo5.png)
-![Figure](/data/zdemo6.png)
+![Figure](/demo/zdemo1.png)
+![Figure](/demo/zdemo1-1.png)
+![Figure](/demo/zdemo2.png)
+![Figure](/demo/zdemo3.png)
+![Figure](/demo/zdemo4.png)
+![Figure](/demo/zdemo5.png)
+![Figure](/demo/zdemo6.png)
