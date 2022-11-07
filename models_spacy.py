@@ -230,6 +230,9 @@ class GeneralExtractor(SpacyModel):
         from components_spacy import component_location
         self.NLP.add_pipe("extractCnsLocations")
     
+    def addPipeGenes(self):
+        from components_spacy import component_gene
+        self.NLP.add_pipe("extractGenes")
 
 class EntityExtractor(SpacyModel):
     # Postprocessing using SpaCy for outputs for large NLP models (e.g., GPT3)

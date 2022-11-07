@@ -1,3 +1,30 @@
+#%%
+from models_spacy import GeneralExtractor
+
+extractor = GeneralExtractor()
+extractor.addPipeGenes()
+
+#%%
+doc_str = "The gene ACF was found"
+doc = extractor.NLP(doc_str)
+print(doc.user_data)
+
+#%% Parsing genenames.json
+import json
+import pandas as pd
+
+
+with open("data/genenames.json", "r", encoding = "utf-8") as file:
+    genes_raw_json = json.load(file)
+    genes_json = genes_raw_json["response"]["docs"]
+    
+gene_symbols = {gene["symbol"] for gene in genes_json}
+gene_alias_dict = {gene["symbol"]: gene["alias_symbol"] for gene in genes_json if "alias_symbol" in gene}
+gene_aliases = {alias for group in gene_alias_dict.values() for alias in group} # Flatten
+
+targets = set.union(gene_symbols, gene_aliases) # Merge standardized name and their aliasis into one set to search through
+
+
 #%% Networkx inheritance
 import networkx as nx
 a = nx.Graph()
