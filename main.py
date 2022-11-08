@@ -8,12 +8,12 @@ os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 
 
-        
-    
-
-
-
 # 0 if statement guard to keep linting active without running code
+if 1:
+    ROOT_PATH = "data/stroke/stroke.xlsx" # Path to csv/xlsx containing abstracts
+    ROOT_NAME = os.path.splitext(ROOT_PATH)[0]
+
+
 if 0: # Full GPT3/JUR1 TBI factors/outcomes entity detection and visualization pipeline example using test.xlsx (Only contains ~40 abstracts, for demo purposes)
     ROOT_PATH = "data/test/test.xlsx" # Path to csv/xlsx containing abstracts
     MODEL = "gpt3" # Large language model to use for initial unstructured text parsing 
@@ -59,7 +59,7 @@ if 0: # Full GPT3/JUR1 TBI factors/outcomes entity detection and visualization p
     
 
 if 0: # Pipeline to render graphs for each topic directly from pre-generated gpt3 output on TBI prognostication factors and outcomes
-    ROOT_PATH = "data/gpt3_output.xlsx"
+    ROOT_PATH = "data/tbi/gpt3_output.xlsx"
     SUFFIX = "_topics"
     MODEL = "gpt3"
     ROOT_NAME = os.path.splitext(ROOT_PATH)[0]

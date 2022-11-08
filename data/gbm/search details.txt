@@ -1,0 +1,13 @@
+https://libaccess.mcmaster.ca/login?url=http://ovidsp.ovid.com/ovidweb.cgi?T=JS&NEWS=N&PAGE=main&SHAREDSEARCHID=1gh8vDzWqRzY9YTuR7qm2qWpLze0lvlXtXY3H9xpCoOvERtN1cnMmQMpuCHi7GnMV
+
+Embase <1974 to 2022 November 07>
+Ovid MEDLINE(R) <1996 to November 07, 2022>
+
+1	(gbm or glioblastoma).ab,ti.	107755
+2	gene.mp. [mp=ti, ab, hw, tn, ot, dm, mf, dv, kf, fx, dq, bt, nm, ox, px, rx, ui, sy]	6259361
+3	(gene or genes or geneti*).ab,ti.	6165019
+4	glioblastoma.mp. [mp=ti, ab, hw, tn, ot, dm, mf, dv, kf, fx, dq, bt, nm, ox, px, rx, ui, sy]	130344
+5	1 or 4	140559
+6	2 or 3	7768524
+7	5 and 6	50623
+

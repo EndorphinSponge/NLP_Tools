@@ -1,0 +1,6 @@
+https://libaccess.mcmaster.ca/login?url=http://ovidsp.ovid.com/ovidweb.cgi?T=JS&NEWS=N&PAGE=main&SHAREDSEARCHID=2xU5r4rPeZJz8Lgzx8z0rs3TRPxIMMifmrLAu7FLPxquDBId4ZLMw7zosz2jCreu2
+
+Embase <1974 to 2022 November 07>
+
+1	cerebrovascular accident/	262061
+2	limit 1 to (article and last year)	25408

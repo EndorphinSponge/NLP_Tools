@@ -1,0 +1,1178 @@
+Covidence #,Study ID,Title,Reviewer Name,Include?,Primary study aim,Country in which the study was conducted,Study design,Data source,Database/Randomized controlled trial name (if applicable),Clinical setting of data collection,Start date for collection of patient data (YYYY),End date for collection of patient data (YYYY),Age criteria for inclusion (in years),"How is TBI defined? (e.g., ""ICD9 codes"", ""Not defined"")",Range of TBI severity in patient population,"Factors used to define TBI severity, separated by commas (e.g., ""GCS"", ""GCS, AIS"")",Specific inclusion criteria,Specific exclusion criteria,Number of participants included in prognostication analysis,Average age of participants (in years),"Male/female ratio (""M"" if all male, ""F"" if all female)",Prognostic factors and outcomes analyses,Types of models involved for prognostication analysis,Additional notes on core information,Additional notes
+24718,Dhandapani 2009,Prognostic value of admission serum albumin levels in patients with head injury,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+24694,Amin 2009,BCL-2 and cytochrome c as prognostic markers of TBI outcome,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+24693,Franschman 2009,Prehospital endotracheal intubation does not associate with outcome in patients with severe traumatic brain injury,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+24680,Monje 2009,Prognosis factors related to a better outcome in moderate and severe traumatic brain injury,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+24526,Sawamoto 2010,Prolonged arterial lactate elevation predicts a poor neurological outcome in patients with severe traumatic brain injury,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+24245,Wong 2011,Neurological outcome in patients with traumatic brain injury and its relationship with computed tomography patterns of traumatic subarachnoid hemorrhage: Clinical article,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+23707,Prieto-Palomino 2013,Relation between mortality in the hospital and at 1 year with the cranial ct evaluated using the marshall classification classification classification classification classification in patients with traumatic brain injury,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+23526,Ghonemi 2013,Role of Phosphorylated Neurofilament H as a diagnostic and prognostic marker in traumatic brain injury,Steven Qiu,Yes,Analysis of prognostic factors,Other: Egypt,Cohort study,Prospective data collection,"",Hospital admission,2010,2011,18-65,"Defined by Head Injury Interdisciplinary Special interest group of the American Congress of Rehabilitation Medicine (at least one of the following: any period of loss of consciousness, any loss of memory for events immediately before or after the trauma, any alteration in mental state at the time of the accident focal neurologic deficits which may or may not be transient, and abnormal CT scan findings)","","",Isolated TBI,"Chronic neurological diseases, seizure activity, renal impairment, multi-organ failure syndrome, or multiple trauma
+Receiving or candidates for thrombolytic therapy",30,36.5,1.31,"pNF-H (admission) | Rankin score (3 months post-injury) | Y | Pearson
+pNF-H (7 days post-injury) | Rankin score (3 months post-injury) | Y | Pearson
+pNF-H (admission) | Rankin score (3 months post-injury) | Y | ROC AUC
+pNF-H (7 days post-injury) | Rankin score (3 months post-injury) | Y | ROC AUC","Correlation (i.e., Pearson, Spearman, Kendall); Binary classifier with ROC","",""
+23367,Adams 2014,ABCG2 RS2231142 C.421C>A is associated with outcomes following severe traumatic brain injury,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Prospective data collection,"",Hospital admission,"","",>16,"",Severe,GCS,"EVD placement
+Caucasian","Penetrating trauma
+Previous neurological impairment",436,"",3.64,"Age | GOS | Y | Regression
+Gender | GOS | N | Regression
+ABCG2 (c421C>A) | GOS | Y | Regression
+GCS | GOS | Y | Regression
+Epidural hematoma | GOS | N | Regression
+Subdural hematoma | GOS | N | Regression
+Subarachnoid hemorrhage | GOS | N | Regression
+Intraparenchymal hemorrhage | GOS | N | Regression
+Intraventricular hemorrhage | GOS | N | Regression
+Diffuse axonal injury | GOS | N | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","","Used combined cohort
+Weighted M/F ratio was manually calculated"
+23213,Abbasi 2014,Serum S100B protein as an outcome prediction tool in emergency department patients with traumatic brain injury,Steven Qiu,Yes,Analysis of prognostic factors,Other: Iran,Cohort study,Prospective data collection,"",Emergency department,2012,2012,>=18,Not defined,Mild; Moderate,GCS,Isolated TBI,"Hemodynamic instability
+Fever
+Concurrent primary and secondary brain injury
+Other causes of decreased LOC",90,33.1,8,"S100B | Barthel scale | N | T-test
+S100B | Headaches | N | T-test",T-test/Mann-Whitney U-test/Wilcoxon test,"","Paper mentions a ""table 3"" but no table could be found"
+23026,Izzy 2015,Gradient echo MRI to predict long-term functional outcomes after traumatic brain injury,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+22966,Lee 2015,A role of serum-based neuronal and glial markers as potential predictors for distinguishing severity and related outcomes in traumatic brain injury,Steven Qiu,Yes,Analysis of prognostic factors,Other: Korea,Cohort study,Prospective data collection,"",Hospital admission,2013,2014,">=19, <=84",Not defined,Mild; Severe,GCS,"","",45,58.5,2.75,"S100B | Mortality | Y | U-test
+GFAP | Mortality | Y | U-test
+UCH-L1 | Mortality | Y | U-test",T-test/Mann-Whitney U-test/Wilcoxon test,"ROC was done on some binary classification model based on threshold but this was not clarified in the paper nor was AUC analyzed for significance. U-test was only done for mortality analysis, not GOS",""
+22631,Kesmarky 2016,Performance of prediction for short-term mortality in patients after severe traumatic brain injury: Inclusion of initial Glasgow Coma Scales and abbreviated injury score of head region,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+22529,Hosseini 2016,"Comparison of glasgow coma scale, full outline of unresponsiveness and acute physiology and chronic health evaluation in prediction of mortality rate among patients with traumatic brain injury admitted to intensive care unit",Steven Qiu,Yes,Analysis of prognostic factors,Other: Iran,Cohort study,Prospective data collection,"",Hospital admission,2012,2013,">=16, <=60",Not defined,Mild; Moderate,"",Admission to hospital for more than 24hrs,"History of addiction
+Trauma surgery problems
+Coma (GCS < 7) 
+Use of sedative medications before evaluation",80,33.8,4,"Age | Mortality | N | Regression
+Gender | Mortality | N | Regression
+Mechanism of injury | Mortality | N | Regression
+FOUR | Mortality | Y | Regression
+APACHE II | Mortality | Y | Regression
+GCS | Mortality | Y | Regression
+FOUR | Mortality | Y | ROC AUC
+APACHE II | Mortality | Y | ROC AUC
+GCS | Mortality | Y | ROC AUC","Regression (i.e., logistic, linear); Binary classifier with ROC","",Severity range was not explicitly mentioned and hence was extrapolated from GCS inclusion/exclusion criteria as the paper mentioned using GCS as a measure of severity 
+22464,Arbour 2016,Visual Fixation in the ICU: A Strong Predictor of Long-Term Recovery after Moderate-to-Severe Traumatic Brain Injury*,Steven Qiu,Yes,Analysis of prognostic factors,Canada,Cohort study,Retrospective chart review,"",Hospital admission,2010,2013,>=16,Not defined,Moderate; Severe,GCS,"ICU admission
+Alive at discharge","Death during hospitalization
+Receiving repeated doses of blocking agents within the first 24 hours of ICU admission
+Any other condition preventing bilateral eyelid opening or visual fixation (e.g., ocular oedema, eyelid laceration) 
+Penetrating TBI",144,35.67,3.11,"Visual fixation (hours without) | GOS-E (10-40 months post-injury) | Y | Regression
+PTA (duration) | GOS-E (10-40 months post-injury) | Y | Regression
+GCS | GOS-E (10-40 months post-injury) | N | Regression","Regression (i.e., logistic, linear); Binary classifier with ROC","",Had a case-control style analysis of visual fixation to predict in-hospital mortality but there was no control group
+22328,Stefani 2017,Elevated glutamate and lactate predict brain death after severe head trauma,Steven Qiu,Yes,Analysis of prognostic factors,Other: Brazil,Cohort study,Prospective data collection,"",Hospital admission,2006,2009,">=16, <=53","",Severe,GCS,"Isolated TBI
+Positive CT findings","Previous history of inflammatory, metabolic, and neuropsychiatric disorders that could influence the biomarkers' concentrations (e.g., diabetes, drug abuse)",20,29,9,"Age | Brain death (3 days post-injury) | N | U-test
+ICP | Brain death (3 days post-injury) | N | U-test
+MAP | Brain death (3 days post-injury) | N | U-test
+CPP | Brain death (3 days post-injury) | N | U-test
+GCS | Brain death (3 days post-injury) | N | U-test
+CSF glucose | Brain death (3 days post-injury) | N | U-test
+CSF glutamate | Brain death (3 days post-injury) | Y | U-test
+CSF lactate | Brain death (3 days post-injury) | Y | U-test
+CSF BDNF | Brain death (3 days post-injury) | N | U-test
+CSF GDNF | Brain death (3 days post-injury) | N | U-test",T-test/Mann-Whitney U-test/Wilcoxon test; Binary classifier with ROC,"",""
+22237,Kenney 2017,Effect of phosphodiesterase-5 inhibition on cerebrovascular reactivity in chronic traumatic brain injury (TBI),Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+21251,Reid 2018,Adversity and Resilience Are Associated with Outcome after Mild Traumatic Brain Injury in Military Service Members,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+20875,Kumar 2019,Variability with Astroglial Glutamate Transport Genetics Is Associated with Increased Risk for Post-Traumatic Seizures,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",Patients needed positive head computed tomography findings
+20788,Rubin 2019,"Prognosis of six-month glasgow outcome scale in severe traumatic brain injury using hospital admission characteristics, injury severity characteristics, and physiological monitoring during the first day post-injury",Steven Qiu,No (Wrong analysis),"",US,Cohort study,Retrospective chart review,"",Hospital admission,1989,2012,"","",Severe,"",GCS <6,"Died within 24h after injury
+Penetrating TBI or unknown mechanism of injury
+GCS 3 with fixed and dilated pupils
+Severe associated systemic injury",630,"","",GOS (6 month post-injury),"Regression (i.e., logistic, linear); Support vector machine; Decision tree; Random forest; Other: Linear discriminant analysis, Quadratic discriminant analysis","","Data seems to come from a pooling of patients from multiple studies, each with their own inclusion/exclusion"
+20746,Caplain 2019,Efficacy of Psychoeducation and Cognitive Rehabilitation After Mild Traumatic Brain Injury for Preventing Post-concussional Syndrome in Individuals With High Risk of Poor Prognosis: A Randomized Clinical Trial,Steven Qiu,No (Wrong analysis),"","","","","","","","","","","","","","","","","","","","",""
+20622,Turgeon 2019,Factors influencing decisions by critical care physicians to withdraw life-sustaining treatments in critically ill adult patients with severe traumatic brain injury,Steven Qiu,No (Wrong outcome),"","","","","","","","","","","","","","","","","","","","",""
+20539,Tunthanathip 2019,Development and validation of a nomogram for predicting the mortality after penetrating traumatic brain injury,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+20306,Chen 2020,Risk factors for corticosteroid insufficiency during the sub-acute phase of acute traumatic brain injury,Steven Qiu,Yes,Analysis of prognostic factors,Other: China,Cohort study,Prospective data collection,"",Hospital admission,2012,2017,">=18, <=65",Not defined,Mild; Moderate; Severe,GCS,"","Pregnancy, malignancies, spinal cord injury with immediate methylprednisolone administration
+History of adrenal insufficiency, peptic ulcer, injury to GI tract
+Treatment with corticosteroids within last 6 months 
+Previous use of immunosuppressants, etomidate, or NSAIDs
+",140,43.47,1.69,"Injury severity | Mortality (28 days post-injury) | Y | Kruskal-Wallis test
+CIRC I Mortality (28 days post-injury) | Y | Fisher's exact test
+CIRC I Pneumonia (28 days post-injury) | Y | Fisher's exact test
+CIRC I Gastrointestinal bleeding (28 days post-injury) | Y | Fisher's exact test",ANOVA/Kruskal-Wallis test/Friedman test; Chi-squared/Fisher's exact test,"",""
+20202,Salvato 2020,Autonomic responses to emotional linguistic stimuli and amplitude of low-frequency fluctuations predict outcome after severe brain injury,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",Looks at disorders of consciousness rather than TBI
+20142,Laufer 2020,Prospective longitudinal investigation shows correlation of event-related potential to mild traumatic brain injury in adolescents,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+19768,Dijkland 2021,Outcome Prediction after Moderate and Severe Traumatic Brain Injury: External Validation of Two Established Prognostic Models in 1742 European Patients,Steven Qiu,No (Wrong analysis),"","","","","","","","","","","","","","","","","","","","",""
+19727,Peng 2021,Role of diffusion tensor imaging combined with neuron-specific enolase and s100 calcium-binding protein b detection in predicting the prognosis of moderate and severe traumatic brain injury,Steven Qiu,Yes,Analysis of prognostic factors,Other: China,Cohort study,Retrospective chart review,"",Hospital admission,2016,2019,16-60,Not defined,Moderate; Severe,GCS,"Confirmation of TBI by CT head
+GCS 6-12","Severe injuries at other sites (e.g., thorax, abdomen, spine, limbs) 
+Previous history of neurological diseases (e.g., brain tumor, cerebral hemorrhage, brain abscess, stroke) or mental illness
+Severe heart, lung, liver, or kidney diseases 
+Death within 24hrs",74,34.2,1.18,"DTI FA (corpus callosum, internal capsule, cerebral peduncle) | GOS (3-6 months post-injury) | Y | Kolmogorov-Smirnov test
+NSE | GOS (3-6 months post-injury) | Y | Kolmogorov-Smirnov test
+S100B | GOS (3-6 months post-injury) | Y | Kolmogorov-Smirnov test",Chi-squared/Fisher's exact test; Other: Kolmogorov-Smirnov test,Sub-analyses did not pool patients together so generalizations to core factor-outcome relationships had to be made,""
+19301,Jha 2021,Epigenetic regulation of ABCC8 and TRPM4 is associated with intracranial hypertension and outcome after severe TBI,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+19285,Gaibino 2021,Sodium homeostasis in patients with traumatic brain injury and its impact on mortality,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+19280,Bhattacharyay 2021,Machine learning to understand unmet needs for multiclass outcome prediction in the ICU after traumatic brain injury,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+19186,Gonzalez 2021,Diffusion Tensor Imaging Correlates of Concussion Related Cognitive Impairment,Steven Qiu,No (Wrong patient population),"",US,Cohort study,"","","","","","","","","","","","","","","","","",""
+19185,Jaleel 2021,Role of apolipoprotein E gene variants in cognitive outcome of patients after moderate degree diffuse brain injuries,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+19171,Kim 2021,Predictive data signatures in ICU-stratum traumatic brain injury patients: Computational approach,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+19015,Wilde 2022,"A Framework to Advance Biomarker Development in the Diagnosis, Outcome Prediction, and Treatment of Traumatic Brain Injury",Steven Qiu,No (Wrong study design) ,"","","","","","","","","","","","","","","","","","","","",""
+9725,Chamoun 2010,Role of extracellular glutamate measured by cerebral microdialysis in severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Prospective data collection,"",Hospital admission,2000,2007,16-91,Not defined,Severe,GCS,"","Penetrating TBI
+GCS = 3
+Fixed, dilated pupils",165,36.6,5.88,"Glutamate (CSF, level) | Mortality (6 months post-injury) | N | Chi-squared
+Glutamate (CSF, trend) | Mortality (6 months post-injury) | Y | Regression
+Age | Mortality (6 months post-injury) | Y | Regression
+GCS | Mortality (6 months post-injury) | Y | Regression
+Marshall score | Mortality (6 months post-injury) | Y | Regression","Regression (i.e., logistic, linear); Chi-squared/Fisher's exact test","",""
+9666,Chuang 2010,Neuroglobin genetic polymorphisms and their relationship to functional outcomes after traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,"","",Hospital admission,"","",16-75,"GCS, positive CT findings",Severe,GCS,"Closed head injury on CT
+Caucasian ethnicity",History of neurologic deficits,196,34,3.85,"NGB (rs3783988) | GOS (3 months post-injury) | Y | Chi-squared
+NGB (rs3783988) | GOS (6 months post-injury) | Y | Chi-squared
+NGB (rs3783988) | GOS (12 months post-injury) | Y | Chi-squared
+NGB (rs3783988) | GOS (24 months post-injury) | Y | Chi-squared
+NGB (rs3783988) | DRS (3 months post-injury) | Y | T-test
+NGB (rs3783988) | DRS (6 months post-injury) | Y | T-test
+NGB (rs3783988) | DRS (12 months post-injury) | Y | T-test
+NGB (rs3783988) | DRS (24 months post-injury) | Y | T-test
+NGB (rs3783988) | NRS-R (3 months post-injury) | N | T-test
+NGB (rs3783988) | NRS-R (6 months post-injury) | N | T-test
+NGB (rs3783988) | NRS-R (12 months post-injury) | N | T-test
+NGB (rs3783988) | NRS-R (24 months post-injury) | N | T-test
+NGB (rs10133981) | GOS (3 months post-injury) | N | Fisher's exact test
+NGB (rs10133981) | GOS (6 months post-injury) | N | Fisher's exact test
+NGB (rs10133981) | GOS (12 months post-injury) | N | Fisher's exact test
+NGB (rs10133981) | GOS (24 months post-injury) | N | Fisher's exact test
+NGB (rs10133981) | DRS (3 months post-injury) | N | T-test
+NGB (rs10133981) | DRS (6 months post-injury) | N | T-test
+NGB (rs10133981) | DRS (12 months post-injury) | N | T-test
+NGB (rs10133981) | DRS (24 months post-injury) | N | T-test
+NGB (rs10133981) | NRS-R (3 months post-injury) | N | T-test
+NGB (rs10133981) | NRS-R (6 months post-injury) | N | T-test
+NGB (rs10133981) | NRS-R (12 months post-injury) | N | T-test
+NGB (rs10133981) | NRS-R (24 months post-injury) | N | T-test
+Age | GOS (3 months post-injury) | N | Regression
+Age | GOS (6 months post-injury) | Y | Regression
+Age | GOS (12 months post-injury) | Y | Regression
+Age | GOS (24 months post-injury) | Y | Regression
+Gender | GOS (3 months post-injury) | N | Regression
+Gender | GOS (6 months post-injury) | N | Regression
+Gender | GOS (12 months post-injury) | N | Regression
+Gender | GOS (24 months post-injury) | N | Regression
+GCS | GOS (3 months post-injury) | N | Regression
+GCS | GOS (6 months post-injury) | Y | Regression
+GCS | GOS (12 months post-injury) | Y | Regression
+GCS | GOS (24 months post-injury) | N | Regression
+NGB (rs3783988) | GOS (3 months post-injury) | N | Regression
+NGB (rs3783988) | GOS (6 months post-injury) | N | Regression
+NGB (rs3783988) | GOS (12 months post-injury) | Y | Regression
+NGB (rs3783988) | GOS (24 months post-injury) | N | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","",""
+9621,Bombardier 2010,Rates of major depressive disorder and clinical outcomes following traumatic brain injury.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+9532,Benedictus 2010,Cognitive and behavioral impairment in traumatic brain injury related to outcome and return to work.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Netherlands,Cohort study,Prospective data collection,"",Hospital admission,2000,2008,15-83,Not defined,Mild; Moderate; Severe,GCS,"",Death during hospital admission,434,34.8,2.57,"Injury severity | Physical outcome | N | Chi-squared
+Injury severity | Cognitive outcome | Y | Chi-squared
+Injury severity | Behavioral outcome | Y | Chi-squared 
+Injury severity | Social outcome | N | Chi-squared",Chi-squared/Fisher's exact test,"","Different time points for evaluation for mild/moderate TBI vs severe
+Excluded factors that were not acute (GOS, DOS) "
+8617,Adamczak 2012,Inflammasome proteins in cerebrospinal fluid of brain-injured patients as biomarkers of functional outcome: clinical article.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Prospective data collection,"",Hospital admission,"","",">=16, <=65",Not defined,Moderate; Severe,GCS,"","Patients with acute meningitis, cerebral vasculitis, or other recent CNS infection",23,29.78,3.6,"ASC | GOS | Y | U-test
+caspase-1 | GOS | Y | U-test
+NALP-1 | GOS | Y | U-test
+ASC | GOS | Y | Regression
+caspase-1 | GOS | Y | Regression
+NALP-1 | GOS | Y | Regression
+ASC | GOS | Y | Krushkal-wallis test
+caspase-1 | GOS | Y | Krushkal-wallis test
+NALP-1 | GOS | Y | Krushkal-wallis test","Regression (i.e., logistic, linear); ANOVA/Kruskal-Wallis test/Friedman test; T-test/Mann-Whitney U-test/Wilcoxon test","","Although there was no lower limit of age for inclusion, the minimum age of the sample was 16"
+8565,Jung 2014,Prognostic factors of neurocognitive and functional outcomes in junior and senior elderly patients with traumatic brain injury undergoing disability evaluation or appointed disability evaluation.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+8465,Jacobs 2013,Outcome prediction in moderate and severe traumatic brain injury: a focus on computed tomography variables.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Netherlands,Cohort study,Prospective data collection,Radboud University Brain Injury Cohort Study,Emergency department; Hospital admission,1998,2006,>=16,Not defined,Moderate; Severe,GCS,"",Penetrating TBI,700,43.76,2.43,"Compressed basal cisterns | Mortality (6 months post-injury) | Y | Regression
+Absent basal cisterns | Mortality (6 months post-injury) | Y | Regression
+Abnormal 4th ventricle | Mortality (6 months post-injury) | Y | Regression
+Petechial hemorrhage | Mortality (6 months post-injury) | N | Regression
+Petechial hemorrhage type | Mortality (6 months post-injury) | N | Regression
+Facial fractures | Mortality (6 months post-injury) | N | Regression
+Age | Mortality (6 months post-injury) | Y | Regression
+Pupil reactivity (one abnormal pupil) | Mortality (6 months post-injury) | N | Regression
+Pupil reactivity (two abnormal pupils) | Mortality (6 months post-injury) | Y | Regression
+Number of contusions | Mortality (6 months post-injury) | Y | Regression
+Hypotensive episode | Mortality (6 months post-injury) | Y | Regression
+Gender | Mortality (6 months post-injury) | N | Regression
+Extracranial trauma | Mortality (6 months post-injury) | N | Regression
+Alcohol | Mortality (6 months post-injury) | N | Regression
+GCS | Mortality (6 months post-injury) | Y | Regression
+Compressed basal cisterns | GOS-E (6 months post-injury) | Y | Regression
+Absent basal cisterns | GOS-E (6 months post-injury) | Y | Regression
+Age | GOS-E (6 months post-injury) | Y | Regression
+Hypotensive episode | GOS-E (6 months post-injury) | Y | Regression
+Epidural hematoma | GOS-E (6 months post-injury) | N | Regression
+Acute subdural hematoma | GOS-E (6 months post-injury) | Y | Regression
+Hemorrhagic contusion | GOS-E (6 months post-injury) | Y | Regression
+Pupil reactivity (one abnormal pupil) | GOS-E (6 months post-injury) | N | Regression
+Pupil reactivity (two abnormal pupils) | GOS-E (6 months post-injury) | Y | Regression
+GCS | GOS-E (6 months post-injury) | Y | Regression
+Compressed basal cisterns | GOS-E (6 months post-injury, excluding death) | N | Regression
+Absent basal cisterns | GOS-E (6 months post-injury, excluding death) | Y | Regression
+Age | GOS-E (6 months post-injury, excluding death) | Y | Regression
+Hypotensive episode | GOS-E (6 months post-injury, excluding death) | Y | Regression
+Epidural hematoma | GOS-E (6 months post-injury, excluding death) | N | Regression
+Acute subdural hematoma | GOS-E (6 months post-injury, excluding death) | Y | Regression
+Hemorrhagic contusion | GOS-E (6 months post-injury, excluding death) | Y | Regression
+Pupil reactivity (one abnormal pupil) | GOS-E (6 months post-injury, excluding death) | N | Regression
+Pupil reactivity (two abnormal pupils) | GOS-E (6 months post-injury, excluding death) | N | Regression
+GCS | GOS-E (6 months post-injury, excluding death) | N | Regression","Regression (i.e., logistic, linear)","","Both univariate and multivariate regression was performed, core info pools these results"
+8273,McCauley 2013,Neurological outcome scale for traumatic brain injury: III. Criterion-related validity and sensitivity to change in the NABIS hypothermia-II clinical trial.,Steven Qiu,Yes,Analysis of prognostic factors,"Other: US, Canada",Cohort study,Prospective data collection,NABIS:H-II,Hospital admission,2005,2009,16-45,Not defined,Severe,GCS,Survival 3 months post-injury,"GCS 3 with non-reactive pupils
+GCS 7-8 with normal CT
+AIS >4 for organs other than the brain
+SBP <110mmHg
+DBP <60mmHg
+Persistent hypoxia (O2 saturation <94%)
+Pregnancy",94,29.1,5.27,"GCS | NOS-TBI (3 months post-injury) | N | Spearman
+GCS | NOS-TBI (6 months post-injury) | N | Spearman
+GCS | NOS-TBI (12 months post-injury) | N | Spearman
+GCS | GOS (3 months post-injury) | N | Spearman
+GCS | GOS (6 months post-injury) | N | Spearman
+GCS | GOS (12 months post-injury) | N | Spearman
+GCS | GOS-E (3 months post-injury) | N | Spearman
+GCS | GOS-E (6 months post-injury) | N | Spearman
+GCS | GOS-E (12 months post-injury) | N | Spearman
+GCS | DRS (3 months post-injury) | N | Spearman
+GCS | DRS (6 months post-injury) | N | Spearman
+GCS | DRS (12 months post-injury) | N | Spearman
+GCS | NRS-R (3 months post-injury) | N | Spearman
+GCS | NRS-R (6 months post-injury) | N | Spearman
+GCS | NRS-R (12 months post-injury) | N | Spearman
+
+Marshall score | NOS-TBI (3 months post-injury) | N | Spearman
+Marshall score | NOS-TBI (6 months post-injury) | N | Spearman
+Marshall score | NOS-TBI (12 months post-injury) | N | Spearman
+Marshall score | GOS (3 months post-injury) | N | Spearman
+Marshall score | GOS (6 months post-injury) | N | Spearman
+Marshall score | GOS (12 months post-injury) | Y | Spearman
+Marshall score | GOS-E (3 months post-injury) | Y | Spearman
+Marshall score | GOS-E (6 months post-injury) | N | Spearman
+Marshall score | GOS-E (12 months post-injury) | Y | Spearman
+Marshall score | DRS (3 months post-injury) | Y | Spearman
+Marshall score | DRS (6 months post-injury) | N | Spearman
+Marshall score | DRS (12 months post-injury) | Y | Spearman
+Marshall score | NRS-R (3 months post-injury) | N | Spearman
+Marshall score | NRS-R (6 months post-injury) | Y | Spearman
+Marshall score | NRS-R (12 months post-injury) | N | Spearman
+
+Lesion volume | NOS-TBI (3 months post-injury) | N | Spearman
+Lesion volume | NOS-TBI (6 months post-injury) | N | Spearman
+Lesion volume | NOS-TBI (12 months post-injury) | N | Spearman
+Lesion volume | GOS (3 months post-injury) | N | Spearman
+Lesion volume | GOS (6 months post-injury) | N | Spearman
+Lesion volume | GOS (12 months post-injury) | N | Spearman
+Lesion volume | GOS-E (3 months post-injury) | N | Spearman
+Lesion volume | GOS-E (6 months post-injury) | N | Spearman
+Lesion volume | GOS-E (12 months post-injury) | N | Spearman
+Lesion volume | DRS (3 months post-injury) | N | Spearman
+Lesion volume | DRS (6 months post-injury) | N | Spearman
+Lesion volume | DRS (12 months post-injury) | N | Spearman
+Lesion volume | NRS-R (3 months post-injury) | Y | Spearman
+Lesion volume | NRS-R (6 months post-injury) | N | Spearman
+Lesion volume | NRS-R (12 months post-injury) | N | Spearman
+
+NOS-TBI (1 month post-injury) | GOS (3 months post-injury) | Y | Spearman
+NOS-TBI (1 month post-injury) | GOS (6 months post-injury) | Y | Spearman
+NOS-TBI (1 month post-injury) | GOS (12 months post-injury) | N | Spearman
+NOS-TBI (1 month post-injury) | GOS-E (3 months post-injury) | Y | Spearman
+NOS-TBI (1 month post-injury) | GOS-E (6 months post-injury) | Y | Spearman
+NOS-TBI (1 month post-injury) | GOS-E (12 months post-injury) | N | Spearman
+NOS-TBI (1 month post-injury) | DRS (3 months post-injury) | Y | Spearman
+NOS-TBI (1 month post-injury) | DRS (6 months post-injury) | Y | Spearman
+NOS-TBI (1 month post-injury) | DRS (12 months post-injury) | N | Spearman
+NOS-TBI (1 month post-injury) | NRS-R (3 months post-injury) | N | Spearman
+NOS-TBI (1 month post-injury) | NRS-R (6 months post-injury) | N | Spearman
+NOS-TBI (1 month post-injury) | NRS-R (12 months post-injury) | N | Spearman
+
+NOS-TBI (3 months post-injury) | GOS (6 months post-injury) | Y | Spearman
+NOS-TBI (3 months post-injury) | GOS (12 months post-injury) | Y | Spearman
+NOS-TBI (3 months post-injury) | GOS-E (6 months post-injury) | Y | Spearman
+NOS-TBI (3 months post-injury) | GOS-E (12 months post-injury) | Y | Spearman
+NOS-TBI (3 months post-injury) | DRS (6 months post-injury) | Y | Spearman
+NOS-TBI (3 months post-injury) | DRS (12 months post-injury) | Y | Spearman
+NOS-TBI (3 months post-injury) | NRS-R (6 months post-injury) | Y | Spearman
+NOS-TBI (3 months post-injury) | NRS-R (12 months post-injury) | Y | Spearman","Correlation (i.e., Pearson, Spearman, Kendall)","",Not all analyses had the same number of  samples due to missing data
+8171,Norris 2013,ANAM4 TBI reaction time-based tests have prognostic utility for acute concussion.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+8131,Rodriguez 2013,"Predicting mortality from head injury: experience of Sancti Spiritus Province, Cuba.",Steven Qiu,Yes,Analysis of prognostic factors,Other: Cuba,Case control study,Retrospective chart review,"",Hospital admission,2009,2010,"",Not defined,"","","","",47,52.1,2.13,"GCS | Mortality (at discharge) | Y | Chi-squared
+GCS motor | Mortality (at discharge) | Y | Chi-squared
+Pupil reactivity | Mortality (at discharge) | Y | Chi-squared
+Respiratory distress | Mortality (at discharge) | Y | Chi-squared
+SBP (<120 mmHg) | Mortality (at discharge) | N | Chi-squared
+SBP (>=150 mmHg) | Mortality (at discharge) | N | Chi-squared
+Hemoglobin | Mortality (at discharge) | N | Chi-squared
+Glucose (blood) | Mortality (at discharge) | Y | Chi-squared
+Subdural hematoma | Mortality (at discharge) | Y | Chi-squared
+Multiple lesions (CT) | Mortality (at discharge) | Y | Chi-squared",Chi-squared/Fisher's exact test,"",""
+8056,Izzy 2013,"Self-fulfilling prophecies through withdrawal of care: do they exist in traumatic brain injury, too?.",Steven Qiu,Yes,Other: Factors associated with withdrawal of care,US,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2009,2013,"",Not defined,Moderate; Severe,GCS,"","",232,53.26,2.27,"Age | Mortality (at discharge) | Y | U-test
+Gender | Mortality (at discharge) | N | Fisher's exact test
+Ethnicity | Mortality (at discharge) | N | Fisher's exact test
+GCS | Mortality (at discharge) | Y | U-test
+GCS motor | Mortality (at discharge) | Y | U-test
+ISS | Mortality (at discharge) | N | U-test
+Marshall score | Mortality (at discharge) | Y | Fisher's exact test
+Pupil reactivity | Mortality (at discharge) | Y | Fisher's exact test
+SBP (<90mmHg) | Mortality (at discharge) | Y | Fisher's exact test
+SpO2 (<90) | Mortality (at discharge) | N | Fisher's exact test
+Penetrating | Mortality (at discharge) | Y | Fisher's exact test
+Mechanism | Mortality (at discharge) | Y | Fisher's exact test
+Cardiac arrest | Mortality (at discharge) | Y | Fisher's exact test
+Anticoagulant use (Coumadin) | Mortality (at discharge) | N | Fisher's exact test
+Anticoagulant use (Dabigatran) | Mortality (at discharge) | N | Fisher's exact test
+Antiplatelet use (Clopidogrel) | Mortality (at discharge) | Y | Fisher's exact test
+INR (>=1.5) | Mortality (at discharge) | Y | Fisher's exact test
+ICU (duration) | Mortality (at discharge) | Y | Fisher's exact test
+Pneumonia (ICU) | Mortality (at discharge) | Y | Fisher's exact test
+Sepsis (ICU) | Mortality (at discharge) | Y | Fisher's exact test
+ARDS (ICU) | Mortality (at discharge) | N | Fisher's exact test
+VTE (ICU) | Mortality (at discharge) | N | Fisher's exact test
+Hypotension (ICU, requiring pressors) | Mortality (at discharge) | Y | Fisher's exact test
+Fever (ICU) | Mortality (at discharge) | Y | Fisher's exact test
+Hyperglycemia (ICU) | Mortality (at discharge) | Y | Fisher's exact test
+Acute renal failure (ICU) | Mortality (at discharge) | N | Fisher's exact test
+Acute liver failure | Mortality (at discharge) | N | Fisher's exact test
+Cardiac arrest (ICU) | Mortality (at discharge) | Y | Fisher's exact test
+Uncal herniation (ICU) | Mortality (at discharge) | Y | Fisher's exact test
+Brain edema (ICU, requiring osmotherapy) | Mortality (at discharge) | Y | Fisher's exact test
+ICP crisis (ICU) | Mortality (at discharge) | Y | Fisher's exact test
+Rebleed (ICU) | Mortality (at discharge) | N | Fisher's exact test
+Comorbidity (number of systems) | Mortality (at discharge) | N | Fisher's exact test
+Comorbidity (cardiovascular) | Mortality (at discharge) | Y | Fisher's exact test
+Comorbidity (endocrine) | Mortality (at discharge) | Y | Fisher's exact test
+Comorbidity (oncological) | Mortality (at discharge) | N | Fisher's exact test
+Comorbidity (renal) | Mortality (at discharge) | Y | Fisher's exact test
+Comorbidity (neurological) | Mortality (at discharge) | N | Fisher's exact test
+
+Age | Mortality (at discharge) | N | Regression
+GCS | Mortality (at discharge) | N | Regression
+GCS motor | Mortality (at discharge) | N | Regression
+Marshall score | Mortality (at discharge) | N | Regression
+Pupil reactivity | Mortality (at discharge) | Y | Regression
+SBP (<90mmHg) | Mortality (at discharge) | N | Regression
+Penetrating | Mortality (at discharge) | N | Regression
+Mechanism | Mortality (at discharge) | N | Regression
+Cardiac arrest | Mortality (at discharge) | N | Regression
+Antiplatelet use (Clopidogrel) | Mortality (at discharge) | N | Regression
+INR (>=1.5) | Mortality (at discharge) | N | Regression
+ICU (duration) | Mortality (at discharge) | Y | Regression
+Pneumonia (ICU) | Mortality (at discharge) | N | Regression
+Sepsis (ICU) | Mortality (at discharge) | N | Regression
+Hypotension (ICU, requiring pressors) | Mortality (at discharge) | N | Regression
+Fever (ICU) | Mortality (at discharge) | N | Regression
+Hyperglycemia (ICU) | Mortality (at discharge) | N | Regression
+Cardiac arrest (ICU) | Mortality (at discharge) | Y | Regression
+Uncal herniation (ICU) | Mortality (at discharge) | Y | Regression
+Brain edema (ICU, requiring osmotherapy) | Mortality (at discharge) | N | Regression
+ICP crisis (ICU) | Mortality (at discharge) | N | Regression
+Comorbidity (cardiovascular) | Mortality (at discharge) | N | Regression
+Comorbidity (endocrine) | Mortality (at discharge) | Y | Regression
+Comorbidity (renal) | Mortality (at discharge) | N | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","","Original paper is tagged with ""adult brain injury""
+https://link.springer.com/article/10.1007/s12028-013-9817-2"
+7821,Cassidy 2014,"Population-based, inception cohort study of the incidence, course, and prognosis of mild traumatic brain injury after motor vehicle collisions.",Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+7806,Majdan 2014,Timing and duration of intracranial hypertension versus outcomes after severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,"Other: Austria, Croatia, Slovakia",Cohort study,Retrospective database/RCT data,International Traumatic Coma Projects,Hospital admission,2001,2005,"",Not defined,Severe,GCS,"ICP monitoring
+Isolated TBI","Non-head AIS >2
+Fixed and dilated pupils after resuscitation ",204,49.1,3,"Intracranial hypertension | Mortality (ICU) | Y | Chi-squared
+Intracranial hypertension | Mortality (at discharge) | Y | Chi-squared
+Intracranial hypertension | Mortality (6 months post-injury) | Y | Chi-squared
+Intracranial hypertension | GOS (6 months post-injury) | Y | Chi-squared
+Intracranial hypertension (duration) | Mortality (ICU) | Y | Chi-squared
+
+Intracranial hypertension | Mortality (10 days post-injury) | Log-rank test
+(6 months post-injury)
+
+Intracranial hypertension (early) | Mortality (ICU) | Y | Regression
+Intracranial hypertension (late) | Mortality (ICU) | Y | Regression
+Age | Mortality (ICU) | Y | Regression
+GCS (admission) | Mortality (ICU) | N | Regression
+AIS head | Mortality (ICU) | Y | Regression
+
+Intracranial hypertension (early) | GOS (6 months post-injury) | Y | Regression
+Intracranial hypertension (late) | GOS (6 months post-injury) | Y | Regression
+Age | GOS (6 months post-injury) | Y | Regression
+GCS (admission) | GOS (6 months post-injury) | Y | Regression
+AIS head | GOS (6 months post-injury) | Y | Regression","Regression (i.e., logistic, linear); Chi-squared/Fisher's exact test; Other: Log-rank test","","In original paper about database, most (but not all patients) were between 16-59
+https://link-springer-com.libaccess.lib.mcmaster.ca/content/pdf/10.1007/s00508-006-0760-5.pdf"
+7780,Le 2014,Does brain volume loss predict cognitive and narrative discourse performance following traumatic brain injury?.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+7776,Mata-Mbemba 2014,Early CT findings to predict early death in patients with traumatic brain injury: Marshall and Rotterdam CT scoring systems compared in the major academic tertiary care hospital in northeastern Japan.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Japan,Cohort study,Retrospective chart review,"",Emergency department; Hospital admission,2009,2010,>=15,Not defined,Mild; Moderate; Severe,GCS,CT imaging available,"",245,49.4,2.06,"Absent basal cisterns | Mortality (at discharge) | Y | Regression
+Compressed basal cisterns | Mortality (at discharge) | N | Regression
+Midline shift | Mortality (at discharge) | Y | Regression
+EDH | Mortality (at discharge) | N | Regression
+SAH/IVH | Mortality (at discharge) | Y | Regression
+Hemorrhage volume (>=25mL) | Mortality (at discharge) | Y | Regression
+Hemorrhage volume (<25mL) | Mortality (at discharge) | N | Regression
+Marshall score | Mortality (at discharge) | Y | U-test
+Rotterdam score | Mortality (at discharge) | Y | U-test","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test","",""
+7762,Alhilali 2014,Detection of central white matter injury underlying vestibulopathy after mild traumatic brain injury.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+7760,Juratli 2014,"Early hemorrhagic progression of traumatic brain contusions: frequency, correlation with coagulation disorders, and patient outcome: a prospective study.",Steven Qiu,Yes,Analysis of prognostic factors,Other: Germany,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2008,2012,>16,AIS,"","","Isolated TBI
+Positive CT findings (hemorrhage)","Absence of severe extracranial injuries (non-head AIS >=3)
+Anticoagulant or antiplatelet use",153,52 (median),4.1,"Age | Bleed progression | N | U-test
+Gender | Bleed progression | N | Fisher's exact test
+GCS (<=8) | Bleed progression | N | Fisher's exact test
+Pupil reactivity | Bleed progression | N | Fisher's exact test
+Alcoholism | Bleed progression | Y | Fisher's exact test
+EDH | Bleed progression | N | Fisher's exact test
+SAH | Bleed progression | N | Fisher's exact test
+SDH | Bleed progression | N | Fisher's exact test
+Contusion size (>3cm) | Bleed progression | N | Fisher's exact test
+Marshall score (>=5) | Bleed progression | N | Fisher's exact test
+Coagulopathy (trauma-induced) | Bleed progression | Y | Fisher's exact test
+Coagulopathy (abnormal INR or PTT or platelet counts) | Bleed progression | Y | Fisher's exact test
+INR (>1.2) | Bleed progression | N | Fisher's exact test
+aPTT (>36) | Bleed progression | N | Fisher's exact test
+Platelet count (<100x10^9) | Bleed progression | Y | Fisher's exact test
+Fibrinogen (<2) | Bleed progression | N | Fisher's exact test
+Factor XIII (<60) | Bleed progression | Y | Fisher's exact test
+D-dimer (>10000) | Bleed progression | N | Fisher's exact test
+
+Bleed progression | ICU (duration) | Y | U-test
+Bleed progression | Admission (duration) | N | U-test
+Bleed progression | mRS (at discharge, >=4) | Y | Fisher's exact test
+Bleed progression | Mortality (at discharge) | N | Fisher's exact test
+Bleed progression | mRS (1 year post-injury, >=4) | Y | Fisher's exact test
+Bleed progression | Mortality (1 year post-injury) | Y | Fisher's exact test
+
+Age | Bleed progression | N | Regression
+Gender | Bleed progression | N | Regression
+GCS (<=8) | Bleed progression | N | Regression
+Pupil reactivity | Bleed progression | N | Regression
+Alcoholism | Bleed progression | N | Regression
+EDH | Bleed progression | N | Regression
+SAH | Bleed progression | N | Regression
+SDH | Bleed progression | N | Regression
+Contusion size (>3cm) | Bleed progression | N | Regression
+Marshall score (>=5) | Bleed progression | N | Regression
+INR (>1.2) | Bleed progression | N | Regression
+aPTT (>36) | Bleed progression | N | Regression
+Platelet count (<100x10^9) | Bleed progression | Y | Regression
+Fibrinogen (<2) | Bleed progression | N | Regression
+D-dimer (>10000) | Bleed progression | N | Regression
+
+Age | mRS (at discharge, >=4) | N | Regression
+Gender | mRS (at discharge, >=4) | N | Regression
+GCS (<=8) | mRS (at discharge, >=4) | N | Regression
+Pupil reactivity | mRS (at discharge, >=4) | Y | Regression
+Alcoholism | mRS (at discharge, >=4) | Y | Regression
+EDH | mRS (at discharge, >=4) | N | Regression
+SAH | mRS (at discharge, >=4) | N | Regression
+SDH | mRS (at discharge, >=4) | N | Regression
+Contusion size (>3cm) | mRS (at discharge, >=4) | Y | Regression
+Marshall score (>=5) | mRS (at discharge, >=4) | N | Regression
+INR (>1.2) | mRS (at discharge, >=4) | N | Regression
+aPTT (>36) | mRS (at discharge, >=4) | N | Regression
+Platelet count (<100x10^9) | mRS (at discharge, >=4) | N | Regression
+Fibrinogen (<2) | mRS (at discharge, >=4) | N | Regression
+D-dimer (>10000) | mRS (at discharge, >=4) | Y | Regression
+Bleed progression | mRS (at discharge, >=4) | Y | Regression
+
+Age | mRS (1 year post-injury, >=4) | Y | Regression
+Gender | mRS (1 year post-injury, >=4) | N | Regression
+GCS (<=8) | mRS (1 year post-injury, >=4) | Y | Regression
+Pupil reactivity | mRS (1 year post-injury, >=4) | N | Regression
+Alcoholism | mRS (1 year post-injury, >=4) | N | Regression
+EDH | mRS (1 year post-injury, >=4) | N | Regression
+SAH | mRS (1 year post-injury, >=4) | N | Regression
+SDH | mRS (1 year post-injury, >=4) | N | Regression
+Contusion size (>3cm) | mRS (1 year post-injury, >=4) | Y | Regression
+Marshall score (>=5) | mRS (1 year post-injury, >=4) | N | Regression
+INR (>1.2) | mRS (1 year post-injury, >=4) | N | Regression
+aPTT (>36) | mRS (1 year post-injury, >=4) | N | Regression
+Platelet count (<100x10^9) | mRS (1 year post-injury, >=4) | Y | Regression
+Fibrinogen (<2) | mRS (1 year post-injury, >=4) | N | Regression
+D-dimer (>10000) | mRS (1 year post-injury, >=4) | Y | Regression
+Bleed progression | mRS (at discharge, >=4) | Y | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","","No details given on how p-value was assessed for univariate analysis, assumed U-test and Fisher's exact test - also verified a few calculations manually using Fisher's and they were consistent, so most likely using these univariate tests"
+7758,Kumar 2014,Relationship of preinjury depressive symptoms to outcomes 3 mos after complicated and uncomplicated mild traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective database/RCT data,"",Emergency department,2000,2004,18-72,"Clinical exam and history (any period of loss of consciousness, any loss of memory for events immediately before or after the accident, any alteration in mental status at the time of the accident, and focal neurological deficits that may or may not be transient; Brain Injury Inter-disciplinary Special Interest Group of the American Congress of Rehabilitation Medicine)",Mild,GCS,"","History of previous head injury requiring hospitalization, CNS disorder affecting cognitive functioning (e.g., stroke, dementia, epilepsy), major diagnosed psychiatric disorder (e.g., schizophrenia, bipolar disorder)
+Homelessness",177,33.4,3.66,"Age | Affective outcome (3 months post-injury, HI-FI) | N | Regression
+Education | Affective outcome (3 months post-injury, HI-FI) | N | Regression
+Language (English vs Spanish) | Affective outcome (3 months post-injury, HI-FI) | N | Regression
+Litigation status | Affective outcome (3 months post-injury, HI-FI) | Y | Regression
+Injury severity | Affective outcome (3 months post-injury, HI-FI) | N | Regression
+Preinjury depressive symptoms | Affective outcome (3 months post-injury, HI-FI) | Y | Regression
+
+Age | Cognitive outcome (3 months post-injury, HI-FI) | N | Regression
+Education | Cognitive outcome (3 months post-injury, HI-FI) | N | Regression
+Language (English vs Spanish) | Cognitive outcome (3 months post-injury, HI-FI) | N | Regression
+Litigation status | Cognitive outcome (3 months post-injury, HI-FI) | Y | Regression
+Injury severity | Cognitive outcome (3 months post-injury, HI-FI) | N | Regression
+Preinjury depressive symptoms | Cognitive outcome (3 months post-injury, HI-FI) | Y | Regression
+
+Age | Physical outcome (3 months post-injury, HI-FI) | N | Regression
+Education | Physical outcome (3 months post-injury, HI-FI) | N | Regression
+Language (English vs Spanish) | Physical outcome (3 months post-injury, HI-FI) | N | Regression
+Litigation status | Physical outcome (3 months post-injury, HI-FI) | Y | Regression
+Injury severity | Physical outcome (3 months post-injury, HI-FI) | N | Regression
+Preinjury depressive symptoms | Physical outcome (3 months post-injury, HI-FI) | N | Regression
+
+Age | Physical outcome (3 months post-injury, SF-36) | N | Regression
+Education | Physical outcome (3 months post-injury, SF-36) | N | Regression
+Language (English vs Spanish) | Physical outcome (3 months post-injury, SF-36) | Y | Regression
+Litigation status | Physical outcome (3 months post-injury, SF-36) | Y | Regression
+Injury severity | Physical outcome (3 months post-injury, SF-36) | N | Regression
+Preinjury depressive symptoms | Physical outcome (3 months post-injury, SF-36) | N | Regression
+
+Age | Psychological outcome (3 months post-injury, SF-36) | N | Regression
+Education | Psychological outcome (3 months post-injury, SF-36) | N | Regression
+Language (English vs Spanish) | Psychological outcome (3 months post-injury, SF-36) | N | Regression
+Litigation status | Psychological outcome (3 months post-injury, SF-36) | Y | Regression
+Injury severity | Psychological outcome (3 months post-injury, SF-36) | N | Regression
+Preinjury depressive symptoms | Psychological outcome (3 months post-injury, SF-36) | Y | Regression","Regression (i.e., logistic, linear)","",""
+7718,Raj 2014,Predicting outcome after traumatic brain injury: development of prognostic scores based on the IMPACT and the APACHE II.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Finland,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2009,2012,>=16,ICD10 (S06.1–S06.9),Mild; Moderate; Severe,GCS,"ICU admission (cases where GCS = 13-15 were complicated mTBI)
+Positive CT findings","Penetrating TBI
+Death on arrival, before CT imaging, or before ICU admission",895,58,"","Age | Mortality (6 months post-injury) | Y | Chi-squared
+Comorbidity (cardiovascular) | Mortality (6 months post-injury) | N | Fisher's exact test
+Comorbidity (respiratory) | Mortality (6 months post-injury) | N | Fisher's exact test
+Comorbidity (hepatic) | Mortality (6 months post-injury) | N | Fisher's exact test
+Comorbidity (renal) | Mortality (6 months post-injury) | N | Fisher's exact test
+Comorbidity (immunosuppression) | Mortality (6 months post-injury) | Y | Chi-squared
+GCS | Mortality (6 months post-injury) | Y | Chi-squared
+GCS motor | Mortality (6 months post-injury) | Y | Chi-squared
+Pupil reactivity | Mortality (6 months post-injury) | Y | Chi-squared
+Hypotension | Mortality (6 months post-injury) | N | Chi-squared
+Hypoxia | Mortality (6 months post-injury) | Y | Chi-squared
+Glucose | Mortality (6 months post-injury) | Y | T-test
+Hemoglobin | Mortality (6 months post-injury) | Y | T-test
+Platelet count | Mortality (6 months post-injury) | Y | T-test
+Base excess | Mortality (6 months post-injury) | Y | T-test
+INR | Mortality (6 months post-injury) | Y | T-test
+Marshall score | Mortality (6 months post-injury) | Y | Chi-squared
+Rotterdam score | Mortality (6 months post-injury) | Y | Chi-squared
+EDH | Mortality (6 months post-injury) | Y | Chi-squared
+SAH | Mortality (6 months post-injury) | N | Chi-squared
+ICU duration | Mortality (6 months post-injury) | N | T-test
+Admission duration | Mortality (6 months post-injury) | Y | T-test
+IMPACT score (core model) | Mortality (6 months post-injury) | Y | T-test
+IMPACT score (extended model) | Mortality (6 months post-injury) | Y | T-test
+IMPACT score (lab model) | Mortality (6 months post-injury) | Y | T-test
+APACHE II score | Mortality (6 months post-injury) | Y | T-test
+
+Age | GOS (6 months post-injury) | Y | Chi-squared
+Comorbidity (cardiovascular) | GOS (6 months post-injury) | N | Fisher's exact test
+Comorbidity (respiratory) | GOS (6 months post-injury) | N | Fisher's exact test
+Comorbidity (hepatic) | GOS (6 months post-injury) | N | Fisher's exact test
+Comorbidity (renal) | GOS (6 months post-injury) | N | Fisher's exact test
+Comorbidity (immunosuppression) | GOS (6 months post-injury) | Y | Chi-squared
+GCS | GOS (6 months post-injury) | Y | Chi-squared
+GCS motor | GOS (6 months post-injury) | Y | Chi-squared
+Pupil reactivity | GOS (6 months post-injury) | Y | Chi-squared
+Hypotension | GOS (6 months post-injury) | N | Chi-squared
+Hypoxia | GOS (6 months post-injury) | Y | Chi-squared
+Glucose | GOS (6 months post-injury) | Y | T-test
+Hemoglobin | GOS (6 months post-injury) | Y | T-test
+Platelet count | GOS (6 months post-injury) | Y | T-test
+Base excess | GOS (6 months post-injury) | N | T-test
+INR | GOS (6 months post-injury) | Y | T-test
+Marshall score | GOS (6 months post-injury) | Y | Chi-squared
+Rotterdam score | GOS (6 months post-injury) | Y | Chi-squared
+EDH | GOS (6 months post-injury) | Y | Chi-squared
+SAH | GOS (6 months post-injury) | Y | Chi-squared
+ICU duration | GOS (6 months post-injury) | Y | T-test
+Admission duration | GOS (6 months post-injury) | N | T-test
+IMPACT score (core model) | GOS (6 months post-injury) | Y | T-test
+IMPACT score (extended model) | GOS (6 months post-injury) | Y | T-test
+IMPACT score (lab model) | GOS (6 months post-injury) | Y | T-test
+APACHE II score | GOS (6 months post-injury) | Y | T-test","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","",""
+7645,Hachimi 2014,[Early acute coagulopathy of severe head injuries: mortality and prognostic factors].,Steven Qiu,No (Full text not in English),"","","","","","","","","","","","","","","","","","","","",""
+7609,Collins 2014,Effect of preinjury warfarin use on outcomes after head trauma in Medicare beneficiaries.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective database/RCT data,Medicare Provider and Analysis Review ,Emergency department; Hospital admission,2009,2011,>=65,"ICD9 codes (code indicating any injury at or above the brow line anteriorly and skull base posteriorly (concussion, skull fracture with or without ICH, and/or ICH alone))","","","","",11078,80,0.31,"Warfarin (preinjury use) | ICH | Y | Regression
+Age (75-84) | ICH | Y | Regression
+Age (>=85) | ICH | Y | Regression
+Gender | ICH | Y | Regression
+Ethnicity | ICH | Y | Regression
+Elixhauser index | ICH | Y | Regression
+Torso injury | ICH | Y | Regression
+Long bone fracture | ICH | Y | Regression
+Antiplatelet use | ICH | Y | Regression
+
+Warfarin (preinjury use) | Hospital admission | N | Regression
+Age (75-84) | Hospital admission | Y | Regression
+Age (>=85) | Hospital admission | Y | Regression
+Gender | Hospital admission | Y | Regression
+Ethnicity | Hospital admission | N | Regression
+Elixhauser index | Hospital admission | Y | Regression
+Torso injury | Hospital admission | Y | Regression
+Long bone fracture | Hospital admission | Y | Regression
+ICH | Hospital admission | Y | Regression
+
+Warfarin (preinjury use) | ICU admission | N | Regression
+ICH | ICU admission | Y | Regression
+Ethnicity | ICU admission | Y | Regression
+Torso injury | ICU admission | Y | Regression
+
+Warfarin (preinjury use) | Mortality (30 days post-injury, in-hospital) | Y | Regression
+Age (>=85) | Mortality (30 days post-injury, in-hospital) | Y | Regression
+ISS | Mortality (30 days post-injury, in-hospital) | Y | Regression
+Elixhauser index | Mortality (30 days post-injury, in-hospital) | N | Regression
+Antiplatelet use | Mortality (30 days post-injury, in-hospital) | N | Regression
+
+Warfarin (preinjury use) | ICH | Y | Chi-square
+Warfarin (preinjury use) | Hospital admission | Y | Chi-square
+Warfarin (preinjury use) | Hospital LOS | N | Wilcoxon test
+Warfarin (preinjury use) | ICU admission | N | Chi-square
+Warfarin (preinjury use) | ICU LOS | N | Wilcoxon test
+Warfarin (preinjury use) | Mortality (30 days post-injury, in-hospital) | Y | Chi-square","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","",P = 0.2 as significance level for this study in univariate regression analyses
+7608,Bazzazi 2014,Correlation between arterial blood gas analysis and outcome in patients with severe head trauma.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Iran,Cohort study,Prospective data collection,"",Hospital admission, 2012,2013,18-80,Not defined,Other,GCS,"","Severe trauma to thoracic/abdominal regions
+Requiring operation on brain, thoracic region, abdomen 
+Hospital stay <24hrs
+History of COPD",70,34.34,6,"pH (blood, arterial) | GCS (at discharge) | N | Pearson
+PCO2 (blood, arterial) | GCS (at discharge) | N | Pearson
+HCO3 (blood, arterial) | GCS (at discharge) | N | Pearson
+PO2 (blood, arterial) | GCS (at discharge) | N | Pearson
+SpO2 (blood, arterial) | GCS (at discharge) | N | Pearson
+
+pH (blood, arterial) | GOS (at discharge) | N | Pearson
+PCO2 (blood, arterial) | GOS (at discharge) | N | Pearson
+HCO3 (blood, arterial) | GOS (at discharge) | N | Pearson
+PO2 (blood, arterial) | GOS (at discharge) | N | Pearson
+SpO2 (blood, arterial) | GOS (at discharge) | N | Pearson
+
+pH (blood, arterial) | Mortality (at discharge) | N | T-test
+PCO2 (blood, arterial) | Mortality (at discharge) | N | T-test
+HCO3 (blood, arterial) | Mortality (at discharge) | N | T-test
+PO2 (blood, arterial) | Mortality (at discharge) | N | T-test
+SpO2 (blood, arterial) | Mortality (at discharge) | N | T-test","T-test/Mann-Whitney U-test/Wilcoxon test; Correlation (i.e., Pearson, Spearman, Kendall)","",""
+7578,Barmparas 2014,Prehospital hypertension is predictive of traumatic brain injury and is associated with higher mortality.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective database/RCT data,NTDB,Emergency department,2007,2008,>=15,AIS (AIS head >=3),Mild; Moderate; Severe,GCS,"","Penetrating TBI
+Nonsurvivable injuries (i.e., AIS for 6 in any body region)",45732,48.5,2.29,"SBP (<100mmHg, EMS) | Mortality | Y | Regression
+SBP (160-180mmHg, EMS) | Mortality | Y | Regression
+SBP (190-230mmHg, EMS) | Mortality | Y | Regression","Regression (i.e., logistic, linear)","",""
+7577,Cipolle 2014,Long-term outcome in elderly patients after operation for traumatic intracranial hemorrhage.,Steven Qiu,No (Full text not available),"","","","","","","","","","","","","","","","","","","","",""
+7574,Nguyen 2014,Effect of marijuana use on outcomes in traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective chart review,"",Emergency department; Hospital admission,2010,2012,>=16,"ICD9 codes (800.1–800.39, 800.6–800.89, 801.1–801.39, 801.6–801.89, 803.1–803.39, 803.6–803.89,804.1–804.29, and 804.6–804.79 (fractures with intracranial bleed); 851 (cerebral laceration and contusion, all), 852 (subarachnoid hemorrhage, subdural hemorrhage, extradural hematoma after injury, all), and 853 (other and unspecified intracerebral hemorrhage))","","",Available urine toxicology screen,Death within 24hrs of admission,446,49.4,3.6,"THC (urine screen) | Disability (at discharge) | Y | Fisher's exact test
+THC (urine screen) | Mortality (at discharge) | Y | Fisher's exact test
+
+Age (>=45) | Mortality (at discharge) | Y | Regression
+THC (urine screen) | Mortality (at discharge) | Y | Regression
+AIS head (>=4) | Mortality (at discharge) | Y | Regression
+Mechanism | Mortality (at discharge) | N | Regression
+Ethnicity | Mortality (at discharge) | N | Regression
+Gender | Mortality (at discharge) | N | Regression
+ETOH (>0.08) | Mortality (at discharge) | N | Regression
+ISS (>=16) | Mortality (at discharge) | N | Regression","Regression (i.e., logistic, linear); Chi-squared/Fisher's exact test","",""
+7537,Yu 2014,Diagnostic and prognostic significance of suPAR in traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,Other: China,Cohort study,Prospective data collection,"",Hospital admission,2011,2014,"",Not defined,Mild; Moderate; Severe,GCS,Isolated TBI,"History of coagulation disorders (e.g., DVT, PE)
+Anticoagulant use
+Non-head AIS <=3",112,48.11,2.03,suPAR | Mortality | Y | T-test,T-test/Mann-Whitney U-test/Wilcoxon test; Binary classifier with ROC,"",Doesn't explicitly state adult population
+7522,Suehiro 2014,Predictors of deterioration indicating a requirement for surgery in mild to moderate traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Japan,Cohort study,Retrospective chart review,"",Hospital admission,2009,2010,24-95,Not defined,Mild; Moderate,GCS,No initial indications for surgical intervention,Anticoagulant or antiplatelet use,54,54.9,1.57,"Platelet count | Surgical intervention | N | U-test
+Fibrinogen | Surgical intervention | N | U-test
+PT-INR | Surgical intervention | N | U-test
+FDP | Surgical intervention | Y | U-test
+APTT | Surgical intervention | Y | U-test
+D-dimer | Surgical intervention | Y | U-test",T-test/Mann-Whitney U-test/Wilcoxon test,"",""
+7500,Fuller 2014,The association between admission systolic blood pressure and mortality in significant traumatic brain injury: a multi-centre cohort study.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Europe,Cohort study,Retrospective database/RCT data,TARN,Emergency department; Hospital admission,2005,2012,>16,"AIS (head AIS >=3, excluding scalp, cranial nerve, or vascular injuries)","",AIS head,Head AIS >= 3,"Femoral neck or single pubic ramus fracture in patients >65
+Simple Isolated injuries ",5057,48.7,2.46,"SBP (<70mmHg) | Mortality (30 days post-injury, in-hospital) | Y | Regression
+SBP (>200mmHg) | Mortality (30 days post-injury, in-hospital) | Y | Regression
+Age | Mortality (30 days post-injury, in-hospital) | Y | Regression
+ISS | Mortality (30 days post-injury, in-hospital) | Y | Regression
+GCS | Mortality (30 days post-injury, in-hospital) | Y | Regression
+Marshall score | Mortality (30 days post-injury, in-hospital) | Y | Regression
+Hypoxia | Mortality (30 days post-injury, in-hospital) | Y | Regression
+SAH | Mortality (30 days post-injury, in-hospital) | Y | Regression","Regression (i.e., logistic, linear)","",""
+7497,Lazaridis 2014,Patient-specific thresholds of intracranial pressure in severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective chart review,"",Hospital admission,2003,2009,15-87,Not defined,Severe,GCS,"","",322,37,3.04,"Age | GOS (6 months post-injury) | N | ANOVA
+Gender | GOS (6 months post-injury) | N | ANOVA
+GCS | GOS (6 months post-injury) | Y | ANOVA
+MAP | GOS (6 months post-injury) | N | ANOVA
+ICP | GOS (6 months post-injury) | Y | ANOVA
+CPP | GOS (6 months post-injury) | Y | ANOVA
+PRx | GOS (6 months post-injury) | Y | ANOVA","Regression (i.e., logistic, linear); ANOVA/Kruskal-Wallis test/Friedman test","","All patients were sedated, intubated, and received mechanical ventilation during the recording period
+Average patient age calculated manually but excluded 9 patients for which no data was available "
+7473,Seiger 2015,Does mechanism of injury play a role in recovery from concussion?.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+7472,Kumar 2015,Chronic Inflammation After Severe Traumatic Brain Injury: Characterization and Associations With Outcome at 6 and 12 Months Postinjury.,Steven Qiu,No (Wrong patient population),Analysis of prognostic factors,US,Cohort study,Prospective data collection,"","","","",16-70,"",Severe,GCS,Positive CT findings,"",83,"","","GOS (6 months post-injury)
+GOS (12 months post-injury)","","",""
+7298,Kesinger 2015,Hospital-acquired pneumonia is an independent predictor of poor global outcome in severe traumatic brain injury up to 5 years after discharge.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective database/RCT data,TBI Model Systems,Hospital admission,2003,2007,>=16,"PTA>24 hrs or LOC>30 minutes or GCS in
+ED<13 or intracranial neuroimaging abnormalities (TBIMS definition)",Severe,AIS,"AIS head >=4
+Subsequent admission to TBIMS rehabilitation center ",Death in ICU,113,43.8,3.13,"Pneumonia (hospital-acquired) | GOS-E (1 year post-injury) | Y | T-test
+Pneumonia (hospital-acquired) | GOS-E (2 years post-injury) | Y | T-test
+Pneumonia (hospital-acquired) | GOS-E (5 years post-injury) | Y | T-test
+Pneumonia (hospital-acquired) | Mortality (at discharge) | N | Fisher's exact test
+
+Pneumonia (hospital-acquired) | GOS-E (1 year post-injury) | Y | Regression
+Pneumonia (hospital-acquired) | GOS-E (2 years post-injury) | Y | Regression
+Pneumonia (hospital-acquired) | GOS-E (5 years post-injury) | Y | Regression
+
+Pneumonia (hospital-acquired) | GOS-E (1 year post-injury) | Y | Regression
+Gender | GOS-E (1 year post-injury) | N | Regression
+Age | GOS-E (1 year post-injury) | Y | Regression
+Ethnicity (caucasian) | GOS-E (1 year post-injury) | N | Regression
+GCS (admission) | GOS-E (1 year post-injury) | N | Regression
+ISS (non-head) | GOS-E (1 year post-injury) | N | Regression
+AIS head | GOS-E (1 year post-injury) | N | Regression
+ISS (thorax) | GOS-E (1 year post-injury) | N | Regression
+Septicemia | GOS-E (1 year post-injury) | N | Regression
+
+Pneumonia (hospital-acquired) | GOS-E (2 years post-injury) | Y | Regression
+Gender | GOS-E (2 years post-injury) | N | Regression
+Age | GOS-E (2 years post-injury) | N | Regression
+Ethnicity (caucasian) | GOS-E (2 years post-injury) | N | Regression
+GCS (admission) | GOS-E (2 years post-injury) | N | Regression
+ISS (non-head) | GOS-E (2 years post-injury) | Y | Regression
+AIS head | GOS-E (2 years post-injury) | Y | Regression
+ISS (thorax) | GOS-E (2 years post-injury) | Y | Regression
+Septicemia | GOS-E (2 years post-injury) | N | Regression
+
+Pneumonia (hospital-acquired) | GOS-E (5 years post-injury) | Y | Regression
+Gender | GOS-E (5 years post-injury) | N | Regression
+Age | GOS-E (5 years post-injury) | N | Regression
+Ethnicity (caucasian) | GOS-E (5 years post-injury) | N | Regression
+GCS (admission) | GOS-E (5 years post-injury) | Y | Regression
+ISS (non-head) | GOS-E (5 years post-injury) | N | Regression
+AIS head | GOS-E (5 years post-injury) | N | Regression
+ISS (thorax) | GOS-E (5 years post-injury) | N | Regression
+Septicemia | GOS-E (5 years post-injury) | N | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","",""
+7263,Yousuf 2015,Genetic Variation of ApoE Gene in Ethnic Kashmiri Population and Its Association with Outcome After Traumatic Brain Injury.,Steven Qiu,Yes,Analysis of prognostic factors,Other: India,Cohort study,Prospective data collection,"","","","","",Not defined,Mild; Moderate; Severe,GCS,Kashmiri ethnicity,"",150,40 (estimate),4.56,APOE (e4 allele) | GOS (6 months post-injury) | N | Chi-squared,Chi-squared/Fisher's exact test,"",""
+7246,Barker-Collo 2015,"Prevalence, natural course and predictors of depression 1 year following traumatic brain injury from a population-based study in New Zealand.",Steven Qiu,Yes,Analysis of prognostic factors,Other: New Zealand,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2010,2011,>16,"Clinical and history (Presence of one or more of the following: confusion or disorientation; loss of consciousness; post-traumatic amnesia; and other neurological abnormalities (e.g., focal neurological signs, seizure, intracranial lesion))",Mild; Moderate; Severe,"GCS, PTA (duration)","","",315,35.8,1.14,"Age | Depression (12 months post-injury, HAD scale) | Y | T-test
+Gender | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Ethnicity (European) | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Ethnicity (Maori) | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Injury severity | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Mechanism (assault) | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Mechanism (fall) | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Mechanism (traffic) | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+ETOH | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Drugs | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Self-inflicted | Depression (12 months post-injury, HAD scale) | N | Chi-squared
+Comorbidity (depression) | Depression (12 months post-injury, HAD scale) | Y | Chi-squared
+Comorbidity (anxiety) | Depression (12 months post-injury, HAD scale) | Y | Chi-squared
+
+Age | Depression (12 months post-injury, DSM-IV) | N | T-test
+Gender | Depression (12 months post-injury, DSM-IV) | Y | Chi-squared
+Ethnicity (European) | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Ethnicity (Maori) | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Injury severity | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Mechanism (assault) | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Mechanism (fall) | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Mechanism (traffic) | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+ETOH | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Drugs | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Self-inflicted | Depression (12 months post-injury, DSM-IV) | N | Chi-squared
+Comorbidity (depression) | Depression (12 months post-injury, DSM-IV) | Y | Chi-squared
+Comorbidity (anxiety) | Depression (12 months post-injury, DSM-IV) | Y | Chi-squared
+
+
+Age | Depression (12 months post-injury, HAD scale) | Y | Regression
+Comorbidity (depression) | Depression (12 months post-injury, HAD scale) | Y | Regression
+Comorbidity (anxiety) | Depression (12 months post-injury, HAD scale) | Y | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","",""
+7224,Sandhaug 2015,Community integration 2 years after moderate and severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Norway,Cohort study,Prospective data collection,"",Clinic; Hospital admission,2005,2008,>16,"Clinical and history (American Congress of Rehabilitation Medicine for mild TBI, GCS of 9-12 and LOC of 30min-6hrs for moderate, GCS <=8 and LOC >6hrs for severe; positive CT findings increased severity rating category) ",Moderate; Severe,"GCS, LOC (duration)","","Vegetative state
+Serious comorbidities that would have interfered with the assessment of TBI-related impairments (e.g., spinal cord injuries, psychological disorders, or drug abuse) ",57,41,3,"Gender | Social outcome (2 years post-injury, CIQ score) | N | Regression
+Age | Social outcome (2 years post-injury, CIQ score) | N | Regression
+Injury severity (moderate vs severe) | Social outcome (2 years post-injury, CIQ score) | N | Regression
+GCS (admission) | Social outcome (2 years post-injury, CIQ score) | Y | Regression
+PTA (duration) | Social outcome (2 years post-injury, CIQ score) | Y | Regression
+DRS (admission) | Social outcome (2 years post-injury, CIQ score) | N | Regression
+FIM (admission) | Social outcome (2 years post-injury, CIQ score) | N | Regression
+
+Injury severity (moderate vs severe) | Social outcome (2 years post-injury, CIQ score) | N | Spearman
+Injury severity (moderate vs severe) | Social outcome (2 years post-injury, CIQ home integration) | N | Spearman
+Injury severity (moderate vs severe) | Social outcome (2 years post-injury, CIQ social integration) | N | Spearman
+Injury severity (moderate vs severe) | Social outcome (2 years post-injury, CIQ productivity) | Y | Spearman","Regression (i.e., logistic, linear); Correlation (i.e., Pearson, Spearman, Kendall)","",""
+6955,Korley 2016,Circulating Brain-Derived Neurotrophic Factor Has Diagnostic and Prognostic Value in Traumatic Brain Injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Prospective data collection,"",Emergency department,2012,2013,>=18,Definition from Demographics and Clinical Assessment Working Group of the International and Interagency Initiative toward Common Data Elements for Research on Traumatic Brain Injury and Psychological Health,Mild; Moderate; Severe,"GCS, LOC, AOC, PTA, imaging findings (Department of Defense/Department of Veterans Affairs TBI severity definition)","Met ACEP criteria for head CT
+Had excess serum sample available in clinical chemistry lab","Penetrating TBI
+History of demyelinating disease, neurodegenerative disease, dementia, stroke, brain tumor, intracranial surgery, active cancer",111,"43 (median, estimate)",2.24,"BDNF (at admission) | GOS-E (6 months post-injury) | N | U-test
+BDNF (at admission) | PCS (6 months post-injury) | N | U-test
+BDNF (at admission) | Incomplete recovery (6 months post-injury) | Y | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test","",Only a subset of the TRACK-TBI pilot subjects were analyzed for outcomes since not all patients had available data
+6887,McCredie 2016,Timing of withdrawal of life-sustaining therapies in severe traumatic brain injury: Impact on overall mortality.,Steven Qiu,Yes,Other: ,"Other: US, Canada",Cohort study,Retrospective database/RCT data,TQIP,Emergency department; Hospital admission,2010,2013,>=16,"AIS codes (Epidural hematoma 140630, 140632, 140634, 140636; Subdural hematoma 140650, 140652, 140654, 140656; Traumatic subarachnoid hemorrhage 140684; Intracerebral mass lesion	140608, 140610, 140616, 140618, 140624, 140626, 140648; Compressed/absent basal cisterns 140664, 140666, 140672, 140674; Brainstem/cerebellar lesion 140204, 140206, 140208, 140210, 140212, 140214, 140216, 140218, 140299, 140402, 140403, 140404, 140405, 140406, 140410, 140414, 140418, 140422, 140426, 140430, 140434, 140438, 140442, 140446, 140450, 140458, 140462, 140466, 140470, 140474, 140499)",Severe,"GCS, AIS","Isolated TBI
+AIS head >=3","Penetrating TBI
+Non-head AIS >2
+Nonsurvivable injuries",17505,"53 (median, estimate)",2.37,"Gender | Mortality (in-hospital) | N | Regression
+Age | Mortality (in-hospital) | Y | Regression
+Comorbidity (Chronic respiratory disease) | Mortality (in-hospital) | Y | Regression
+Comorbidity (CVA with residual deficit) | Mortality (in-hospital) | N | Regression
+Comorbidity (CAD) | Mortality (in-hospital) | Y | Regression
+Comorbidity (Hypertension) | Mortality (in-hospital) | Y | Regression
+Comorbidity (Diabetes) | Mortality (in-hospital) | Y | Regression
+Comorbidity (Renal disease on dialysis) | Mortality (in-hospital) | Y | Regression
+Comorbidity (Cancer) | Mortality (in-hospital) | Y | Regression
+Comorbidity (Bleeding disorder) | Mortality (in-hospital) | Y | Regression
+Comorbidity (Functionally dependent) | Mortality (in-hospital) | N | Regression
+EDH | Mortality (in-hospital) | Y | Regression
+SDH | Mortality (in-hospital) | N | Regression
+SAH | Mortality (in-hospital) | Y | Regression
+Intracerebral mass lesion | Mortality (in-hospital) | Y | Regression
+Abnormal basal cistern | Mortality (in-hospital) | Y | Regression
+Brainstem/cerebellar lesions | Mortality (in-hospital) | Y | Regression
+AIS head | Mortality (in-hospital) | Y | Regression
+GCS (motor) | Mortality (in-hospital) | Y | Regression
+SBP | Mortality (in-hospital) | Y | Regression
+Mechanism | Mortality (in-hospital) | Y | Regression","Regression (i.e., logistic, linear)",Regression is multi-level,""
+6875,Sun 2016,External Validation of the International Mission for Prognosis and Analysis of Clinical Trials in Traumatic Brain Injury: Prognostic Models for Traumatic Brain Injury on the Study of the Neuroprotective Activity of Progesterone in Severe Traumatic Brain I,Steven Qiu,Yes,Other: Validation of IMPACT models,"Other: North America, Europe, Asia, South America",Cohort study,Retrospective database/RCT data,SyNAPSe trial,Hospital admission,2010,2014,16-70,"History, clinical examination, CT findings",Severe,GCS,"Positive CT findings
+At least one reactive pupil
+Weight of 45-135kg","Penetrating TBI
+GCS = 3 with bilaterally fixed and dilated pupils
+Life expectancy <24hrs
+Prolonged/uncorrectable hypoxemia
+Hypotension (SBP <90mmHg)
+Spinal cord injury 
+Pregnancy 
+Only isolated epidural hematoma
+Coma due primarily to other causes",1124,"35 (median, estimate)",3.68,"Age | GOS (6 months post-injury) | Y | Chi-squared
+GCS (motor) | GOS (6 months post-injury) | Y | Chi-squared
+Pupil reactivity | GOS (6 months post-injury) | Y | Chi-squared
+Hypoxia | GOS (6 months post-injury) | Y | Chi-squared
+Hypotension | GOS (6 months post-injury) | N | Chi-squared
+Marshall score | GOS (6 months post-injury) | Y | Chi-squared
+SAH | GOS (6 months post-injury) | Y | Chi-squared
+EDH | GOS (6 months post-injury) | N | Chi-squared
+Glucose | GOS (6 months post-injury) | Y | Chi-squared
+Hemoglobin | GOS (6 months post-injury) | Y | Chi-squared
+
+Age | GOS (6 months post-injury) | Y | Regression
+GCS (motor) | GOS (6 months post-injury) | Y | Regression
+Pupil reactivity | GOS (6 months post-injury) | Y | Regression
+Hypoxia | GOS (6 months post-injury) | N | Regression
+Hypotension | GOS (6 months post-injury) | N | Regression
+Marshall score | GOS (6 months post-injury) | Y | Regression
+SAH | GOS (6 months post-injury) | N | Regression
+EDH | GOS (6 months post-injury) | N | Regression
+Glucose | GOS (6 months post-injury) | Y | Regression
+Hemoglobin | GOS (6 months post-injury) | N | Regression","Regression (i.e., logistic, linear)","Univariate and multivariable odds ratios in Table 3 are presumed to be from logistic regression since cited paper for methods also uses logistic regression
+Univariate analysis is coded as Chi-squared since they are equivalent",""
+6873,Pan 2016,Change of serum levels of thioredoxin in patients with severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,Other: China,Cohort study,Prospective data collection,"",Hospital admission,2011,2014,>=18,Not defined,Severe,GCS,"","Pregnancy, neurological disease (e.g., stroke), infectious diseases, immunological diseases, fever within 1 month, increased WBC, positive CXR
+History of head trauma or systemic diseases (e.g., diabetes, hypertension, uremia, liver cirrhosis, malignancy, chronic heart/lung disease)
+Immunosuppressant use 
+Antiplatelet or anticoagulant use",112,39.27,1.8,"Gender | Mortality (1 week post-injury) | N | Chi-squared
+Age | Mortality (1 week post-injury) | N | T-test
+GCS | Mortality (1 week post-injury) | Y | T-test
+Pupil reactivity | Mortality (1 week post-injury) | Y | Chi-squared
+Marshall score | Mortality (1 week post-injury) | Y | Chi-squared
+Abnormal cisterns | Mortality (1 week post-injury) | Y | Chi-squared
+Midline shift (>5 mm) | Mortality (1 week post-injury) | Y | Chi-squared
+SAH | Mortality (1 week post-injury) | Y | Chi-squared
+Surgery (24hrs post-injury) | Mortality (1 week post-injury) | N | Chi-squared
+SBP | Mortality (1 week post-injury) | N | T-test
+DBP | Mortality (1 week post-injury) | N | T-test
+MAP | Mortality (1 week post-injury) | N | T-test
+Glucose (blood) | Mortality (1 week post-injury) | Y | T-test
+CRP (plasma) | Mortality (1 week post-injury) | Y | T-test
+WBC (blood) | Mortality (1 week post-injury) | N | T-test
+Hemoglobin (blood) | Mortality (1 week post-injury) | N | T-test
+Platelet count (blood) | Mortality (1 week post-injury) | N | T-test
+Thioredoxin (blood) | Mortality (1 week post-injury) | Y | T-test
+
+Gender | Mortality (6 months post-injury) | N | Chi-squared
+Age | Mortality (6 months post-injury) | N | T-test
+GCS | Mortality (6 months post-injury) | Y | T-test
+Pupil reactivity | Mortality (6 months post-injury) | Y | Chi-squared
+Marshall score | Mortality (6 months post-injury) | Y | Chi-squared
+Abnormal cisterns | Mortality (6 months post-injury) | Y | Chi-squared
+Midline shift (>5 mm) | Mortality (6 months post-injury) | Y | Chi-squared
+SAH | Mortality (6 months post-injury) | Y | Chi-squared
+Surgery (24hrs post-injury) | Mortality (6 months post-injury) | N | Chi-squared
+SBP | Mortality (6 months post-injury) | N | T-test
+DBP | Mortality (6 months post-injury) | N | T-test
+MAP | Mortality (6 months post-injury) | N | T-test
+Glucose (blood) | Mortality (6 months post-injury) | Y | T-test
+CRP (plasma) | Mortality (6 months post-injury) | Y | T-test
+WBC (blood) | Mortality (6 months post-injury) | N | T-test
+Hemoglobin (blood) | Mortality (6 months post-injury) | N | T-test
+Platelet count (blood) | Mortality (6 months post-injury) | N | T-test
+Thioredoxin (blood) | Mortality (6 months post-injury) | Y | T-test
+
+Gender | GOS (6 months post-injury) | N | Chi-squared
+Age | GOS (6 months post-injury) | N | T-test
+GCS | GOS (6 months post-injury) | Y | T-test
+Pupil reactivity | GOS (6 months post-injury) | Y | Chi-squared
+Marshall score | GOS (6 months post-injury) | Y | Chi-squared
+Abnormal cisterns | GOS (6 months post-injury) | Y | Chi-squared
+Midline shift (>5 mm) | GOS (6 months post-injury) | Y | Chi-squared
+SAH | GOS (6 months post-injury) | Y | Chi-squared
+Surgery (24hrs post-injury) | GOS (6 months post-injury) | N | Chi-squared
+SBP | GOS (6 months post-injury) | N | T-test
+DBP | GOS (6 months post-injury) | N | T-test
+MAP | GOS (6 months post-injury) | N | T-test
+Glucose (blood) | GOS (6 months post-injury) | Y | T-test
+CRP (plasma) | GOS (6 months post-injury) | Y | T-test
+WBC (blood) | GOS (6 months post-injury) | N | T-test
+Hemoglobin (blood) | GOS (6 months post-injury) | N | T-test
+Platelet count (blood) | GOS (6 months post-injury) | N | T-test
+Thioredoxin (blood) | GOS (6 months post-injury) | Y | T-test","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test; Binary classifier with ROC","",""
+6872,Frasnelli 2016,Olfactory function in acute traumatic brain injury.,Steven Qiu,Yes,Other: Olfactory dysfunction in TBI,Canada,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2013,2013,17-84,"Clinical and history (either a. radiological imaging showed intracranial or cranial injury or b. at least two of the following: 1. loss of consciousness, 2. altered state of consciousness i.e., reduced GCS, 3. amnesia for the event)",Mild; Moderate; Severe,GCS,"","",63,52.8,1.7,"GCS | Olfactory dysfunction (12 days post-injury) | N | ANOVA
+GCS | Parosmia score (12 days post-injury) | N | Spearman
+PTA (duration) | Olfactory dysfunction (12 days post-injury) | Y | Spearman
+PTA (duration) | Parosmia score (12 days post-injury) | N | Spearman
+Age | Olfactory dysfunction (12 days post-injury) | Y | Spearman
+Mechanism | Olfactory dysfunction (12 days post-injury) | N | ANOVA
+Mechanism | Parosmia score (12 days post-injury) | Y | ANOVA","ANOVA/Kruskal-Wallis test/Friedman test; Correlation (i.e., Pearson, Spearman, Kendall)","",""
+6868,Lustenberger 2016,The effect of brain injury on the inflammatory response following severe trauma.,Steven Qiu,Yes,Other: Analysis of inflammatory biomarker course following major trauma,Other: Germany,Cohort study,Retrospective chart review,"",Emergency department; Hospital admission,2007,2008,18-80,AIS (Head AIS),Severe,AIS head,"AIS head >=3
+Blunt or penetrating trauma
+ISS >=16",Death in the ED or OR,62,50.25,1.7,"IL-6 (admission) | Sepsis | Y | U-test
+IL-6 (1 day post-injury) | Sepsis | Y | U-test
+IL-6 (2 days post-injury) | Sepsis | Y | U-test
+IL-6 (3 days post-injury) | Sepsis | Y | U-test
+IL-6 (admission) | Sepsis | Y | ROC AUC
+
+IL-6 (admission) | Multiple organ failure | Y | U-test
+IL-6 (1 day post-injury) | Multiple organ failure | Y | U-test
+IL-6 (2 days post-injury) | Multiple organ failure | N | U-test
+IL-6 (3 days post-injury) | Multiple organ failure | N | U-test
+IL-6 (admission) | Multiple organ failure | Y | ROC AUC
+
+IL-6 (admission) | GOS | Y | ANOVA
+IL-6 (admission) | GOS | Y | ROC AUC",ANOVA/Kruskal-Wallis test/Friedman test; T-test/Mann-Whitney U-test/Wilcoxon test; Binary classifier with ROC,"",""
+6865,Talari 2016,The Rotterdam Scoring System Can Be Used as an Independent Factor for Predicting Traumatic Brain Injury Outcomes.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Iran,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2014,2014,>15,Not defined,Mild; Moderate; Severe,GCS,Positive CT findings or GCS <14 (implies that all mTBI patients had positive CT findings),"Accompanying non-TBI brain lesions (e.g., brain tumor, hydrocephalus)
+Death during study period that was not due to TBI",162,34.2,4.35,"Gender | Mortality (14 days post-injury) | N | Fisher's exact test
+Age | Mortality (14 days post-injury) | Y | Fisher's exact test
+GCS | Mortality (14 days post-injury) | Y | Fisher's exact test
+Mechanism | Mortality (14 days post-injury) | N | Fisher's exact test
+Other organ injury | Mortality (14 days post-injury) | N | Fisher's exact test
+
+Gender | Mortality (14 days post-injury) | Y | Regression
+Age | Mortality (14 days post-injury) | Y | Regression
+GCS | Mortality (14 days post-injury) | Y | Regression
+Rotterdam score | Mortality (14 days post-injury) | Y | Regression
+Other organ injury | Mortality (14 days post-injury) | N | Regression","Regression (i.e., logistic, linear); Chi-squared/Fisher's exact test; Binary classifier with ROC","Study only mentioned ""univariate analysis"" for factors in Table 1, hence assumed Fisher's exact test for these factors due to the categorical coding ",""
+6864,Salehpour 2016,Can Serum Glucose Level in Early Admission Predict Outcome in Patients with Severe Head Trauma?.,Steven Qiu,Yes,Analysis of prognostic factors,Other: Iran,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2011,2012,18-76,Not defined,Severe,GCS,"","Trauma to thoracic/abdominal regions
+Hospital stay <24hrs
+History of diabetes",80,31.71,7.33,"Gender | Mortality (at discharge) | N | Chi-squared
+Age | Mortality (at discharge) | N | T-test
+Glucose (serum) | Mortality (at discharge) | N | T-test
+GCS (admission) | Mortality (at discharge) | Y | T-test
+GCS (24 hours post-injury) | Mortality (at discharge) | N | T-test
+GCS (48 hours post-injury) | Mortality (at discharge) | Y | T-test
+GCS (1 week post-injury) | Mortality (at discharge) | Y | T-test
+
+Glucose (serum) | GCS (24 hours post-injury) | N | Pearson
+Glucose (serum) | GCS (48 hours post-injury) | N | Pearson
+Glucose (serum) | GCS (1 week post-injury) | N | Pearson
+Glucose (serum) | GCS (at discharge) | N | Pearson
+Glucose (serum) | GOS (at discharge) | N | Pearson","T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test; Correlation (i.e., Pearson, Spearman, Kendall)","",""
+6863,Kumar 2016,Principal components derived from CSF inflammatory profiles predict outcome in survivors after severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Prospective data collection,"",Hospital admission,2008,"",16-75,"GCS, CT findings",Severe,GCS,"Closed head TBI
+Positive CT findings
+Required EVD for ICP monitoring and management","Penetrating TBI
+Prolonged cardiac or respiratory arrest at injury 
+Evidence of brain death within 3 days of injury
+AIS = 5 in any region other than head/neck
+History of pituitary/hypothalamic tumor, breast cancer requiring chemotherapy/tamoxifen, prostate cancer requiring orchiectomy/LH suppressants, or untreated thyroid disease",111,35.88,4.84,"Age | GOS (6 months post-injury) | Y | U-test
+Gender | GOS (6 months post-injury) | N | Fisher's exact test
+GCS (admission) | GOS (6 months post-injury) | N | U-test
+ISS | GOS (6 months post-injury) | N | U-test
+BMI | GOS (6 months post-injury) | N | U-test
+SDH | GOS (6 months post-injury) | N | Fisher's exact test
+SAH | GOS (6 months post-injury) | N | Fisher's exact test
+DAI | GOS (6 months post-injury) | Y | Fisher's exact test
+EDH | GOS (6 months post-injury) | N | Fisher's exact test
+Contusion | GOS (6 months post-injury) | N | Fisher's exact test
+IVH | GOS (6 months post-injury) | N | Fisher's exact test
+ICH | GOS (6 months post-injury) | N | Fisher's exact test
+Mechanism | GOS (6 months post-injury) | N | Fisher's exact test
+ICU (duration) | GOS (6 months post-injury) | Y | U-test
+Sepsis | GOS (6 months post-injury) | N | Fisher's exact test
+Pneumonia | GOS (6 months post-injury) | N | Fisher's exact test
+
+Age | GOS (12 months post-injury) | Y | U-test
+Gender | GOS (12 months post-injury) | N | Fisher's exact test
+GCS (admission) | GOS (12 months post-injury) | N | U-test
+ISS | GOS (12 months post-injury) | N | U-test
+BMI | GOS (12 months post-injury) | N | U-test
+SDH | GOS (12 months post-injury) | N | Fisher's exact test
+SAH | GOS (12 months post-injury) | N | Fisher's exact test
+DAI | GOS (12 months post-injury) | Y | Fisher's exact test
+EDH | GOS (12 months post-injury) | N | Fisher's exact test
+Contusion | GOS (12 months post-injury) | N | Fisher's exact test
+IVH | GOS (12 months post-injury) | N | Fisher's exact test
+ICH | GOS (12 months post-injury) | N | Fisher's exact test
+Mechanism | GOS (12 months post-injury) | N | Fisher's exact test
+ICU (duration) | GOS (12 months post-injury) | Y | U-test
+Sepsis | GOS (12 months post-injury) | N | Fisher's exact test
+Pneumonia | GOS (12 months post-injury) | N | Fisher's exact test
+
+Age | GOS (6 months post-injury) | Y | Regression
+GCS | GOS (6 months post-injury) | Y | Regression
+DAI | GOS (6 months post-injury) | N | Regression
+ICU (duration) | GOS (6 months post-injury) | N | Regression
+
+Age | GOS (12 months post-injury) | Y | Regression
+GCS | GOS (12 months post-injury) | Y | Regression
+DAI | GOS (12 months post-injury) | N | Regression
+ICU (duration) | GOS (12 months post-injury) | Y | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","",2008 set as start date since they mentioned that TBI care was according to 2007 Brain Trauma guidelines
+6838,Yang 2016,"Elevated serum miR-93, miR-191, and miR-499 are noninvasive biomarkers for the presence and progression of traumatic brain injury.",Steven Qiu,Yes,Other: Analysis of miRNAs for TBI diagnosis and progression,Other: China,Cohort study,Prospective data collection,"",Emergency department; Hospital admission,2012,2014,"",Not defined,Mild; Moderate; Severe,GCS,Isolated TBI,"History of CNS disease, alcohol/drug abuse",76,48.5,3.47,"miRNA (serum, miR-93) | GOS (9 months post-injury) | Y | ANOVA
+miRNA (serum, miR-191) | GOS (9 months post-injury) | Y | ANOVA
+miRNA (serum, miR-499) | GOS (9 months post-injury) | Y | ANOVA",ANOVA/Kruskal-Wallis test/Friedman test,"",Mean and SD don't make it seem likely that there are any pediatric cases
+6802,Wan 2016,Elderly Patients with Severe Traumatic Brain Injury Could Benefit from Surgical Treatment.,Steven Qiu,No (Wrong patient population),Analysis of prognostic factors,Other: China,Cohort study,Retrospective chart review,"","",2008,2014,>=65,"","","","","",328,"","","","","",""
+6780,Cai 2016,The role of cardiac troponin I in prognostication of patients with isolated severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective chart review,"",Hospital admission,2007,2014,>=18,AIS (AIS head >=3),Severe,"GCS, AIS",Isolated TBI,Non-head AIS >=3,580,56.3,2.42,"Age | Mortality (at discharge) | Y | Wilcoxon test
+Age (>65) | Mortality (at discharge) | Y | Chi-squared
+Gender | Mortality (at discharge) | Y | Chi-squared
+Mechanism | Mortality (at discharge) | Y | Chi-squared
+ISS | Mortality (at discharge) | Y | Chi-squared
+GCS (admission) | Mortality (at discharge) | Y | Chi-squared
+SAH | Mortality (at discharge) | N | Chi-squared
+IVH | Mortality (at discharge) | Y | Chi-squared
+Cerebral hematoma | Mortality (at discharge) | Y | Chi-squared
+Cerebral contusion | Mortality (at discharge) | Y | Chi-squared
+Cerebral edema | Mortality (at discharge) | Y | Chi-squared
+Skull fracture | Mortality (at discharge) | N | Chi-squared
+ICU (duration) | Mortality (at discharge) | Y | Wilcoxon test
+Admission (duration) | Mortality (at discharge) | Y | Wilcoxon test
+cTnI | Mortality (at discharge) | Y | Chi-squared
+Comorbidity (cardiac diseases) | Mortality (at discharge) | Y | Chi-squared
+
+cTnI | Mortality (at discharge) | Y | Regression (Cox)
+cTnI | Mortality (at discharge) | Y | Likelihood ratio test (ROC AUC)","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test; Binary classifier with ROC; Other: Cox Proportional Hazards Model, Likelihood ratio test","",""
+6776,Tator 2016,Postconcussion syndrome: demographics and predictors in 221 patients.,Steven Qiu,No (Wrong patient population),Analysis of prognostic factors,Canada,Cohort study,Retrospective chart review,"","",1997,2013,"","","","","","","","","","","","",""
+6774,Litofsky 2016,The Negative Impact of Anemia in Outcome from Traumatic Brain Injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective chart review,"",Emergency department; Hospital admission,2009,2013,>=18,"AIS (head AIS >=3), CT findings","","","AIS head >=3
+Positive CT findings
+Abnormal neurological findings",Penetrating TBI,939,46.75,1.95,"Age | GOS | Y | Regression
+GCS (admission) | GOS | Y | Regression
+ISS | GOS | Y | Regression
+Hemoglobin (admission) | GOS | Y | Regression
+Hemoglobin (8 days post-injury, minimum) | GOS | Y | Regression","Regression (i.e., logistic, linear); Binary classifier with ROC",Outcome was classified with a Glasgow Outcome Scale (GOS) score at last follow-up visit documented up to 1 year after injury - not standardized,""
+6772,Chen 2016,Role of signal peptide-Cub-Egf domain-containing protein-1 in serum as a predictive biomarker of outcome after severe traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,Other: China,Cohort study,Prospective data collection,"",Hospital admission,2011,2014,>=18,Not defined,Severe,GCS,"","Non-head ISS >9
+Recent infection (within 1 month)
+History of neurological diseases (e.g., stroke, severe head trauma) or prior systematic diseases (e.g., diabetes, hypertension, uremia, liver cirrhosis, malignancy, chronic heart or lung disease)
+Use of immunosuppressants, antiplatelets, or anticoagulants",113,42,1.22,"Gender | GOS (6 months post-injury) | N | Chi-squared
+Age | GOS (6 months post-injury) | Y | T-test
+GCS | GOS (6 months post-injury) | Y | T-test
+Pupil reactivity | GOS (6 months post-injury) | Y | Chi-squared
+Marshall score | GOS (6 months post-injury) | Y | Chi-squared
+Abnormal cisterns | GOS (6 months post-injury) | Y | Chi-squared
+Midline shift (>5mm) | GOS (6 months post-injury) | Y | Chi-squared
+SAH | GOS (6 months post-injury) | Y | Chi-squared
+Admission (duration) | GOS (6 months post-injury) | N | T-test
+SBP | GOS (6 months post-injury) | N | T-test
+DBP | GOS (6 months post-injury) | N | T-test
+Glucose (blood) | GOS (6 months post-injury) | Y | T-test
+CRP (plasma) | GOS (6 months post-injury) | Y | T-test
+D-dimer (plasma) | GOS (6 months post-injury) | N | T-test
+WBC (blood) | GOS (6 months post-injury) | N | T-test
+Hemoglobin (blood) | GOS (6 months post-injury) | N | T-test
+Platelet count (blood) | GOS (6 months post-injury) | N | T-test
+Prothrombin time | GOS (6 months post-injury) | N | T-test
+Thrombin time | GOS (6 months post-injury) | N | T-test
+Partial thromboplastin time | GOS (6 months post-injury) | N | T-test
+Fibrinogen (plasma) | GOS (6 months post-injury) | N | T-test
+SCUBE1 (serum) | GOS (6 months post-injury) | Y | T-test
+
+Age | GOS (6 months post-injury) | N | Regression
+GCS | GOS (6 months post-injury) | Y | Regression
+Pupil reactivity | GOS (6 months post-injury) | N | Regression
+Marshall score | GOS (6 months post-injury) | N | Regression
+Abnormal cisterns | GOS (6 months post-injury) | N | Regression
+Midline shift (>5mm) | GOS (6 months post-injury) | N | Regression
+SAH | GOS (6 months post-injury) | N | Regression
+Glucose (blood) | GOS (6 months post-injury) | N | Regression
+CRP (plasma) | GOS (6 months post-injury) | N | Regression
+SCUBE1 (serum) | GOS (6 months post-injury) | Y | Regression
+
+SCUBE1 (serum) | GOS (6 months post-injury) | Y | ROC AUC
+GCS | GOS (6 months post-injury) | Y | ROC AUC","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test; Binary classifier with ROC","",""
+6704,Osler 2016,The differential mortality of Glasgow Coma Score in patients with and without head injury.,Steven Qiu,No (Wrong analysis),"","","","","","","","","","","","","","","","","","","","",""
+6693,Wu 2016,The prognostic value of plasma nesfatin-1 concentrations in patients with traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,Other: China,Cohort study,Prospective data collection,"",Hospital admission,2010,2015,>=18,Positive CT findings,Severe,GCS,">=2 head CTs in first 72hrs, >=4 head CTs in first week post-injury","Non-head AIS >=3
+Previous head traumaa
+Neurological disease (e.g., stroke), 
+Anticoagulant or antiplatelet use
+History of systemic diseases (e.g., uremia, liver cirrhosis, malignancy, chronic heart or lung disease, diabetes, hypertension)",100,37.1,1.44,"Nesfatin-1 (plasma) | Mortality (at discharge) | Y | T-test
+Nesfatin-1 (plasma) | Bleed progression | Y | T-test
+Nesfatin-1 (plasma) | Posttraumatic cerebral infarction | Y | T-test
+
+Gender | Mortality (at discharge) | N | Regression
+Age | Mortality (at discharge) | N | Regression
+GCS | Mortality (at discharge) | Y | Regression
+Pupil reactivity | Mortality (at discharge) | Y | Regression
+Abnormal cisterns | Mortality (at discharge) | Y | Regression
+Midline shift (>5mm) | Mortality (at discharge) | Y | Regression
+SAH | Mortality (at discharge) | Y | Regression
+Admission (duration) | Mortality (at discharge) | N | Regression
+Glucose (blood) | Mortality (at discharge) | Y | Regression
+CRP (plasma) | Mortality (at discharge) | Y | Regression
+Fibrinogen (plasma) | Mortality (at discharge) | N | Regression
+D-dimer (plasma) | Mortality (at discharge) | N | Regression
+Nesfatin-1 (plasma) | Mortality (at discharge) | Y | Regression
+
+Gender | Bleed progression | N | Regression
+Age | Bleed progression | N | Regression
+GCS | Bleed progression | Y | Regression
+Pupil reactivity | Bleed progression | Y | Regression
+Abnormal cisterns | Bleed progression | Y | Regression
+Midline shift (>5mm) | Bleed progression | Y | Regression
+SAH | Bleed progression | Y | Regression
+Admission (duration) | Bleed progression | N | Regression
+Glucose (blood) | Bleed progression | Y | Regression
+CRP (plasma) | Bleed progression | Y | Regression
+Fibrinogen (plasma) | Bleed progression | N | Regression
+D-dimer (plasma) | Bleed progression | N | Regression
+Nesfatin-1 (plasma) | Bleed progression | Y | Regression
+
+Gender | Posttraumatic cerebral infarction | N | Regression
+Age | Posttraumatic cerebral infarction | N | Regression
+GCS | Posttraumatic cerebral infarction | Y | Regression
+Pupil reactivity | Posttraumatic cerebral infarction | Y | Regression
+Abnormal cisterns | Posttraumatic cerebral infarction | Y | Regression
+Midline shift (>5mm) | Posttraumatic cerebral infarction | Y | Regression
+SAH | Posttraumatic cerebral infarction | Y | Regression
+Admission (duration) | Posttraumatic cerebral infarction | N | Regression
+Glucose (blood) | Posttraumatic cerebral infarction | Y | Regression
+CRP (plasma) | Posttraumatic cerebral infarction | Y | Regression
+Fibrinogen (plasma) | Posttraumatic cerebral infarction | N | Regression
+D-dimer (plasma) | Posttraumatic cerebral infarction | N | Regression
+Nesfatin-1 (plasma) | Posttraumatic cerebral infarction | Y | Regression
+
+Nesfatin-1 (plasma) | Mortality (at discharge) | Y | ROC AUC
+GCS | Mortality (at discharge) | Y | ROC AUC
+Nesfatin-1 (plasma) | Bleed progression | Y | ROC AUC
+GCS | Bleed progression | Y | ROC AUC
+Nesfatin-1 (plasma) | Posttraumatic cerebral infarction | Y | ROC AUC
+GCS | Posttraumatic cerebral infarction | Y | ROC AUC","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Binary classifier with ROC","",""
+6649,Albrecht 2016,Sex differences in mortality following isolated traumatic brain injury among older adults.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective chart review,"",Hospital admission,1996,2012,>=65,"ICD9-CM codes (800.xx, 801.xx, 803.xx, 804.xx, 850.xx- 854.1x, 950.1–950.3, 959.01; CDC definition for TBI)",Mild; Moderate; Severe,GCS,"","",4854,"","","Gender | Mortality (all-cause, in-hospital) | Y | Chi-squared
+Age | Mortality (all-cause, in-hospital) | Y | T-test
+AIS head score | Mortality (all-cause, in-hospital) | Y | Chi-squared
+GCS | Mortality (all-cause, in-hospital) | Y | Chi-squared
+ISS | Mortality (all-cause, in-hospital) | Y | Chi-squared
+Severity of other injuries | Mortality (all-cause, in-hospital) | Y | Chi-squared
+Cardiac arrhythmia | Mortality (all-cause, in-hospital) | Y | Chi-squared
+SBP | Mortality (all-cause, in-hospital) | Y | Chi-squared
+AIS face score | Mortality (all-cause, in-hospital) | Y | Chi-squared
+AIS spine score | Mortality (all-cause, in-hospital) | Y | Chi-squared
+AIS thorax score | Mortality (all-cause, in-hospital) | Y | Chi-squared
+AIS abdominal score | Mortality (all-cause, in-hospital) | Y | Chi-squared
+AIS upper extremity score | Mortality (all-cause, in-hospital) | Y | Chi-squared","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","","Contains multiple analyses (isolated vs generic TBI)
+Collected info from ""All TBI"" subset rather than isolated"
+6555,Bjugstad 2016,Oxidation-Reduction Potential as a Biomarker for Severity and Acute Outcome in Traumatic Brain Injury.,Steven Qiu,Yes,Analysis of prognostic factors,US,Cohort study,Retrospective database/RCT data,TraumaBase,Emergency department; Hospital admission,2007,2018,">=18, <70","ICD9-CM codes (concussion (850.0–850.99); cerebral or cerebellar contusion or laceration (851.0–851.99); subarachnoid hemorrhage (852.0–852.19); subdural hemorrhage (852.2–852.39); extradural hemorrhage (852.4–852.59); other, unspecified intracranial hemorrhage (853.0–853.19); and intracranial injury of unspecified nature (854.0–854.19))",Mild; Moderate; Severe,GCS,"","AIS head <2
+Non-head AIS region was scored higher than the AIS head
+Severe systemic injury with hypotension",132,54.53,1.81,"Antioxidant capacity | Composite outcome | Y | Regression
+ISS | Composite outcome | Y | Regression
+AIS-Head | Composite outcome | Y | Regression
+GCS | Composite outcome | N | Regression ","Regression (i.e., logistic, linear); ANOVA/Kruskal-Wallis test/Friedman test","",""
+6037,Hammond 2017,Potential Impact of Amantadine on Aggression in Chronic Traumatic Brain Injury.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+6015,AboEl-Noor 2017,"Forensic and clinical significance of serum amylase, lipase and gamma glutamyl transferase as predictors of outcome in head injured patients.",Steven Qiu,No (Wrong patient population),"","","","","","",2015,2015,"","","","","","Abdominal trauma
+History of liver/pancreatic diseases or pre-existing pathologies that may have influenced serum AMY, lipase, and GGT levels
+History of neurological, psychiatric diseases, or alcohol/drug abuse",60,"","","","","",""
+5970,Adams 2017,Temporal profile of intracranial pressure and cerebrovascular reactivity in severe traumatic brain injury and association with fatal outcome: An observational study.,Steven Qiu,No (Wrong patient population),"",UK,"","","","","","",>=16,"","","","","","","","","","","",""
+4961,Ponsford 2020,The impact of cultural background on outcome following traumatic brain injury.,Steven Qiu,Yes,Analysis of prognostic factors,Australia,Case control study,Prospective data collection,"",Hospital admission,1997,2016,15-77,Not defined,Mild; Moderate; Severe,GCS,"","",206,38.5,1.42,"Culturally diverse background | Admission (duration) | N | U-test
+Culturally diverse background | PTA (duration) | N | U-test
+Culturally diverse background | Lack of anger | N | U-test
+Culturally diverse background | Reliance on professional help | N | U-test
+Culturally diverse background | MOT-Q score | N | T-test
+Culturally diverse background | Physical outcome (CHART physical independence) | N | U-test
+Culturally diverse background | Cognitive outcome (CHART cognitive independence) | Y | U-test
+Culturally diverse background | Physical outcome (CHART mobility) | Y | U-test
+Culturally diverse background | Occupational outcome (CHART occupation) | Y | U-test
+Culturally diverse background | Social outcome (CHART social integration) | Y | U-test
+Culturally diverse background | Composite outcome (CHART score) | Y | U-test
+
+Culturally diverse background | ADLs | N | Chi-squared
+Culturally diverse background | IADLs | Y | Chi-squared
+Culturally diverse background | Occupational outcome (employment status) | Y | Chi-squared
+Culturally diverse background | Anxiety | Y | U-test
+Culturally diverse background | Depression | Y | U-test
+
+Cultural background (Australian) | Composite outcome (CHART score) | Y | Regression
+Gender | Composite outcome (CHART score) | N | Regression
+Age | Composite outcome (CHART score) | Y | Regression
+Education | Composite outcome (CHART score) | Y | Regression
+Admission (duration) | Composite outcome (CHART score) | N | Regression
+PTA (duration) | Composite outcome (CHART score) | N | Regression","Regression (i.e., logistic, linear); T-test/Mann-Whitney U-test/Wilcoxon test; Chi-squared/Fisher's exact test","",""
+4931,Czorlich 2020,Operative versus non-operative treatment of traumatic brain injuries in patients 80 years of age or older.,Steven Qiu,Yes,Analysis of treatment effect,Other: Germany,Cohort study,Retrospective database/RCT data,TraumaRegister DGU,Emergency department; Hospital admission,2002,2016,>=80,AIS (AIS head >=3),"","","AIS head >=3
+Non-head AIS <=1","",1311,"",0.86,"Gender | Mortality (at discharge) | Y | Regression
+GCS | Mortality (at discharge) | Y | Regression
+EDH | Mortality (at discharge) | N | Regression
+SDH | Mortality (at discharge) | N | Regression
+SAH | Mortality (at discharge) | N | Regression
+ICH | Mortality (at discharge) | N | Regression
+Brain edema | Mortality (at discharge) | Y | Regression
+Brainstem hemorrhage | Mortality (at discharge) | N | Regression
+Coagulopathy | Mortality (at discharge) | Y | Regression
+Pupil reactivity (sluggish) | Mortality (at discharge) | N | Regression
+Pupil reactivity (fixed) | Mortality (at discharge) | Y | Regression
+Pupil size (anisocoric) | Mortality (at discharge) | N | Regression
+Pupil size (bilaterally dilated) | Mortality (at discharge) | Y | Regression
+CPR | Mortality (at discharge) | Y | Regression
+Age (<90) | Mortality (at discharge) | Y | Regression
+AIS head | Mortality (at discharge) | Y | Regression
+
+Gender | GOS (at discharge) | Y | Regression
+GCS | GOS (at discharge) | Y | Regression
+EDH | GOS (at discharge) | N | Regression
+SDH | GOS (at discharge) | N | Regression
+SAH | GOS (at discharge) | Y | Regression
+ICH | GOS (at discharge) | Y | Regression
+Brain edema | GOS (at discharge) | Y | Regression
+Brainstem hemorrhage | GOS (at discharge) | Y | Regression
+Coagulopathy | GOS (at discharge) | Y | Regression
+Pupil reactivity (sluggish) | GOS (at discharge) | N | Regression
+Pupil reactivity (fixed) | GOS (at discharge) | Y | Regression
+Pupil size (anisocoric) | GOS (at discharge) | N | Regression
+Pupil size (bilaterally dilated) | GOS (at discharge) | N | Regression
+CPR | GOS (at discharge) | Y | Regression
+Age (<90) | GOS (at discharge) | N | Regression
+AIS head | GOS (at discharge) | Y | Regression
+
+Eppendorf-Cologne scale | Mortality (at discharge) | Y | ROC AUC
+Pupil reactivity | Mortality (at discharge) | Y | ROC AUC
+Pupil width | Mortality (at discharge) | Y | ROC AUC
+Eppendorf-Cologne scale (motor component) | Mortality (at discharge) | Y | ROC AUC
+GCS | Mortality (at discharge) | Y | ROC AUC","Regression (i.e., logistic, linear); Binary classifier with ROC","",""
+4675,AbdelBariMattar 2020,Prognostic Factors for Olfactory Dysfunction in Adult Mild Head Trauma.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
+4071,Choi 2022,Development and validation of a prehospital-stage prediction tool for traumatic brain injury: a multicentre retrospective cohort study in Korea.,Steven Qiu,No (Wrong patient population),"","","","","","","","","","","","","","","","","","","","",""
